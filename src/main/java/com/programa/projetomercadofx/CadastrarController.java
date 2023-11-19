@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
-
+//Falta implementar como ele realmente vai cadastrar
 public class CadastrarController {
     @FXML
     private Button btVoltar;
