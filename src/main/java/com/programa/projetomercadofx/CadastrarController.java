@@ -16,16 +16,17 @@ public class CadastrarController {
     private Button btVoltar;
     @FXML
     private Parent root;
-
+    @FXML
+    private ChoiceBox<String> choiceBoxFuncionarios;
 
     public void switchToMainScreen(ActionEvent event) throws Exception {
-        // Carregar FXML da Tela2
+        // Carregar FXML da Main
         Parent tela2 = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
 
         // Obter a cena atual
         Scene cenaAtual = root.getScene();
 
-        // Criar uma nova cena com a Tela2
+        // Criar uma nova cena com a main
         Scene cenaTela2 = new Scene(tela2, cenaAtual.getWidth(), cenaAtual.getHeight());
 
         // Obter o palco (Stage) atual
@@ -33,5 +34,11 @@ public class CadastrarController {
 
         // Definir a nova cena no palco
         palco.setScene(cenaTela2);
+    }
+
+    @FXML
+    public void initialize() {
+        choiceBoxFuncionarios.getItems().addAll("Gerente", "Vendedor"); //Adicionando opções ao choicebox
+
     }
 }

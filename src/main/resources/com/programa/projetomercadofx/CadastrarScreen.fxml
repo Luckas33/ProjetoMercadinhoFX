@@ -22,7 +22,7 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="600.0">
          <children>
-            <Label layoutX="89.0" layoutY="82.0" prefHeight="25.0" prefWidth="82.0" text="Tipo Conta:" textAlignment="CENTER">
+            <Label layoutX="88.0" layoutY="82.0" prefHeight="25.0" prefWidth="82.0" text="Tipo Conta:" textAlignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>
@@ -32,12 +32,12 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="89.0" layoutY="174.0" prefHeight="25.0" prefWidth="82.0" text="Login:">
+            <Label layoutX="88.0" layoutY="174.0" prefHeight="25.0" prefWidth="82.0" text="Login:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <ChoiceBox layoutX="188.0" layoutY="82.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="choiceBoxFuncionarios" layoutX="188.0" layoutY="82.0" prefWidth="150.0" />
             <TextField layoutX="188.0" layoutY="124.0" promptText="Nome" />
             <TextField layoutX="188.0" layoutY="174.0" promptText="Login" />
             <Label layoutX="88.0" layoutY="219.0" prefHeight="25.0" prefWidth="82.0" text="Email:">

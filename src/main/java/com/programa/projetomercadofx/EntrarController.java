@@ -26,13 +26,13 @@ public class EntrarController {
     private Parent root;
 
     public void switchToMainScrenn(ActionEvent event) throws Exception {
-        // Carregar FXML da Tela1
+        // Carregar FXML da Main
         Parent tela1 = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
 
         // Obter a cena atual
         Scene cenaAtual = root.getScene();
 
-        // Criar uma nova cena com a Tela1
+        // Criar uma nova cena com a tela da Main
         Scene cenaTela1 = new Scene(tela1, cenaAtual.getWidth(), cenaAtual.getHeight());
 
         // Obter o palco (Stage) atual
@@ -42,13 +42,13 @@ public class EntrarController {
         palco.setScene(cenaTela1);
     }
     public void switchToCadastrarScreen(ActionEvent event) throws Exception {
-        // Carregar FXML da Tela2
+        // Carregar FXML da Tela Cadastrar
         Parent CadastrarScreen = FXMLLoader.load(getClass().getResource("CadastrarScreen.fxml"));
 
         // Obter a cena atual
         Scene cenaAtual = root.getScene();
 
-        // Criar uma nova cena com a Tela2
+        // Criar uma nova cena com a Tela cadastrar
         Scene cenaTela2 = new Scene(CadastrarScreen, cenaAtual.getWidth(), cenaAtual.getHeight());
 
         // Obter o palco (Stage) atual
