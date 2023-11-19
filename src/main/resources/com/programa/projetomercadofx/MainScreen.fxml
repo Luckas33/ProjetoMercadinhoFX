@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="root" alignment="CENTER" prefHeight="340.0" prefWidth="620.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.MainController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <AnchorPane prefHeight="371.0" prefWidth="527.0">
+            <children>
+                <Label layoutX="164.0" layoutY="82.0" prefHeight="34.0" prefWidth="253.0" text="Mercadinho Inteligente" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="163.0">
+                    <font>
+                        <Font name="Century" size="23.0" />
+                    </font>
+                </Label>
+                <Pane layoutX="334.0" layoutY="99.0" prefHeight="206.0" prefWidth="246.0" AnchorPane.bottomAnchor="-5.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Button fx:id="btEntrar" layoutX="49.0" layoutY="36.0" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="35.0" prefWidth="166.0" text="Entrar em Contas">
+                            <font>
+                                <Font name="Century" size="16.0" />
+                            </font></Button>
+                        <Button fx:id="btCadastrar" layoutX="49.0" layoutY="96.0" mnemonicParsing="false" onAction="#switchToCadastrarScreen" prefHeight="35.0" prefWidth="166.0" text="Cadastrar conta">
+                            <font>
+                                <Font name="Century" size="16.0" />
+                            </font></Button>
+                        <Button fx:id="btCodigoFonte" layoutX="49.0" layoutY="149.0" mnemonicParsing="false" onAction="#onbtCodigoFonte" prefHeight="35.0" prefWidth="166.0" text="Código Fonte">
+                            <font>
+                                <Font name="Century" size="16.0" />
+                            </font></Button>
+                    </children>
+                </Pane>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

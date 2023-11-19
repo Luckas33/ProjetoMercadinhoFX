@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane fx:id="root" dividerPositions="0.36622073578595316" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.EntrarController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="241.0">
+         <children>
+            <Label layoutX="6.0" layoutY="106.0" text="Mercadinho Inteligente">
+               <font>
+                  <Font name="Constantia" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="btVoltar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToMainScrenn" text="Voltar" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="336.0" prefWidth="278.0">
+         <children>
+            <TextField fx:id="tfLogin" layoutX="192.0" layoutY="104.0" prefHeight="10.0" promptText="Login" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="104.0" prefHeight="17.0" prefWidth="71.0" text="Login:" textAlignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="88.0" layoutY="179.0" prefHeight="17.0" prefWidth="54.0" text="Senha:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="79.0" layoutY="351.0" prefHeight="17.0" prefWidth="116.0" text="Não tem cadastro? " AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="178.0" />
+            <Button fx:id="btcadastrar" layoutX="212.0" layoutY="349.0" mnemonicParsing="false" onAction="#switchToCadastrarScreen" text="Cadastrar" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="212.0">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button fx:id="btConfirmar" layoutX="229.0" layoutY="230.0" mnemonicParsing="false" text="Confirmar">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <PasswordField fx:id="tfSenha" layoutX="192.0" layoutY="179.0" prefHeight="10.0" promptText="Senha" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>
