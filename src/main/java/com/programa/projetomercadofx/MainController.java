@@ -62,7 +62,7 @@ public class MainController {
     @FXML
     public void onbtCodigoFonte(ActionEvent e){
         System.out.println("eae boy");
-        Alerts.showAlert("Aviso",null,"Bem-vindo", Alert.AlertType.INFORMATION);
+        Alerts.showAlert("Aviso",null,"Equipe: \nLucas Sobral\nJão Rodrigo\nOsvaldo\nIarley\nAnderson", Alert.AlertType.INFORMATION);
 
     }
 

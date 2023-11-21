@@ -58,4 +58,6 @@ public class EntrarController {
         palco.setScene(cenaTela2);
     }
 
+
+
 }
