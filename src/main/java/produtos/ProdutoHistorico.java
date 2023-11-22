@@ -1,6 +1,7 @@
 package produtos;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class ProdutoHistorico {
     //Atributos
@@ -8,14 +9,18 @@ public class ProdutoHistorico {
     private double preco;
     private int quantidadeVendida;
     private String forma;
-    private LocalDate data;
+    private String data;
+
+    LocalDate date = LocalDate.now();
+    DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
 
     //Construtor
     public ProdutoHistorico(String idVenda, double preco, int quantidadeVendida) {
         this.idVenda = idVenda;
         this.preco = preco;
         this.quantidadeVendida = quantidadeVendida;
-        this.data = LocalDate.now();
+        this.data = date.format(formatador);
     }
     
     //Métodos
@@ -54,11 +59,11 @@ public class ProdutoHistorico {
 
     @Override
     public String toString() {
-        return "Produto: [ID=" + idVenda + ", preço=" + preco + ", quantidade=" + quantidadeVendida
-                + ", forma=" + forma + ", data=" + data + "]";
+        return "Produto:" + "\n" + "ID: " + idVenda + "\n" + "Preço: " + preco + "\n" + "Quantidade: " + quantidadeVendida
+                + "\n" + "Forma: " + forma + "\n" + "Data: " + data + "\n";
     }
 
-    public LocalDate getData() {
+    public String getData() {
         return data;
     }
 

@@ -6,8 +6,6 @@ import excecao.*;
 import produtos.Produto;
 import produtos.ProdutoHistorico;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Vector;
 
 
@@ -104,10 +102,9 @@ public void registrarCompra(ProdutoHistorico produto){
     public void verBalancoData(String data){
           double ganho = 0.0; 
           double perda = 0.0;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
-        LocalDate localDate = LocalDate.parse(data, formatter); //transformando a data em forma de string para data em forma de LocalDate
+       
          for(ProdutoHistorico produto : Gerente.produtoHist){ // percorre todoo o vetor de historico
-            if(localDate.equals(produto.getData())){  //pega todos os produtos que foram vendidos/comprados na data escrita
+            if(data.equals(produto.getData())){  //pega todos os produtos que foram vendidos/comprados na data escrita
              System.out.println(produto);  //printa todos eles
              if(produto.getForma() == "Venda"){
              ganho += produto.getPreco();  //calcula quanto ganhou
@@ -118,7 +115,7 @@ public void registrarCompra(ProdutoHistorico produto){
             }
          }
          double balanco = ganho - perda;
-         System.out.println("Saiu: " + perda + " " + "Entrou: " + ganho);  //mpstra os ganhos e perdas
+         System.out.println("Saiu: " + perda + "\n" + "Entrou: " + ganho);  //mpstra os ganhos e perdas
          System.out.printf("Balanço final: $%.2f\n", balanco); //mostra o balanço do dia (sem contar o saldo setado inicialmente, so o quanto foi comprado e vendido)
       }
 
@@ -137,7 +134,7 @@ public void registrarCompra(ProdutoHistorico produto){
             
          }
          double balanco = ganho - perda;
-         System.out.println("Saiu: " + perda + " " + "Entrou: " + ganho);
+         System.out.println("Saiu: " + perda + "\n" + "Entrou: " + ganho);
          System.out.printf("Balanço final: $%.2f\n", balanco);
          System.out.println("Saldo do mercado: " + this.estoque.verSaldo());
          
