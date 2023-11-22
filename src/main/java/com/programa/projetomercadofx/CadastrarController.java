@@ -3,6 +3,8 @@ package com.programa.projetomercadofx;
 import com.programa.projetomercadofx.controllerUtil.Alerts;
 import estoques.Estoque;
 import estoques.IEstoque;
+import globalService.ListaGerente;
+import globalService.ListaVendedor;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,8 +19,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import usuarios.Gerente;
 import usuarios.Vendedor;
+import java.util.Vector;
 
-//Falta implementar como ele realmente vai cadastrar
 public class CadastrarController {
     @FXML
     private Button btVoltar;
@@ -62,27 +64,33 @@ public class CadastrarController {
             String email = tfEmail.getText();
             String senha = tfSenha.getText();
             String tipoFuncionario = choiceBoxFuncionarios.getValue();
+
             Gerente gerenteObj;
             Vendedor vendedorObj;
 
 
         if (tipoFuncionario != null) {
             if (tipoFuncionario.equals("Gerente") && !nome.isEmpty() && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
-                gerenteObj = new Gerente(estoquee, nome, login, senha);
-                Alerts.showAlert("Cadastro", null, "Conta de Gerente cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
+                gerenteObj = new Gerente(estoquee, nome, login, email, senha);
+                ListaGerente.gerentesVector.add(gerenteObj);
+                ListaGerente.mostrarLista();
+                Alerts.showAlert("Cadastro", null, "Conta Gerente cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
             } else if (tipoFuncionario.equals("Vendedor") && !nome.isEmpty() && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
-                vendedorObj = new Vendedor(estoquee, nome, login, senha);
-                Alerts.showAlert("Cadastro", null, "Conta de Vendedor cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
+                vendedorObj = new Vendedor(estoquee, nome, login, email, senha);
+                ListaVendedor.vededoresVector.add(vendedorObj);
+                ListaVendedor.mostrarLista();
+                Alerts.showAlert("Cadastro", null, "Conta Vendedor cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
             } else {
                 Alerts.showAlert("Cadastro error", null, "Preencha as informações corretamente", Alert.AlertType.ERROR);
             }
         } else {
             Alerts.showAlert("Cadastro error", null, "Tipo de usuário vazio", Alert.AlertType.WARNING);
         }
+
     }
     @FXML
     public void initialize() {
         choiceBoxFuncionarios.getItems().addAll("Gerente", "Vendedor"); //Adicionando opções ao choicebox
-
     }
+
 }

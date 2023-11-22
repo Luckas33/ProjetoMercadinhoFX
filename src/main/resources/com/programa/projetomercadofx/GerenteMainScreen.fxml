@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane fx:id="root" dividerPositions="0.5066889632107023" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.GerenteMainController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Button fx:id="btVoltar" layoutX="17.0" layoutY="14.0" mnemonicParsing="false" text="Voltar">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Pane layoutX="51.0" layoutY="74.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="43.0" prefHeight="17.0" prefWidth="196.0" text="Mercadinho Inteligente">
+                     <font>
+                        <Font name="Century" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="74.0" layoutY="77.0" text="Gerente">
+                     <font>
+                        <Font name="Century" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="376.0">
+         <children>
+            <VBox layoutX="61.0" layoutY="114.0" prefHeight="150.0" prefWidth="171.0">
+               <children>
+                  <Button fx:id="btCriarProduto" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Adicionar Produto" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" top="20.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btVerFinanceiro" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Financeiro" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btVerEstoque" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="131.0" text="Estoque" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

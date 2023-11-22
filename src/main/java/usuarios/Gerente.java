@@ -17,49 +17,11 @@ public class Gerente extends Funcionario {
    public static Vector<ProdutoHistorico> produtoHist;
     
     //construtor
-    public Gerente(IEstoque estoque, String nome, String login, String senha) {
-        super(estoque, nome, login, senha);
+    public Gerente(IEstoque estoque, String nome, String login, String email, String senha) {
+        super(estoque, nome, login, email, senha);
         Gerente.produtoHist = new Vector<ProdutoHistorico>();
     }
-    
-    /* 
-    //metodo para cadastrar um produto no estoque, checa se o produto ja existe no estoque, se não existir
-    //ele cadastra
-     public void cadastrar(Produto produto, int quantidade, double taxalucro) throws PEException, SIException {
-         if(produto != null){ 
-            if(!this.estoque.existe(produto.getId())){//calcula o valor total da compra
-              double valorTotal = (quantidade * produto.getPreco_compra());
 
-                if(this.estoque.verSaldo() >= valorTotal){ //checa se o saldo do mercado é maior que o preço da compra
-                        try{
-                            produto.setTaxaLucro(taxalucro);  //seta a taxa de lucro que esse produto vai ter
-                        } catch(TLNException e){
-                            System.out.print(e.getMessage());
-                            System.out.print(" Taxa: ");
-                            System.out.print(taxalucro); // **n seria taxaLucro??**
-                        } catch(TLNUException e){
-                            System.out.print(e.getMessage());
-                        }
-                        produto.setprecoVenda(produto.getPreco_compra() * produto.getTaxaLucro()); //aqui ele seta o preço de venda, sendo a multiplicação do preço de compra pela taxa de lucro
-                        this.estoque.inserir(produto, quantidade); //ele chama o metodo inserir da interface de estoque, onde ele insere o produto e a quantidade no estoque
-                        try{
-                            this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
-                        }catch(SNException e){
-                            System.out.print(e.getMessage());
-                            System.out.print(" Saldo: ");
-                            System.out.print(this.estoque.verSaldo() - valorTotal);
-                        }
-                        // **eu achava que o método ai de cima n precisaria de excecao, pois a gente ja tinha checado antes se era suficiente, enfim o VSCode me obrigou :(**
-                        ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade); //cria um objeto de produto historico, onde os atributos dele vão ser os mesmos do que o produto que foi vendido
-                    this.registrarCompra(produtoHistorico); //registra a compra, colocando-a no vetor do historico
-                }
-                else
-                    throw new SIException(produto.getId(),this.estoque.verSaldo(), valorTotal);
-            }
-            else
-                throw new PEException(produto.getId());
-        }
-    }*/
 
     // *****teste*****//
     //metodo para cadastrar um produto no estoque, checa se o produto ja existe no estoque, se não existir
@@ -144,7 +106,7 @@ public void registrarCompra(ProdutoHistorico produto){
           double perda = 0.0;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
         LocalDate localDate = LocalDate.parse(data, formatter); //transformando a data em forma de string para data em forma de LocalDate
-         for(ProdutoHistorico produto : Gerente.produtoHist){ // percorre todo o vetor de historico
+         for(ProdutoHistorico produto : Gerente.produtoHist){ // percorre todoo o vetor de historico
             if(localDate.equals(produto.getData())){  //pega todos os produtos que foram vendidos/comprados na data escrita
              System.out.println(produto);  //printa todos eles
              if(produto.getForma() == "Venda"){
@@ -192,5 +154,9 @@ public void registrarCompra(ProdutoHistorico produto){
         }
     }
 
+    @Override
+    public String toString() {
+        return "Gerente: " + "\n" + "Nome: " + nome + "\n" + "Login: " + login + "\n" + "Email: " + email + "\n" +"Senha: " + senha + "\n";
+    }
 }
       

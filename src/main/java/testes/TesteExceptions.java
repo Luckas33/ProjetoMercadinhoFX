@@ -12,7 +12,7 @@ public class TesteExceptions {
 
     public void teste1(){
         IEstoque estoque = new Estoque();
-        Gerente gerente = new Gerente(estoque, "rodrigo", "jrodri", "hahaha");
+        Gerente gerente = new Gerente(estoque, "rodrigo", "jrodri", "rodri@gmail","123");
         gerente.iniciarSaldo(100.0);
 
         Produto produto1 = new ProdutoComestivel("refrigerante", "9888", "coca cola", 20.0, "bebida", "20/07/2023");
@@ -23,7 +23,7 @@ public class TesteExceptions {
             e.printStackTrace();
         }
 
-        Vendedor vendedor = new Vendedor(estoque, "joao", "joaozin", "susu");
+        Vendedor vendedor = new Vendedor(estoque, "joao", "joaozin", "susu" , "123");
 
         try {
             vendedor.venderDebito("9888", 3);
