@@ -66,6 +66,14 @@ public class EntrarController {
         Stage palco = (Stage) cenaAtual.getWindow();
         palco.setScene(cenaTela1);
     }
+    public void switchToVendedorMainScrenn(ActionEvent event) throws Exception {
+        Parent tela1 = FXMLLoader.load(getClass().getResource("VendedorMainScreen.fxml"));
+        Scene cenaAtual = root.getScene();
+        Scene cenaTela1 = new Scene(tela1, cenaAtual.getWidth(), cenaAtual.getHeight());
+        Stage palco = (Stage) cenaAtual.getWindow();
+        palco.setScene(cenaTela1);
+    }
+
     public void onBtConfirmar(ActionEvent event){
         String login = tfLogin.getText();
         String senha = tfSenha.getText();
@@ -82,7 +90,7 @@ public class EntrarController {
                     }
                 }else if(funcionario == "Vendedor" && ListaVendedor.verificarCredenciais(login, senha) == true){
                     try{
-                        switchToGerenteMainScrenn(event);
+                        switchToVendedorMainScrenn(event);
                         System.out.println("ação Login vendedor ocorreu com sucesso");
                     }catch (Exception e){
                         e.printStackTrace();
@@ -90,6 +98,8 @@ public class EntrarController {
                 }else {
                     Alerts.showAlert("Entrar error", "Conta inexistente", "Preencha as informações corretamente", Alert.AlertType.ERROR);
                 }
+            }else {
+                Alerts.showAlert("Entrar error", null, "Preencha as informações corretamente", Alert.AlertType.ERROR);
             }
         }else{
             Alerts.showAlert("Entrar Conta ERROR", null, "Tipo de usuário vazio", Alert.AlertType.ERROR);

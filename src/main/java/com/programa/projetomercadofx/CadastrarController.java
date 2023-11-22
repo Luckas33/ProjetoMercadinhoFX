@@ -58,12 +58,12 @@ public class CadastrarController {
 
     public void onBtConfirmar(ActionEvent event){
 
-            IEstoque estoquee = new Estoque();
             String nome = tfNome.getText();
             String login = tfLogin.getText();
             String email = tfEmail.getText();
             String senha = tfSenha.getText();
             String tipoFuncionario = choiceBoxFuncionarios.getValue();
+            IEstoque estoque = new Estoque();
 
             Gerente gerenteObj;
             Vendedor vendedorObj;
@@ -71,12 +71,12 @@ public class CadastrarController {
 
         if (tipoFuncionario != null) {
             if (tipoFuncionario.equals("Gerente") && !nome.isEmpty() && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
-                gerenteObj = new Gerente(estoquee, nome, login, email, senha);
+                gerenteObj = new Gerente(estoque, nome, login, email, senha);
                 ListaGerente.gerentesVector.add(gerenteObj);
                 ListaGerente.mostrarLista();
                 Alerts.showAlert("Cadastro", null, "Conta Gerente cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
             } else if (tipoFuncionario.equals("Vendedor") && !nome.isEmpty() && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
-                vendedorObj = new Vendedor(estoquee, nome, login, email, senha);
+                vendedorObj = new Vendedor(estoque, nome, login, email, senha);
                 ListaVendedor.vededoresVector.add(vendedorObj);
                 ListaVendedor.mostrarLista();
                 Alerts.showAlert("Cadastro", null, "Conta Vendedor cadastrada com sucesso", Alert.AlertType.CONFIRMATION);

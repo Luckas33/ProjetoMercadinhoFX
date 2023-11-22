@@ -6,21 +6,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
-public class GerenteMainController {
+public class VendedorMainController {
     @FXML
     private Button btVoltar;
     @FXML
-    private Button btCriarProduto;
+    private Button btConfirmar;
     @FXML
-    private Button btVerEstoque;
-    @FXML
-    private Button btVerFinanceiro;
+    private ChoiceBox<String> choiceBoxTipoVenda;
     @FXML
     private Parent root;
 
-    public void switchToEntrarScrenn(ActionEvent event) throws Exception {
+    public void switchToEntrarScreen(ActionEvent event) throws Exception{
         Parent tela1 = FXMLLoader.load(getClass().getResource("EntrarScreen.fxml"));
         Scene cenaAtual = root.getScene();
         Scene cenaTela1 = new Scene(tela1, cenaAtual.getWidth(), cenaAtual.getHeight());
@@ -28,13 +27,13 @@ public class GerenteMainController {
         palco.setScene(cenaTela1);
     }
 
-    public void switchToGerenteAddProdutoScrenn(ActionEvent event) throws Exception {
-        Parent tela1 = FXMLLoader.load(getClass().getResource("GerenteAddProdutoScreen.fxml"));
-        Scene cenaAtual = root.getScene();
-        Scene cenaTela1 = new Scene(tela1, cenaAtual.getWidth(), cenaAtual.getHeight());
-        Stage palco = (Stage) cenaAtual.getWindow();
-        palco.setScene(cenaTela1);
+    public void onBtConfirmar(ActionEvent event){
+        String tipoVenda = choiceBoxTipoVenda.getValue();
+
+
     }
-
-
+    @FXML
+    public void initialize(){
+        choiceBoxTipoVenda.getItems().addAll("Débito","Crédito", "Dinheiro");
+    }
 }
