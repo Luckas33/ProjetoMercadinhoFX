@@ -3,7 +3,7 @@ package usuarios;
 
 import estoques.IEstoque;
 
-public abstract class Funcionario {
+public class Funcionario {
   //atributos  
     protected String login;
     protected String senha;

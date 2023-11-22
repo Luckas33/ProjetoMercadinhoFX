@@ -16,9 +16,9 @@ public class ProdutoComestivel extends Produto {
 
     //to string mas dessa vez mostrando a data de validade
     public String CustomtoString() {
-        return "Produto{" + "nome=" + nome + ", id=" + id + ", marca=" + marca +
-                ", preco=" + preco_compra + ", tipo=" + tipo +
-                ", quantidade=" + quantidade + ", validade=" + validade + '}';
+        return "Produto:" +  "/n" + "Nome: " + nome + "\n" + "ID: " + id + "\n" + "Marca: " + marca + "\n" +
+        "Preço: " + preco_compra + "\n" + "Tipo: " + tipo + "\n" +
+        "Quantidade: " + quantidade + "\n" + "Validade: " + validade + "\n";
     }
 
     public String getValidade() {
