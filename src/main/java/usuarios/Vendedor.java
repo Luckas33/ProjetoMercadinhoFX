@@ -32,14 +32,14 @@ public class Vendedor extends Funcionario {
             if(valor > valorTotal ){ // caso o valor dado pelo cliente seja maior que o valor da venda, será retornado um troco
                 this.estoque.venderEstoque(valorTotal); //atualiza o saldo
                 this.troco(valor - valorTotal); //mostra o troco
-                this.estoque.reduzir(produto, quantidade); //chama o metodo reduzir da interface estoque, onde tira a quantidade vendida do estoque
+                this.estoque.reduzir(produto.getId(), quantidade); //chama o metodo reduzir da interface estoque, onde tira a quantidade vendida do estoque
                 ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade); //cria um objeto produto historico, onde os atributos são os do produto vendido
                 this.registrarVenda(produtoHistorico); //registra a venda
                 this.notaFiscal(produtoHistorico); //imprime a nota fiscal
             }
             else if(valor == valorTotal){ //caso o valor dado pelo cliente seja igual ao valor da venda, não retornará troco
                 this.estoque.venderEstoque(valorTotal); //atualiza o saldo
-                this.estoque.reduzir(produto, quantidade); //reduz a quantidade do estoque
+                this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade do estoque
                 ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valor, quantidade);
                 this.registrarVenda(produtoHistorico); //registra a venda
                 this.notaFiscal(produtoHistorico); //imprime a nota fiscal
@@ -81,7 +81,7 @@ public class Vendedor extends Funcionario {
             if(quantidade <= produto.getQuantidade()){ //checa a quantidade
             double valorTotal = quantidade * produto.getPrecoVenda() * taxaCredito; //calcula o valor da venda, dessa vez adicionando a taxa de crédito
             this.estoque.venderCartaoEstoque(valorTotal); //atualiza o saldo
-            this.estoque.reduzir(produto, quantidade); //reduz a quantidade do estoque 
+            this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade do estoque
             ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
             this.registrarVenda(produtoHistorico); //registra a venda
             this.notaFiscal(produtoHistorico); //imprime a nota fiscal
@@ -112,7 +112,7 @@ public class Vendedor extends Funcionario {
             if(quantidade <= produto.getQuantidade()){ //checa a quantidade
             double valorTotal = quantidade * produto.getPrecoVenda(); //calcula o valor da venda
             this.estoque.venderCartaoEstoque(valorTotal); //atualiza o saldo
-            this.estoque.reduzir(produto, quantidade); //reduz a quantidade
+            this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade
             ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
             this.registrarVenda(produtoHistorico); //registra a venda     
             this.notaFiscal(produtoHistorico); //imprime a nota fiscal

@@ -17,7 +17,7 @@ public interface IEstoque {
     
     public boolean existe(String id);
     
-    public void reduzir(Produto produto, int quantidade) throws PIException;
+    public void reduzir(String id, int quantidade) throws PIException;
     
     public void mostrarEstoque(String tipo);
     
