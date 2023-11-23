@@ -25,6 +25,10 @@ public class CadastrarController {
     @FXML
     private Button btVoltar;
     @FXML
+    private Button btEntrar;
+    @FXML
+    private Button btLimpar;
+    @FXML
     private Button btConfirmar;
     @FXML
     private TextField tfNome;
@@ -55,7 +59,22 @@ public class CadastrarController {
         // Definir a nova cena no palco
         palco.setScene(cenaTela2);
     }
+    public void switchToEntrarScreen(ActionEvent event) throws Exception {
+        // Carregar FXML da Tela2
+        Parent EntrarScreen = FXMLLoader.load(getClass().getResource("EntrarScreen.fxml"));
 
+        // Obter a cena atual
+        Scene cenaAtual = root.getScene();
+
+        // Criar uma nova cena com a Tela2
+        Scene cenaTela2 = new Scene(EntrarScreen, cenaAtual.getWidth(), cenaAtual.getHeight());
+
+        // Obter o palco (Stage) atual
+        Stage palco = (Stage) cenaAtual.getWindow();
+
+        // Definir a nova cena no palco
+        palco.setScene(cenaTela2);
+    }
     public void onBtConfirmar(ActionEvent event){
 
             String nome = tfNome.getText();
@@ -87,6 +106,13 @@ public class CadastrarController {
             Alerts.showAlert("Cadastro error", null, "Tipo de usuário vazio", Alert.AlertType.WARNING);
         }
 
+    }
+    public void onBtLimpar(ActionEvent e){
+        tfNome.setText(null);
+        tfEmail.setText(null);
+        tfLogin.setText(null);
+        tfSenha.setText(null);
+        choiceBoxFuncionarios.setValue(null);
     }
     @FXML
     public void initialize() {

@@ -62,7 +62,7 @@ public class MainController {
     @FXML
     public void onbtCodigoFonte(ActionEvent e){
         System.out.println("eae boy");
-        Alerts.showAlert("Aviso",null,"Equipe: \nLucas Sobral\nJão Rodrigo\nOsvaldo\nIarley\nAnderson", Alert.AlertType.INFORMATION);
+        Alerts.showAlert("Aviso",null,"Equipe: \nLucas Sobral : Programador Front-end\nJoão Rodrigo : Programador Back-end\nOsvaldo Medeiros : Programador Back-end\nIarley Alves : Programador e Design\nAnderson : Programador Back-end\n\nCódigo Fonte: github/ProjetoMercadoFX", Alert.AlertType.INFORMATION);
 
     }
 

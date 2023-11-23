@@ -24,6 +24,11 @@
                   <Font size="10.0" />
                </font>
             </Button>
+            <Label layoutX="61.0" layoutY="130.0" text="Entrar em Conta">
+               <font>
+                  <Font name="Century" size="12.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="336.0" prefWidth="278.0">
          <children>
@@ -33,12 +38,12 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button fx:id="btConfirmar" layoutX="229.0" layoutY="230.0" mnemonicParsing="false" onAction="#onBtConfirmar" text="Confirmar">
+            <Button fx:id="btConfirmar" layoutX="251.0" layoutY="230.0" mnemonicParsing="false" onAction="#onBtConfirmar" text="Confirmar">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Pane layoutX="64.0" layoutY="30.0" prefHeight="200.0" prefWidth="276.0">
+            <Pane layoutX="64.0" layoutY="30.0" prefHeight="200.0" prefWidth="263.0">
                <children>
                   <Label alignment="CENTER" layoutX="16.0" layoutY="88.0" prefHeight="17.0" prefWidth="54.0" text="Senha:">
                      <font>

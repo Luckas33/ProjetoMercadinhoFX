@@ -38,7 +38,7 @@
          <children>
             <VBox layoutX="61.0" layoutY="114.0" prefHeight="150.0" prefWidth="171.0">
                <children>
-                  <Button fx:id="btCriarProduto" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Adicionar Produto" textAlignment="CENTER">
+                  <Button fx:id="btCriarProduto" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToGerenteAddProdutoScrenn" text="Adicionar Produto" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" top="20.0" />
                      </VBox.margin>
