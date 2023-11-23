@@ -93,11 +93,13 @@ public class CadastrarController {
                 gerenteObj = new Gerente(estoque, nome, login, email, senha);
                 ListaGerente.gerentesVector.add(gerenteObj);
                 ListaGerente.mostrarLista();
+                onBtLimpar(event);
                 Alerts.showAlert("Cadastro", null, "Conta Gerente cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
             } else if (tipoFuncionario.equals("Vendedor") && !nome.isEmpty() && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
                 vendedorObj = new Vendedor(estoque, nome, login, email, senha);
                 ListaVendedor.vededoresVector.add(vendedorObj);
                 ListaVendedor.mostrarLista();
+                onBtLimpar(event);
                 Alerts.showAlert("Cadastro", null, "Conta Vendedor cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
             } else {
                 Alerts.showAlert("Cadastro error", null, "Preencha as informações corretamente", Alert.AlertType.ERROR);

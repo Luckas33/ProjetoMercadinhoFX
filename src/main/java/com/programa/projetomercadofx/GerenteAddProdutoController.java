@@ -1,15 +1,15 @@
 package com.programa.projetomercadofx;
 
 import com.programa.projetomercadofx.controllerUtil.Alerts;
+import globalService.ListaProduto;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import produtos.Produto;
 import produtos.ProdutoComestivel;
@@ -22,6 +22,8 @@ public class GerenteAddProdutoController {
     private Button btLimpar;
     @FXML
     private Button btAddProduto;
+    @FXML
+    private Label lbDataValidade;
     @FXML
     private TextField tfNome;
     @FXML
@@ -47,27 +49,55 @@ public class GerenteAddProdutoController {
         palco.setScene(cenaTela1);
     }
 
+    public  void onCBCategoriaProd(Event e ){
+        String escolhaSelecionada = choiceBoxCategoriaProd.getValue();
+
+        if ("Comestível".equals(escolhaSelecionada)){
+            tfDataValidade.setDisable(false);
+            lbDataValidade.setDisable(false);
+        }else {
+            tfDataValidade.setDisable(true);
+            lbDataValidade.setDisable(true);
+        }
+    }
+
     public void onBtAddProduto(ActionEvent e){
+        double precoCompra = 0;
         String nome = tfNome.getText();
         String id = tfID.getText();
         String marca = tfMarca.getText();
         String tipo = tfTipo.getText();
-        double precoCompra = Double.parseDouble(tfPrecoCompra.getText());//casting, para transformar String em double
+        String precoCompraText = tfPrecoCompra.getText();
+        if(!precoCompraText.isEmpty()){
+           precoCompra = Double.parseDouble(precoCompraText);//casting, para transformar String em double
+        }
+
         String dataValidade = tfDataValidade.getText();
         String categoria = choiceBoxCategoriaProd.getValue();
 
         Produto produtoComestivel;
         Produto produtoNaoComestivel;
 
-        if(categoria != null){
-            if (categoria == "Comestível" && !nome.isEmpty() && !id.isEmpty() && !marca.isEmpty() && precoCompra > 0.0 && !tipo.isEmpty() && !dataValidade.isEmpty()){
-                produtoComestivel = new ProdutoComestivel(nome,id,marca,precoCompra,tipo,dataValidade);
-                Alerts.showAlert("Adicionar produto", null, "Produto Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
-            } else if (categoria == "Não Comestível" && !nome.isEmpty() && !id.isEmpty() && !marca.isEmpty() && precoCompra > 0.0 && !tipo.isEmpty() && !dataValidade.isEmpty()){
-                produtoNaoComestivel = new ProdutoNaoComestivel(nome, id, marca, precoCompra, tipo);
-                Alerts.showAlert("Adicionar produto", null, "Produto Não Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
-            }else {
-                Alerts.showAlert("Erro adicionar produto", null, "Preencha corretamente as informações", Alert.AlertType.ERROR);
+        if(!categoria.isEmpty()){
+            if(isNumeric(id) ) {
+                if (categoria.equals("Comestível") && !nome.isEmpty() && !id.isEmpty() && !marca.isEmpty() && precoCompra > 0.0 && !tipo.isEmpty() && !dataValidade.isEmpty()) {
+
+                    produtoComestivel = new ProdutoComestivel(nome, id, marca, precoCompra, tipo, dataValidade);
+                    ListaProduto.produtosVector.add(produtoComestivel);
+                    ListaProduto.mostrarLista();
+                    Alerts.showAlert("Adicionar produto", null, "Produto Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
+
+                } else if (categoria.equals("Não Comestível") && !nome.isEmpty() && !id.isEmpty() && !marca.isEmpty() && precoCompra > 0.0 && !tipo.isEmpty()) {
+                    produtoNaoComestivel = new ProdutoNaoComestivel(nome, id, marca, precoCompra, tipo);
+                    ListaProduto.produtosVector.add(produtoNaoComestivel);
+                    ListaProduto.mostrarLista();
+                    Alerts.showAlert("Adicionar produto", null, "Produto Não Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
+
+                } else {
+                    Alerts.showAlert("Erro adicionar produto", null, "Preencha corretamente as informações", Alert.AlertType.ERROR);
+                }
+            }else{
+                Alerts.showAlert("Erro adicionar produto",null,"Preencha a parte ID somente com números", Alert.AlertType.ERROR);
             }
         }else {
             Alerts.showAlert("Erro adicionar produto",null,"Selecione a categoria do Produto", Alert.AlertType.ERROR);
@@ -83,8 +113,33 @@ public class GerenteAddProdutoController {
         tfTipo.setText(null);
         choiceBoxCategoriaProd.setValue(null);
     }
+
+    private boolean isNumeric(String str) {
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
+
+        // Verifica se todos os caracteres são dígitos
+        for (char c : str.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+
+        // Verifica se o ID não começa com zero, a menos que seja apenas o zero
+        if (str.length() > 1 && str.startsWith("0")) {
+            return false;
+        }
+
+        return true;
+    }
+
     @FXML
     public void initialize(){
         choiceBoxCategoriaProd.getItems().addAll("Comestível","Não Comestível");
+        choiceBoxCategoriaProd.setOnAction(this::onCBCategoriaProd);
+        choiceBoxCategoriaProd.setOnMouseClicked(this::onCBCategoriaProd);
+        tfDataValidade.setDisable(true);
+        lbDataValidade.setDisable(true);
     }
 }

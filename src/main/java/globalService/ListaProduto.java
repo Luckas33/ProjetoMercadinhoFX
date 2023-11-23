@@ -1,8 +1,6 @@
 package globalService;
 
 import produtos.Produto;
-import produtos.ProdutoComestivel;
-import produtos.ProdutoNaoComestivel;
 
 import java.util.Vector;
 
@@ -14,6 +12,9 @@ public class ListaProduto {
         produtosVector = new Vector<>();
     }
 
+    public static void mostrarLista(){
+        System.out.println(produtosVector);
+    }
     //metodo para checar se o produto existe, usado para quando for ser colocado no estoque
     public static Produto checarProduto(String id){
         for(Produto produto : ListaProduto.produtosVector) {

@@ -31,7 +31,7 @@ public class Produto {
     //to string para mostrar todos os produtos no estoque, onde só esses atributos vão importar
     @Override
     public String toString() {
-        return "Produto:" +  "/n" + "Nome: " + nome + "\n" + "ID: " + id + "\n" + "Marca: " + marca + "\n" +
+        return "Produto:" +  "\n" + "Nome: " + nome + "\n" + "ID: " + id + "\n" + "Marca: " + marca + "\n" +
                 "Preço: " + preco_compra + "\n" + "Tipo: " + tipo + "\n" +
                 "Quantidade: " + quantidade + "\n";
     
