@@ -4,6 +4,7 @@ package estoques;
 import excecao.SIException;
 import excecao.SNException;
 import excecao.VNException;
+import globalService.ListaProduto;
 import produtos.Produto;
 import produtos.ProdutoComestivel;
 
@@ -32,16 +33,17 @@ public class Estoque implements IEstoque {
     // **nao precisa de excecao(eu acho) **
     @Override
     public void inserir(Produto produto, int quantidade){
-        if(produto != null){
-                if(!this.existe(produto.getId())){ //checa se o produto não existe no estoque
-                produto.setQuantidade(quantidade);  //se não existir, seta a quantidade
-                this.estoque.add(produto);           //e coloca no vetor de estoque
+        produto = ListaProduto.checarProduto(produto.getId());
+            if (produto != null) {
+                if (!this.existe(produto.getId())) { //checa se o produto não existe no estoque
+                    produto.setQuantidade(quantidade);  //se não existir, seta a quantidade
+                    this.estoque.add(produto);           //e coloca no vetor de estoque
+                } else if (this.existe(produto.getId())) {
+                    produto.setQuantidade(produto.getQuantidade() + quantidade); //se já existe no estoque, vai so pegar a quantidade que ja tinha e adicionar a quantidade desejada
                 }
-                 else if(this.existe(produto.getId())){
-                     produto.setQuantidade(produto.getQuantidade() + quantidade); //se já existe no estoque, vai so pegar a quantidade que ja tinha e adicionar a quantidade desejada
-                 }
-                
-        }
+
+            }
+
            
     }
 
@@ -70,10 +72,12 @@ public class Estoque implements IEstoque {
 
     //metodo para reduzir um produto do estoque
     @Override
-    public void reduzir(Produto produto, int quantidade) /*throws PIException*/ {
-            if(produto != null){
+    public void reduzir(String id, int quantidade) /*throws PIException*/ {
+        for(Produto produto : estoque) {
+            if (produto != null) {
                 produto.setQuantidade(produto.getQuantidade() - quantidade); //pega a quantidade que tinha antes, e diminui pela desejada
             }
+        }
             //else
                 //throw new PIException(produto.getQuantidade()) // **n achei nenhum metodo que converte id para produto e o contrario
     }
