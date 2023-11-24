@@ -3,6 +3,7 @@ package usuarios;
 
 import estoques.IEstoque;
 import excecao.*;
+import globalService.ListaProduto;
 import produtos.Produto;
 import produtos.ProdutoHistorico;
 
@@ -24,7 +25,8 @@ public class Gerente extends Funcionario {
     // *****teste*****//
     //metodo para cadastrar um produto no estoque, checa se o produto ja existe no estoque, se não existir
     //ele cadastra
-     public void cadastrar(Produto produto, int quantidade, double taxalucro) throws PEException, SIException, QNUException, QNException {
+     public void cadastrar(String id, int quantidade, double taxalucro) throws PEException, SIException, QNUException, QNException {
+        Produto produto = ListaProduto.checarProduto(id);
         if(quantidade>0){
         if(produto != null){ 
             if(!this.estoque.existe(produto.getId())){//calcula o valor total da compra
@@ -41,7 +43,7 @@ public class Gerente extends Funcionario {
                             System.out.print(e.getMessage());
                         }
                         produto.setPrecoVenda(produto.getPreco_compra() * produto.getTaxaLucro()); //aqui ele seta o preço de venda, sendo a multiplicação do preço de compra pela taxa de lucro
-                        this.estoque.inserir(produto, quantidade); //ele chama o metodo inserir da interface de estoque, onde ele insere o produto e a quantidade no estoque
+                        this.estoque.inserir(produto.getId(), quantidade); //ele chama o metodo inserir da interface de estoque, onde ele insere o produto e a quantidade no estoque
                         this.estoque.adquirirEstoque(produto.getId(),valorTotal); //atualiza o saldo
                         ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade); //cria um objeto de produto historico, onde os atributos dele vão ser os mesmos do que o produto que foi vendido
                     this.registrarCompra(produtoHistorico); //registra a compra, colocando-a no vetor do historico
@@ -61,13 +63,14 @@ public class Gerente extends Funcionario {
     //metodo para adicionar mais produtos no estoque, caso ele ja esteja cadastrado
     //se nao tiver cadastrado, nao vai adicionar
     //esqueci de salvar esse método sem o método adquirirEstoque em vez de definirSaldo
-      public void adicionar(Produto produto, int quantidade) throws SIException, PIException, QNUException, QNException {
+      public void adicionar(String id, int quantidade) throws SIException, PIException, QNUException, QNException {
+        Produto produto = this.estoque.procurar(id);
         if (quantidade>0){
         if(produto != null){
             double valorTotal = (quantidade * produto.getPreco_compra());  //valor da compra
             if(this.estoque.existe(produto.getId())){
                if(this.estoque.verSaldo() >= valorTotal){    //checa o saldo
-                 this.estoque.inserir(produto, quantidade);  //insere no estoque
+                 this.estoque.inserir(produto.getId(), quantidade);  //insere no estoque
                  this.estoque.adquirirEstoque(produto.getId(),valorTotal);
                  ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
                  this.registrarCompra(produtoHistorico); //registra a compra

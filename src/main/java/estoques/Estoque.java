@@ -32,8 +32,8 @@ public class Estoque implements IEstoque {
     //metodo para inserir produtos no estoque  
     // **nao precisa de excecao(eu acho) **
     @Override
-    public void inserir(Produto produto, int quantidade){
-        produto = ListaProduto.checarProduto(produto.getId());
+    public void inserir(String id, int quantidade){
+                Produto produto = ListaProduto.checarProduto(id);
             if (produto != null) {
                 if (!this.existe(produto.getId())) { //checa se o produto não existe no estoque
                     produto.setQuantidade(quantidade);  //se não existir, seta a quantidade

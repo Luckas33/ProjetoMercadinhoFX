@@ -20,33 +20,19 @@ public class Vendedor extends Funcionario {
 
     // **minha gambiarra abaixo** //
 
-    public void venderDinheiro(String id, double valor, int quantidade) throws QIException, QNException, QNUException, VNException, VNUException, VIException,  PIException{
-        
-        if(valor>0){
+    public void venderDinheiro(String id, int quantidade) throws QIException, QNException, QNUException, VNException, VNUException, VIException,  PIException{
+
             if(quantidade > 0){
         
         Produto produto = this.estoque.procurar(id); //checa se tem o produto no estoque
         if(produto != null){
             double valorTotal = quantidade * produto.getPrecoVenda(); //calcula o valor da venda
             if(quantidade <= produto.getQuantidade()){ //checa se a quantidade desejada pelo cliente tem o suficiente no estoque
-            if(valor > valorTotal ){ // caso o valor dado pelo cliente seja maior que o valor da venda, será retornado um troco
                 this.estoque.venderEstoque(valorTotal); //atualiza o saldo
-                this.troco(valor - valorTotal); //mostra o troco
                 this.estoque.reduzir(produto.getId(), quantidade); //chama o metodo reduzir da interface estoque, onde tira a quantidade vendida do estoque
                 ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade); //cria um objeto produto historico, onde os atributos são os do produto vendido
                 this.registrarVenda(produtoHistorico); //registra a venda
-                this.notaFiscal(produtoHistorico); //imprime a nota fiscal
-            }
-            else if(valor == valorTotal){ //caso o valor dado pelo cliente seja igual ao valor da venda, não retornará troco
-                this.estoque.venderEstoque(valorTotal); //atualiza o saldo
-                this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade do estoque
-                ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valor, quantidade);
-                this.registrarVenda(produtoHistorico); //registra a venda
-                this.notaFiscal(produtoHistorico); //imprime a nota fiscal
-            }
-            else{
-                throw new VIException(valorTotal, valor);
-            }
+
             }
             else{
                 throw new QIException(id, produto.getQuantidade(), quantidade);
@@ -59,11 +45,7 @@ public class Vendedor extends Funcionario {
             throw new QNUException();
         else if(quantidade < 0)
             throw new QNException(quantidade);
-        }
-        else if(valor == 0)
-            throw new VNUException(valor);
-        else if(valor < 0)
-            throw new VNException(valor);
+
       
     }
 
@@ -84,7 +66,7 @@ public class Vendedor extends Funcionario {
             this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade do estoque
             ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
             this.registrarVenda(produtoHistorico); //registra a venda
-            this.notaFiscal(produtoHistorico); //imprime a nota fiscal
+
             }
             else{
                 throw new QIException(id,produto.getQuantidade(),quantidade);
@@ -115,7 +97,7 @@ public class Vendedor extends Funcionario {
             this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade
             ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
             this.registrarVenda(produtoHistorico); //registra a venda     
-            this.notaFiscal(produtoHistorico); //imprime a nota fiscal
+
             }
             else{
                 throw new QIException(id, produto.getQuantidade(), quantidade);
@@ -141,11 +123,15 @@ public class Vendedor extends Funcionario {
               produto.setForma("Venda");
           }
       }
-      //metodo para mostrar a nota fiscal
-      public void notaFiscal(ProdutoHistorico produto){
-            System.out.println("Nota fiscal: " + produto);
-
+      
+      public Produto retornaProduto(String id){
+        Produto produto = this.estoque.procurar(id);
+        if(produto != null){
+            return produto;
+        }
+        return null;
       }
+
 
     @Override
     public String toString() {

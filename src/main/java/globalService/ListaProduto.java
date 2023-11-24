@@ -24,4 +24,14 @@ public class ListaProduto {
         }
         return null;
     }
+
+    public static boolean verificarProduto(String id){
+        for(Produto produto : ListaProduto.produtosVector) {
+            if (produto.getId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
