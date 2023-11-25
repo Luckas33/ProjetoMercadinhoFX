@@ -43,6 +43,7 @@ public class VendedorMainController {
     private Label lbTroco;
 
     public Vector<ProdutoHistorico> vendas;
+    public Vector<Produto> carrinho;
 
     public void switchToEntrarScreen(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("EntrarScreen.fxml"));
