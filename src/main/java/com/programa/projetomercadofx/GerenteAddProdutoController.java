@@ -103,14 +103,14 @@ public class GerenteAddProdutoController {
                     this.produtoCadastrar.add(produtoComestivel);
                     ListaProduto.mostrarLista();
                     Alerts.showAlert("Adicionar produto", null, "Produto Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
-
+                    boolAdicionado();
                 } else if (categoria.equals("Não Comestível") && !nome.isEmpty() && !id.isEmpty() && !marca.isEmpty() && precoCompra > 0.0 && !tipo.isEmpty()) {
                     produtoNaoComestivel = new ProdutoNaoComestivel(nome, id, marca, precoCompra, tipo);
                     ListaProduto.produtosVector.add(produtoNaoComestivel);
                     this.produtoCadastrar.add(produtoNaoComestivel);
                     ListaProduto.mostrarLista();
                     Alerts.showAlert("Adicionar produto", null, "Produto Não Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
-
+                    boolAdicionado();
                 } else {
                     Alerts.showAlert("Erro adicionar produto", null, "Preencha corretamente as informações", Alert.AlertType.ERROR);
                 }
