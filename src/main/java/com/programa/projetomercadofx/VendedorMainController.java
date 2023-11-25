@@ -103,6 +103,14 @@ public class VendedorMainController {
                     this.vendas.add(produtoHist);
                     this.atualizarSubtotal();
                 }
+                else{
+                    Alerts.showAlert("Erro Venda", null,"Produto inexistente",Alert.AlertType.ERROR);
+                }
+            }
+        }
+        for(Produto produto : carrinho){
+            if(produto != null){
+                btFinalizar.setDisable(false);
             }
         }
 
@@ -112,89 +120,9 @@ public class VendedorMainController {
     //Alerts.showAlert("Erro venda", null, "Preencha as informações corretamente", Alert.AlertType.ERROR);
     //Alerts.showAlert("Erro venda", null, "Selecione o tipo de venda!", Alert.AlertType.ERROR);
     public void onBtFinalizar(ActionEvent event) {
-        int quantidade = 0;
-        if (tfquantidade != null) {
-            quantidade = Integer.parseInt(tfquantidade.getText());
-        }
-        String tipoVenda = choiceBoxTipoVenda.getValue();
-        if (!tipoVenda.isEmpty()){
-            for (Vendedor vendedor : ListaVendedor.vendedoresVector) {
-                if (vendedor != null) {
-                    if (tipoVenda == "Débito"){
-                        for (int i = 0; i < carrinho.size(); i++) {
-                            try {
-                                Produto produto = carrinho.get(i);
-                                vendedor.venderDebito(produto.getId(), produto.getQuantidadeVendida());
-                            } catch (QNException | QNUException | QIException | PIException e) {
-                                e.printStackTrace();
-                            }
+        choiceBoxTipoVenda.setDisable(false);
+        btAdicionar.setDisable(true);
 
-                        }
-                }
-                    else if(tipoVenda == "Crédito"){
-                        comboboxParcelas.setDisable(false);
-                        lbParcelas.setDisable(false);
-                        int parcelas = Integer.parseInt(comboboxParcelas.getValue());
-                        Double valorFinalC = 0.0;
-                        for (int i = 0; i < carrinho.size(); i++) {
-                            try {
-                                Produto produto = carrinho.get(i);
-                                valorFinalC += (produto.getPrecoVenda() * produto.getQuantidadeVendida());
-                                vendedor.venderCredito(produto.getId(), produto.getQuantidadeVendida(), parcelas);
-
-                            } catch (PANUException | PANException | QNException | QNUException | QIException | PIException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                            System.out.println("Produtos vendidos com sucesso");
-                            Alerts.showAlert("Valor Parcelas",null,String.valueOf(valorFinalC/ parcelas),Alert.AlertType.NONE);
-
-                    }
-                    else if(tipoVenda == "Dinheiro") {
-                        Double valorFinalD = 0.0;
-                        double valorPago = 0.0;
-                        tfValorPago.setDisable(false);
-                        lbValorPago.setDisable(false);
-
-                        if(tfValorPago != null){
-                           valorPago = Double.parseDouble(tfValorPago.getText());
-                        }
-
-                        for (int i = 0; i < carrinho.size(); i++) {
-                            Produto produto = carrinho.get(i);
-                            valorFinalD += (produto.getPrecoVenda() * produto.getQuantidadeVendida());
-                        }
-                        if (valorPago > valorFinalD){
-                            Double troco = valorPago - valorFinalD;
-                            lbTroco.setText(String.valueOf(troco));
-                            for (int i = 0; i < carrinho.size(); i++) {
-                                try {
-                                    Produto produto = carrinho.get(i);
-                                    vendedor.venderDinheiro(produto.getId(), produto.getQuantidadeVendida());
-                                } catch (VNUException | VNException | VIException | QNException | QNUException |
-                                         QIException | PIException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-
-                        }
-                        else if(valorPago == valorFinalD){
-                            for (int i = 0; i < carrinho.size(); i++) {
-                                try {
-                                    Produto produto = carrinho.get(i);
-                                    vendedor.venderDinheiro(produto.getId(), produto.getQuantidadeVendida());
-                                } catch (VNUException | VNException | VIException | QNException | QNUException |
-                                         QIException | PIException e) {
-                                    e.printStackTrace();
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 
     @FXML

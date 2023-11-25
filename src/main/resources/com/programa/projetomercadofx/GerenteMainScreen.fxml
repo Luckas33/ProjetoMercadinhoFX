@@ -49,7 +49,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btVerFinanceiro" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Financeiro" textAlignment="CENTER">
+                  <Button fx:id="btVerFinanceiro" alignment="CENTER" mnemonicParsing="false" onAction="#switchToFinanceiroMainScreen" prefHeight="30.0" prefWidth="129.0" text="Financeiro" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" />
                      </VBox.margin>
@@ -60,7 +60,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btVerEstoque" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="131.0" text="Estoque" textAlignment="CENTER">
+                  <Button fx:id="btVerEstoque" alignment="CENTER" mnemonicParsing="false" onAction="#switchToEstoqueMainScreen" prefHeight="30.0" prefWidth="131.0" text="Estoque" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" />
                      </VBox.margin>
