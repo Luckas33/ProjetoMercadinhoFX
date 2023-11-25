@@ -74,8 +74,6 @@ public class VendedorMainController {
     }
 
     public void onBtAdicionar(ActionEvent event) {
-        //String tipoVenda = choiceBoxTipoVenda.getValue();
-        //int parcelas = Integer.parseInt(comboboxParcelas.getValue())
         int quantidade = 0;
         if (tfquantidade != null && isNumeric(tfquantidade.getText())) {
             quantidade = Integer.parseInt(tfquantidade.getText());
@@ -87,8 +85,11 @@ public class VendedorMainController {
             if (vendedor != null) {
                 Produto produto = vendedor.retornaProduto(id);
                 if (produto != null) {
+                    ProdutoHistorico produtoHist = new ProdutoHistorico(produto.getId(), produto.getPrecoVenda(), quantidade);
                     produto.setQuantidadeVendida(quantidade);
                     this.carrinho.add(produto);
+                    this.vendas.add(produtoHist);
+                    this.atualizarSubtotal();
                 }
             }
         }
@@ -104,37 +105,118 @@ public class VendedorMainController {
             quantidade = Integer.parseInt(tfquantidade.getText());
         }
         String tipoVenda = choiceBoxTipoVenda.getValue();
-        int parcelas = Integer.parseInt(comboboxParcelas.getValue());
-//        for (Vendedor vendedor : ListaVendedor.vendedoresVector) {
-//            if (vendedor != null) {
-//                for (int i = 0; i < carrinho.size(); i++) {
-//                    Produto produto = carrinho.get(i);
-//                    vendedor.venderDebito(produto.getId(), produto.getQuantidadeVendida());
-//                }
-//            }
-//        }
-//    }
+        if (!tipoVenda.isEmpty()){
+            for (Vendedor vendedor : ListaVendedor.vendedoresVector) {
+                if (vendedor != null) {
+                    if (tipoVenda == "Débito"){
+                        for (int i = 0; i < carrinho.size(); i++) {
+                            try {
+                                Produto produto = carrinho.get(i);
+                                vendedor.venderDebito(produto.getId(), produto.getQuantidadeVendida());
+                            } catch (QNException | QNUException | QIException | PIException e) {
+                                e.printStackTrace();
+                            }
 
-        //@FXML
-//    public void initialize() {
-//            choiceBoxTipoVenda.getItems().addAll("Débito", "Crédito", "Dinheiro");
-//            comboboxParcelas.getItems().addAll("1", "2", "3", "4", "5");
-//            vendas = new Vector<>();
-//            carrinho = new Vector<>();
-//        }
-////        lvProdutosAdicionados.setCellFactory(param -> new ListCell<ProdutoHistorico>() {
-////            @Override
-////            protected void updateItem(ProdutoHistorico item, boolean empty) {
-////                super.updateItem(item, empty);
-////
-////                if (empty || item == null) {
-////                    setText(null);
-////                } else {
-////                    setText("ID: " + item.getIdVenda() + " | Preço: " + item.getPreco() + " | Quantidade: " + item.getQuantidadeVendida());
-////                }
-////            }
-////        });
-////        lvProdutosAdicionados.getItems().setAll(vendas);
-//    }
+                        }
+                }
+                    else if(tipoVenda == "Crédito"){
+                        comboboxParcelas.setDisable(false);
+                        lbParcelas.setDisable(false);
+                        int parcelas = Integer.parseInt(comboboxParcelas.getValue());
+                        Double valorFinalC = 0.0;
+                        for (int i = 0; i < carrinho.size(); i++) {
+                            try {
+                                Produto produto = carrinho.get(i);
+                                valorFinalC += (produto.getPrecoVenda() * produto.getQuantidadeVendida());
+                                vendedor.venderCredito(produto.getId(), produto.getQuantidadeVendida(), parcelas);
+
+                            } catch (PANUException | PANException | QNException | QNUException | QIException | PIException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                            System.out.println("Produtos vendidos com sucesso");
+                            Alerts.showAlert("Valor Parcelas",null,String.valueOf(valorFinalC/ parcelas),Alert.AlertType.NONE);
+
+                    }
+                    else if(tipoVenda == "Dinheiro") {
+                        Double valorFinalD = 0.0;
+                        double valorPago = 0.0;
+                        tfValorPago.setVisible(false);
+                        lbValorPago.setVisible(false);
+                        tfValorPago.setDisable(false);
+                        lbValorPago.setVisible(false);
+
+                        if(tfValorPago != null){
+                           valorPago = Double.parseDouble(tfValorPago.getText());
+                        }
+
+                        for (int i = 0; i < carrinho.size(); i++) {
+                            Produto produto = carrinho.get(i);
+                            valorFinalD += (produto.getPrecoVenda() * produto.getQuantidadeVendida());
+                        }
+                        if (valorPago > valorFinalD){
+                            Double troco = valorPago - valorFinalD;
+                            lbTroco.setText(String.valueOf(troco));
+                            for (int i = 0; i < carrinho.size(); i++) {
+                                try {
+                                    Produto produto = carrinho.get(i);
+                                    vendedor.venderDinheiro(produto.getId(), produto.getQuantidadeVendida());
+                                } catch (VNUException | VNException | VIException | QNException | QNUException |
+                                         QIException | PIException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                        }
+                        else if(valorPago == valorFinalD){
+                            for (int i = 0; i < carrinho.size(); i++) {
+                                try {
+                                    Produto produto = carrinho.get(i);
+                                    vendedor.venderDinheiro(produto.getId(), produto.getQuantidadeVendida());
+                                } catch (VNUException | VNException | VIException | QNException | QNUException |
+                                         QIException | PIException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @FXML
+    public void initialize() {
+        choiceBoxTipoVenda.getItems().addAll("Débito", "Crédito", "Dinheiro");
+        comboboxParcelas.getItems().addAll("1", "2", "3", "4", "5");
+        lbSubtotal.setText("0.0");
+
+        comboboxParcelas.setDisable(true);
+        lbParcelas.setDisable(true);
+        lbValorPago.setDisable(true);
+        tfValorPago.setDisable(true);
+
+        lbValorPago.setVisible(true);
+        tfValorPago.setVisible(true);
+
+        vendas = new Vector<>();
+        carrinho = new Vector<>();
+
+        lvProdutosAdicionados.setCellFactory(param -> new ListCell<ProdutoHistorico>() {
+            @Override
+            protected void updateItem(ProdutoHistorico item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText("ID: " + item.getIdVenda() + " | Preço: " + item.getPreco() + " | Quantidade: " + item.getQuantidadeVendida());
+                }
+            }
+        });
+
+        lvProdutosAdicionados.getItems().setAll(vendas);
     }
 }
