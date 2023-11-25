@@ -1,10 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.FinanceiroMainController">
-   <children>
-      <Button fx:id="btVoltar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToGerenteMainScreen" text="Voltar" />
-   </children>
-</AnchorPane>
+<SplitPane fx:id="root" dividerPositions="0.4983277591973244" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="com.programa.projetomercadofx.FinanceiroMainController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Button fx:id="btVoltar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToGerenteMainScreen" text="Voltar" />
+            <Pane layoutX="48.0" layoutY="39.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="13.0" layoutY="36.0" text="Mercadinho Inteligente">
+                     <font>
+                        <Font name="Century" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="56.0" layoutY="56.0" text="Menu Financeiro" />
+               </children>
+            </Pane>
+            <Pane disable="true" layoutX="38.0" layoutY="179.0" prefHeight="166.0" prefWidth="220.0" visible="false">
+               <children>
+                  <Label layoutX="46.0" layoutY="22.0" text="Mudar Taxa Produto">
+                     <font>
+                        <Font name="Century" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="54.0" text="ID produto:">
+                     <font>
+                        <Font name="Century" size="11.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="112.0" layoutY="50.0" prefHeight="25.0" prefWidth="101.0" promptText="Ex.123" />
+                  <Label layoutX="14.0" layoutY="83.0" text="Taxa Atualizada:">
+                     <font>
+                        <Font name="Century" size="11.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="112.0" layoutY="78.0" prefHeight="25.0" prefWidth="101.0" promptText="Ex.1.3" />
+                  <Button layoutX="144.0" layoutY="112.0" mnemonicParsing="false" text="Confirmar" />
+               </children>
+            </Pane>
+            <Pane disable="true" layoutX="38.0" layoutY="188.0" prefHeight="166.0" prefWidth="220.0" visible="false">
+               <children>
+                  <Label layoutX="51.0" layoutY="14.0" text="Comprar Produto">
+                     <font>
+                        <Font name="Century" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="42.0" text="ID produto:">
+                     <font>
+                        <Font name="Century" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="92.0" layoutY="38.0" prefHeight="25.0" prefWidth="87.0" promptText="Ex.122" />
+                  <Label layoutX="14.0" layoutY="71.0" text="Quantidade:">
+                     <font>
+                        <Font name="Century" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="92.0" layoutY="67.0" prefHeight="25.0" prefWidth="87.0" promptText="Ex.4" />
+                  <Label layoutX="14.0" layoutY="99.0" text="Total:">
+                     <font>
+                        <Font name="Century" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="92.0" layoutY="98.0" />
+                  <Button layoutX="117.0" layoutY="124.0" mnemonicParsing="false" text="Comprar" />
+               </children>
+            </Pane>
+            <Pane disable="true" layoutX="38.0" layoutY="179.0" prefHeight="200.0" prefWidth="220.0" visible="false">
+               <children>
+                  <Label layoutX="66.0" layoutY="20.0" text="Depositar Saldo">
+                     <font>
+                        <Font name="Century" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="24.0" layoutY="58.0" text="Valor:">
+                     <font>
+                        <Font name="Century" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="71.0" layoutY="53.0" prefHeight="25.0" prefWidth="97.0" />
+                  <Button layoutX="97.0" layoutY="89.0" mnemonicParsing="false" text="confirmar">
+                     <font>
+                        <Font name="Century" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane layoutX="38.0" layoutY="179.0" prefHeight="200.0" prefWidth="220.0" visible="false">
+               <children>
+                  <Label layoutX="80.0" layoutY="20.0" text="Sacar Saldo">
+                     <font>
+                        <Font name="Century" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="24.0" layoutY="58.0" text="Valor:">
+                     <font>
+                        <Font name="Century" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="71.0" layoutY="53.0" prefHeight="25.0" prefWidth="97.0" />
+                  <Button layoutX="97.0" layoutY="89.0" mnemonicParsing="false" text="confirmar">
+                     <font>
+                        <Font name="Century" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Label layoutX="115.0" layoutY="45.0" text="Financeiro">
+               <font>
+                  <Font name="Century" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="345.0" text="Saldo atual:">
+               <font>
+                  <Font name="Century" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="106.0" layoutY="344.0" />
+            <Button fx:id="btSeguir" layoutX="14.0" layoutY="99.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Ver Balanço" />
+            <Button layoutX="14.0" layoutY="132.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Mudar Taxa" />
+            <Button layoutX="14.0" layoutY="167.0" mnemonicParsing="false" text="Comprar Produto">
+               <font>
+                  <Font name="Century" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="14.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Caixa" />
+            <ChoiceBox disable="true" layoutX="149.0" layoutY="200.0" prefHeight="25.0" prefWidth="101.0" visible="false" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>
