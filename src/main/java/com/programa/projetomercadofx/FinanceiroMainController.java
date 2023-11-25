@@ -18,10 +18,16 @@ public class FinanceiroMainController {
     private TextField tfMudarTaxa;
 
     @FXML
+    private Button btVerTaxa;
+
+    @FXML
     private Button btVerBalanço;
 
     @FXML
     private Button btVoltar;
+
+    @FXML
+    private Button btSeguir;
 
     @FXML
     private Parent root;
@@ -33,4 +39,13 @@ public class FinanceiroMainController {
         Stage palco = (Stage) cenaAtual.getWindow();
         palco.setScene(cenaTela1);
     }
+
+    public void switchToFinanceiroBalancoScreen(ActionEvent event) throws Exception {
+        Parent tela1 = FXMLLoader.load(getClass().getResource("FinanceiroBalancoScreen.fxml"));
+        Scene cenaAtual = root.getScene();
+        Scene cenaTela1 = new Scene(tela1, cenaAtual.getWidth(), cenaAtual.getHeight());
+        Stage palco = (Stage) cenaAtual.getWindow();
+        palco.setScene(cenaTela1);
+    }
+
 }
