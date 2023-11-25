@@ -17,11 +17,11 @@ public class TesteExceptions {
 
         Produto produto1 = new ProdutoComestivel("refrigerante", "9888", "coca cola", 20.0, "bebida", "20/07/2023");
 
-        try {
+       /*try {
             gerente.cadastrar(produto1, -5, 1.2);
         } catch (PEException | SIException | QNException | QNUException e) {
             e.printStackTrace();
-        }
+        }*/
 
         Vendedor vendedor = new Vendedor(estoque, "joao", "joaozin", "susu" , "123");
 

@@ -97,7 +97,7 @@ public class CadastrarController {
                 Alerts.showAlert("Cadastro", null, "Conta Gerente cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
             } else if (tipoFuncionario.equals("Vendedor") && !nome.isEmpty() && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
                 vendedorObj = new Vendedor(estoque, nome, login, email, senha);
-                ListaVendedor.vededoresVector.add(vendedorObj);
+                ListaVendedor.vendedoresVector.add(vendedorObj);
                 ListaVendedor.mostrarLista();
                 onBtLimpar(event);
                 Alerts.showAlert("Cadastro", null, "Conta Vendedor cadastrada com sucesso", Alert.AlertType.CONFIRMATION);

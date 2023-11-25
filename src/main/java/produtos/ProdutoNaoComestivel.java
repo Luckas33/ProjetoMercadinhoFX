@@ -8,6 +8,7 @@ public class ProdutoNaoComestivel extends Produto {
         this.quantidade = 0;
         this.taxaLucro = 0.0;
         this.preco_venda = 0.0;
+        this.quantidadeVendida = 0;
     }
     
 }

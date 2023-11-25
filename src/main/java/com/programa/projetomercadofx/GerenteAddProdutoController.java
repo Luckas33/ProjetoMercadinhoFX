@@ -78,7 +78,7 @@ public class GerenteAddProdutoController {
         Produto produtoComestivel;
         Produto produtoNaoComestivel;
 
-        if(!categoria.isEmpty()){
+        if(categoria != null){
             if(isNumeric(id) ) {
                 if (categoria.equals("Comestível") && !nome.isEmpty() && !id.isEmpty() && !marca.isEmpty() && precoCompra > 0.0 && !tipo.isEmpty() && !dataValidade.isEmpty()) {
 

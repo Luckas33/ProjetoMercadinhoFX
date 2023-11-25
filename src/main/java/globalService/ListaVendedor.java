@@ -12,7 +12,7 @@ public class ListaVendedor {
     }
 
     public static void mostrarLista(){
-            System.out.println(ListaVendedor.ven'dedoresVector);
+            System.out.println(ListaVendedor.vendedoresVector);
     }
 
     public static boolean verificarCredenciais(String login, String senha) {
