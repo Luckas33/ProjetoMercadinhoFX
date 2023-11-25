@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class FinanceiroMainController {
@@ -31,6 +32,20 @@ public class FinanceiroMainController {
 
     @FXML
     private Parent root;
+    @FXML
+    private Button btMudarTaxa;
+    @FXML
+    private Button btComprarProduto;
+    @FXML
+    private Button btCaixa;
+    @FXML
+    private Pane pnCaixaDeposito;
+    @FXML
+    private Pane pnCaixaSaque;
+    @FXML
+    private Pane pnTaxa;
+    @FXML
+    private Pane pnComprarProduto;
 
     public void switchToGerenteMainScreen(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("GerenteMainScreen.fxml"));

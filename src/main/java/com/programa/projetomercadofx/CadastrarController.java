@@ -3,6 +3,7 @@ package com.programa.projetomercadofx;
 import com.programa.projetomercadofx.controllerUtil.Alerts;
 import estoques.Estoque;
 import estoques.IEstoque;
+import globalService.ListaEstoque;
 import globalService.ListaGerente;
 import globalService.ListaVendedor;
 import javafx.beans.Observable;
@@ -82,7 +83,6 @@ public class CadastrarController {
             String email = tfEmail.getText();
             String senha = tfSenha.getText();
             String tipoFuncionario = choiceBoxFuncionarios.getValue();
-            IEstoque estoque = new Estoque();
 
             Gerente gerenteObj;
             Vendedor vendedorObj;
@@ -90,17 +90,25 @@ public class CadastrarController {
 
         if (tipoFuncionario != null) {
             if (tipoFuncionario.equals("Gerente") && !nome.isEmpty() && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
-                gerenteObj = new Gerente(estoque, nome, login, email, senha);
-                ListaGerente.gerentesVector.add(gerenteObj);
-                ListaGerente.mostrarLista();
-                onBtLimpar(event);
-                Alerts.showAlert("Cadastro", null, "Conta Gerente cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
+                for(IEstoque estoque : ListaEstoque.estoqueVector) {
+                    if(estoque != null) {
+                        gerenteObj = new Gerente(estoque, nome, login, email, senha);
+                        ListaGerente.gerentesVector.add(gerenteObj);
+                        ListaGerente.mostrarLista();
+                        onBtLimpar(event);
+                        Alerts.showAlert("Cadastro", null, "Conta Gerente cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
+                    }
+                }
             } else if (tipoFuncionario.equals("Vendedor") && !nome.isEmpty() && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
-                vendedorObj = new Vendedor(estoque, nome, login, email, senha);
-                ListaVendedor.vendedoresVector.add(vendedorObj);
-                ListaVendedor.mostrarLista();
-                onBtLimpar(event);
-                Alerts.showAlert("Cadastro", null, "Conta Vendedor cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
+                for(IEstoque estoque : ListaEstoque.estoqueVector) {
+                    if(estoque != null) {
+                        vendedorObj = new Vendedor(estoque, nome, login, email, senha);
+                        ListaVendedor.vendedoresVector.add(vendedorObj);
+                        ListaVendedor.mostrarLista();
+                        onBtLimpar(event);
+                        Alerts.showAlert("Cadastro", null, "Conta Vendedor cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
+                    }
+                }
             } else {
                 Alerts.showAlert("Cadastro error", null, "Preencha as informações corretamente", Alert.AlertType.ERROR);
             }

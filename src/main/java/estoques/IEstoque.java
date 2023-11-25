@@ -19,7 +19,9 @@ public interface IEstoque {
     
     public void reduzir(String id, int quantidade) throws PIException;
     
-    public void mostrarEstoque(String tipo);
+    public void mostrarEstoqueTipo(String tipo);
+
+    public void mostrarEstoqueTotal();
     
     public double verSaldo();
     

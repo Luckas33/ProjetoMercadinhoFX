@@ -42,7 +42,8 @@ public class Gerente extends Funcionario {
                         } catch(TLNUException e){ // testa se a taxa lucro é nula
                             System.out.print(e.getMessage());
                         }
-                        produto.setPrecoVenda(produto.getPreco_compra() * produto.getTaxaLucro()); //aqui ele seta o preço de venda, sendo a multiplicação do preço de compra pela taxa de lucro
+                        double precoFinal = (produto.getPreco_compra() * (produto.getTaxaLucro()/100)) + produto.getPreco_compra();
+                        produto.setPrecoVenda(precoFinal); //aqui ele seta o preço de venda, sendo a multiplicação do preço de compra pela taxa de lucro
                         this.estoque.inserir(produto.getId(), quantidade); //ele chama o metodo inserir da interface de estoque, onde ele insere o produto e a quantidade no estoque
                         this.estoque.adquirirEstoque(produto.getId(),valorTotal); //atualiza o saldo
                         ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade); //cria um objeto de produto historico, onde os atributos dele vão ser os mesmos do que o produto que foi vendido
@@ -90,8 +91,12 @@ public class Gerente extends Funcionario {
     }
 
     //metodo pro gerente ver o estoque, ele somente chama o metodo de mostrar o estoque da interface estoque
-      public void verEstoque(String tipo){
-          this.estoque.mostrarEstoque(tipo);
+      public void verEstoqueTipo(String tipo){
+          this.estoque.mostrarEstoqueTipo(tipo);
+      }
+
+      public void verEstoqueTotal(){
+        this.estoque.mostrarEstoqueTotal();
       }
 
     //metodo para registrar a compra, ele recebe um objeto de produto historico, adiciona no vetor e seleciona a forma como "compra"
@@ -144,13 +149,35 @@ public void registrarCompra(ProdutoHistorico produto){
       }
 
     //metodo para setar o saldo inicial do mercado
-    public void iniciarSaldo(double valor){
+    public void inserirSaldo(double valor){
         try{
-            this.estoque.definirSaldo(valor);
+            this.estoque.definirSaldo(valor + this.estoque.verSaldo());
         }catch(SNException e){
             System.out.print(e.getMessage());
             System.out.print(" Saldo: ");
             System.out.print(valor);
+        }
+    }
+
+    public void removerSaldo(double valor){
+        try {
+            this.estoque.definirSaldo(this.estoque.verSaldo() - valor);
+        }catch (SNException e){
+            System.out.print(e.getMessage());
+            System.out.print(" Saldo: ");
+            System.out.print(valor);
+        }
+
+    }
+
+    public void atualizarTaxa(String id, double taxa){
+        Produto produto = this.estoque.procurar(id);
+        if(produto != null){
+            try{
+                produto.setTaxaLucro(taxa);
+            }catch(TLNException | TLNUException e){
+                e.printStackTrace();
+            }
         }
     }
 
