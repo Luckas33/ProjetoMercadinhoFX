@@ -49,13 +49,11 @@ public class GerenteAddProdutoController {
     @FXML
     private Parent root;
     @FXML
-    private Button btCadastrar;
-    @FXML
     private TextField tfQuantidade;
     @FXML
     private TextField tfTaxaVenda;
 
-    private Vector<Produto> produtoCadastrar;
+
 
     public void switchToGerenteMainScrenn(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("GerenteMainScreen.fxml"));
@@ -87,6 +85,14 @@ public class GerenteAddProdutoController {
         if(!precoCompraText.isEmpty()){
            precoCompra = Double.parseDouble(precoCompraText);//casting, para transformar String em double
         }
+        int quantidade = 0;
+        Double taxaLucro = 0.0;
+        if(tfQuantidade != null && isNumeric(tfQuantidade.getText())){
+            quantidade = Integer.parseInt(tfQuantidade.getText());
+        }
+        if(tfTaxaVenda != null && isNumeric(tfTaxaVenda.getText())) {
+            taxaLucro = Double.parseDouble(tfTaxaVenda.getText());
+        }
 
         String dataValidade = tfDataValidade.getText();
         String categoria = choiceBoxCategoriaProd.getValue();
@@ -100,17 +106,37 @@ public class GerenteAddProdutoController {
 
                     produtoComestivel = new ProdutoComestivel(nome, id, marca, precoCompra, tipo, dataValidade);
                     ListaProduto.produtosVector.add(produtoComestivel);
-                    this.produtoCadastrar.add(produtoComestivel);
                     ListaProduto.mostrarLista();
+                    for(Gerente gerente : ListaGerente.gerentesVector){
+                        if(gerente != null){
+                            try {
+                                gerente.cadastrar(id, quantidade, taxaLucro);
+                            }catch (PEException | SIException | QNUException | QNException exception){
+                                exception.printStackTrace();
+                            }finally {
+                                System.out.println("Produto Cadastrado e adicionado no estoque");
+                            }
+                        }
+                    }
                     Alerts.showAlert("Adicionar produto", null, "Produto Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
-                    boolAdicionado();
+
                 } else if (categoria.equals("Não Comestível") && !nome.isEmpty() && !id.isEmpty() && !marca.isEmpty() && precoCompra > 0.0 && !tipo.isEmpty()) {
                     produtoNaoComestivel = new ProdutoNaoComestivel(nome, id, marca, precoCompra, tipo);
                     ListaProduto.produtosVector.add(produtoNaoComestivel);
-                    this.produtoCadastrar.add(produtoNaoComestivel);
                     ListaProduto.mostrarLista();
+                    for(Gerente gerente : ListaGerente.gerentesVector){
+                        if(gerente != null){
+                            try {
+                                gerente.cadastrar(id, quantidade, taxaLucro);
+                            }catch (PEException | SIException | QNUException | QNException exception){
+                                exception.printStackTrace();
+                            }finally {
+                                System.out.println("Produto Cadastrado e adicionado no estoque");
+                            }
+                        }
+                    }
                     Alerts.showAlert("Adicionar produto", null, "Produto Não Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
-                    boolAdicionado();
+
                 } else {
                     Alerts.showAlert("Erro adicionar produto", null, "Preencha corretamente as informações", Alert.AlertType.ERROR);
                 }
@@ -122,39 +148,8 @@ public class GerenteAddProdutoController {
         }
     }
 
-    public boolean boolAdicionado(){
-        btAddProduto.setDisable(true);
-        btCadastrar.setDisable(false);
-        return true;
-    }
 
-    public void onBtCadastrar(ActionEvent e){
-        int quantidade = 0;
-        Double taxaLucro = 0.0;
-        if(tfQuantidade != null && isNumeric(tfQuantidade.getText())){
-            quantidade = Integer.parseInt(tfQuantidade.getText());
-        }
-        if(tfTaxaVenda != null && isNumeric(tfTaxaVenda.getText())){
-            taxaLucro = Double.parseDouble(tfTaxaVenda.getText());
-        }
-            for (Gerente gerente : ListaGerente.gerentesVector) {
-                if (gerente != null) {
-                    for (int i = 0; i < 1; i++) {
-                        Produto produto = produtoCadastrar.get(i);
-                        if(produto != null){
-                            try {
-                                gerente.cadastrar(produto.getId(), quantidade, taxaLucro);
-                            } catch (PEException | SIException | QNException | QNUException exception) {
-                            exception.printStackTrace();
-                            } finally {
-                                System.out.println("Finalmente Comprado ");
-                            }
-                        }
-                    }
-                }
-            }
 
-    }
 
     public void onBtLimpar(ActionEvent e){
         tfNome.setText(null);
@@ -188,15 +183,6 @@ public class GerenteAddProdutoController {
 
     @FXML
     public void initialize(){
-        produtoCadastrar = new Vector<>();
-        btCadastrar.setDisable(true);
-        tfQuantidade.setDisable(true);
-        tfTaxaVenda.setDisable(true);
-
-        btCadastrar.setVisible(true);
-        tfQuantidade.setVisible(true);
-        tfTaxaVenda.setVisible(true);
-
 
         choiceBoxCategoriaProd.getItems().addAll("Comestível","Não Comestível");
         choiceBoxCategoriaProd.setOnAction(this::onCBCategoriaProd);
