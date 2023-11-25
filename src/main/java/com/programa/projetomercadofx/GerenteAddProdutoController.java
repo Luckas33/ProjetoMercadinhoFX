@@ -146,13 +146,31 @@ public class GerenteAddProdutoController {
                         if(gerente != null){
                             try {
                                 gerente.cadastrar(id, quantidade, taxaLucro);
-                                System.out.println("Produto Não Comestível Cadastrado e adicionado no estoque");
-                            }catch (PEException | SIException | QNUException | QNException exception){
+                                Alerts.showAlert("Adicionar produto", null, "Produto Não Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
+                            }catch (QNException exception){
                                 exception.printStackTrace();
+                                onBtLimpar(e);
+                                ListaProduto.produtosVector.remove(produtoNaoComestivel);
+                                Alerts.showAlert("Erro cadastrar", null,"Quantidade requerida negativa",Alert.AlertType.ERROR);
+                            }catch (PEException exception){
+                                exception.printStackTrace();
+                                onBtLimpar(e);
+                                ListaProduto.produtosVector.remove(produtoNaoComestivel);
+                                Alerts.showAlert("Erro cadastrar", null,"Produto já cadastrado",Alert.AlertType.ERROR);
+                            }catch(SIException exception){
+                                exception.printStackTrace();
+                                onBtLimpar(e);
+                                ListaProduto.produtosVector.remove(produtoNaoComestivel);
+                                Alerts.showAlert("Erro cadastrar", null,"Saldo insuficiente",Alert.AlertType.ERROR);
+                            }catch (QNUException exception){
+                                exception.printStackTrace();
+                                onBtLimpar(e);
+                                ListaProduto.produtosVector.remove(produtoNaoComestivel);
+                                Alerts.showAlert("Erro cadastrar", null,"Quantidade nula",Alert.AlertType.ERROR);
                             }
                         }
                     }
-                    Alerts.showAlert("Adicionar produto", null, "Produto Não Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
+
 
                 } else {
                     Alerts.showAlert("Erro adicionar produto", null, "Preencha corretamente as informações", Alert.AlertType.ERROR);
@@ -165,9 +183,6 @@ public class GerenteAddProdutoController {
         }
     }
 
-
-
-
     public void onBtLimpar(ActionEvent e){
         tfNome.setText(null);
         tfID.setText(null);
@@ -176,6 +191,8 @@ public class GerenteAddProdutoController {
         tfPrecoCompra.setText(null);
         tfTipo.setText(null);
         choiceBoxCategoriaProd.setValue(null);
+        tfTaxaVenda.setText(null);
+        tfQuantidade.setText(null);
     }
 
     private boolean isNumeric(String str) {

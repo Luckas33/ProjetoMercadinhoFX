@@ -4,6 +4,7 @@ import com.programa.projetomercadofx.controllerUtil.Alerts;
 import excecao.*;
 import globalService.ListaVendedor;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -45,6 +46,10 @@ public class VendedorMainController {
     private Label lbValorPago;
     @FXML
     private TextField tfValorPago;
+    @FXML
+    private Button btConfirmarVenda;
+    @FXML
+    private Label lbTipoPagamento;
 
     public Vector<ProdutoHistorico> vendas;
     public Vector<Produto> carrinho;
@@ -117,20 +122,153 @@ public class VendedorMainController {
 
     }
 
-    //Alerts.showAlert("Erro venda", null, "Preencha as informações corretamente", Alert.AlertType.ERROR);
-    //Alerts.showAlert("Erro venda", null, "Selecione o tipo de venda!", Alert.AlertType.ERROR);
     public void onBtFinalizar(ActionEvent event) {
         choiceBoxTipoVenda.setDisable(false);
         btAdicionar.setDisable(true);
 
+    }
+    public void onCbTipoVenda(Event e){
+        String escolha = choiceBoxTipoVenda.getValue();
+        if("Crédito".equals(escolha)){
+            comboboxParcelas.setDisable(false);
+            lbParcelas.setDisable(false);
+
+        }else if("Dinheiro".equals(escolha)){
+            tfValorPago.setDisable(false);
+            lbValorPago.setDisable(false);
+            comboboxParcelas.setDisable(true);
+            lbParcelas.setDisable(true);
+        }else if ("Débito".equals(escolha)){
+            tfValorPago.setDisable(true);
+            lbValorPago.setDisable(true);
+            comboboxParcelas.setDisable(true);
+            lbParcelas.setDisable(true);
+        }else{
+            tfValorPago.setDisable(true);
+            lbValorPago.setDisable(true);
+            comboboxParcelas.setDisable(true);
+            lbParcelas.setDisable(true);
+        }
+    }
+
+    public void onBtConfirmarVenda(ActionEvent event){
+
+        String tipoVenda = choiceBoxTipoVenda.getValue();
+        if (!tipoVenda.isEmpty()){
+            for (Vendedor vendedor : ListaVendedor.vendedoresVector) {
+                if (vendedor != null) {
+                    if (tipoVenda == "Débito"){
+                        for (int i = 0; i < carrinho.size(); i++) {
+                            try {
+                                Produto produto = carrinho.get(i);
+                                vendedor.venderDebito(produto.getId(), produto.getQuantidadeVendida());
+                                Alerts.showAlert("Venda", null, "Venda realizada com sucesso.", Alert.AlertType.INFORMATION);
+                            } catch (PIException e) {
+                                e.printStackTrace();
+                                Alerts.showAlert("Erro Venda", null,"Produto inexistente",Alert.AlertType.ERROR);
+                            }catch (QNException e){
+                                e.printStackTrace();
+                                Alerts.showAlert("Erro Venda", null,"Quantidade requerida negativa",Alert.AlertType.ERROR);
+                            }catch (QNUException e){
+                                e.printStackTrace();
+                                Alerts.showAlert("Erro Venda", null,"quantidade insuficiente",Alert.AlertType.ERROR);
+                            }catch (QIException e){
+                                e.printStackTrace();
+                                Alerts.showAlert("Erro Venda", null,"Saldo insuficiente",Alert.AlertType.ERROR);
+                            }
+                        }
+                    }
+                    else if(tipoVenda == "Crédito"){
+                        int parcelas = Integer.parseInt(comboboxParcelas.getValue());
+                        Double valorFinalC = 0.0;
+                        for (int i = 0; i < carrinho.size(); i++) {
+                            try {
+                                Produto produto = carrinho.get(i);
+                                valorFinalC += (produto.getPrecoVenda() * produto.getQuantidadeVendida());
+                                vendedor.venderCredito(produto.getId(), produto.getQuantidadeVendida(), parcelas);
+                                Alerts.showAlert("Venda", null, "Venda realizada com sucesso.", Alert.AlertType.INFORMATION);
+                                Alerts.showAlert("Valor Parcelas",null,String.valueOf(valorFinalC/ parcelas),Alert.AlertType.INFORMATION);
+                            } catch (PANUException e) {
+                                e.printStackTrace();
+                                Alerts.showAlert("Erro Venda", null,"Número de parcelas nulo",Alert.AlertType.ERROR);
+                            } catch(PANException e){
+                                e.printStackTrace();
+                                Alerts.showAlert("Erro Venda", null,"Número de parcelas negativas",Alert.AlertType.ERROR);
+                            }catch(QNException e){
+                                e.printStackTrace();
+                                Alerts.showAlert("Erro Venda", null,"Insira uma quantidade válida",Alert.AlertType.ERROR);
+                            }catch(QNUException e){
+                                e.printStackTrace();
+                                Alerts.showAlert("Erro Venda", null,"Insira uma quantidade válida",Alert.AlertType.ERROR);
+                            }catch(QIException e){
+                                e.printStackTrace();
+                                Alerts.showAlert("Erro Venda", null,"Quantidade insuficiente no estoque",Alert.AlertType.ERROR);
+                            }catch(PIException e){
+                                e.printStackTrace();
+                                Alerts.showAlert("Erro Venda", null,"Produto não existente",Alert.AlertType.ERROR);
+                            }
+
+                        }
+
+
+
+                    }
+                    else if(tipoVenda == "Dinheiro") {
+                        Double valorFinalD = 0.0;
+                        double valorPago = 0.0;
+
+                        if(tfValorPago != null){
+                            valorPago = Double.parseDouble(tfValorPago.getText());
+                        }
+
+                        for (int i = 0; i < carrinho.size(); i++) {
+                            Produto produto = carrinho.get(i);
+                            valorFinalD += (produto.getPrecoVenda() * produto.getQuantidadeVendida());
+                        }
+                        if (valorPago > valorFinalD){
+                            Double troco = valorPago - valorFinalD;
+                            lbTroco.setText(String.valueOf(troco));
+                            for (int i = 0; i < carrinho.size(); i++) {
+                                try {
+                                    Produto produto = carrinho.get(i);
+                                    vendedor.venderDinheiro(produto.getId(), produto.getQuantidadeVendida());
+                                    Alerts.showAlert("Venda", null, "Venda realizada com sucesso.", Alert.AlertType.INFORMATION);
+                                } catch (VNUException | VNException | VIException | QNException | QNUException |
+                                         QIException | PIException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                        else if(valorPago == valorFinalD){
+                            for (int i = 0; i < carrinho.size(); i++) {
+                                try {
+                                    Produto produto = carrinho.get(i);
+                                    vendedor.venderDinheiro(produto.getId(), produto.getQuantidadeVendida());
+                                } catch (VNUException | VNException | VIException | QNException | QNUException |
+                                         QIException | PIException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+
+                        }
+                        else{
+                            Alerts.showAlert("Erro Venda", null,"Valor insuficiente",Alert.AlertType.ERROR);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     @FXML
     public void initialize() {
         choiceBoxTipoVenda.getItems().addAll("Débito", "Crédito", "Dinheiro");
         comboboxParcelas.getItems().addAll("1", "2", "3", "4", "5");
+        choiceBoxTipoVenda.setOnAction(this::onCbTipoVenda);
+        choiceBoxTipoVenda.setOnMouseClicked(this::onCbTipoVenda);
 
-
+        btFinalizar.setDisable(true);
         comboboxParcelas.setDisable(true);
         lbParcelas.setDisable(true);
         lbValorPago.setDisable(true);

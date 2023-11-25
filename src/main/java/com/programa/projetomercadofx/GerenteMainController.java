@@ -36,5 +36,19 @@ public class GerenteMainController {
         palco.setScene(cenaTela1);
     }
 
+    public void switchToFinanceiroMainScreen(ActionEvent event) throws Exception {
+        Parent tela1 = FXMLLoader.load(getClass().getResource("FinanceiroMainScreen.fxml"));
+        Scene cenaAtual = root.getScene();
+        Scene cenaTela1 = new Scene(tela1, cenaAtual.getWidth(), cenaAtual.getHeight());
+        Stage palco = (Stage) cenaAtual.getWindow();
+        palco.setScene(cenaTela1);
+    }
 
+    public void switchToEstoqueMainScreen(ActionEvent event) throws Exception {
+        Parent tela1 = FXMLLoader.load(getClass().getResource("EstoqueMainScreen.fxml"));
+        Scene cenaAtual = root.getScene();
+        Scene cenaTela1 = new Scene(tela1, cenaAtual.getWidth(), cenaAtual.getHeight());
+        Stage palco = (Stage) cenaAtual.getWindow();
+        palco.setScene(cenaTela1);
+    }
 }
