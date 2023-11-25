@@ -104,34 +104,36 @@ public class VendedorMainController {
         }
         String tipoVenda = choiceBoxTipoVenda.getValue();
         int parcelas = Integer.parseInt(comboboxParcelas.getValue());
-        for (Vendedor vendedor : ListaVendedor.vendedoresVector) {
-            if (vendedor != null) {
-                for (int i = 0; i < carrinho.size(); i++) {
-                    Produto produto = carrinho.get(i);
-                    vendedor.venderDebito(produto.getId(), produto.getQuantidadeVendida());
-                }
-            }
-        }
-    }
+//        for (Vendedor vendedor : ListaVendedor.vendedoresVector) {
+//            if (vendedor != null) {
+//                for (int i = 0; i < carrinho.size(); i++) {
+//                    Produto produto = carrinho.get(i);
+//                    vendedor.venderDebito(produto.getId(), produto.getQuantidadeVendida());
+//                }
+//            }
+//        }
+//    }
 
-    @FXML
-    public void initialize() {
-        choiceBoxTipoVenda.getItems().addAll("Débito", "Crédito", "Dinheiro");
-        comboboxParcelas.getItems().addAll("1", "2", "3", "4", "5");
-        vendas = new Vector<>();
-        carrinho = new Vector<>();
-        lvProdutosAdicionados.setCellFactory(param -> new ListCell<ProdutoHistorico>() {
-            @Override
-            protected void updateItem(ProdutoHistorico item, boolean empty) {
-                super.updateItem(item, empty);
-
-                if (empty || item == null) {
-                    setText(null);
-                } else {
-                    setText("ID: " + item.getIdVenda() + " | Preço: " + item.getPreco() + " | Quantidade: " + item.getQuantidadeVendida());
-                }
-            }
-        });
-        lvProdutosAdicionados.getItems().setAll(vendas);
+        //@FXML
+//    public void initialize() {
+//            choiceBoxTipoVenda.getItems().addAll("Débito", "Crédito", "Dinheiro");
+//            comboboxParcelas.getItems().addAll("1", "2", "3", "4", "5");
+//            vendas = new Vector<>();
+//            carrinho = new Vector<>();
+//        }
+////        lvProdutosAdicionados.setCellFactory(param -> new ListCell<ProdutoHistorico>() {
+////            @Override
+////            protected void updateItem(ProdutoHistorico item, boolean empty) {
+////                super.updateItem(item, empty);
+////
+////                if (empty || item == null) {
+////                    setText(null);
+////                } else {
+////                    setText("ID: " + item.getIdVenda() + " | Preço: " + item.getPreco() + " | Quantidade: " + item.getQuantidadeVendida());
+////                }
+////            }
+////        });
+////        lvProdutosAdicionados.getItems().setAll(vendas);
+//    }
     }
 }
