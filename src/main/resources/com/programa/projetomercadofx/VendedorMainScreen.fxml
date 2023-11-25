@@ -54,7 +54,7 @@
                         </Label>
                      </top>
                   </BorderPane>
-                  <Label layoutX="24.0" layoutY="420.0" text="Sub total:">
+                  <Label fx:id="lbSubtotal" layoutX="24.0" layoutY="420.0" text="Sub total:">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -79,17 +79,17 @@
                         <Font name="Century" size="16.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="choiceBoxTipoVenda" disable="true" layoutX="231.0" layoutY="191.0" prefWidth="150.0">
+                  <ChoiceBox fx:id="choiceBoxTipoVenda" disable="true" layoutX="231.0" layoutY="147.0" prefWidth="150.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ChoiceBox>
-                  <Label fx:id="lbParcelas" disable="true" layoutX="22.0" layoutY="192.0" text="Tipo de Pagamento:">
+                  <Label fx:id="lbParcelas" disable="true" layoutX="20.0" layoutY="148.0" text="Tipo de Pagamento:">
                      <font>
                         <Font name="Century" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btAdicionar" layoutX="231.0" layoutY="238.0" mnemonicParsing="false" onAction="#onBtAdicionar" text="Adicionar">
+                  <Button fx:id="btAdicionar" layoutX="232.0" layoutY="276.0" mnemonicParsing="false" onAction="#onBtAdicionar" text="Adicionar">
                      <font>
                         <Font name="Century" size="12.0" />
                      </font>
@@ -117,13 +117,19 @@
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </TextField>
-                  <Label disable="true" layoutX="22.0" layoutY="148.0" prefHeight="18.0" prefWidth="129.0" text="Parcelas">
+                  <Label disable="true" layoutX="20.0" layoutY="180.0" prefHeight="18.0" prefWidth="129.0" text="Parcelas">
                      <font>
                         <Font name="Century" size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="comboboxParcelas" disable="true" layoutX="231.0" layoutY="147.0" prefWidth="150.0" promptText="Parcelas" />
-                  <Button fx:id="btFinalizar" layoutX="321.0" layoutY="237.0" mnemonicParsing="false" text="Finalizar" />
+                  <ComboBox fx:id="comboboxParcelas" disable="true" layoutX="231.0" layoutY="179.0" prefWidth="150.0" promptText="Parcelas" />
+                  <Button fx:id="btFinalizar" layoutX="321.0" layoutY="275.0" mnemonicParsing="false" onAction="#onBtFinalizar" text="Finalizar" />
+                  <Label fx:id="lbValorPago" disable="true" layoutX="22.0" layoutY="214.0" text="Valor Pago:">
+                     <font>
+                        <Font name="Century" size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfValorPago" disable="true" layoutX="232.0" layoutY="212.0" promptText="Insira o valor recebido" />
                </children>
             </AnchorPane>
          </children>

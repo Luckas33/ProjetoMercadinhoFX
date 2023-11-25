@@ -111,10 +111,9 @@ public class GerenteAddProdutoController {
                         if(gerente != null){
                             try {
                                 gerente.cadastrar(id, quantidade, taxaLucro);
+                                System.out.println("Produto Comestível Cadastrado e adicionado no estoque");
                             }catch (PEException | SIException | QNUException | QNException exception){
                                 exception.printStackTrace();
-                            }finally {
-                                System.out.println("Produto Cadastrado e adicionado no estoque");
                             }
                         }
                     }
@@ -128,10 +127,9 @@ public class GerenteAddProdutoController {
                         if(gerente != null){
                             try {
                                 gerente.cadastrar(id, quantidade, taxaLucro);
+                                System.out.println("Produto Não Comestível Cadastrado e adicionado no estoque");
                             }catch (PEException | SIException | QNUException | QNException exception){
                                 exception.printStackTrace();
-                            }finally {
-                                System.out.println("Produto Cadastrado e adicionado no estoque");
                             }
                         }
                     }

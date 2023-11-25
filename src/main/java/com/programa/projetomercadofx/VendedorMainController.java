@@ -154,10 +154,8 @@ public class VendedorMainController {
                     else if(tipoVenda == "Dinheiro") {
                         Double valorFinalD = 0.0;
                         double valorPago = 0.0;
-                        tfValorPago.setVisible(false);
-                        lbValorPago.setVisible(false);
                         tfValorPago.setDisable(false);
-                        lbValorPago.setVisible(false);
+                        lbValorPago.setDisable(false);
 
                         if(tfValorPago != null){
                            valorPago = Double.parseDouble(tfValorPago.getText());
@@ -209,9 +207,6 @@ public class VendedorMainController {
         lbParcelas.setDisable(true);
         lbValorPago.setDisable(true);
         tfValorPago.setDisable(true);
-
-        lbValorPago.setVisible(true);
-        tfValorPago.setVisible(true);
 
         vendas = new Vector<>();
         carrinho = new Vector<>();
