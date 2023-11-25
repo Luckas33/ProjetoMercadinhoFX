@@ -4,7 +4,7 @@ Este projeto tem como objetivo colocar em prática os conceitos aprendidos em sa
 
 ## Detalhes do Projeto
 
-### Universidade: UFC
+### Universidade: UFC - Universidade Federal do Ceará
 ### Ano: 2023.2
 
 ## Descrição
@@ -21,6 +21,8 @@ O projeto visa aplicar os princípios da Programação Orientada a Objetos para 
 ## Tecnologias Utilizadas
 
 - Linguagem de Programação: Java
+- Framework front-end: JavaFX
+- Construtor front-end: SceneBuilder
 - Ferramenta de Controle de Versão: Git
 - Repositório: GitHub
 
