@@ -80,7 +80,6 @@ public class VendedorMainController {
         }
 
         String id = tfidProduto.getText();
-
         for (Vendedor vendedor : ListaVendedor.vendedoresVector) {
             if (vendedor != null) {
                 Produto produto = vendedor.retornaProduto(id);
