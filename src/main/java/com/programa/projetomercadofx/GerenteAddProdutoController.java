@@ -1,6 +1,11 @@
 package com.programa.projetomercadofx;
 
 import com.programa.projetomercadofx.controllerUtil.Alerts;
+import excecao.PEException;
+import excecao.QNException;
+import excecao.QNUException;
+import excecao.SIException;
+import globalService.ListaGerente;
 import globalService.ListaProduto;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -14,6 +19,9 @@ import javafx.stage.Stage;
 import produtos.Produto;
 import produtos.ProdutoComestivel;
 import produtos.ProdutoNaoComestivel;
+import usuarios.Gerente;
+
+import java.util.Vector;
 
 public class GerenteAddProdutoController {
     @FXML
@@ -40,6 +48,14 @@ public class GerenteAddProdutoController {
     private ChoiceBox<String> choiceBoxCategoriaProd;
     @FXML
     private Parent root;
+    @FXML
+    private Button btCadastrar;
+    @FXML
+    private TextField tfQuantidade;
+    @FXML
+    private TextField tfTaxaVenda;
+
+    private Vector<Produto> produtoCadastrar;
 
     public void switchToGerenteMainScrenn(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("GerenteMainScreen.fxml"));
@@ -84,12 +100,14 @@ public class GerenteAddProdutoController {
 
                     produtoComestivel = new ProdutoComestivel(nome, id, marca, precoCompra, tipo, dataValidade);
                     ListaProduto.produtosVector.add(produtoComestivel);
+                    this.produtoCadastrar.add(produtoComestivel);
                     ListaProduto.mostrarLista();
                     Alerts.showAlert("Adicionar produto", null, "Produto Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
 
                 } else if (categoria.equals("Não Comestível") && !nome.isEmpty() && !id.isEmpty() && !marca.isEmpty() && precoCompra > 0.0 && !tipo.isEmpty()) {
                     produtoNaoComestivel = new ProdutoNaoComestivel(nome, id, marca, precoCompra, tipo);
                     ListaProduto.produtosVector.add(produtoNaoComestivel);
+                    this.produtoCadastrar.add(produtoNaoComestivel);
                     ListaProduto.mostrarLista();
                     Alerts.showAlert("Adicionar produto", null, "Produto Não Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
 
@@ -102,6 +120,40 @@ public class GerenteAddProdutoController {
         }else {
             Alerts.showAlert("Erro adicionar produto",null,"Selecione a categoria do Produto", Alert.AlertType.ERROR);
         }
+    }
+
+    public boolean boolAdicionado(){
+        btAddProduto.setDisable(true);
+        btCadastrar.setDisable(false);
+        return true;
+    }
+
+    public void onBtCadastrar(ActionEvent e){
+        int quantidade = 0;
+        Double taxaLucro = 0.0;
+        if(tfQuantidade != null && isNumeric(tfQuantidade.getText())){
+            quantidade = Integer.parseInt(tfQuantidade.getText());
+        }
+        if(tfTaxaVenda != null && isNumeric(tfTaxaVenda.getText())){
+            taxaLucro = Double.parseDouble(tfTaxaVenda.getText());
+        }
+            for (Gerente gerente : ListaGerente.gerentesVector) {
+                if (gerente != null) {
+                    for (int i = 0; i < 1; i++) {
+                        Produto produto = produtoCadastrar.get(i);
+                        if(produto != null){
+                            try {
+                                gerente.cadastrar(produto.getId(), quantidade, taxaLucro);
+                            } catch (PEException | SIException | QNException | QNUException exception) {
+                            exception.printStackTrace();
+                            } finally {
+                                System.out.println("Finalmente Comprado ");
+                            }
+                        }
+                    }
+                }
+            }
+
     }
 
     public void onBtLimpar(ActionEvent e){
@@ -136,6 +188,16 @@ public class GerenteAddProdutoController {
 
     @FXML
     public void initialize(){
+        produtoCadastrar = new Vector<>();
+        btCadastrar.setDisable(true);
+        tfQuantidade.setDisable(true);
+        tfTaxaVenda.setDisable(true);
+
+        btCadastrar.setVisible(true);
+        tfQuantidade.setVisible(true);
+        tfTaxaVenda.setVisible(true);
+
+
         choiceBoxCategoriaProd.getItems().addAll("Comestível","Não Comestível");
         choiceBoxCategoriaProd.setOnAction(this::onCBCategoriaProd);
         choiceBoxCategoriaProd.setOnMouseClicked(this::onCBCategoriaProd);

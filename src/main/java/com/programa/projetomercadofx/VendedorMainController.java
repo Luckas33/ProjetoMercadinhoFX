@@ -203,7 +203,7 @@ public class VendedorMainController {
     public void initialize() {
         choiceBoxTipoVenda.getItems().addAll("Débito", "Crédito", "Dinheiro");
         comboboxParcelas.getItems().addAll("1", "2", "3", "4", "5");
-        lbSubtotal.setText("0.0");
+
 
         comboboxParcelas.setDisable(true);
         lbParcelas.setDisable(true);
