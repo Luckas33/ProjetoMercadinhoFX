@@ -41,6 +41,10 @@ public class VendedorMainController {
     private Label lbSubtotal;
     @FXML
     private Label lbTroco;
+    @FXML
+    private Label lbValorPago;
+    @FXML
+    private TextField tfValorPago;
 
     public Vector<ProdutoHistorico> vendas;
     public Vector<Produto> carrinho;
@@ -71,6 +75,15 @@ public class VendedorMainController {
         }
 
         return true;
+    }
+
+    private void atualizarSubtotal(){
+        Double subTotal = 0.0;
+        for(ProdutoHistorico produtoHist : vendas){
+            subTotal += (produtoHist.getPreco() * produtoHist.getQuantidadeVendida());
+
+        }
+        lbSubtotal.setText(String.valueOf(subTotal));
     }
 
     public void onBtAdicionar(ActionEvent event) {
