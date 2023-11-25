@@ -38,7 +38,7 @@ public class VendedorMainController {
     @FXML
     private Label lbParcelas;
     @FXML
-    private Label btSubtotal;
+    private Label lbSubtotal;
     @FXML
     private Label lbTroco;
 
