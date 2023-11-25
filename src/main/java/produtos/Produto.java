@@ -14,6 +14,7 @@ public class Produto {
     protected String tipo;  
     protected int quantidade;
     protected double taxaLucro;
+    protected int quantidadeVendida;
    
     //construtor
     public Produto(String nome, String id, String marca, double preco_compra, String tipo) {
@@ -25,6 +26,7 @@ public class Produto {
         this.tipo = tipo;
         this.quantidade = 0; 
         this.taxaLucro = 0.0;
+        this.quantidadeVendida = 0;
     }
   
     
@@ -123,9 +125,11 @@ public class Produto {
         this.preco_venda = preco_venda;
     }
 
-   
-    
+    public int getQuantidadeVendida() {
+        return quantidadeVendida;
+    }
 
-    
-    
+    public void setQuantidadeVendida(int quantidadeVendida) {
+        this.quantidadeVendida = quantidadeVendida;
+    }
 }

@@ -12,6 +12,7 @@ public class ProdutoComestivel extends Produto {
         this.validade = validade;
         this.taxaLucro = 0.0;
         this.preco_venda = 0.0;
+        this.quantidadeVendida = 0;
     }
 
     //to string mas dessa vez mostrando a data de validade
