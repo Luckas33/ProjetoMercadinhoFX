@@ -1,13 +1,19 @@
 package com.programa.projetomercadofx;
 
+import com.programa.projetomercadofx.controllerUtil.Alerts;
+import excecao.PIException;
+import excecao.QNException;
+import excecao.QNUException;
+import excecao.SIException;
+import globalService.ListaGerente;
+import globalService.ListaProduto;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import usuarios.Gerente;
@@ -15,26 +21,20 @@ import usuarios.Gerente;
 public class FinanceiroMainController {
     @FXML
     private Label lbSaldoAtual;
-
     @FXML
     private TextField tfMudarTaxa;
-
-    @FXML
-    private Button btVerTaxa;
-
     @FXML
     private Button btVerBalanço;
-
     @FXML
     private Button btVoltar;
-
     @FXML
     private Button btSeguir;
-
+    @FXML
+    private Button btCaixaSaque;
+    @FXML
+    private Button btCaixaDeposito;
     @FXML
     private Parent root;
-    @FXML
-    private Button btMudarTaxa;
     @FXML
     private Button btComprarProduto;
     @FXML
@@ -47,6 +47,22 @@ public class FinanceiroMainController {
     private Pane pnTaxa;
     @FXML
     private Pane pnComprarProduto;
+    @FXML
+    private ChoiceBox<String> choiceBoxEscolhaCaixa;
+    @FXML
+    private Button btConfirmarCompraProduto;
+    @FXML
+    private Button btConfirmarTaxa;
+    @FXML
+    private TextField tfIDCompraProduto;
+    @FXML
+    private TextField tfQuantidadeComprarProduto;
+    @FXML
+    private TextField tfIDTaxa;
+    @FXML
+    private TextField tfValorDeposito;
+    @FXML
+    private TextField tfValorSaque;
 
     public void switchToGerenteMainScreen(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("GerenteMainScreen.fxml"));
