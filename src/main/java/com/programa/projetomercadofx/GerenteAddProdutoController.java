@@ -6,7 +6,6 @@ import excecao.QNException;
 import excecao.QNUException;
 import excecao.SIException;
 import globalService.ListaGerente;
-import globalService.ListaProduto;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -14,14 +13,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import produtos.Produto;
 import produtos.ProdutoComestivel;
 import produtos.ProdutoNaoComestivel;
 import usuarios.Gerente;
-
-import java.util.Vector;
 
 public class GerenteAddProdutoController {
     @FXML
@@ -105,34 +101,28 @@ public class GerenteAddProdutoController {
                 if (categoria.equals("Comestível") && !nome.isEmpty() && !id.isEmpty() && !marca.isEmpty() && precoCompra > 0.0 && !tipo.isEmpty() && !dataValidade.isEmpty()) {
 
                     produtoComestivel = new ProdutoComestivel(nome, id, marca, precoCompra, tipo, dataValidade);
-                    ListaProduto.produtosVector.add(produtoComestivel);
-                    ListaProduto.mostrarLista();
                     for(Gerente gerente : ListaGerente.gerentesVector){
                         if(gerente != null){
                             try {
-                                gerente.cadastrar(id, quantidade, taxaLucro);
+                                gerente.cadastrar(produtoComestivel, quantidade, taxaLucro);
                                 Alerts.showAlert("Adicionar produto", null, "Produto Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
                                 gerente.verEstoqueTipo(produtoComestivel.getTipo());
                             }
                             catch (QNException exception){
                                 exception.printStackTrace();
                                 onBtLimpar(e);
-                                ListaProduto.produtosVector.remove(produtoComestivel);
                                 Alerts.showAlert("Erro cadastrar", null,"Quantidade requerida negativa",Alert.AlertType.ERROR);
                             }catch (PEException exception){
                                 exception.printStackTrace();
                                 onBtLimpar(e);
-                                ListaProduto.produtosVector.remove(produtoComestivel);
                                 Alerts.showAlert("Erro cadastrar", null,"Produto já cadastrado",Alert.AlertType.ERROR);
                             }catch(SIException exception){
                                 exception.printStackTrace();
                                 onBtLimpar(e);
-                                ListaProduto.produtosVector.remove(produtoComestivel);
                                 Alerts.showAlert("Erro cadastrar", null,"Saldo insuficiente",Alert.AlertType.ERROR);
                             }catch (QNUException exception){
                                 exception.printStackTrace();
                                 onBtLimpar(e);
-                                ListaProduto.produtosVector.remove(produtoComestivel);
                                 Alerts.showAlert("Erro cadastrar", null,"Quantidade nula",Alert.AlertType.ERROR);
                             }
                         }
@@ -141,32 +131,27 @@ public class GerenteAddProdutoController {
 
                 } else if (categoria.equals("Não Comestível") && !nome.isEmpty() && !id.isEmpty() && !marca.isEmpty() && precoCompra > 0.0 && !tipo.isEmpty()) {
                     produtoNaoComestivel = new ProdutoNaoComestivel(nome, id, marca, precoCompra, tipo);
-                    ListaProduto.produtosVector.add(produtoNaoComestivel);
                     for(Gerente gerente : ListaGerente.gerentesVector){
                         if(gerente != null){
                             try {
-                                gerente.cadastrar(id, quantidade, taxaLucro);
+                                gerente.cadastrar(produtoNaoComestivel, quantidade, taxaLucro);
                                 Alerts.showAlert("Adicionar produto", null, "Produto Não Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
                                 gerente.verEstoqueTipo(produtoNaoComestivel.getTipo());
                             }catch (QNException exception){
                                 exception.printStackTrace();
                                 onBtLimpar(e);
-                                ListaProduto.produtosVector.remove(produtoNaoComestivel);
                                 Alerts.showAlert("Erro cadastrar", null,"Quantidade requerida negativa",Alert.AlertType.ERROR);
                             }catch (PEException exception){
                                 exception.printStackTrace();
                                 onBtLimpar(e);
-                                ListaProduto.produtosVector.remove(produtoNaoComestivel);
                                 Alerts.showAlert("Erro cadastrar", null,"Produto já cadastrado",Alert.AlertType.ERROR);
                             }catch(SIException exception){
                                 exception.printStackTrace();
                                 onBtLimpar(e);
-                                ListaProduto.produtosVector.remove(produtoNaoComestivel);
                                 Alerts.showAlert("Erro cadastrar", null,"Saldo insuficiente",Alert.AlertType.ERROR);
                             }catch (QNUException exception){
                                 exception.printStackTrace();
                                 onBtLimpar(e);
-                                ListaProduto.produtosVector.remove(produtoNaoComestivel);
                                 Alerts.showAlert("Erro cadastrar", null,"Quantidade nula",Alert.AlertType.ERROR);
                             }
                         }

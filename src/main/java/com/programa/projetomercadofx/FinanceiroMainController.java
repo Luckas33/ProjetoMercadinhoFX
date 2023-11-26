@@ -6,7 +6,6 @@ import excecao.QNException;
 import excecao.QNUException;
 import excecao.SIException;
 import globalService.ListaGerente;
-import globalService.ListaProduto;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -187,7 +186,7 @@ public class FinanceiroMainController {
         double taxa = Double.parseDouble(tfMudarTaxa.getText());
         String id = tfIDTaxa.getText();
 
-        if(ListaProduto.verificarProduto(id) && taxa > 0){
+        if(taxa > 0){
            for(Gerente gerente : ListaGerente.gerentesVector){
                if(gerente != null){
                    gerente.atualizarTaxa(id, taxa);
@@ -203,7 +202,7 @@ public class FinanceiroMainController {
         String id = tfIDCompraProduto.getText();
         int quantidade = Integer.parseInt(tfQuantidadeComprarProduto.getText());
 
-        if(ListaProduto.verificarProduto(id)) {
+
             for (Gerente gerente : ListaGerente.gerentesVector) {
                 if (gerente != null) {
                     try {
@@ -215,9 +214,7 @@ public class FinanceiroMainController {
                     }
                 }
             }
-        }else {
-            Alerts.showAlert("Erro Compra",null,"Produto nao encontrado",Alert.AlertType.ERROR);
-        }
+
     }
 
 /////////// Métodos Complementares /////////////////////////////

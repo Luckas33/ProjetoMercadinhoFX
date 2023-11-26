@@ -3,7 +3,6 @@ package usuarios;
 
 import estoques.IEstoque;
 import excecao.*;
-import globalService.ListaProduto;
 import produtos.Produto;
 import produtos.ProdutoComestivel;
 import produtos.ProdutoHistorico;
@@ -30,8 +29,7 @@ public class Gerente extends Funcionario {
     // *****teste*****//
     //metodo para cadastrar um produto no estoque, checa se o produto ja existe no estoque, se não existir
     //ele cadastra
-     public void cadastrar(String id, int quantidade, double taxalucro) throws PEException, SIException, QNUException, QNException {
-        Produto produto = ListaProduto.checarProduto(id);
+     public void cadastrar(Produto produto, int quantidade, double taxalucro) throws PEException, SIException, QNUException, QNException {
         if(quantidade>0){
         if(produto != null){ 
             if(!this.estoque.existe(produto.getId())){//calcula o valor total da compra
@@ -55,7 +53,7 @@ public class Gerente extends Funcionario {
                             }
                             double precoFinal = (produto.getPreco_compra() * (produto.getTaxaLucro() / 100)) + produto.getPreco_compra();
                             produto.setPrecoVenda(precoFinal); //aqui ele seta o preço de venda, sendo a multiplicação do preço de compra pela taxa de lucro
-                            this.estoque.inserir(produto.getId(), quantidade); //ele chama o metodo inserir da interface de estoque, onde ele insere o produto e a quantidade no estoque
+                            this.estoque.inserir(produto, quantidade); //ele chama o metodo inserir da interface de estoque, onde ele insere o produto e a quantidade no estoque
                             try {
                                 this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
                             } catch (SNException e) {
@@ -77,7 +75,7 @@ public class Gerente extends Funcionario {
                         }
                         double precoFinal = (produto.getPreco_compra() * (produto.getTaxaLucro() / 100)) + produto.getPreco_compra();
                         produto.setPrecoVenda(precoFinal); //aqui ele seta o preço de venda, sendo a multiplicação do preço de compra pela taxa de lucro
-                        this.estoque.inserir(produto.getId(), quantidade); //ele chama o metodo inserir da interface de estoque, onde ele insere o produto e a quantidade no estoque
+                        this.estoque.inserir(produto, quantidade); //ele chama o metodo inserir da interface de estoque, onde ele insere o produto e a quantidade no estoque
                         try {
                             this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
                         } catch (SNException e) {
@@ -115,7 +113,7 @@ public class Gerente extends Funcionario {
                         LocalDate data = LocalDate.parse(((ProdutoComestivel) produto).getValidade(), formatador);
                     if (date.isBefore(data)){
 
-                        this.estoque.inserir(produto.getId(), quantidade);  //insere no estoque
+                        this.estoque.inserir(produto, quantidade);  //insere no estoque
                     try {
                         this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
                     } catch (SNException e) {
@@ -126,7 +124,7 @@ public class Gerente extends Funcionario {
                 }
             }
                     else{
-                        this.estoque.inserir(produto.getId(), quantidade);  //insere no estoque
+                        this.estoque.inserir(produto, quantidade);  //insere no estoque
                         try {
                             this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
                         } catch (SNException e) {
