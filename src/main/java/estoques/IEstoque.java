@@ -11,7 +11,7 @@ import produtos.Produto;
 public interface IEstoque {
     
     
-    public void inserir(String id, int quantidade);
+    public void inserir(Produto produto, int quantidade);
     
     public Produto procurar(String id);
     
