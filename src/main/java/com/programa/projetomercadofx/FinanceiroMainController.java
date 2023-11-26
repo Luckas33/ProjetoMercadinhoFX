@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import usuarios.Gerente;
 
 public class FinanceiroMainController {
+//////////// ID dos componentes da tela //////////////
     @FXML
     private Label lbSaldoAtual;
     @FXML
@@ -63,7 +64,7 @@ public class FinanceiroMainController {
     private TextField tfValorDeposito;
     @FXML
     private TextField tfValorSaque;
-
+    /////////////////Método para trocar de tela///////////////////
     public void switchToGerenteMainScreen(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("GerenteMainScreen.fxml"));
         Scene cenaAtual = root.getScene();
@@ -79,7 +80,7 @@ public class FinanceiroMainController {
         Stage palco = (Stage) cenaAtual.getWindow();
         palco.setScene(cenaTela1);
     }
-
+    ///////////// Botões de escolha de operação /////////////
     public void onBtMudarTaxa(ActionEvent event){
         pnTaxa.setDisable(false);
         pnTaxa.setVisible(true);
@@ -143,7 +144,8 @@ public class FinanceiroMainController {
             pnCaixaDeposito.setVisible(false);
         }
     }
-    
+
+    ///////////// Botões de confirmação e preenchimento da escolha feita ///////////////////
     public void onBtConfirmarCaixaDeposito(ActionEvent e){
         try{
           double valor = Double.parseDouble(tfValorDeposito.getText());
@@ -195,11 +197,6 @@ public class FinanceiroMainController {
         }
     }
 
-//    public void setLbSaldoAtual(){
-//        if()
-//        lbSaldoAtual.setText();
-//    }
-
     public void onBtConfirmarCompraProd(ActionEvent event){
         String id = tfIDCompraProduto.getText();
         int quantidade = Integer.parseInt(tfQuantidadeComprarProduto.getText());
@@ -221,6 +218,7 @@ public class FinanceiroMainController {
         }
     }
 
+/////////// Métodos Complementares /////////////////////////////
     public void onBtLimpar(ActionEvent e){
         tfValorDeposito.setText(null);
         tfIDCompraProduto.setText(null);
