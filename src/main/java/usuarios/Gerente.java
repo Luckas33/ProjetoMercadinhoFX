@@ -183,21 +183,29 @@ public void registrarCompra(ProdutoHistorico produto){
         if(produto != null){
             try{
                 produto.setTaxaLucro(taxa);
+                Double valorNovo = (produto.getPreco_compra() * (taxa/100)) + produto.getPreco_compra();
+                produto.setPrecoVenda(valorNovo);
             }catch(TLNException | TLNUException e){
                 e.printStackTrace();
             }
         }
     }
 
-    public Object conferirSaldo(){
-        System.out.println(this.estoque.verSaldo());
-        return null;
+    public void atualizaPrecoCompra(String id, double precoNovo){
+        Produto produto = this.estoque.procurar(id);
+        if(produto != null){
+            try{
+                produto.setprecoCompra(precoNovo);
+            }catch(PCNException | PCNUException e){
+                e.printStackTrace();
+            }
+        }
     }
-    public String retornaSaldo(){
-        String saldoAtual = String.valueOf(this.estoque.verSaldo());
+
+    public void conferirSaldo(){
         System.out.println(this.estoque.verSaldo());
-        return saldoAtual;
     }
+
     @Override
     public String toString() {
         return "Gerente: " + "\n" + "Nome: " + nome + "\n" + "Login: " + login + "\n" + "Email: " + email + "\n" +"Senha: " + senha + "\n";
