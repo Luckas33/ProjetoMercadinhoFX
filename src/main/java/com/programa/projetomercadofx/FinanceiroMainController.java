@@ -16,9 +16,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import produtos.ProdutoHistorico;
 import usuarios.Gerente;
 
 public class FinanceiroMainController {
+///////////// Id dos componentes usados no front end ////////////
     @FXML
     private Label lbSaldoAtual;
     @FXML
@@ -27,8 +29,6 @@ public class FinanceiroMainController {
     private Button btVerBalanço;
     @FXML
     private Button btVoltar;
-    @FXML
-    private Button btSeguir;
     @FXML
     private Button btCaixaSaque;
     @FXML
@@ -64,6 +64,7 @@ public class FinanceiroMainController {
     @FXML
     private TextField tfValorSaque;
 
+//////////////// Métodos de mudança de Tela /////////////////////////////
     public void switchToGerenteMainScreen(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("GerenteMainScreen.fxml"));
         Scene cenaAtual = root.getScene();
@@ -80,6 +81,7 @@ public class FinanceiroMainController {
         palco.setScene(cenaTela1);
     }
 
+/////////////////Botões de Escolha de operação ////////////////////////////
     public void onBtMudarTaxa(ActionEvent event){
         pnTaxa.setDisable(false);
         pnTaxa.setVisible(true);
@@ -143,7 +145,8 @@ public class FinanceiroMainController {
             pnCaixaDeposito.setVisible(false);
         }
     }
-    
+
+    /////////////// Botões de Confirmação e preenchimento da esolha feita /////////////////
     public void onBtConfirmarCaixaDeposito(ActionEvent e){
         try{
           double valor = Double.parseDouble(tfValorDeposito.getText());
@@ -153,6 +156,7 @@ public class FinanceiroMainController {
                   gerente.inserirSaldo(valor);
                   Alerts.showAlert("Depósito",null,"Depósito concluído",Alert.AlertType.INFORMATION);
                   gerente.conferirSaldo();
+                  atualizarSaldoTotal();
               }
           }
         }catch (Exception exception){
@@ -166,11 +170,17 @@ public class FinanceiroMainController {
         try{
             double valor = Double.parseDouble(tfValorSaque.getText());
 
+
             for(Gerente gerente : ListaGerente.gerentesVector){
-                if(gerente != null){
+                double saldo = Double.parseDouble(gerente.retornaSaldo());
+
+                if(gerente != null && valor <= saldo){
                     gerente.removerSaldo(valor);
                     gerente.conferirSaldo();
                     Alerts.showAlert("Saque",null,"Saque concluído",Alert.AlertType.INFORMATION);
+                    atualizarSaldoTotal();
+                }else if(valor > saldo){
+                    Alerts.showAlert("Erro", null, "Insira valor válido", Alert.AlertType.ERROR);
                 }
             }
         }catch (Exception exception){
@@ -195,11 +205,6 @@ public class FinanceiroMainController {
         }
     }
 
-//    public void setLbSaldoAtual(){
-//        if()
-//        lbSaldoAtual.setText();
-//    }
-
     public void onBtConfirmarCompraProd(ActionEvent event){
         String id = tfIDCompraProduto.getText();
         int quantidade = Integer.parseInt(tfQuantidadeComprarProduto.getText());
@@ -211,6 +216,7 @@ public class FinanceiroMainController {
                         gerente.adicionar(id, quantidade);
                         gerente.verEstoqueTotal();
                         onBtLimpar(event);
+                        atualizarSaldoTotal();
                     } catch (SIException | PIException | QNUException | QNException e) {
                         e.printStackTrace();
                     }
@@ -221,17 +227,37 @@ public class FinanceiroMainController {
         }
     }
 
-    public void onBtLimpar(ActionEvent e){
+/////////////// Métodos Complementares //////////////////
+    public void onBtLimpar(ActionEvent e){ ////// Limpa todas as informações inseridas
         tfValorDeposito.setText(null);
         tfIDCompraProduto.setText(null);
+        tfIDTaxa.setText(null);
         tfMudarTaxa.setText(null);
         tfValorSaque.setText(null);
         tfIDCompraProduto.setText(null);
         tfQuantidadeComprarProduto.setText(null);
+        choiceBoxEscolhaCaixa.setValue(null);
+    }
+
+    private void atualizarSaldoTotal(){ //////////// Atualiza o Saldo
+        try {
+            String saldoTotal = "0.0";
+
+            for (Gerente gerente : ListaGerente.gerentesVector) {
+                if (gerente != null) {
+
+                    saldoTotal = String.valueOf(gerente.retornaSaldo());
+                }
+            }
+            lbSaldoAtual.setText(saldoTotal);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     public void initialize(){
+        atualizarSaldoTotal();
         choiceBoxEscolhaCaixa.getItems().addAll("Depósito","Saque");
 
         choiceBoxEscolhaCaixa.setOnAction(this::onCbEscolhaCaixa);

@@ -59,8 +59,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbSubtotal" layoutX="93.0" layoutY="420.0" prefHeight="17.0" prefWidth="0.0" />
-                  <Label fx:id="lbTroco" layoutX="93.0" layoutY="443.0" />
+                  <Label fx:id="lbSubtotal" layoutX="93.0" layoutY="420.0" prefHeight="17.0" prefWidth="70.0" />
                </children>
             </AnchorPane>
          </children>

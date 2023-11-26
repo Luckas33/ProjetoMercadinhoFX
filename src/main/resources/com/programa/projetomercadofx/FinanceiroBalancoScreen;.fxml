@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.programa.projetomercadofx.FinanceiroBalancoController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="391.0" prefWidth="591.0">
+         <children>
+            <Label layoutX="209.0" layoutY="29.0" text="Estoque do Mercadinho" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="208.0">
+               <font>
+                  <Font name="Century" size="16.0" />
+               </font>
+            </Label>
+            <ListView layoutX="41.0" layoutY="96.0" prefHeight="260.0" prefWidth="509.0" />
+            <Button layoutX="41.0" layoutY="60.0" mnemonicParsing="false" text="Ver Tudo" />
+            <Button layoutX="118.0" layoutY="60.0" mnemonicParsing="false" text="Ver Data" />
+            <TextField layoutX="190.0" layoutY="60.0" prefHeight="25.0" prefWidth="86.0" promptText="dd/MM/yyyy" />
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

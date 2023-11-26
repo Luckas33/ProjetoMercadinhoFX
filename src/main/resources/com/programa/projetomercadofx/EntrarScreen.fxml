@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="root" dividerPositions="0.36622073578595316" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.EntrarController">
+<SplitPane fx:id="root" dividerPositions="0.4498327759197324" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.EntrarController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="241.0">
          <children>
-            <Label layoutX="6.0" layoutY="106.0" text="Mercadinho Inteligente">
+            <Label layoutX="35.0" layoutY="107.0" text="Mercadinho Inteligente">
                <font>
                   <Font name="Constantia" size="20.0" />
                </font>
@@ -24,7 +24,7 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <Label layoutX="61.0" layoutY="130.0" text="Entrar em Conta">
+            <Label layoutX="90.0" layoutY="131.0" text="Entrar em Conta">
                <font>
                   <Font name="Century" size="12.0" />
                </font>
@@ -32,18 +32,18 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="336.0" prefWidth="278.0">
          <children>
-            <Label layoutX="79.0" layoutY="351.0" text="Não tem cadastro? " AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="178.0" />
-            <Button fx:id="btcadastrar" layoutX="212.0" layoutY="349.0" mnemonicParsing="false" onAction="#switchToCadastrarScreen" text="Cadastrar" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="212.0">
+            <Label layoutX="57.0" layoutY="351.0" prefHeight="17.0" prefWidth="112.0" text="Não tem cadastro? " AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="157.0" />
+            <Button fx:id="btcadastrar" layoutX="181.0" layoutY="349.0" mnemonicParsing="false" onAction="#switchToCadastrarScreen" text="Cadastrar" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="181.0">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button fx:id="btConfirmar" layoutX="251.0" layoutY="230.0" mnemonicParsing="false" onAction="#onBtConfirmar" text="Confirmar">
+            <Button fx:id="btConfirmar" layoutX="219.0" layoutY="230.0" mnemonicParsing="false" onAction="#onBtConfirmar" text="Confirmar">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Pane layoutX="64.0" layoutY="30.0" prefHeight="200.0" prefWidth="263.0">
+            <Pane layoutX="32.0" layoutY="30.0" prefHeight="200.0" prefWidth="263.0">
                <children>
                   <Label alignment="CENTER" layoutX="16.0" layoutY="88.0" prefHeight="17.0" prefWidth="54.0" text="Senha:">
                      <font>
