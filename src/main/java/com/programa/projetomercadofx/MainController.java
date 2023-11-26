@@ -9,6 +9,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 
@@ -21,7 +23,8 @@ public class MainController {
     private Button btCadastrar;
     @FXML
     private Button btCodigoFonte;
-
+    @FXML
+    private ImageView imageViewUFC;
     @FXML
     private Parent root;
 
@@ -61,7 +64,10 @@ public class MainController {
 
     @FXML
     public void onbtCodigoFonte(ActionEvent e){
-        System.out.println("eae boy");
+        String imagem = "UFC.png";
+        Image UFC = new Image(getClass().getResourceAsStream(imagem));
+        imageViewUFC.setImage(UFC);
+
         Alerts.showAlert("Aviso",null,"Equipe: \nLucas Sobral : Programador Front-end\nJoão Rodrigo : Programador Back-end\nOsvaldo Medeiros : Programador Back-end\nIarley Alves : Programador e Design\nAnderson : Programador Back-end\n\nCódigo Fonte: github.com/Luckas33/ProjetoMercadinhoFX", Alert.AlertType.INFORMATION);
 
     }
