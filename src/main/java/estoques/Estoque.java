@@ -1,6 +1,7 @@
 
 package estoques;
 
+import excecao.PIException;
 import excecao.SNException;
 import produtos.Produto;
 import produtos.ProdutoComestivel;
@@ -56,26 +57,19 @@ public class Estoque implements IEstoque {
 
     //metodo para ver se o produto existe no estoque, mesmo funcionamento do procurar, mas esse retona um boolean
     @Override
-    public boolean existe(String id) {
-        for(Produto produto : estoque){
-            if(produto.getId().equals(id)){
-                return true;
-            }
-                
-        }
-        return false;
+    public boolean existe(String id) { //Anderson: Alterei 
+        return id != null && this.procurar(id) != null;
     }
 
     //metodo para reduzir um produto do estoque
     @Override
-    public void reduzir(String id, int quantidade) /*throws PIException*/ {
-        for(Produto produto : estoque) {
-            if (produto != null) {
-                produto.setQuantidade(produto.getQuantidade() - quantidade); //pega a quantidade que tinha antes, e diminui pela desejada
-            }
+    public void reduzir(String id, int quantidade) throws PIException {
+        if(!this.existe(id)){ 
+            throw new PIException(id);
         }
-            //else
-                //throw new PIException(produto.getQuantidade()) // **n achei nenhum metodo que converte id para produto e o contrario
+        // Garante que inicialmente esse produto deve existir para sofrer redução
+        Produto produto = this.procurar(id);
+        produto.setQuantidade(produto.getQuantidade() - quantidade); //pega a quantidade que tinha antes, e diminui pela desejada
     }
 
     //metodo para mostrar os produtos do estoque pelo tipo dele
