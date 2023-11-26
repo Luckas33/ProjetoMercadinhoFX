@@ -102,11 +102,16 @@ public class VendedorMainController {
             if (vendedor != null) {
                 Produto produto = vendedor.retornaProduto(id);
                 if (produto != null) {
-                    ProdutoHistorico produtoHist = new ProdutoHistorico(produto.getId(), produto.getPrecoVenda(), quantidade);
-                    produto.setQuantidadeVendida(quantidade);
-                    this.carrinho.add(produto);
-                    this.vendas.add(produtoHist);
-                    this.atualizarSubtotal();
+                    if(produto.getQuantidade() >= quantidade) {
+                        ProdutoHistorico produtoHist = new ProdutoHistorico(produto.getId(), produto.getPrecoVenda(), quantidade);
+                        produto.setQuantidadeVendida(quantidade);
+                        this.carrinho.add(produto);
+                        this.vendas.add(produtoHist);
+                        this.atualizarSubtotal();
+                    }
+                    else{
+                        Alerts.showAlert("Erro Venda", null,"Quantidade insuficiente em estoque",Alert.AlertType.ERROR);
+                    }
                 }
                 else{
                     Alerts.showAlert("Erro Venda", null,"Produto inexistente",Alert.AlertType.ERROR);

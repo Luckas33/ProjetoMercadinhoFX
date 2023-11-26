@@ -183,7 +183,20 @@ public void registrarCompra(ProdutoHistorico produto){
         if(produto != null){
             try{
                 produto.setTaxaLucro(taxa);
+                Double valorNovo = (produto.getPreco_compra() * (taxa/100)) + produto.getPreco_compra();
+                produto.setPrecoVenda(valorNovo);
             }catch(TLNException | TLNUException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void atualizaPrecoCompra(String id, double precoNovo){
+        Produto produto = this.estoque.procurar(id);
+        if(produto != null){
+            try{
+                produto.setprecoCompra(precoNovo);
+            }catch(PCNException | PCNUException e){
                 e.printStackTrace();
             }
         }

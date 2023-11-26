@@ -63,6 +63,16 @@ public class FinanceiroMainController {
     private TextField tfValorDeposito;
     @FXML
     private TextField tfValorSaque;
+    @FXML
+    private Button btMudarPreco;
+    @FXML
+    private TextField tfIDMudarPreco;
+    @FXML
+    private TextField tfValorNovoPreco;
+    @FXML
+    private Button btConfirmarPrecoNovo;
+    @FXML
+    private Pane pnAtualizarPreco;
 
     public void switchToGerenteMainScreen(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("GerenteMainScreen.fxml"));
@@ -80,6 +90,21 @@ public class FinanceiroMainController {
         palco.setScene(cenaTela1);
     }
 
+    public void onBtMudarPreco(ActionEvent event){
+        pnAtualizarPreco.setDisable(false);
+        pnAtualizarPreco.setVisible(true);
+        //impedindo dos outros aparecer
+        choiceBoxEscolhaCaixa.setVisible(false);
+        choiceBoxEscolhaCaixa.setDisable(true);
+        pnCaixaDeposito.setDisable(true);
+        pnCaixaDeposito.setVisible(false);
+        pnCaixaSaque.setVisible(false);
+        pnCaixaSaque.setDisable(true);
+        pnTaxa.setDisable(true);
+        pnTaxa.setVisible(false);
+        pnComprarProduto.setDisable(true);
+        pnComprarProduto.setVisible(false);
+    }
     public void onBtMudarTaxa(ActionEvent event){
         pnTaxa.setDisable(false);
         pnTaxa.setVisible(true);
@@ -187,6 +212,7 @@ public class FinanceiroMainController {
            for(Gerente gerente : ListaGerente.gerentesVector){
                if(gerente != null){
                    gerente.atualizarTaxa(id, taxa);
+
                }
            }
            Alerts.showAlert("Taxa",null,"Taxa Atualizada",Alert.AlertType.INFORMATION);
@@ -221,6 +247,16 @@ public class FinanceiroMainController {
         }
     }
 
+    public void onBtConfirmarPrecoNovo(ActionEvent event){
+        String id = tfIDMudarPreco.getText();
+        Double preco = Double.parseDouble(tfValorNovoPreco.getText());
+        for(Gerente gerente : ListaGerente.gerentesVector){
+            if(gerente != null){
+                gerente.atualizaPrecoCompra(id, preco);
+            }
+        }
+    }
+
     public void onBtLimpar(ActionEvent e){
         tfValorDeposito.setText(null);
         tfIDCompraProduto.setText(null);
@@ -252,6 +288,9 @@ public class FinanceiroMainController {
 
         pnComprarProduto.setDisable(true);
         pnComprarProduto.setVisible(false);
+
+        pnAtualizarPreco.setDisable(true);
+        pnAtualizarPreco.setVisible(false);
     }
 
 
