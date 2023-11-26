@@ -155,6 +155,7 @@ public class FinanceiroMainController {
                   gerente.inserirSaldo(valor);
                   Alerts.showAlert("Depósito",null,"Depósito concluído",Alert.AlertType.INFORMATION);
                   gerente.conferirSaldo();
+                  atualizarSaldoTotal();
               }
           }
         }catch (Exception exception){
@@ -173,6 +174,7 @@ public class FinanceiroMainController {
                     gerente.removerSaldo(valor);
                     gerente.conferirSaldo();
                     Alerts.showAlert("Saque",null,"Saque concluído",Alert.AlertType.INFORMATION);
+                    atualizarSaldoTotal();
                 }
             }
         }catch (Exception exception){
@@ -228,8 +230,23 @@ public class FinanceiroMainController {
         tfQuantidadeComprarProduto.setText(null);
     }
 
+    public void atualizarSaldoTotal(){
+        try{
+            String saldoTotal = "0.0";
+
+            for(Gerente gerente : ListaGerente.gerentesVector){
+                if(gerente != null){
+                    saldoTotal = String.valueOf(gerente.retornaSaldo());
+                }
+            }
+            lbSaldoAtual.setText(saldoTotal);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
     @FXML
     public void initialize(){
+        atualizarSaldoTotal();
         choiceBoxEscolhaCaixa.getItems().addAll("Depósito","Saque");
 
         choiceBoxEscolhaCaixa.setOnAction(this::onCbEscolhaCaixa);

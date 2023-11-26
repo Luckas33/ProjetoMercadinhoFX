@@ -205,7 +205,10 @@ public void registrarCompra(ProdutoHistorico produto){
     public void conferirSaldo(){
         System.out.println(this.estoque.verSaldo());
     }
-
+    public String retornaSaldo(){
+        String saldoAtual = String.valueOf(this.estoque.verSaldo());
+        return saldoAtual;
+    }
     @Override
     public String toString() {
         return "Gerente: " + "\n" + "Nome: " + nome + "\n" + "Login: " + login + "\n" + "Email: " + email + "\n" +"Senha: " + senha + "\n";
