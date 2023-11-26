@@ -13,7 +13,7 @@ public class TesteExceptions {
     public void teste1(){
         IEstoque estoque = new Estoque();
         Gerente gerente = new Gerente(estoque, "rodrigo", "jrodri", "rodri@gmail","123");
-        gerente.iniciarSaldo(100.0);
+
 
         Produto produto1 = new ProdutoComestivel("refrigerante", "9888", "coca cola", 20.0, "bebida", "20/07/2023");
 

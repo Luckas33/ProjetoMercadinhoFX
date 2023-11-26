@@ -45,7 +45,11 @@ public class Gerente extends Funcionario {
                         double precoFinal = (produto.getPreco_compra() * (produto.getTaxaLucro()/100)) + produto.getPreco_compra();
                         produto.setPrecoVenda(precoFinal); //aqui ele seta o preço de venda, sendo a multiplicação do preço de compra pela taxa de lucro
                         this.estoque.inserir(produto.getId(), quantidade); //ele chama o metodo inserir da interface de estoque, onde ele insere o produto e a quantidade no estoque
-                        this.estoque.adquirirEstoque(produto.getId(),valorTotal); //atualiza o saldo
+                        try {
+                            this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
+                        }catch (SNException e){
+                            e.printStackTrace();
+                        }
                         ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade); //cria um objeto de produto historico, onde os atributos dele vão ser os mesmos do que o produto que foi vendido
                     this.registrarCompra(produtoHistorico); //registra a compra, colocando-a no vetor do historico
                 }
@@ -72,7 +76,11 @@ public class Gerente extends Funcionario {
             if(this.estoque.existe(produto.getId())){
                if(this.estoque.verSaldo() >= valorTotal){    //checa o saldo
                  this.estoque.inserir(produto.getId(), quantidade);  //insere no estoque
-                 this.estoque.adquirirEstoque(produto.getId(),valorTotal);
+                   try {
+                       this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
+                   }catch (SNException e){
+                       e.printStackTrace();
+                   }
                  ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
                  this.registrarCompra(produtoHistorico); //registra a compra
             }
@@ -179,6 +187,10 @@ public void registrarCompra(ProdutoHistorico produto){
                 e.printStackTrace();
             }
         }
+    }
+
+    public void conferirSaldo(){
+        System.out.println(this.estoque.verSaldo());
     }
 
     @Override

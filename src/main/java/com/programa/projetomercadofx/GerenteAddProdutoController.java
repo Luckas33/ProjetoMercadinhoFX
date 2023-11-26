@@ -141,12 +141,12 @@ public class GerenteAddProdutoController {
                 } else if (categoria.equals("Não Comestível") && !nome.isEmpty() && !id.isEmpty() && !marca.isEmpty() && precoCompra > 0.0 && !tipo.isEmpty()) {
                     produtoNaoComestivel = new ProdutoNaoComestivel(nome, id, marca, precoCompra, tipo);
                     ListaProduto.produtosVector.add(produtoNaoComestivel);
-                    ListaProduto.mostrarLista();
                     for(Gerente gerente : ListaGerente.gerentesVector){
                         if(gerente != null){
                             try {
                                 gerente.cadastrar(id, quantidade, taxaLucro);
                                 Alerts.showAlert("Adicionar produto", null, "Produto Não Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
+                                gerente.verEstoqueTipo(produtoNaoComestivel.getTipo());
                             }catch (QNException exception){
                                 exception.printStackTrace();
                                 onBtLimpar(e);

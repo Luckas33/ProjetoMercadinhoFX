@@ -29,9 +29,9 @@ public interface IEstoque {
     
     
     // **teste**
-    public void venderEstoque(double valor) throws VNException;
+    //public void venderEstoque(double valor) throws VNException;
 
-    public void adquirirEstoque(String Id, double valor) throws SIException;
+    //public void adquirirEstoque(double valor) throws SIException;
 
-    public void venderCartaoEstoque(double valor);
+    //public void venderCartaoEstoque(double valor);
 }

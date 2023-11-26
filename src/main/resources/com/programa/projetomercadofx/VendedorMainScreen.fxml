@@ -54,17 +54,12 @@
                         </Label>
                      </top>
                   </BorderPane>
-                  <Label fx:id="lbSubtotal" layoutX="24.0" layoutY="420.0" text="Sub total:">
+                  <Label layoutX="24.0" layoutY="420.0" text="Sub total:">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="btSubtotal" layoutX="93.0" layoutY="420.0" prefHeight="17.0" prefWidth="0.0" />
-                  <Label layoutX="24.0" layoutY="443.0" prefHeight="17.0" prefWidth="55.0" text="Troco:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="lbSubtotal" layoutX="93.0" layoutY="420.0" prefHeight="17.0" prefWidth="0.0" />
                   <Label fx:id="lbTroco" layoutX="93.0" layoutY="443.0" />
                </children>
             </AnchorPane>
