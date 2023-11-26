@@ -125,36 +125,6 @@ public class Estoque implements IEstoque {
         }else
             throw new SNException(valor);
     }
-    
-    // **metodo para variar o saldo(teste)**
-    // **precisa de saldo nulo???**
-    // **não precisa conferir se o valor vai ser negativo, pois ele definido de acordo com o precoCompra e a quantidade que ja sao checadas 
-   // public void adquirirEstoque(String Id, double valor) throws SIException {
-      //  Estoque estoque = new Estoque();
-       // if(valor>0){
-         //   if(estoque.verSaldo() - valor>0){
-        //        this.saldo = estoque.verSaldo() - valor;
-         //   }else
-         //       throw new SIException(Id, saldo, valor);
-       // }
-        
-   // }
 
-    // **mais um teste**
-   // public void venderEstoque(double valor) throws VNException{
-      //  Estoque estoque = new Estoque();
-       // if(valor>0)
-       //     this.saldo = estoque.verSaldo() + valor;
-      //  else
-      //      throw new VNException(valor);
-  //  }
-
-    // **mais um teste**
-  //  public void venderCartaoEstoque(double valor){
-   //     Estoque estoque = new Estoque();
-  //      if(valor>0)
-  //          this.saldo = estoque.verSaldo() + valor;
-        
-   // }
 
 }

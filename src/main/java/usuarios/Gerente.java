@@ -5,8 +5,11 @@ import estoques.IEstoque;
 import excecao.*;
 import globalService.ListaProduto;
 import produtos.Produto;
+import produtos.ProdutoComestivel;
 import produtos.ProdutoHistorico;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Vector;
 
 
@@ -14,6 +17,8 @@ public class Gerente extends Funcionario {
     
     //cria o vetor onde vai ta o historico de vendas e compras do mercado
    public static Vector<ProdutoHistorico> produtoHist;
+    LocalDate date = LocalDate.now();
+    DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     
     //construtor
     public Gerente(IEstoque estoque, String nome, String login, String email, String senha) {
@@ -32,26 +37,55 @@ public class Gerente extends Funcionario {
             if(!this.estoque.existe(produto.getId())){//calcula o valor total da compra
               double valorTotal = (quantidade * produto.getPreco_compra());
 
-                if(this.estoque.verSaldo() >= valorTotal){ //checa se o saldo do mercado é maior que o preço da compra
-                        try{
+                if(this.estoque.verSaldo() >= valorTotal) {//checa se o saldo do mercado é maior que o preço da compra
+
+                    if (produto instanceof ProdutoComestivel) {
+                        LocalDate data = LocalDate.parse(((ProdutoComestivel) produto).getValidade(), formatador);
+                        if (date.isBefore(data)) {
+
+
+                            try {
+                                produto.setTaxaLucro(taxalucro);  //seta a taxa de lucro que esse produto vai ter
+                            } catch (TLNException e) { // testa se a taxa lucro é negatica
+                                System.out.print(e.getMessage());
+                                System.out.print(" Taxa: ");
+                                System.out.print(taxalucro); // **n seria taxaLucro??**
+                            } catch (TLNUException e) { // testa se a taxa lucro é nula
+                                System.out.print(e.getMessage());
+                            }
+                            double precoFinal = (produto.getPreco_compra() * (produto.getTaxaLucro() / 100)) + produto.getPreco_compra();
+                            produto.setPrecoVenda(precoFinal); //aqui ele seta o preço de venda, sendo a multiplicação do preço de compra pela taxa de lucro
+                            this.estoque.inserir(produto.getId(), quantidade); //ele chama o metodo inserir da interface de estoque, onde ele insere o produto e a quantidade no estoque
+                            try {
+                                this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
+                            } catch (SNException e) {
+                                e.printStackTrace();
+                            }
+                            ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade); //cria um objeto de produto historico, onde os atributos dele vão ser os mesmos do que o produto que foi vendido
+                            this.registrarCompra(produtoHistorico); //registra a compra, colocando-a no vetor do historico
+                        }
+                }
+                    else{
+                        try {
                             produto.setTaxaLucro(taxalucro);  //seta a taxa de lucro que esse produto vai ter
-                        } catch(TLNException e){ // testa se a taxa lucro é negatica
+                        } catch (TLNException e) { // testa se a taxa lucro é negatica
                             System.out.print(e.getMessage());
                             System.out.print(" Taxa: ");
                             System.out.print(taxalucro); // **n seria taxaLucro??**
-                        } catch(TLNUException e){ // testa se a taxa lucro é nula
+                        } catch (TLNUException e) { // testa se a taxa lucro é nula
                             System.out.print(e.getMessage());
                         }
-                        double precoFinal = (produto.getPreco_compra() * (produto.getTaxaLucro()/100)) + produto.getPreco_compra();
+                        double precoFinal = (produto.getPreco_compra() * (produto.getTaxaLucro() / 100)) + produto.getPreco_compra();
                         produto.setPrecoVenda(precoFinal); //aqui ele seta o preço de venda, sendo a multiplicação do preço de compra pela taxa de lucro
                         this.estoque.inserir(produto.getId(), quantidade); //ele chama o metodo inserir da interface de estoque, onde ele insere o produto e a quantidade no estoque
                         try {
                             this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
-                        }catch (SNException e){
+                        } catch (SNException e) {
                             e.printStackTrace();
                         }
                         ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade); //cria um objeto de produto historico, onde os atributos dele vão ser os mesmos do que o produto que foi vendido
-                    this.registrarCompra(produtoHistorico); //registra a compra, colocando-a no vetor do historico
+                        this.registrarCompra(produtoHistorico); //registra a compra, colocando-a no vetor do historico
+                    }
                 }
                 else
                     throw new SIException(produto.getId(),this.estoque.verSaldo(), valorTotal); //restrição de saldo insuficiente para adquirir novos produtos
@@ -73,16 +107,34 @@ public class Gerente extends Funcionario {
         if (quantidade>0){
         if(produto != null){
             double valorTotal = (quantidade * produto.getPreco_compra());  //valor da compra
-            if(this.estoque.existe(produto.getId())){
-               if(this.estoque.verSaldo() >= valorTotal){    //checa o saldo
-                 this.estoque.inserir(produto.getId(), quantidade);  //insere no estoque
-                   try {
-                       this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
-                   }catch (SNException e){
-                       e.printStackTrace();
-                   }
-                 ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
-                 this.registrarCompra(produtoHistorico); //registra a compra
+            if(this.estoque.existe(produto.getId())) {
+
+                if (this.estoque.verSaldo() >= valorTotal) {//checa o saldo
+
+                    if (produto instanceof ProdutoComestivel){
+                        LocalDate data = LocalDate.parse(((ProdutoComestivel) produto).getValidade(), formatador);
+                    if (date.isBefore(data)){
+
+                        this.estoque.inserir(produto.getId(), quantidade);  //insere no estoque
+                    try {
+                        this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
+                    } catch (SNException e) {
+                        e.printStackTrace();
+                    }
+                    ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
+                    this.registrarCompra(produtoHistorico); //registra a compra
+                }
+            }
+                    else{
+                        this.estoque.inserir(produto.getId(), quantidade);  //insere no estoque
+                        try {
+                            this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
+                        } catch (SNException e) {
+                            e.printStackTrace();
+                        }
+                        ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
+                        this.registrarCompra(produtoHistorico); //registra a compra
+                    }
             }
                else{
                    throw new SIException(produto.getId(),this.estoque.verSaldo(), valorTotal); // restrição se o cara nao tem saldo o suficiente para bancar o a compra de novos produtos

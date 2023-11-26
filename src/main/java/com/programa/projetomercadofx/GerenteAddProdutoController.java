@@ -112,6 +112,7 @@ public class GerenteAddProdutoController {
                             try {
                                 gerente.cadastrar(id, quantidade, taxaLucro);
                                 Alerts.showAlert("Adicionar produto", null, "Produto Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
+                                gerente.verEstoqueTipo(produtoComestivel.getTipo());
                             }
                             catch (QNException exception){
                                 exception.printStackTrace();

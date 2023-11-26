@@ -27,11 +27,5 @@ public interface IEstoque {
     
     public void definirSaldo(double valor) throws SNException;
     
-    
-    // **teste**
-    //public void venderEstoque(double valor) throws VNException;
 
-    //public void adquirirEstoque(double valor) throws SIException;
-
-    //public void venderCartaoEstoque(double valor);
 }
