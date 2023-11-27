@@ -1,11 +1,7 @@
 
 package estoques;
 
-
-import excecao.PIException;
-import excecao.SIException;
-import excecao.SNException;
-import excecao.VNException;
+import excecao.*;
 import produtos.Produto;
 
 public interface IEstoque {
@@ -17,7 +13,7 @@ public interface IEstoque {
     
     public boolean existe(String id);
     
-    public void reduzir(String id, int quantidade) throws PIException;
+    public void reduzir(String id, int quantidade) throws PIException, QINException;
     
     public void mostrarEstoqueTipo(String tipo);
 

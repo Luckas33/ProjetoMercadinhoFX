@@ -2,9 +2,9 @@ package com.programa.projetomercadofx;
 
 import com.programa.projetomercadofx.controllerUtil.Alerts;
 import excecao.PIException;
-import excecao.QNException;
-import excecao.QNUException;
+import excecao.QINException;
 import excecao.SIException;
+import excecao.*;
 import globalService.ListaGerente;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -209,7 +209,7 @@ public class FinanceiroMainController {
                         gerente.adicionar(id, quantidade);
                         gerente.verEstoqueTotal();
                         onBtLimpar(event);
-                    } catch (SIException | PIException | QNUException | QNException e) {
+                    } catch (SIException | PIException | QINException | DVIException e) {
                         e.printStackTrace();
                     }
                 }

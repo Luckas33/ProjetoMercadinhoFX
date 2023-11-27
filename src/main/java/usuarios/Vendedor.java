@@ -28,7 +28,7 @@ public class Vendedor extends Funcionario {
 
     // **minha gambiarra abaixo** //
 
-    public void venderDinheiro(String id, int quantidade) throws QIException, QNException, QNUException, VNException, VNUException, VIException,  PIException{
+    public void venderDinheiro(String id, int quantidade) throws QIException, QINException, PIException, DVIException{
 
             if(quantidade > 0){
         
@@ -54,6 +54,8 @@ public class Vendedor extends Funcionario {
                     throw new QIException(id, produto.getQuantidade(), quantidade);
                 }
             }
+            else
+                throw new DVIException(id, data);
         }
             else{
                 if (quantidade <= produto.getQuantidade()) { //checa se a quantidade desejada pelo cliente tem o suficiente no estoque
@@ -74,10 +76,8 @@ public class Vendedor extends Funcionario {
         else
             throw new PIException(id);
         }
-        else if(quantidade == 0)
-            throw new QNUException();
-        else if(quantidade < 0)
-            throw new QNException(quantidade);
+        else
+            throw new QINException(quantidade);
 
       
     }
@@ -85,9 +85,9 @@ public class Vendedor extends Funcionario {
 
 
     //metodo para vender por cartão de crédito(**teste**)
-     public void venderCredito(String id, int quantidade, int parcelas) throws PANUException, PANException, PIException, QIException, QNUException, QNException{
+     public void venderCredito(String id, int quantidade, int parcelas) throws PIException, QIException, QINException, DVIException{
         
-        if(parcelas>0){
+       
         
         if(quantidade>0) {
 
@@ -113,6 +113,8 @@ public class Vendedor extends Funcionario {
                         throw new QIException(id, produto.getQuantidade(), quantidade);
                     }
             }
+                else
+                    throw new DVIException(id, data);
         }
                 else{
                     if (quantidade <= produto.getQuantidade()) { //checa a quantidade
@@ -132,21 +134,15 @@ public class Vendedor extends Funcionario {
                 }
         }else
             throw new PIException(id); //produto ja existente
-        }else if(quantidade < 0)
-            throw new QNException(quantidade); // quantidade negativa
-         else if(quantidade == 0)
-            throw new QNUException(); // quantidade nula
-        }else if(parcelas<0)
-            throw new PANException(parcelas); // parcelas negativas
-         else
-            throw new PANUException(parcelas); // parcelas nula
+        }else
+            throw new QINException(quantidade); // quantidade inválida
     }
 
 
 
 
     //metodo para vender no debito(**teste**)
-      public void venderDebito(String id, int quantidade) throws QNException, QNUException, QIException, PIException{
+      public void venderDebito(String id, int quantidade) throws QINException, QIException, PIException, DVIException{
         if(quantidade>0) {
             Produto produto = this.estoque.procurar(id); //procura no vetor estoque
             if (produto != null) {
@@ -170,6 +166,8 @@ public class Vendedor extends Funcionario {
                     throw new QIException(id, produto.getQuantidade(), quantidade);
                 }
             }
+                else
+                    throw new DVIException(id, data);
         }
                 else{
                     if (quantidade <= produto.getQuantidade()) { //checa a quantidade
@@ -189,10 +187,8 @@ public class Vendedor extends Funcionario {
                 }
         }else
             throw new PIException(id); //produto ja existente
-        }else if(quantidade < 0)
-            throw new QNException(quantidade); //quantidade negativa
-         else if(quantidade == 0)
-            throw new QNUException(); // quantidade nula
+        }else
+            throw new QINException(quantidade); //quantidade inválida
     }
 
 

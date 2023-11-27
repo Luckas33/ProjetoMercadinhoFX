@@ -29,7 +29,7 @@ public class Gerente extends Funcionario {
     // *****teste*****//
     //metodo para cadastrar um produto no estoque, checa se o produto ja existe no estoque, se não existir
     //ele cadastra
-     public void cadastrar(Produto produto, int quantidade, double taxalucro) throws PEException, SIException, QNUException, QNException {
+     public void cadastrar(Produto produto, int quantidade, double taxalucro) throws PEException, SIException, QINException, DVIException {
         if(quantidade>0){
         if(produto != null){ 
             if(!this.estoque.existe(produto.getId())){//calcula o valor total da compra
@@ -44,12 +44,10 @@ public class Gerente extends Funcionario {
 
                             try {
                                 produto.setTaxaLucro(taxalucro);  //seta a taxa de lucro que esse produto vai ter
-                            } catch (TLNException e) { // testa se a taxa lucro é negatica
+                            } catch (TLIException e) { // testa se a taxa lucro é inválida
                                 System.out.print(e.getMessage());
                                 System.out.print(" Taxa: ");
                                 System.out.print(taxalucro); // **n seria taxaLucro??**
-                            } catch (TLNUException e) { // testa se a taxa lucro é nula
-                                System.out.print(e.getMessage());
                             }
                             double precoFinal = (produto.getPreco_compra() * (produto.getTaxaLucro() / 100)) + produto.getPreco_compra();
                             produto.setPrecoVenda(precoFinal); //aqui ele seta o preço de venda, sendo a multiplicação do preço de compra pela taxa de lucro
@@ -62,16 +60,16 @@ public class Gerente extends Funcionario {
                             ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade); //cria um objeto de produto historico, onde os atributos dele vão ser os mesmos do que o produto que foi vendido
                             this.registrarCompra(produtoHistorico); //registra a compra, colocando-a no vetor do historico
                         }
+                        else
+                            throw new DVIException(produto.getId(), data);
                 }
                     else{
                         try {
                             produto.setTaxaLucro(taxalucro);  //seta a taxa de lucro que esse produto vai ter
-                        } catch (TLNException e) { // testa se a taxa lucro é negatica
+                        } catch (TLIException e) { // testa se a taxa lucro é inválida
                             System.out.print(e.getMessage());
                             System.out.print(" Taxa: ");
                             System.out.print(taxalucro); // **n seria taxaLucro??**
-                        } catch (TLNUException e) { // testa se a taxa lucro é nula
-                            System.out.print(e.getMessage());
                         }
                         double precoFinal = (produto.getPreco_compra() * (produto.getTaxaLucro() / 100)) + produto.getPreco_compra();
                         produto.setPrecoVenda(precoFinal); //aqui ele seta o preço de venda, sendo a multiplicação do preço de compra pela taxa de lucro
@@ -91,16 +89,14 @@ public class Gerente extends Funcionario {
             else
                 throw new PEException(produto.getId()); //restricao se o produto ja existe
         }
-        }else if(quantidade==0)
-            throw new QNUException();//restriçao se a quantidade for nula
-         else
-            throw new QNException(quantidade); //restricao se a quantidade for negativa
+        }else
+            throw new QINException(quantidade);//restriçao se a quantidade for inválida
     }
 
     //metodo para adicionar mais produtos no estoque, caso ele ja esteja cadastrado
     //se nao tiver cadastrado, nao vai adicionar
     //esqueci de salvar esse método sem o método adquirirEstoque em vez de definirSaldo
-      public void adicionar(String id, int quantidade) throws SIException, PIException, QNUException, QNException {
+      public void adicionar(String id, int quantidade) throws SIException, PIException, QINException, DVIException {
         Produto produto = this.estoque.procurar(id);
         if (quantidade>0){
         if(produto != null){
@@ -122,6 +118,8 @@ public class Gerente extends Funcionario {
                     ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
                     this.registrarCompra(produtoHistorico); //registra a compra
                 }
+                else
+                    throw new DVIException(id, data);
             }
                     else{
                         this.estoque.inserir(produto, quantidade);  //insere no estoque
@@ -142,10 +140,8 @@ public class Gerente extends Funcionario {
                 throw new PIException(produto.getId()); // restricao se o produto nao foi cadastrado ainda
             }
         }
-        }else if(quantidade==0)
-            throw new QNUException();//restriçao se a quantidade for nula
-         else
-            throw new QNException(quantidade); //restricao se a quantidade for negativa 
+        }else
+            throw new QINException(quantidade);//restriçao se a quantidade for inválida
     }
 
     //metodo pro gerente ver o estoque, ele somente chama o metodo de mostrar o estoque da interface estoque
@@ -236,7 +232,7 @@ public void registrarCompra(ProdutoHistorico produto){
                 produto.setTaxaLucro(taxa);
                 Double valorNovo = (produto.getPreco_compra() * (taxa/100)) + produto.getPreco_compra();
                 produto.setPrecoVenda(valorNovo);
-            }catch(TLNException | TLNUException e){
+            }catch(TLIException e){
                 e.printStackTrace();
             }
         }
@@ -246,8 +242,8 @@ public void registrarCompra(ProdutoHistorico produto){
         Produto produto = this.estoque.procurar(id);
         if(produto != null){
             try{
-                produto.setprecoCompra(precoNovo);
-            }catch(PCNException | PCNUException e){
+                produto.setPrecoCompra(precoNovo);
+            }catch(PCIException e){
                 e.printStackTrace();
             }
         }

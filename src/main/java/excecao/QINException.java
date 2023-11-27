@@ -1,12 +1,12 @@
 package excecao;
 
-public class QNException extends Exception{
+public class QINException extends Exception{
     
 
     private double quantidade_requerida;
 
-    public QNException(double quantidade_requerida){
-        super("\nQuantidade requerida negativa");
+    public QINException(double quantidade_requerida){
+        super("\nQuantidade requerida inválida");
         this.quantidade_requerida = quantidade_requerida;
       }
 
