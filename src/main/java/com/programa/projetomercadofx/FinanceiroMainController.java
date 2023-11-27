@@ -1,6 +1,7 @@
 package com.programa.projetomercadofx;
 
 import com.programa.projetomercadofx.controllerUtil.Alerts;
+import excecao.DVIException;
 import excecao.PIException;
 import excecao.QINException;
 import excecao.SIException;
@@ -18,7 +19,7 @@ import javafx.stage.Stage;
 import usuarios.Gerente;
 
 public class FinanceiroMainController {
-//////////// ID dos componentes da tela //////////////
+    //////////// ID dos componentes da tela //////////////
     @FXML
     private Label lbSaldoAtual;
     @FXML
@@ -91,7 +92,7 @@ public class FinanceiroMainController {
         pnComprarProduto.setDisable(true);
         pnComprarProduto.setVisible(false);
     }
-    
+
     public void onBtComprarProduto(ActionEvent event){
         pnComprarProduto.setDisable(false);
         pnComprarProduto.setVisible(true);
@@ -104,7 +105,7 @@ public class FinanceiroMainController {
         pnTaxa.setVisible(false);
 
     }
-    
+
     public void onBtCaixa(ActionEvent event){
 
         choiceBoxEscolhaCaixa.setVisible(true);
@@ -147,16 +148,16 @@ public class FinanceiroMainController {
     ///////////// Botões de confirmação e preenchimento da escolha feita ///////////////////
     public void onBtConfirmarCaixaDeposito(ActionEvent e){
         try{
-          double valor = Double.parseDouble(tfValorDeposito.getText());
+            double valor = Double.parseDouble(tfValorDeposito.getText());
 
-          for(Gerente gerente : ListaFuncionario.gerentesVector){
-              if(gerente != null){
-                  gerente.inserirSaldo(valor);
-                  Alerts.showAlert("Depósito",null,"Depósito concluído",Alert.AlertType.INFORMATION);
-                  gerente.conferirSaldo();
-                  atualizarSaldoTotal();
-              }
-          }
+            for(Gerente gerente : ListaFuncionario.gerentesVector){
+                if(gerente != null){
+                    gerente.inserirSaldo(valor);
+                    Alerts.showAlert("Depósito",null,"Depósito concluído",Alert.AlertType.INFORMATION);
+                    gerente.conferirSaldo();
+                    atualizarSaldoTotal();
+                }
+            }
         }catch (Exception exception){
             exception.printStackTrace();
             Alerts.showAlert("Erro", null, "Insira valor válido", Alert.AlertType.ERROR);
@@ -187,13 +188,13 @@ public class FinanceiroMainController {
         String id = tfIDTaxa.getText();
 
         if(taxa > 0){
-           for(Gerente gerente : ListaFuncionario.gerentesVector){
-               if(gerente != null){
-                   gerente.atualizarTaxa(id, taxa);
-               }
-           }
-           Alerts.showAlert("Taxa",null,"Taxa Atualizada",Alert.AlertType.INFORMATION);
-            }else {
+            for(Gerente gerente : ListaFuncionario.gerentesVector){
+                if(gerente != null){
+                    gerente.atualizarTaxa(id, taxa);
+                }
+            }
+            Alerts.showAlert("Taxa",null,"Taxa Atualizada",Alert.AlertType.INFORMATION);
+        }else {
             Alerts.showAlert("Erro Taxa",null,"Taxa não Atualizada",Alert.AlertType.ERROR);
         }
     }
@@ -203,21 +204,20 @@ public class FinanceiroMainController {
         int quantidade = Integer.parseInt(tfQuantidadeComprarProduto.getText());
 
 
-            for (Gerente gerente : ListaFuncionario.gerentesVector) {
-                if (gerente != null) {
-                    try {
-                        gerente.adicionar(id, quantidade);
-                        gerente.verEstoqueTotal();
-                        onBtLimpar(event);
-                    } catch (SIException | PIException | QINException | DVIException e) {
-                        e.printStackTrace();
-                    }
+        for (Gerente gerente : ListaFuncionario.gerentesVector) {
+            if (gerente != null) {
+                try {
+                    gerente.adicionar(id, quantidade);
+                    onBtLimpar(event);
+                } catch (SIException | PIException | QINException | DVIException e) {
+                    e.printStackTrace();
                 }
             }
+        }
 
     }
 
-/////////// Métodos Complementares /////////////////////////////
+    /////////// Métodos Complementares /////////////////////////////
     public void onBtLimpar(ActionEvent e){
         tfValorDeposito.setText(null);
         tfIDCompraProduto.setText(null);

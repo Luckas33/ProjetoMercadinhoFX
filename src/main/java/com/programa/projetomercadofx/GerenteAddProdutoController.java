@@ -1,6 +1,7 @@
 package com.programa.projetomercadofx;
 
 import com.programa.projetomercadofx.controllerUtil.Alerts;
+import excecao.DVIException;
 import excecao.PEException;
 import excecao.QINException;
 import excecao.SIException;

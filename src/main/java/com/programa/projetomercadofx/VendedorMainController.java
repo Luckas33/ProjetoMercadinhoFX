@@ -74,7 +74,12 @@ public class VendedorMainController {
                 Produto produto = vendedor.retornaProduto(id);
                 if (produto != null) {
                     ProdutoHistorico produtoHist = new ProdutoHistorico(produto.getId(), produto.getPrecoVenda(), quantidade);
-                    produto.setQuantidadeVendida(quantidade);
+                    try{
+                        produto.setQuantidadeVendida(quantidade);
+                    }catch(QINException e){
+                        e.printStackTrace();
+                        Alerts.showAlert("Erro Venda", null,"Quantidade Inválida",Alert.AlertType.ERROR);
+                    }
                     this.carrinho.add(produto);
                     this.vendas.add(produtoHist);
                     atualizarSubtotal();

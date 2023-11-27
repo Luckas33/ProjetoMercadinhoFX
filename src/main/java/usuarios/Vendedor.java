@@ -54,6 +54,8 @@ public class Vendedor extends Funcionario {
                     throw new QIException(id, produto.getQuantidade(), quantidade);
                 }
             }
+                else
+                    throw new DVIException(id,data);
         }
             else{
                 if (quantidade <= produto.getQuantidade()) { //checa se a quantidade desejada pelo cliente tem o suficiente no estoque
