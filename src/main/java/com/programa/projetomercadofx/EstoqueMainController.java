@@ -1,6 +1,9 @@
 package com.programa.projetomercadofx;
 
-import globalService.ListaGerente;
+import estoques.IEstoque;
+import globalService.ListaEstoque;
+import globalService.ListaFuncionario;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,8 +16,11 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+import produtos.Produto;
 import produtos.ProdutoHistorico;
 import usuarios.Gerente;
+
+import java.util.Vector;
 
 public class EstoqueMainController {
 ////////// ID dos Componentes ////////////////
@@ -25,7 +31,8 @@ public class EstoqueMainController {
     @FXML
     private Button btTipoProdutos;
     @FXML
-    private ListView<ProdutoHistorico> listViewEstoque;
+    private ListView<Produto> listViewEstoque;
+    private Vector<Produto> estoqueMostrar;
 
     ////////////// Mudar de Tela ///////////////////////
     public void switchToGerenteMainScren(ActionEvent event) throws Exception {
@@ -40,30 +47,40 @@ public class EstoqueMainController {
 
 public void onMenuItemTodos(ActionEvent e) {
 
-    for (Gerente gerente : ListaGerente.gerentesVector) {
-        if (gerente != null) {
-            listViewEstoque.getItems().setAll(gerente.verEstoqueTotal());
+    for (IEstoque estoque : ListaEstoque.estoqueVector) {
+        if (estoque != null) {
+            estoqueMostrar = estoque.retornaEstoque();
+            System.out.println(estoqueMostrar);
+
+            listViewEstoque.getItems().setAll(estoqueMostrar);
+
         }
     }
+
 }
 
 ////////////// Métodos Complementares ///////////////////////////
-public void initialize(ActionEvent e) {
-    onMenuItemTodos(e);
+public void initialize() {
+
+        estoqueMostrar = new Vector<>();
 
     // Configurar a fábrica de células para personalizar a exibição na ListView
-    listViewEstoque.setCellFactory(param -> new ListCell<ProdutoHistorico>() {
+    listViewEstoque.setCellFactory(param -> new ListCell<Produto>() {
         @Override
-        protected void updateItem(ProdutoHistorico item, boolean empty) {
+        protected void updateItem(Produto item, boolean empty) {
             super.updateItem(item, empty);
 
             if (empty || item == null) {
                 setText(null);
             } else {
                 // Personalize aqui como deseja exibir cada item na lista
-                setText("ID: " + item.getIdVenda() + " | Preço: " + item.getPreco() + " | Quantidade: " + item.getQuantidadeVendida());
+                setText("ID: " + item.getId() + " | Preço: " + item.getPrecoVenda() + " | Quantidade: " + item.getQuantidade() + " | Tipo: " + item.getTipo());
             }
         }
     });
-    }
+
+    listViewEstoque.getItems().setAll(estoqueMostrar);
+
 }
+    }
+

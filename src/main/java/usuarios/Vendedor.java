@@ -28,7 +28,7 @@ public class Vendedor extends Funcionario {
 
     // **minha gambiarra abaixo** //
 
-    public void venderDinheiro(String id, int quantidade) throws QIException, QNException, QNUException, VNException, VNUException, VIException,  PIException{
+    public void venderDinheiro(String id, int quantidade) throws QIException, QNException, QNUException, PIException{
 
             if(quantidade > 0){
         

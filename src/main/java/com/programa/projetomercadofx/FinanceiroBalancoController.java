@@ -1,6 +1,7 @@
 package com.programa.projetomercadofx;
 
-import globalService.ListaGerente;
+
+import globalService.ListaFuncionario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,7 +40,7 @@ public class FinanceiroBalancoController {
 ////////////////////Métodos lógicos //////////////////
     public void onBtVerTudo(ActionEvent e){
         tfData.setDisable(true);
-        for (Gerente gerente: ListaGerente.gerentesVector) {
+        for (Gerente gerente: ListaFuncionario.gerentesVector) {
             if(gerente != null){
                 //listViewBalanco.getItems().setAll(gerente.verBalancoTotal());
             }
@@ -48,7 +49,7 @@ public class FinanceiroBalancoController {
     public void onBtInserirData(ActionEvent e){
         tfData.setDisable(false);
         String data = tfData.getText();
-        for(Gerente gerente : ListaGerente.gerentesVector){
+        for(Gerente gerente : ListaFuncionario.gerentesVector){
             if(gerente != null){
                 gerente.verBalancoData(data);
             }

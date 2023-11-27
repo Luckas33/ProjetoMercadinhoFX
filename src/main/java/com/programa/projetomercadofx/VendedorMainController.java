@@ -203,7 +203,7 @@ public class VendedorMainController {
                                     vendedor.venderDinheiro(produto.getId(), produto.getQuantidadeVendida());
                                     Alerts.showAlert("Venda", null, "Venda realizada com sucesso.", Alert.AlertType.INFORMATION);
                                     onBtLimpar(event);
-                                } catch (VNUException | VNException | VIException | QNException | QNUException |
+                                } catch ( QNException | QNUException |
                                          QIException | PIException e) {
                                     e.printStackTrace();
                                 }
@@ -214,7 +214,7 @@ public class VendedorMainController {
                                 try {
                                     Produto produto = carrinho.get(i);
                                     vendedor.venderDinheiro(produto.getId(), produto.getQuantidadeVendida());
-                                } catch (VNUException | VNException | VIException | QNException | QNUException |
+                                } catch (  QNException | QNUException |
                                          QIException | PIException e) {
                                     e.printStackTrace();
                                 }

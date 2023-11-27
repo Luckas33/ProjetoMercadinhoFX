@@ -89,19 +89,20 @@ public class Estoque implements IEstoque {
     }
 
     @Override
-    public void mostrarEstoqueTotal(){
+    public Produto mostrarEstoqueTotal(){
         desserializar();
         for(Produto produto : estoque){
-            if(produto != null){
-                if(produto instanceof ProdutoComestivel){
-                    System.out.println(((ProdutoComestivel) produto).CustomtoString());
-                }
-                else{
-                    System.out.println(produto.toString());
-                }
-            }
+            return produto;
         }
+        return null;
     }
+
+@Override
+public Vector<Produto> retornaEstoque(){
+        desserializar();
+        return this.estoque;
+    }
+
 
     //metodo para checar o saldo
     @Override

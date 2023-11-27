@@ -11,7 +11,7 @@ public class testaEstoque {
     public static void testeEstoque(){
         IEstoque estoque = new Estoque();
         System.out.println("ESTOQUE INICIAL");
-        estoque.mostrarEstoqueTotal();
+
 
         System.out.println("---------------------------------");
         /*
@@ -29,6 +29,6 @@ public class testaEstoque {
             // TODO: handle exception
         }
         System.out.println("ESTOQUE FINAL");
-        estoque.mostrarEstoqueTotal();
+
     }
 }
