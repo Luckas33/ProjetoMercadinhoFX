@@ -1,8 +1,7 @@
 
 package estoques;
 
-import excecao.PIException;
-import excecao.SNException;
+import excecao.*;
 import produtos.Produto;
 import produtos.ProdutoComestivel;
 
@@ -61,15 +60,19 @@ public class Estoque implements IEstoque {
 
     //metodo para reduzir um produto do estoque
     @Override
-    public void reduzir(String id, int quantidade) throws PIException {
+    public void reduzir(String id, int quantidade) throws PIException, QINException {
         desserializar();
         if(!this.existe(id)){ 
             throw new PIException(id);
         }
         // Garante que inicialmente esse produto deve existir para sofrer redução
         Produto produto = this.procurar(id);
+        if(quantidade>0){
         produto.setQuantidade(produto.getQuantidade() - quantidade); //pega a quantidade que tinha antes, e diminui pela desejada
         serializar();
+        }
+        else
+            throw new QINException(quantidade);
     }
 
     //metodo para mostrar os produtos do estoque pelo tipo dele

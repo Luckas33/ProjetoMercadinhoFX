@@ -15,7 +15,7 @@ public class Produto implements Serializable {
     protected int quantidade;
     protected double taxaLucro;
     protected int quantidadeVendida;
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
    
     //construtor
     public Produto(String nome, String id, String marca, double preco_compra, String tipo) {
@@ -39,14 +39,6 @@ public class Produto implements Serializable {
                 "Quantidade: " + quantidade + "\n";
     
     }
-   
-    // **teste
-    public boolean testeQuantidade(String Id,double quantidade_requerida) throws QIException{
-        if(this.getQuantidade() >= quantidade_requerida)
-            return true;
-        else
-            throw new QIException(Id, this.getQuantidade(), quantidade_requerida);
-    } 
 
    /////getters e setters
     
@@ -79,13 +71,11 @@ public class Produto implements Serializable {
         return preco_compra;
     }
 
-    public void setprecoCompra(double preco_compra) throws PCNUException, PCNException {
+    public void setPrecoCompra(double preco_compra) throws PCIException {
         if(preco_compra>0)
             this.preco_compra = preco_compra;
-       else if(preco_compra ==0)
-            throw new PCNUException();
         else
-            throw new PCNException(preco_compra);
+            throw new PCIException(preco_compra);
     }
 
     public String getTipo() {
@@ -109,13 +99,11 @@ public class Produto implements Serializable {
         return taxaLucro;
     }
     // **coloquei as excecoes**
-    public void setTaxaLucro(double taxaLucro) throws TLNUException, TLNException {
+    public void setTaxaLucro(double taxaLucro) throws TLIException {
         if(taxaLucro>0.0)
             this.taxaLucro = taxaLucro;
-        else if(taxaLucro==0.0)
-            throw new TLNUException(this.taxaLucro);
-        else if(taxaLucro<0.0)
-            throw new TLNException(this.taxaLucro);
+        else
+            throw new TLIException(this.taxaLucro);
     }
 
     public double getPrecoVenda() {
@@ -130,7 +118,11 @@ public class Produto implements Serializable {
         return quantidadeVendida;
     }
 
-    public void setQuantidadeVendida(int quantidadeVendida) {
-        this.quantidadeVendida = quantidadeVendida;
+    public void setQuantidadeVendida(int quantidadeVendida) throws QINException{
+        if(quantidadeVendida>0){
+            this.quantidadeVendida = quantidadeVendida;
+        }
+        else
+            throw new QINException(quantidadeVendida);
     }
 }

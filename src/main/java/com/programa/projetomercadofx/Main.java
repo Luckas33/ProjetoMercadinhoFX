@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import testes.testaExcecao;
 
 import java.io.IOException;
 
@@ -26,7 +27,6 @@ public class Main extends Application {
         ListaFuncionario listaFuncionario = new ListaFuncionario();
         ListaEstoque listaEstoque = new ListaEstoque();
         ListaEstoque.estoqueVector.add(estoque);
-
 
         launch();
 

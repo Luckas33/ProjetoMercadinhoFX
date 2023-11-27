@@ -15,7 +15,7 @@ public class TesteExceptions {
         Gerente gerente = new Gerente(estoque, "rodrigo", "jrodri", "rodri@gmail","123");
 
 
-        Produto produto1 = new ProdutoComestivel("refrigerante", "9888", "coca cola", 20.0, "bebida", "20/07/2023");
+       Produto produto1 = new ProdutoComestivel("refrigerante", "9888", "coca cola", 20.0, "bebida", "20/07/2023");
 
        /*try {
             gerente.cadastrar(produto1, -5, 1.2);
@@ -27,7 +27,7 @@ public class TesteExceptions {
 
         try {
             vendedor.venderDebito("9888", 3);
-        } catch (QNException | QNUException | QIException | PIException e) {
+        } catch (QINException | QIException | PIException | DVIException e) {
             e.printStackTrace();
         }
 

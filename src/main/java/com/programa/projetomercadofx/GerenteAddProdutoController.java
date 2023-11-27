@@ -2,10 +2,9 @@ package com.programa.projetomercadofx;
 
 import com.programa.projetomercadofx.controllerUtil.Alerts;
 import excecao.PEException;
-import excecao.QNException;
-import excecao.QNUException;
+import excecao.QINException;
 import excecao.SIException;
-import globalService.ListaFuncionario;
+import globalService.ListaGerente;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -108,7 +107,7 @@ public class GerenteAddProdutoController {
                                 Alerts.showAlert("Adicionar produto", null, "Produto Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
                                 gerente.verEstoqueTipo(produtoComestivel.getTipo());
                             }
-                            catch (QNException exception){
+                            catch (QINException exception){
                                 exception.printStackTrace();
                                 onBtLimpar(e);
                                 Alerts.showAlert("Erro cadastrar", null,"Quantidade requerida negativa",Alert.AlertType.ERROR);
@@ -120,10 +119,10 @@ public class GerenteAddProdutoController {
                                 exception.printStackTrace();
                                 onBtLimpar(e);
                                 Alerts.showAlert("Erro cadastrar", null,"Saldo insuficiente",Alert.AlertType.ERROR);
-                            }catch (QNUException exception){
+                            }catch(DVIException exception){
                                 exception.printStackTrace();
                                 onBtLimpar(e);
-                                Alerts.showAlert("Erro cadastrar", null,"Quantidade nula",Alert.AlertType.ERROR);
+                                Alerts.showAlert("Erro cadastrar", null,"Data de validade já ultrapassada",Alert.AlertType.ERROR);
                             }
                         }
                     }
@@ -137,7 +136,7 @@ public class GerenteAddProdutoController {
                                 gerente.cadastrar(produtoNaoComestivel, quantidade, taxaLucro);
                                 Alerts.showAlert("Adicionar produto", null, "Produto Não Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
                                 gerente.verEstoqueTipo(produtoNaoComestivel.getTipo());
-                            }catch (QNException exception){
+                            }catch (QINException exception){
                                 exception.printStackTrace();
                                 onBtLimpar(e);
                                 Alerts.showAlert("Erro cadastrar", null,"Quantidade requerida negativa",Alert.AlertType.ERROR);
@@ -149,10 +148,10 @@ public class GerenteAddProdutoController {
                                 exception.printStackTrace();
                                 onBtLimpar(e);
                                 Alerts.showAlert("Erro cadastrar", null,"Saldo insuficiente",Alert.AlertType.ERROR);
-                            }catch (QNUException exception){
+                            }catch(DVIException exception){
                                 exception.printStackTrace();
                                 onBtLimpar(e);
-                                Alerts.showAlert("Erro cadastrar", null,"Quantidade nula",Alert.AlertType.ERROR);
+                                Alerts.showAlert("Erro cadastrar", null,"Data de validade já ultrapassada",Alert.AlertType.ERROR);
                             }
                         }
                     }

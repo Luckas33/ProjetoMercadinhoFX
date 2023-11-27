@@ -1,13 +1,13 @@
 package excecao;
 
-public class PCNException extends Exception{
+public class PCIException extends Exception{
     
     private double preco_compra;
 
 
-    public PCNException(double preco_compra){
+    public PCIException(double preco_compra){
 
-        super("\nPreço de compra negativo: ");
+        super("\nPreço de compra inválido: ");
         this.preco_compra = preco_compra;
       }
     

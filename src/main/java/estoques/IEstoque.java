@@ -3,9 +3,10 @@ package estoques;
 
 
 import excecao.PIException;
+import excecao.SIException;
 import excecao.SNException;
+import excecao.VNException;
 import produtos.Produto;
-import java.util.Vector;
 
 public interface IEstoque {
     
@@ -20,14 +21,11 @@ public interface IEstoque {
     
     public void mostrarEstoqueTipo(String tipo);
 
-   public Produto mostrarEstoqueTotal();
-
-    public Vector<Produto> retornaEstoque();
+    public void mostrarEstoqueTotal();
     
     public double verSaldo();
     
     public void definirSaldo(double valor) throws SNException;
-
     
 
 }
