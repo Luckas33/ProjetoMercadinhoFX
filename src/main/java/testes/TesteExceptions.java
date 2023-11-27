@@ -3,6 +3,7 @@ package testes;
 import estoques.Estoque;
 import estoques.IEstoque;
 import excecao.*;
+import excecao.DVIException;
 import produtos.Produto;
 import produtos.ProdutoComestivel;
 import usuarios.Gerente;

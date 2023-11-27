@@ -32,7 +32,7 @@ public class testaExcecao {
         //estoque.inserir(produto2, 4);
         //estoque.inserir(produto3, 5);*/
         
-     public static void testePCIException(){    //preco de compra invalido
+     /*public static void testePCIException(){    //preco de compra invalido
         Produto produto1 = new Produto("Feijão", "123", "Kokoko", 15.66, "Comestivel");
         try{
             produto1.setPrecoCompra(-1);
@@ -111,7 +111,7 @@ public class testaExcecao {
         }catch(PEException e){
             System.out.print(e.getMessage());
             System.out.print(" Id inserido: ");
-            System.out.print;
+
         }
     }
 
@@ -224,5 +224,6 @@ public class testaExcecao {
             System.out.print(e.getQuantidadeRequerida());
         }
     }
+    }
 
-}
+*/

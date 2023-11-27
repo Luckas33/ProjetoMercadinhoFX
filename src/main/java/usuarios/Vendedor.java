@@ -28,7 +28,7 @@ public class Vendedor extends Funcionario {
 
     // **minha gambiarra abaixo** //
 
-    public void venderDinheiro(String id, int quantidade) throws QIException, QNException, QNUException, PIException{
+    public void venderDinheiro(String id, int quantidade) throws DVIException, QIException, PIException, QINException{
 
             if(quantidade > 0){
         
@@ -74,79 +74,72 @@ public class Vendedor extends Funcionario {
         else
             throw new PIException(id);
         }
-        else if(quantidade == 0)
-            throw new QNUException();
         else if(quantidade < 0)
-            throw new QNException(quantidade);
+            throw new QINException(quantidade);
 
-      
     }
 
 
 
     //metodo para vender por cartão de crédito(**teste**)
-     public void venderCredito(String id, int quantidade, int parcelas) throws PANUException, PANException, PIException, QIException, QNUException, QNException{
-        
-        if(parcelas>0){
-        
-        if(quantidade>0) {
+     public void venderCredito(String id, int quantidade, int parcelas) throws  DVIException, PIException, QIException, QINException{
 
-            Produto produto = this.estoque.procurar(id); //procura no vetor estoque
-            if (produto != null) {
-                if (produto instanceof ProdutoComestivel){
 
-                    LocalDate data = LocalDate.parse(((ProdutoComestivel) produto).getValidade(), formatador);
-                if (date.isBefore(data)){
+            if (quantidade > 0) {
 
-                    if (quantidade <= produto.getQuantidade()) { //checa a quantidade
-                        double valorTotal = quantidade * produto.getPrecoVenda() * taxaCredito; //calcula o valor da venda, dessa vez adicionando a taxa de crédito
-                        try {
-                            this.estoque.definirSaldo(this.estoque.verSaldo() + valorTotal); //atualiza o saldo
-                        } catch (SNException e) {
-                            e.printStackTrace();
+                Produto produto = this.estoque.procurar(id); //procura no vetor estoque
+                if (produto != null) {
+                    if (produto instanceof ProdutoComestivel) {
+
+                        LocalDate data = LocalDate.parse(((ProdutoComestivel) produto).getValidade(), formatador);
+                        if (date.isBefore(data)) {
+
+                            if (quantidade <= produto.getQuantidade()) { //checa a quantidade
+                                double valorTotal = quantidade * produto.getPrecoVenda() * taxaCredito; //calcula o valor da venda, dessa vez adicionando a taxa de crédito
+                                try {
+                                    this.estoque.definirSaldo(this.estoque.verSaldo() + valorTotal); //atualiza o saldo
+                                } catch (SNException e) {
+                                    e.printStackTrace();
+                                }
+                                this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade do estoque
+                                ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
+                                this.registrarVenda(produtoHistorico); //registra a venda
+
+                            } else {
+                                throw new QIException(id, produto.getQuantidade(), quantidade);
+                            }
                         }
-                        this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade do estoque
-                        ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
-                        this.registrarVenda(produtoHistorico); //registra a venda
-
+                        else
+                            throw new DVIException(id, data);
                     } else {
-                        throw new QIException(id, produto.getQuantidade(), quantidade);
+                        if (quantidade <= produto.getQuantidade()) { //checa a quantidade
+                            double valorTotal = quantidade * produto.getPrecoVenda() * taxaCredito; //calcula o valor da venda, dessa vez adicionando a taxa de crédito
+                            try {
+                                this.estoque.definirSaldo(this.estoque.verSaldo() + valorTotal); //atualiza o saldo
+                            } catch (SNException e) {
+                                e.printStackTrace();
+                            }
+                            this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade do estoque
+                            ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
+                            this.registrarVenda(produtoHistorico); //registra a venda
+
+                        } else {
+                            throw new QIException(id, produto.getQuantidade(), quantidade);
+                        }
                     }
-            }
+                } else
+                    throw new PIException(id); //produto ja existente
+            } else if (quantidade < 0)
+                throw new QINException(quantidade); // quantidade negativa
         }
-                else{
-                    if (quantidade <= produto.getQuantidade()) { //checa a quantidade
-                        double valorTotal = quantidade * produto.getPrecoVenda() * taxaCredito; //calcula o valor da venda, dessa vez adicionando a taxa de crédito
-                        try {
-                            this.estoque.definirSaldo(this.estoque.verSaldo() + valorTotal); //atualiza o saldo
-                        } catch (SNException e) {
-                            e.printStackTrace();
-                        }
-                        this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade do estoque
-                        ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
-                        this.registrarVenda(produtoHistorico); //registra a venda
 
-                    } else {
-                        throw new QIException(id, produto.getQuantidade(), quantidade);
-                    }
-                }
-        }else
-            throw new PIException(id); //produto ja existente
-        }else if(quantidade < 0)
-            throw new QNException(quantidade); // quantidade negativa
-         else if(quantidade == 0)
-            throw new QNUException(); // quantidade nula
-        }else if(parcelas<0)
-            throw new PANException(parcelas); // parcelas negativas
-         else
-            throw new PANUException(parcelas); // parcelas nula
-    }
+
 
 
 
 
     //metodo para vender no debito(**teste**)
-      public void venderDebito(String id, int quantidade) throws QNException, QNUException, QIException, PIException{
+      public void venderDebito(String id, int quantidade) throws DVIException, QINException, QIException, PIException{
         if(quantidade>0) {
             Produto produto = this.estoque.procurar(id); //procura no vetor estoque
             if (produto != null) {
@@ -169,7 +162,9 @@ public class Vendedor extends Funcionario {
                 } else {
                     throw new QIException(id, produto.getQuantidade(), quantidade);
                 }
-            }
+            }else{
+                        throw new DVIException(id,data);
+                    }
         }
                 else{
                     if (quantidade <= produto.getQuantidade()) { //checa a quantidade
@@ -190,9 +185,8 @@ public class Vendedor extends Funcionario {
         }else
             throw new PIException(id); //produto ja existente
         }else if(quantidade < 0)
-            throw new QNException(quantidade); //quantidade negativa
-         else if(quantidade == 0)
-            throw new QNUException(); // quantidade nula
+            throw new QINException(quantidade); //quantidade negativa
+
     }
 
 

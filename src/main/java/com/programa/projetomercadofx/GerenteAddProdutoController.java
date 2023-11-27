@@ -4,7 +4,7 @@ import com.programa.projetomercadofx.controllerUtil.Alerts;
 import excecao.PEException;
 import excecao.QINException;
 import excecao.SIException;
-import globalService.ListaGerente;
+import globalService.ListaFuncionario;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -105,7 +105,6 @@ public class GerenteAddProdutoController {
                             try {
                                 gerente.cadastrar(produtoComestivel, quantidade, taxaLucro);
                                 Alerts.showAlert("Adicionar produto", null, "Produto Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
-                                gerente.verEstoqueTipo(produtoComestivel.getTipo());
                             }
                             catch (QINException exception){
                                 exception.printStackTrace();
@@ -135,7 +134,6 @@ public class GerenteAddProdutoController {
                             try {
                                 gerente.cadastrar(produtoNaoComestivel, quantidade, taxaLucro);
                                 Alerts.showAlert("Adicionar produto", null, "Produto Não Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
-                                gerente.verEstoqueTipo(produtoNaoComestivel.getTipo());
                             }catch (QINException exception){
                                 exception.printStackTrace();
                                 onBtLimpar(e);

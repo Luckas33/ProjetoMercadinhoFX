@@ -141,20 +141,12 @@ public class Gerente extends Funcionario {
             }
         }
         }else
-            throw new QINException(quantidade);//restriçao se a quantidade for inválida
+            throw new QINException(quantidade);
     }
 
-    //metodo pro gerente ver o estoque, ele somente chama o metodo de mostrar o estoque da interface estoque
-      public void verEstoqueTipo(String tipo){
-          this.estoque.mostrarEstoqueTipo(tipo);
-      }
 
-      public ProdutoHistorico verEstoqueTotal(){
-        this.estoque.mostrarEstoqueTotal();
-          return null;
-      }
 
-    //metodo para registrar a compra, ele recebe um objeto de produto historico, adiciona no vetor e seleciona a forma como "compra"
+
 public void registrarCompra(ProdutoHistorico produto){
           if(produto != null){
               Gerente.produtoHist.add(produto);

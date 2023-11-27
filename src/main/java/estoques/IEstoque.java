@@ -3,10 +3,12 @@ package estoques;
 
 
 import excecao.PIException;
+import excecao.QINException;
 import excecao.SIException;
 import excecao.SNException;
-import excecao.VNException;
 import produtos.Produto;
+
+import java.util.Vector;
 
 public interface IEstoque {
     
@@ -17,11 +19,10 @@ public interface IEstoque {
     
     public boolean existe(String id);
     
-    public void reduzir(String id, int quantidade) throws PIException;
-    
-    public void mostrarEstoqueTipo(String tipo);
+    public void reduzir(String id, int quantidade) throws PIException, QINException;
 
-    public void mostrarEstoqueTotal();
+
+    public Vector<Produto> retornaEstoque();
     
     public double verSaldo();
     

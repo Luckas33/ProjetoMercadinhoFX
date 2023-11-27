@@ -130,26 +130,26 @@ public class VendedorMainController {
                 if (vendedor != null) {
                     if (tipoVenda == "Débito"){
                         for (int i = 0; i < carrinho.size(); i++) {
+                            Produto produto = carrinho.get(i);
                             try {
-                                Produto produto = carrinho.get(i);
                                 vendedor.venderDebito(produto.getId(), produto.getQuantidadeVendida());
                                 Alerts.showAlert("Venda", null, "Venda realizada com sucesso.", Alert.AlertType.INFORMATION);
                                 onBtLimpar(event);
                                 btAdicionar.setDisable(false);
                             } catch (PIException e) {
                                 e.printStackTrace();
-                                Alerts.showAlert("Erro Venda", null,"Produto inexistente",Alert.AlertType.ERROR);
-                            }catch (QNException e){
+                                Alerts.showAlert("Erro Venda", null, "Produto inexistente", Alert.AlertType.ERROR);
+                            } catch (QINException e) {
                                 e.printStackTrace();
-                                Alerts.showAlert("Erro Venda", null,"Quantidade requerida negativa",Alert.AlertType.ERROR);
-                            }catch (QNUException e){
+                                Alerts.showAlert("Erro Venda", null, "quantidade insuficiente", Alert.AlertType.ERROR);
+                            } catch (QIException e) {
                                 e.printStackTrace();
-                                Alerts.showAlert("Erro Venda", null,"quantidade insuficiente",Alert.AlertType.ERROR);
-                            }catch (QIException e){
+                                Alerts.showAlert("Erro Venda", null, "Saldo insuficiente", Alert.AlertType.ERROR);
+                            } catch (DVIException e) {
                                 e.printStackTrace();
-                                Alerts.showAlert("Erro Venda", null,"Saldo insuficiente",Alert.AlertType.ERROR);
                             }
                         }
+
                     }
                     else if(tipoVenda == "Crédito"){
                         int parcelas = Integer.parseInt(comboboxParcelas.getValue());
@@ -161,16 +161,7 @@ public class VendedorMainController {
                                 vendedor.venderCredito(produto.getId(), produto.getQuantidadeVendida(), parcelas);
                                 Alerts.showAlert("Venda", null, "Venda realizada com sucesso.", Alert.AlertType.INFORMATION);
                                 onBtLimpar(event);
-                            } catch (PANUException e) {
-                                e.printStackTrace();
-                                Alerts.showAlert("Erro Venda", null,"Número de parcelas nulo",Alert.AlertType.ERROR);
-                            } catch(PANException e){
-                                e.printStackTrace();
-                                Alerts.showAlert("Erro Venda", null,"Número de parcelas negativas",Alert.AlertType.ERROR);
-                            }catch(QNException e){
-                                e.printStackTrace();
-                                Alerts.showAlert("Erro Venda", null,"Insira uma quantidade válida",Alert.AlertType.ERROR);
-                            }catch(QNUException e){
+                            }catch(QINException e){
                                 e.printStackTrace();
                                 Alerts.showAlert("Erro Venda", null,"Insira uma quantidade válida",Alert.AlertType.ERROR);
                             }catch(QIException e){
@@ -179,6 +170,8 @@ public class VendedorMainController {
                             }catch(PIException e){
                                 e.printStackTrace();
                                 Alerts.showAlert("Erro Venda", null,"Produto não existente",Alert.AlertType.ERROR);
+                            }catch (DVIException e){
+                                e.printStackTrace();
                             }
                         }
                         Alerts.showAlert("Valor Parcelas",null,String.valueOf(valorFinalC/ parcelas),Alert.AlertType.INFORMATION);
@@ -203,8 +196,8 @@ public class VendedorMainController {
                                     vendedor.venderDinheiro(produto.getId(), produto.getQuantidadeVendida());
                                     Alerts.showAlert("Venda", null, "Venda realizada com sucesso.", Alert.AlertType.INFORMATION);
                                     onBtLimpar(event);
-                                } catch ( QNException | QNUException |
-                                         QIException | PIException e) {
+                                } catch ( QINException |
+                                         QIException | PIException | DVIException e) {
                                     e.printStackTrace();
                                 }
                             }
@@ -214,8 +207,8 @@ public class VendedorMainController {
                                 try {
                                     Produto produto = carrinho.get(i);
                                     vendedor.venderDinheiro(produto.getId(), produto.getQuantidadeVendida());
-                                } catch (  QNException | QNUException |
-                                         QIException | PIException e) {
+                                } catch (  QINException |
+                                         QIException | PIException | DVIException e) {
                                     e.printStackTrace();
                                 }
 

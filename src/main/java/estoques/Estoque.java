@@ -76,29 +76,8 @@ public class Estoque implements IEstoque {
     }
 
     //metodo para mostrar os produtos do estoque pelo tipo dele
-    @Override
-    public void mostrarEstoqueTipo(String tipo){
-        desserializar();
-        for(Produto produto : estoque){ //percorre o vetor estoque
-            if(produto.getTipo().equals(tipo)){ //se o produto tiver o mesmo tipo do tipo digitado, ele será mostrado
-                if(produto instanceof ProdutoComestivel){ //caso seja comestivel, mostrará sua data de validade
-                    System.out.println(((ProdutoComestivel) produto).CustomtoString());
-                }
-                else{
-                    System.out.println(produto.toString());
-                }
-            }
-        }
-    }
 
-    @Override
-    public Produto mostrarEstoqueTotal(){
-        desserializar();
-        for(Produto produto : estoque){
-            return produto;
-        }
-        return null;
-    }
+
 
 @Override
 public Vector<Produto> retornaEstoque(){
