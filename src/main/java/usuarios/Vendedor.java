@@ -3,6 +3,7 @@ package usuarios;
 
 
 import estoques.IEstoque;
+import registros.IRegistro;
 import excecao.*;
 import produtos.Produto;
 import produtos.ProdutoComestivel;
@@ -20,8 +21,8 @@ public class Vendedor extends Funcionario {
 
 
     //construtor
-    public Vendedor(IEstoque estoque, String nome, String login, String email, String senha) {
-        super(estoque, nome, login, email, senha);
+    public Vendedor(IRegistro registro, IEstoque estoque, String nome, String login, String email, String senha) {
+        super(registro, estoque, nome, login, email, senha);
         this.taxaCredito = 1.2;
     }
 
@@ -30,7 +31,7 @@ public class Vendedor extends Funcionario {
 
     public void venderDinheiro(String id, int quantidade) throws DVIException, QIException, PIException, QINException{
 
-            if(quantidade > 0){
+        if(quantidade > 0){
         
         Produto produto = this.estoque.procurar(id); //checa se tem o produto no estoque
         if(produto != null) {
@@ -47,8 +48,7 @@ public class Vendedor extends Funcionario {
                         e.printStackTrace();
                     }
                     this.estoque.reduzir(produto.getId(), quantidade); //chama o metodo reduzir da interface estoque, onde tira a quantidade vendida do estoque
-                    ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade); //cria um objeto produto historico, onde os atributos são os do produto vendido
-                    this.registrarVenda(produtoHistorico); //registra a venda
+                    this.registro.registrarVenda(produto, quantidade); //registra a venda
 
                 } else {
                     throw new QIException(id, produto.getQuantidade(), quantidade);
@@ -65,8 +65,7 @@ public class Vendedor extends Funcionario {
                         e.printStackTrace();
                     }
                     this.estoque.reduzir(produto.getId(), quantidade); //chama o metodo reduzir da interface estoque, onde tira a quantidade vendida do estoque
-                    ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade); //cria um objeto produto historico, onde os atributos são os do produto vendido
-                    this.registrarVenda(produtoHistorico); //registra a venda
+                    this.registro.registrarVenda(produto, quantidade); //registra a venda
 
                 } else {
                     throw new QIException(id, produto.getQuantidade(), quantidade);
@@ -104,8 +103,7 @@ public class Vendedor extends Funcionario {
                                     e.printStackTrace();
                                 }
                                 this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade do estoque
-                                ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
-                                this.registrarVenda(produtoHistorico); //registra a venda
+                                this.registro.registrarVenda(produto, quantidade); //registra a venda
 
                             } else {
                                 throw new QIException(id, produto.getQuantidade(), quantidade);
@@ -122,8 +120,7 @@ public class Vendedor extends Funcionario {
                                 e.printStackTrace();
                             }
                             this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade do estoque
-                            ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
-                            this.registrarVenda(produtoHistorico); //registra a venda
+                            this.registro.registrarVenda(produto, quantidade); //registra a venda
 
                         } else {
                             throw new QIException(id, produto.getQuantidade(), quantidade);
@@ -158,8 +155,7 @@ public class Vendedor extends Funcionario {
                         e.printStackTrace();
                     }
                     this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade
-                    ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
-                    this.registrarVenda(produtoHistorico); //registra a venda
+                    this.registro.registrarVenda(produto, quantidade); //registra a venda
 
                 } else {
                     throw new QIException(id, produto.getQuantidade(), quantidade);
@@ -177,8 +173,7 @@ public class Vendedor extends Funcionario {
                             e.printStackTrace();
                         }
                         this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade
-                        ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
-                        this.registrarVenda(produtoHistorico); //registra a venda
+                        this.registro.registrarVenda(produto, quantidade); //registra a venda
 
                     } else {
                         throw new QIException(id, produto.getQuantidade(), quantidade);
@@ -198,12 +193,7 @@ public class Vendedor extends Funcionario {
            // System.out.println("Seu troco é: " + valor);
       //}
       //metodo para registrar a venda, adiciona no vetor de historico e seta a forma como "venda"
-      public void registrarVenda(ProdutoHistorico produto){
-          if(produto != null){
-              Gerente.produtoHist.add(produto);
-              produto.setForma("Venda");
-          }
-      }
+
       
       public Produto retornaProduto(String id){
         Produto produto = this.estoque.procurar(id);

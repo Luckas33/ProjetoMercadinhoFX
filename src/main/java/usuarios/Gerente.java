@@ -2,6 +2,7 @@
 package usuarios;
 
 import estoques.IEstoque;
+import registros.IRegistro;
 import excecao.*;
 import produtos.Produto;
 import produtos.ProdutoComestivel;
@@ -14,15 +15,12 @@ import java.util.Vector;
 
 public class Gerente extends Funcionario {
     
-    //cria o vetor onde vai ta o historico de vendas e compras do mercado
-   public static Vector<ProdutoHistorico> produtoHist;
     LocalDate date = LocalDate.now();
     DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     
     //construtor
-    public Gerente(IEstoque estoque, String nome, String login, String email, String senha) {
-        super(estoque, nome, login, email, senha);
-        Gerente.produtoHist = new Vector<ProdutoHistorico>();
+    public Gerente(IRegistro registro,IEstoque estoque, String nome, String login, String email, String senha) {
+        super(registro, estoque, nome, login, email, senha);
     }
 
 
@@ -57,8 +55,7 @@ public class Gerente extends Funcionario {
                             } catch (SNException e) {
                                 e.printStackTrace();
                             }
-                            ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade); //cria um objeto de produto historico, onde os atributos dele vão ser os mesmos do que o produto que foi vendido
-                            this.registrarCompra(produtoHistorico); //registra a compra, colocando-a no vetor do historico
+                            this.registro.registrarAquisicao(produto, quantidade);
                         }
                         else
                             throw new DVIException(produto.getId(), data);
@@ -79,8 +76,7 @@ public class Gerente extends Funcionario {
                         } catch (SNException e) {
                             e.printStackTrace();
                         }
-                        ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade); //cria um objeto de produto historico, onde os atributos dele vão ser os mesmos do que o produto que foi vendido
-                        this.registrarCompra(produtoHistorico); //registra a compra, colocando-a no vetor do historico
+                        this.registro.registrarAquisicao(produto, quantidade);
                     }
                 }
                 else
@@ -115,8 +111,7 @@ public class Gerente extends Funcionario {
                     } catch (SNException e) {
                         e.printStackTrace();
                     }
-                    ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
-                    this.registrarCompra(produtoHistorico); //registra a compra
+                    this.registro.registrarAquisicao(produto, quantidade);
                 }
                 else
                     throw new DVIException(id, data);
@@ -128,8 +123,7 @@ public class Gerente extends Funcionario {
                         } catch (SNException e) {
                             e.printStackTrace();
                         }
-                        ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
-                        this.registrarCompra(produtoHistorico); //registra a compra
+                        this.registro.registrarAquisicao(produto, quantidade);
                     }
             }
                else{
@@ -144,21 +138,14 @@ public class Gerente extends Funcionario {
             throw new QINException(quantidade);
     }
 
-
-
-
-public void registrarCompra(ProdutoHistorico produto){
-          if(produto != null){
-              Gerente.produtoHist.add(produto);
-              produto.setForma("Compra");
-          }
-}
    //ver o balanço financeiro pela data, escreve uma data e mostra todos os produtos vendidos nesse dia, quanto entrou, quanto saiu 
     public void verBalancoData(String data){
           double ganho = 0.0; 
           double perda = 0.0;
        
-         for(ProdutoHistorico produto : Gerente.produtoHist){ // percorre todoo o vetor de historico
+          Vector<ProdutoHistorico> historico = registro.getRegistro();
+        
+         for(ProdutoHistorico produto : historico){ 
             if(data.equals(produto.getData())){  //pega todos os produtos que foram vendidos/comprados na data escrita
              System.out.println(produto);  //printa todos eles
              if(produto.getForma() == "Venda"){
@@ -178,7 +165,9 @@ public void registrarCompra(ProdutoHistorico produto){
     public void verBalancoTotal(){
           double ganho = 0.0;
           double perda = 0.0;
-         for(ProdutoHistorico produto : Gerente.produtoHist){ 
+          Vector<ProdutoHistorico> historico = registro.getRegistro();
+        
+         for(ProdutoHistorico produto : historico){ 
              System.out.println(produto);
              if(produto.getForma() == "Venda"){
              ganho += produto.getPreco();

@@ -2,6 +2,7 @@
 package usuarios;
 
 import estoques.IEstoque;
+import registros.IRegistro;
 
 public class Funcionario {
   //atributos  
@@ -10,14 +11,16 @@ public class Funcionario {
     protected String nome;
     protected String email;
     protected IEstoque estoque;
+    protected IRegistro registro;
    
     //construtor
-    public Funcionario(IEstoque estoque, String nome, String login, String email, String senha){
+    public Funcionario(IRegistro registro, IEstoque estoque, String nome, String login, String email, String senha){
         this.estoque = estoque;
         this.nome = nome;
         this.login = login;
         this.email = email;
         this.senha = senha;
+        this.registro = registro;
        
     }
 
