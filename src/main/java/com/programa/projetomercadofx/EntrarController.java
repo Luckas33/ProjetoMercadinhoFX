@@ -1,8 +1,7 @@
 package com.programa.projetomercadofx;
 
 import com.programa.projetomercadofx.controllerUtil.Alerts;
-import globalService.ListaGerente;
-import globalService.ListaVendedor;
+import globalService.ListaFuncionario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -81,14 +80,14 @@ public class EntrarController {
 
         if(funcionario != null){
             if(!login.isEmpty() && !senha.isEmpty() ) {
-                if(funcionario == "Gerente" && ListaGerente.verificarCredenciais(login,senha) == true){
+                if(funcionario == "Gerente" && ListaFuncionario.verificarCredenciaisGerente(login, senha) == true){
                     try{
                         switchToGerenteMainScrenn(event);
                         System.out.println("ação Login gerente ocorreu com sucesso");
                     }catch (Exception e){
                         e.printStackTrace();
                     }
-                }else if(funcionario == "Vendedor" && ListaVendedor.verificarCredenciais(login, senha) == true){
+                }else if(funcionario == "Vendedor" && ListaFuncionario.verificarCredenciaisVendedor(login, senha) == true){
                     try{
                         switchToVendedorMainScrenn(event);
                         System.out.println("ação Login vendedor ocorreu com sucesso");
