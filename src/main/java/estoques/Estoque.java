@@ -22,29 +22,29 @@ public class Estoque implements IEstoque {
     public Estoque(){
         this.estoque = new Vector<Produto>();
         this.saldo = 0.0;
-        desserializar();
     }
    
     //metodo para inserir produtos no estoque  
-    // **nao precisa de excecao(eu acho) **
     @Override
     public void inserir(Produto produto, int quantidade){
-            if (produto != null) {
-                if (!this.existe(produto.getId())) { //checa se o produto não existe no estoque
-                    produto.setQuantidade(quantidade);  //se não existir, seta a quantidade
-                    this.estoque.add(produto);           //e coloca no vetor de estoque
-                } else if (this.existe(produto.getId())) {
-                    produto.setQuantidade(produto.getQuantidade() + quantidade); //se já existe no estoque, vai so pegar a quantidade que ja tinha e adicionar a quantidade desejada
-                }
-                serializar();
+        if (produto != null) {
+            desserializar();
+            if (!this.existe(produto.getId())){ //checa se o produto não existe no estoque
+                produto.setQuantidade(quantidade);  //se não existir, seta a quantidade
+                this.estoque.add(produto);           //e coloca no vetor de estoque
+            } else if (this.existe(produto.getId())) {
+                Produto produtoAtualiza = procurar(produto.getId());                    // pega esse produto com a ultima quantidade registrada
+                int quantidadeFinal = produtoAtualiza.getQuantidade() + quantidade;     // Estabelece nova quantidade
+                produtoAtualiza.setQuantidade(quantidadeFinal); //se já existe no estoque, vai so pegar a quantidade que ja tinha e adicionar a quantidade desejada
             }
-
-           
+            serializar();
+        }  
     }
 
     //metodo para procurar um produto no estoque
     @Override
     public Produto procurar(String id) {
+        desserializar();
        for(Produto produto : estoque){ //percorre o vetor estoque
             if(produto.getId().equals(id)){  //se algum produto dentro do estoque tiver o mesmo id do id digitado, retornará ele
                 return produto;
@@ -62,6 +62,7 @@ public class Estoque implements IEstoque {
     //metodo para reduzir um produto do estoque
     @Override
     public void reduzir(String id, int quantidade) throws PIException {
+        desserializar();
         if(!this.existe(id)){ 
             throw new PIException(id);
         }
@@ -74,6 +75,7 @@ public class Estoque implements IEstoque {
     //metodo para mostrar os produtos do estoque pelo tipo dele
     @Override
     public void mostrarEstoqueTipo(String tipo){
+        desserializar();
         for(Produto produto : estoque){ //percorre o vetor estoque
             if(produto.getTipo().equals(tipo)){ //se o produto tiver o mesmo tipo do tipo digitado, ele será mostrado
                 if(produto instanceof ProdutoComestivel){ //caso seja comestivel, mostrará sua data de validade
@@ -88,6 +90,7 @@ public class Estoque implements IEstoque {
 
     @Override
     public void mostrarEstoqueTotal(){
+        desserializar();
         for(Produto produto : estoque){
             if(produto != null){
                 if(produto instanceof ProdutoComestivel){
@@ -124,9 +127,12 @@ public class Estoque implements IEstoque {
     private void desserializar(){
         String caminho = "src/main/java/arquivos/estoque.txt";
         try {
-            Vector<Produto> produtosTemp = (Vector<Produto>) FileSave.recuperarObjetos(caminho);
-            for(Produto produto : produtosTemp) {
-                inserir(produto, produto.getQuantidade());
+            Vector<Produto> produtosTemp = (Vector<Produto>) FileSave.recuperarObjetos(caminho);        // Tem a possibilidade do arquivo não existir
+            if (produtosTemp != null) {                 // Tem a possibilidade de ser null
+                this.estoque.clear();                   // Limpa o que já existe, supondo que há a mesma coisa no arquivo
+                for(Produto produto : produtosTemp) {
+                    this.estoque.add(produto);          // Adicionando os produtos recuperados do arquivo
+                }
             }    
         } catch (Exception e) {
             e.printStackTrace();
