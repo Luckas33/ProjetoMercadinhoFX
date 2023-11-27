@@ -26,14 +26,14 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Pane layoutX="62.0" layoutY="50.0" prefHeight="71.0" prefWidth="244.0">
+                        <Pane layoutX="84.0" layoutY="39.0" prefHeight="71.0" prefWidth="244.0">
                            <children>
                               <Label layoutX="91.0" layoutY="51.0" text="Vendedor">
                                  <font>
                                     <Font name="Century" size="14.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" layoutX="6.0" layoutY="-14.0" prefHeight="74.0" prefWidth="232.0" text="Mercadinho Inteligente">
+                              <Label alignment="CENTER" prefHeight="71.0" prefWidth="244.0" text="Mercadinho Inteligente">
                                  <font>
                                     <Font name="Century" size="20.0" />
                                  </font>
@@ -42,7 +42,7 @@
                         </Pane>
                      </children>
                   </AnchorPane>
-                  <BorderPane layoutX="23.0" layoutY="150.0" prefHeight="248.0" prefWidth="357.0">
+                  <BorderPane layoutX="23.0" layoutY="148.0" prefHeight="248.0" prefWidth="357.0">
                      <center>
                         <ListView fx:id="lvProdutosAdicionados" prefHeight="231.0" prefWidth="350.0" BorderPane.alignment="CENTER" />
                      </center>
@@ -60,6 +60,14 @@
                      </font>
                   </Label>
                   <Label fx:id="lbSubtotal" layoutX="93.0" layoutY="420.0" prefHeight="17.0" prefWidth="70.0" />
+                  <Button layoutX="26.0" layoutY="447.0" mnemonicParsing="false" onAction="#onBtLimpar" text="Limpar">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </AnchorPane>
          </children>
@@ -117,7 +125,10 @@
                      </font>
                   </Label>
                   <ComboBox fx:id="comboboxParcelas" disable="true" layoutX="231.0" layoutY="179.0" prefWidth="150.0" promptText="Parcelas" />
-                  <Button fx:id="btFinalizar" layoutX="103.0" layoutY="275.0" mnemonicParsing="false" onAction="#onBtFinalizar" text="Finalizar" />
+                  <Button fx:id="btFinalizar" layoutX="103.0" layoutY="275.0" mnemonicParsing="false" onAction="#onBtFinalizar" text="Finalizar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                   <Label fx:id="lbValorPago" disable="true" layoutX="22.0" layoutY="214.0" text="Valor Pago:">
                      <font>
                         <Font name="Century" size="17.0" />

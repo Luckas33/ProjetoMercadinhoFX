@@ -28,8 +28,6 @@ public class FinanceiroMainController {
     @FXML
     private Button btVoltar;
     @FXML
-    private Button btSeguir;
-    @FXML
     private Button btCaixaSaque;
     @FXML
     private Button btCaixaDeposito;

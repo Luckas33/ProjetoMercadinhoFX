@@ -29,6 +29,7 @@ public class FinanceiroBalancoController {
     private Button btInserirData;
     @FXML
     private TextField tfData;
+///////////////////////////Mudando de tela ///////////////////
     public void switchToFinanceiroMainScreen(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("FinanceiroMainScreen.fxml"));
         Scene cenaAtual = root.getScene();
@@ -36,6 +37,7 @@ public class FinanceiroBalancoController {
         Stage palco = (Stage) cenaAtual.getWindow();
         palco.setScene(cenaTela1);
     }
+
 ////////////////////Métodos lógicos //////////////////
     public void onBtVerTudo(ActionEvent e){
         tfData.setDisable(true);
