@@ -153,8 +153,9 @@ public class Gerente extends Funcionario {
           this.estoque.mostrarEstoqueTipo(tipo);
       }
 
-      public void verEstoqueTotal(){
+      public ProdutoHistorico verEstoqueTotal(){
         this.estoque.mostrarEstoqueTotal();
+          return null;
       }
 
     //metodo para registrar a compra, ele recebe um objeto de produto historico, adiciona no vetor e seleciona a forma como "compra"
