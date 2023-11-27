@@ -1,13 +1,9 @@
 package com.programa.projetomercadofx;
 
 import com.programa.projetomercadofx.controllerUtil.Alerts;
-import estoques.Estoque;
 import estoques.IEstoque;
 import globalService.ListaEstoque;
-import globalService.ListaGerente;
-import globalService.ListaVendedor;
-import javafx.beans.Observable;
-import javafx.collections.ObservableList;
+import globalService.ListaFuncionario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import usuarios.Gerente;
 import usuarios.Vendedor;
-import java.util.Vector;
 
 public class CadastrarController {
     @FXML
@@ -93,8 +88,7 @@ public class CadastrarController {
                 for(IEstoque estoque : ListaEstoque.estoqueVector) {
                     if(estoque != null) {
                         gerenteObj = new Gerente(estoque, nome, login, email, senha);
-                        ListaGerente.gerentesVector.add(gerenteObj);
-                        ListaGerente.mostrarLista();
+                        ListaFuncionario.gerentesVector.add(gerenteObj);
                         onBtLimpar(event);
                         Alerts.showAlert("Cadastro", null, "Conta Gerente cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
                     }
@@ -103,8 +97,7 @@ public class CadastrarController {
                 for(IEstoque estoque : ListaEstoque.estoqueVector) {
                     if(estoque != null) {
                         vendedorObj = new Vendedor(estoque, nome, login, email, senha);
-                        ListaVendedor.vendedoresVector.add(vendedorObj);
-                        ListaVendedor.mostrarLista();
+                        ListaFuncionario.vendedoresVector.add(vendedorObj);
                         onBtLimpar(event);
                         Alerts.showAlert("Cadastro", null, "Conta Vendedor cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
                     }

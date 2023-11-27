@@ -2,7 +2,7 @@ package com.programa.projetomercadofx;
 
 import com.programa.projetomercadofx.controllerUtil.Alerts;
 import excecao.*;
-import globalService.ListaVendedor;
+import globalService.ListaFuncionario;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -69,7 +69,7 @@ public class VendedorMainController {
         }
 
         String id = tfidProduto.getText();
-        for (Vendedor vendedor : ListaVendedor.vendedoresVector) {
+        for (Vendedor vendedor : ListaFuncionario.vendedoresVector) {
             if (vendedor != null) {
                 Produto produto = vendedor.retornaProduto(id);
                 if (produto != null) {
@@ -131,7 +131,7 @@ public class VendedorMainController {
     public void onBtConfirmarVenda(ActionEvent event){  //Pega todos os produtos do carrinho e vende um por um com base no tipo de pagamento
         String tipoVenda = choiceBoxTipoVenda.getValue();
         if (!tipoVenda.isEmpty()){
-            for (Vendedor vendedor : ListaVendedor.vendedoresVector) {
+            for (Vendedor vendedor : ListaFuncionario.vendedoresVector) {
                 if (vendedor != null) {
                     if (tipoVenda == "Débito"){
                         for (int i = 0; i < carrinho.size(); i++) {

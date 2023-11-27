@@ -4,7 +4,6 @@ import com.programa.projetomercadofx.controllerUtil.Alerts;
 import excecao.PEException;
 import excecao.QINException;
 import excecao.SIException;
-import excecao.DVIException;
 import globalService.ListaGerente;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -101,7 +100,7 @@ public class GerenteAddProdutoController {
                 if (categoria.equals("Comestível") && !nome.isEmpty() && !id.isEmpty() && !marca.isEmpty() && precoCompra > 0.0 && !tipo.isEmpty() && !dataValidade.isEmpty()) {
 
                     produtoComestivel = new ProdutoComestivel(nome, id, marca, precoCompra, tipo, dataValidade);
-                    for(Gerente gerente : ListaGerente.gerentesVector){
+                    for(Gerente gerente : ListaFuncionario.gerentesVector){
                         if(gerente != null){
                             try {
                                 gerente.cadastrar(produtoComestivel, quantidade, taxaLucro);
@@ -131,7 +130,7 @@ public class GerenteAddProdutoController {
 
                 } else if (categoria.equals("Não Comestível") && !nome.isEmpty() && !id.isEmpty() && !marca.isEmpty() && precoCompra > 0.0 && !tipo.isEmpty()) {
                     produtoNaoComestivel = new ProdutoNaoComestivel(nome, id, marca, precoCompra, tipo);
-                    for(Gerente gerente : ListaGerente.gerentesVector){
+                    for(Gerente gerente : ListaFuncionario.gerentesVector){
                         if(gerente != null){
                             try {
                                 gerente.cadastrar(produtoNaoComestivel, quantidade, taxaLucro);

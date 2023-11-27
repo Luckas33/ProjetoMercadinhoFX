@@ -3,8 +3,7 @@ package com.programa.projetomercadofx;
 import estoques.Estoque;
 import estoques.IEstoque;
 import globalService.ListaEstoque;
-import globalService.ListaGerente;
-import globalService.ListaVendedor;
+import globalService.ListaFuncionario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,8 +24,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         IEstoque estoque = new Estoque();
-        ListaGerente listaGerente = new ListaGerente();
-        ListaVendedor listaVendedor = new ListaVendedor();
+        ListaFuncionario listaFuncionario = new ListaFuncionario();
         ListaEstoque listaEstoque = new ListaEstoque();
         ListaEstoque.estoqueVector.add(estoque);
 

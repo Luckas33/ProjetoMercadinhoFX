@@ -4,7 +4,6 @@ import com.programa.projetomercadofx.controllerUtil.Alerts;
 import excecao.PIException;
 import excecao.QINException;
 import excecao.SIException;
-import excecao.*;
 import globalService.ListaGerente;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -149,7 +148,7 @@ public class FinanceiroMainController {
         try{
           double valor = Double.parseDouble(tfValorDeposito.getText());
 
-          for(Gerente gerente : ListaGerente.gerentesVector){
+          for(Gerente gerente : ListaFuncionario.gerentesVector){
               if(gerente != null){
                   gerente.inserirSaldo(valor);
                   Alerts.showAlert("Depósito",null,"Depósito concluído",Alert.AlertType.INFORMATION);
@@ -168,7 +167,7 @@ public class FinanceiroMainController {
         try{
             double valor = Double.parseDouble(tfValorSaque.getText());
 
-            for(Gerente gerente : ListaGerente.gerentesVector){
+            for(Gerente gerente : ListaFuncionario.gerentesVector){
                 if(gerente != null){
                     gerente.removerSaldo(valor);
                     gerente.conferirSaldo();
@@ -187,7 +186,7 @@ public class FinanceiroMainController {
         String id = tfIDTaxa.getText();
 
         if(taxa > 0){
-           for(Gerente gerente : ListaGerente.gerentesVector){
+           for(Gerente gerente : ListaFuncionario.gerentesVector){
                if(gerente != null){
                    gerente.atualizarTaxa(id, taxa);
                }
@@ -203,7 +202,7 @@ public class FinanceiroMainController {
         int quantidade = Integer.parseInt(tfQuantidadeComprarProduto.getText());
 
 
-            for (Gerente gerente : ListaGerente.gerentesVector) {
+            for (Gerente gerente : ListaFuncionario.gerentesVector) {
                 if (gerente != null) {
                     try {
                         gerente.adicionar(id, quantidade);
@@ -231,7 +230,7 @@ public class FinanceiroMainController {
         try{
             String saldoTotal = "0.0";
 
-            for(Gerente gerente : ListaGerente.gerentesVector){
+            for(Gerente gerente : ListaFuncionario.gerentesVector){
                 if(gerente != null){
                     saldoTotal = String.valueOf(gerente.retornaSaldo());
                 }
