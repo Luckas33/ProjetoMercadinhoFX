@@ -8,9 +8,7 @@ import produtos.ProdutoComestivel;
 
 import java.util.Vector;
 
-
-
-
+import bancoDados.FileSave;
 
 public class Estoque implements IEstoque {
 
@@ -24,7 +22,7 @@ public class Estoque implements IEstoque {
     public Estoque(){
         this.estoque = new Vector<Produto>();
         this.saldo = 0.0;
-      
+        desserializar();
     }
    
     //metodo para inserir produtos no estoque  
@@ -38,7 +36,7 @@ public class Estoque implements IEstoque {
                 } else if (this.existe(produto.getId())) {
                     produto.setQuantidade(produto.getQuantidade() + quantidade); //se já existe no estoque, vai so pegar a quantidade que ja tinha e adicionar a quantidade desejada
                 }
-
+                serializar();
             }
 
            
@@ -70,6 +68,7 @@ public class Estoque implements IEstoque {
         // Garante que inicialmente esse produto deve existir para sofrer redução
         Produto produto = this.procurar(id);
         produto.setQuantidade(produto.getQuantidade() - quantidade); //pega a quantidade que tinha antes, e diminui pela desejada
+        serializar();
     }
 
     //metodo para mostrar os produtos do estoque pelo tipo dele
@@ -107,6 +106,7 @@ public class Estoque implements IEstoque {
        return saldo;
     }
 
+    // <Anderson>: Falta salvar saldo... Não é difícil, mas acho feio, então estou pensando;
     //metodo para mudar o saldo
     @Override
     public void definirSaldo(double valor) throws SNException{
@@ -114,6 +114,23 @@ public class Estoque implements IEstoque {
            this.saldo = valor;
         }else
             throw new SNException(valor);
+    }
+
+    private void serializar() {
+        String caminho = "src/main/java/arquivos/estoque.txt";
+        FileSave.gravarObjetos(estoque, caminho);
+    }
+
+    private void desserializar(){
+        String caminho = "src/main/java/arquivos/estoque.txt";
+        try {
+            Vector<Produto> produtosTemp = (Vector<Produto>) FileSave.recuperarObjetos(caminho);
+            for(Produto produto : produtosTemp) {
+                inserir(produto, produto.getQuantidade());
+            }    
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
