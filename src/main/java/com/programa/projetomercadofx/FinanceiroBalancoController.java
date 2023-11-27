@@ -13,13 +13,16 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import produtos.Produto;
 import produtos.ProdutoHistorico;
 import usuarios.Gerente;
+
+import java.util.Vector;
 
 public class FinanceiroBalancoController {
 ////////////Id dos componenetes  ///////////////
     @FXML
-    private ListView<ProdutoHistorico> listViewBalanco;
+    private ListView<Produto> listViewBalanco;
     @FXML
     private Button btVoltar;
     @FXML
@@ -30,6 +33,9 @@ public class FinanceiroBalancoController {
     private Button btInserirData;
     @FXML
     private TextField tfData;
+    private Vector<Produto> balancoGeral;
+
+/////////////// Mudança de Tela ///////////////////////////
     public void switchToFinanceiroMainScreen(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("FinanceiroMainScreen.fxml"));
         Scene cenaAtual = root.getScene();
@@ -37,15 +43,19 @@ public class FinanceiroBalancoController {
         Stage palco = (Stage) cenaAtual.getWindow();
         palco.setScene(cenaTela1);
     }
+
 ////////////////////Métodos lógicos //////////////////
-    public void onBtVerTudo(ActionEvent e){
+    /*public void onBtVerTudo(ActionEvent e){
         tfData.setDisable(true);
         for (Gerente gerente: ListaFuncionario.gerentesVector) {
             if(gerente != null){
-                //listViewBalanco.getItems().setAll(gerente.verBalancoTotal());
+                Gerente balanco =  gerente.verBalancoTotal();
+                this.balancoGeral.add(gerente);
+                listViewBalanco.getItems().setAll(balancoGeral);
             }
         }
-    }
+    }*/
+
     public void onBtInserirData(ActionEvent e){
         tfData.setDisable(false);
         String data = tfData.getText();
@@ -59,16 +69,18 @@ public class FinanceiroBalancoController {
 
 ///////////////// Métodos Complementares ///////////////
     public void initialize (){
-        listViewBalanco.setCellFactory(param -> new ListCell<ProdutoHistorico>() {
+
+        balancoGeral = new Vector<>();
+        listViewBalanco.setCellFactory(param -> new ListCell<Produto>() {
             @Override
-            protected void updateItem(ProdutoHistorico item, boolean empty) {
+            protected void updateItem(Produto item, boolean empty) {
                 super.updateItem(item, empty);
 
                 if (empty || item == null) {
                     setText(null);
                 } else {
                     // Personalize aqui como deseja exibir cada item na lista
-                    setText("ID: " + item.getIdVenda() + " | Preço: " + item.getPreco() + " | Quantidade: " + item.getQuantidadeVendida());
+                    setText("ID: " + item.getId() + " | Preço: " + item.getPrecoVenda() + " | Outros atributos...");
                 }
             }
         });

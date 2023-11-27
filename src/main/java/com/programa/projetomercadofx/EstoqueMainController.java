@@ -23,7 +23,7 @@ import usuarios.Gerente;
 import java.util.Vector;
 
 public class EstoqueMainController {
-////////// ID dos Componentes ////////////////
+//////////// ID dos Componentes ////////////////
     @FXML
     private Button btVoltar;
     @FXML
@@ -34,7 +34,7 @@ public class EstoqueMainController {
     private ListView<Produto> listViewEstoque;
     private Vector<Produto> estoqueMostrar;
 
-    ////////////// Mudar de Tela ///////////////////////
+///////////////// Mudar de Tela ///////////////////////
     public void switchToGerenteMainScren(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("GerenteMainScreen.fxml"));
         Scene cenaAtual = root.getScene();
