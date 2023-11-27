@@ -4,19 +4,26 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="root" alignment="CENTER" prefHeight="340.0" prefWidth="620.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.MainController">
+<VBox fx:id="root" alignment="CENTER" prefHeight="400.0" prefWidth="720.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.MainController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <children>
-        <AnchorPane prefHeight="371.0" prefWidth="527.0">
+      <ImageView fx:id="imageViewUFC" fitHeight="106.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@UFC.png" />
+         </image>
+      </ImageView>
+        <AnchorPane prefHeight="239.0" prefWidth="680.0">
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="65.0" prefHeight="34.0" prefWidth="310.0" text="Mercadinho Inteligente" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="135.0">
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="8.0" prefHeight="34.0" prefWidth="310.0" text="Mercadinho Inteligente" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="135.0">
                     <font>
                         <Font name="Century" size="26.0" />
                     </font>
@@ -46,6 +53,11 @@
                      </cursor></Button>
                     </children>
                 </Pane>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="220.0" layoutY="42.0" prefHeight="17.0" prefWidth="140.0" text="Feito por Alunos da UFC" textAlignment="CENTER" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0">
+               <font>
+                  <Font name="Century" size="12.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>

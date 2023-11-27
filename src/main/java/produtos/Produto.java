@@ -1,10 +1,10 @@
 
 package produtos;
 
-
+import java.io.Serializable;
 import excecao.*;
 
-public class Produto {
+public class Produto implements Serializable {
     //atributos
     protected String nome;
     protected String id;
@@ -15,6 +15,7 @@ public class Produto {
     protected int quantidade;
     protected double taxaLucro;
     protected int quantidadeVendida;
+    private static final long serialVersionUID = 1L;
    
     //construtor
     public Produto(String nome, String id, String marca, double preco_compra, String tipo) {

@@ -135,6 +135,7 @@ public class VendedorMainController {
                                 vendedor.venderDebito(produto.getId(), produto.getQuantidadeVendida());
                                 Alerts.showAlert("Venda", null, "Venda realizada com sucesso.", Alert.AlertType.INFORMATION);
                                 onBtLimpar(event);
+                                btAdicionar.setDisable(false);
                             } catch (PIException e) {
                                 e.printStackTrace();
                                 Alerts.showAlert("Erro Venda", null,"Produto inexistente",Alert.AlertType.ERROR);
@@ -266,6 +267,9 @@ public class VendedorMainController {
         tfValorPago.setText(null);
         comboboxParcelas.setValue(null);
         lvProdutosAdicionados.getItems().clear();
+        lbSubtotal.setText("0.0");
+        choiceBoxTipoVenda.setValue(null);
+        lbTipoPagamento.setDisable(true);
     }
 
     @FXML
