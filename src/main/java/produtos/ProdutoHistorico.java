@@ -1,18 +1,20 @@
 package produtos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class ProdutoHistorico {
+public class ProdutoHistorico implements Serializable {
     //Atributos
     private String idVenda;
     private double preco;
     private int quantidadeVendida;
     private String forma;
     private String data;
+    private static final long serialVersionUID = 1L;
 
     LocalDate date = LocalDate.now();
-    DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static final DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 
     //Construtor

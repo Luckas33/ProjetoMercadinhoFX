@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 
 
 public class FileSave {
@@ -49,6 +51,11 @@ public class FileSave {
     public static Object recuperarObjetos(String caminho){
         File arquivo = new File(caminho);
 
+        if(arquivo.length() == 0) {
+            System.out.println("O arquivo está vazio para recuperação. Caminho: "+caminho);
+            return null;
+        }
+
         try {
             // Criando um fluxo de saída, para definir o canal de comunicação com arquivo
             FileInputStream leitor = new FileInputStream(arquivo);
@@ -65,6 +72,21 @@ public class FileSave {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public static void apagarObjetos(String caminho){
+        File arquivo = new File(caminho);
+        if(arquivo.length() > 0) {
+            try {
+                FileWriter writer = new FileWriter(arquivo);
+                writer.write(""); // Escreve uma string vazia no arquivo
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("O arquivo está vazio. Caminho: "+caminho);
         }
     }
 }

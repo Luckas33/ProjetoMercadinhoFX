@@ -7,7 +7,7 @@ public class PEException extends Exception{
 
     public PEException(String Id){
 
-        super("\nProduto já existente ");
+        super("\nProduto já existente. [Id: "+Id+"]");
         this.Id = Id;
       }
     

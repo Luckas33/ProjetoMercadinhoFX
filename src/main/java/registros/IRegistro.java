@@ -6,9 +6,9 @@ import produtos.Produto;
 import produtos.ProdutoHistorico;
 
 public interface IRegistro {
-    public void registrarAquisicao(Produto produto, int quantidade);
+    public void registrarAquisicao(String idProduto, double precoCompra, int quantidade);
 
-    public void registrarVenda(Produto produto, int quantidade);
+    public void registrarVenda(String idProduto, double precoVenda, int quantidade);
 
-    public Vector<ProdutoHistorico> getRegistro();
+    public Vector<ProdutoHistorico> retornaRegistro();
 }

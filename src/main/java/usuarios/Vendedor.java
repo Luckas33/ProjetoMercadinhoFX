@@ -48,7 +48,7 @@ public class Vendedor extends Funcionario {
                         e.printStackTrace();
                     }
                     this.estoque.reduzir(produto.getId(), quantidade); //chama o metodo reduzir da interface estoque, onde tira a quantidade vendida do estoque
-                    this.registro.registrarVenda(produto, quantidade); //registra a venda
+                    this.registro.registrarVenda(produto.getId(), valorTotal, quantidade); //registra a venda
 
                 } else {
                     throw new QIException(id, produto.getQuantidade(), quantidade);
@@ -65,7 +65,7 @@ public class Vendedor extends Funcionario {
                         e.printStackTrace();
                     }
                     this.estoque.reduzir(produto.getId(), quantidade); //chama o metodo reduzir da interface estoque, onde tira a quantidade vendida do estoque
-                    this.registro.registrarVenda(produto, quantidade); //registra a venda
+                    this.registro.registrarVenda(produto.getId(), valorTotal, quantidade); //registra a venda
 
                 } else {
                     throw new QIException(id, produto.getQuantidade(), quantidade);
@@ -103,7 +103,7 @@ public class Vendedor extends Funcionario {
                                     e.printStackTrace();
                                 }
                                 this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade do estoque
-                                this.registro.registrarVenda(produto, quantidade); //registra a venda
+                                this.registro.registrarVenda(produto.getId(), valorTotal, quantidade); //registra a venda
 
                             } else {
                                 throw new QIException(id, produto.getQuantidade(), quantidade);
@@ -120,7 +120,7 @@ public class Vendedor extends Funcionario {
                                 e.printStackTrace();
                             }
                             this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade do estoque
-                            this.registro.registrarVenda(produto, quantidade); //registra a venda
+                            this.registro.registrarVenda(produto.getId(), valorTotal, quantidade); //registra a venda
 
                         } else {
                             throw new QIException(id, produto.getQuantidade(), quantidade);
@@ -155,7 +155,7 @@ public class Vendedor extends Funcionario {
                         e.printStackTrace();
                     }
                     this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade
-                    this.registro.registrarVenda(produto, quantidade); //registra a venda
+                    this.registro.registrarVenda(produto.getId(), valorTotal, quantidade); //registra a venda
 
                 } else {
                     throw new QIException(id, produto.getQuantidade(), quantidade);
@@ -173,7 +173,7 @@ public class Vendedor extends Funcionario {
                             e.printStackTrace();
                         }
                         this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade
-                        this.registro.registrarVenda(produto, quantidade); //registra a venda
+                        this.registro.registrarVenda(produto.getId(), valorTotal, quantidade); //registra a venda
 
                     } else {
                         throw new QIException(id, produto.getQuantidade(), quantidade);

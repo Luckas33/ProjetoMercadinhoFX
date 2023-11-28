@@ -12,6 +12,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Vector;
 
+import bancoDados.FileSave;
+
 
 public class Gerente extends Funcionario {
     
@@ -27,67 +29,55 @@ public class Gerente extends Funcionario {
     // *****teste*****//
     //metodo para cadastrar um produto no estoque, checa se o produto ja existe no estoque, se não existir
     //ele cadastra
-     public void cadastrar(Produto produto, int quantidade, double taxalucro) throws PEException, SIException, QINException, DVIException {
+    public void cadastrar(Produto produto, int quantidade, double taxaLucro) throws PEException, SIException, QINException, DVIException {
         if(quantidade>0){
-        if(produto != null){ 
-            if(!this.estoque.existe(produto.getId())){//calcula o valor total da compra
-              double valorTotal = (quantidade * produto.getPreco_compra());
+            if(produto != null){ 
+                if(!this.estoque.existe(produto.getId())){//calcula o valor total da compra
+                    double valorTotal = (quantidade * produto.getPreco_compra());
 
-                if(this.estoque.verSaldo() >= valorTotal) {//checa se o saldo do mercado é maior que o preço da compra
+                    if(this.estoque.verSaldo() >= valorTotal) {//checa se o saldo do mercado é maior que o preço da compra
 
-                    if (produto instanceof ProdutoComestivel) {
-                        LocalDate data = LocalDate.parse(((ProdutoComestivel) produto).getValidade(), formatador);
-                        if (date.isBefore(data)) {
-
-
-                            try {
-                                produto.setTaxaLucro(taxalucro);  //seta a taxa de lucro que esse produto vai ter
-                            } catch (TLIException e) { // testa se a taxa lucro é inválida
-                                System.out.print(e.getMessage());
-                                System.out.print(" Taxa: ");
-                                System.out.print(taxalucro); // **n seria taxaLucro??**
+                        if (produto instanceof ProdutoComestivel) {
+                            LocalDate data = LocalDate.parse(((ProdutoComestivel) produto).getValidade(), formatador);
+                            if (date.isBefore(data)) {
+                                cadastroIntermediario(produto, taxaLucro, valorTotal, quantidade);    
                             }
-                            double precoFinal = (produto.getPreco_compra() * (produto.getTaxaLucro() / 100)) + produto.getPreco_compra();
-                            produto.setPrecoVenda(precoFinal); //aqui ele seta o preço de venda, sendo a multiplicação do preço de compra pela taxa de lucro
-                            this.estoque.inserir(produto, quantidade); //ele chama o metodo inserir da interface de estoque, onde ele insere o produto e a quantidade no estoque
-                            try {
-                                this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
-                            } catch (SNException e) {
-                                e.printStackTrace();
-                            }
-                            this.registro.registrarAquisicao(produto, quantidade);
+                            else
+                                throw new DVIException(produto.getId(), data);
+                        }else{
+                            cadastroIntermediario(produto, taxaLucro, valorTotal, quantidade);
                         }
-                        else
-                            throw new DVIException(produto.getId(), data);
-                }
-                    else{
-                        try {
-                            produto.setTaxaLucro(taxalucro);  //seta a taxa de lucro que esse produto vai ter
-                        } catch (TLIException e) { // testa se a taxa lucro é inválida
-                            System.out.print(e.getMessage());
-                            System.out.print(" Taxa: ");
-                            System.out.print(taxalucro); // **n seria taxaLucro??**
-                        }
-                        double precoFinal = (produto.getPreco_compra() * (produto.getTaxaLucro() / 100)) + produto.getPreco_compra();
-                        produto.setPrecoVenda(precoFinal); //aqui ele seta o preço de venda, sendo a multiplicação do preço de compra pela taxa de lucro
-                        this.estoque.inserir(produto, quantidade); //ele chama o metodo inserir da interface de estoque, onde ele insere o produto e a quantidade no estoque
-                        try {
-                            this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
-                        } catch (SNException e) {
-                            e.printStackTrace();
-                        }
-                        this.registro.registrarAquisicao(produto, quantidade);
+                    }else{
+                        throw new SIException(produto.getId(),this.estoque.verSaldo(), valorTotal); //restrição de saldo insuficiente para adquirir novos produtos
                     }
+                }else{
+                    throw new PEException(produto.getId()); //restricao se o produto ja existe
                 }
-                else
-                    throw new SIException(produto.getId(),this.estoque.verSaldo(), valorTotal); //restrição de saldo insuficiente para adquirir novos produtos
             }
-            else
-                throw new PEException(produto.getId()); //restricao se o produto ja existe
-        }
-        }else
+        }else{ 
             throw new QINException(quantidade);//restriçao se a quantidade for inválida
+        }
     }
+
+    private void cadastroIntermediario(Produto produto, double taxaLucro, double valorTotal, int quantidade){
+        try {
+            produto.setTaxaLucro(taxaLucro);  //seta a taxa de lucro que esse produto vai ter
+        } catch (TLIException e) { // testa se a taxa lucro é inválida
+            System.out.print(e.getMessage());
+            System.out.print(" Taxa: ");
+            System.out.print(taxaLucro); // **n seria taxaLucro??**
+        }
+        double precoFinal = (produto.getPreco_compra() * (produto.getTaxaLucro() / 100)) + produto.getPreco_compra();
+        produto.setPrecoVenda(precoFinal); //aqui ele seta o preço de venda, sendo a multiplicação do preço de compra pela taxa de lucro
+        this.estoque.inserir(produto, quantidade); //ele chama o metodo inserir da interface de estoque, onde ele insere o produto e a quantidade no estoque
+        try {
+            this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
+        } catch (SNException e) {
+            e.printStackTrace();
+        }
+        this.registro.registrarAquisicao(produto.getId(), valorTotal, quantidade);
+    }
+
 
     //metodo para adicionar mais produtos no estoque, caso ele ja esteja cadastrado
     //se nao tiver cadastrado, nao vai adicionar
@@ -111,7 +101,7 @@ public class Gerente extends Funcionario {
                     } catch (SNException e) {
                         e.printStackTrace();
                     }
-                    this.registro.registrarAquisicao(produto, quantidade);
+                    this.registro.registrarAquisicao(produto.getId(), valorTotal, quantidade);
                 }
                 else
                     throw new DVIException(id, data);
@@ -123,7 +113,7 @@ public class Gerente extends Funcionario {
                         } catch (SNException e) {
                             e.printStackTrace();
                         }
-                        this.registro.registrarAquisicao(produto, quantidade);
+                        this.registro.registrarAquisicao(produto.getId(), valorTotal, quantidade);
                     }
             }
                else{
@@ -143,7 +133,7 @@ public class Gerente extends Funcionario {
           double ganho = 0.0; 
           double perda = 0.0;
        
-          Vector<ProdutoHistorico> historico = registro.getRegistro();
+          Vector<ProdutoHistorico> historico = registro.retornaRegistro();
         
          for(ProdutoHistorico produto : historico){ 
             if(data.equals(produto.getData())){  //pega todos os produtos que foram vendidos/comprados na data escrita
@@ -161,20 +151,25 @@ public class Gerente extends Funcionario {
          System.out.printf("Balanço final: $%.2f\n", balanco); //mostra o balanço do dia (sem contar o saldo setado inicialmente, so o quanto foi comprado e vendido)
       }
 
+    public void limparTudo(){
+        FileSave.apagarObjetos("src/main/java/arquivos/registro.txt");
+        FileSave.apagarObjetos("src/main/java/arquivos/estoque.txt");
+    }
+
     //mostra todos os produtos vendidos e comprados, mesmo funcionamento do anterior
     public void verBalancoTotal(){
           double ganho = 0.0;
           double perda = 0.0;
-          Vector<ProdutoHistorico> historico = registro.getRegistro();
+          Vector<ProdutoHistorico> historico = registro.retornaRegistro();
         
          for(ProdutoHistorico produto : historico){ 
-             System.out.println(produto);
-             if(produto.getForma() == "Venda"){
-             ganho += produto.getPreco();
-             }
-             else{
-                 perda += produto.getPreco();
-             }
+            System.out.println(produto);
+            if(produto.getForma().equals("Venda")){
+               ganho += produto.getPreco();
+            }
+            else{
+               perda += produto.getPreco();
+            }
             
          }
          double balanco = ganho - perda;

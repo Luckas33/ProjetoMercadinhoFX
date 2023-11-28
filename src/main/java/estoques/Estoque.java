@@ -68,8 +68,8 @@ public class Estoque implements IEstoque {
         // Garante que inicialmente esse produto deve existir para sofrer redução
         Produto produto = this.procurar(id);
         if(quantidade>0){
-        produto.setQuantidade(produto.getQuantidade() - quantidade); //pega a quantidade que tinha antes, e diminui pela desejada
-        serializar();
+            produto.setQuantidade(produto.getQuantidade() - quantidade); //pega a quantidade que tinha antes, e diminui pela desejada
+            serializar();
         }
         else
             throw new QINException(quantidade);
@@ -79,8 +79,8 @@ public class Estoque implements IEstoque {
 
 
 
-@Override
-public Vector<Produto> retornaEstoque(){
+    @Override
+    public Vector<Produto> retornaEstoque(){
         desserializar();
         return this.estoque;
     }
