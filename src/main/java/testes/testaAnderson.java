@@ -19,22 +19,24 @@ public class testaAnderson {
         Gerente gerente = new Gerente(registro, estoque, "rodrigo", "jrodri", "rodri@gmail","123");
         gerente.limparTudo();
         System.out.println("Após limpeza");
-        gerente.inserirSaldo(140.0);
+        gerente.inserirSaldo(400.0);
         Produto produto1 = new Produto("refrigerante", "9", "coca cola", 20.0, "bebida");
-
+        Produto produto2 = new ProdutoComestivel("Feijão", "123", "Kokoko", 15.66, "Comestivel","12/05/2028");
+        
         try {
             gerente.cadastrar(produto1, 5, 1.2);
+            gerente.cadastrar(produto2, 10, 2.5);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        for(Produto produto: estoque.retornaEstoque()){
-                System.out.println(produto);
-        }
+        // for(Produto produto: estoque.retornaEstoque()){
+        //         System.out.println(produto);
+        // }
 
-        for(ProdutoHistorico produto: registro.retornaRegistro()){
-                System.out.println(produto);
-        }
+        // for(ProdutoHistorico produto: registro.retornaRegistro()){
+        //         System.out.println(produto);
+        // }
 
         System.out.println("Após cadastro");
 
@@ -43,7 +45,7 @@ public class testaAnderson {
         Vendedor vendedor = new Vendedor(registro, estoque, "joao", "joaozin", "susu" , "123");
 
         try {
-            vendedor.venderDebito("9", 3);
+            vendedor.venderDebito("123", 8);
         } catch (Exception e) {
             e.printStackTrace();
         }
