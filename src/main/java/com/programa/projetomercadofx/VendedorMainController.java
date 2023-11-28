@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import produtos.Produto;
 import produtos.ProdutoHistorico;
+import usuarios.Funcionario;
 import usuarios.Vendedor;
 
 import java.util.Vector;
@@ -69,9 +70,9 @@ public class VendedorMainController {
         }
 
         String id = tfidProduto.getText();
-        for (Vendedor vendedor : ListaFuncionario.vendedoresVector) {
-            if (vendedor != null) {
-                Produto produto = vendedor.retornaProduto(id);
+        for (Funcionario funcionario : ListaFuncionario.funcionariosVector) {
+            if (funcionario instanceof Vendedor) {
+                Produto produto = ((Vendedor) funcionario).retornaProduto(id);
                 if (produto != null) {
                     ProdutoHistorico produtoHist = new ProdutoHistorico(produto.getId(), produto.getPrecoVenda(), quantidade);
                     try{
@@ -131,13 +132,13 @@ public class VendedorMainController {
     public void onBtConfirmarVenda(ActionEvent event){  //Pega todos os produtos do carrinho e vende um por um com base no tipo de pagamento
         String tipoVenda = choiceBoxTipoVenda.getValue();
         if (!tipoVenda.isEmpty()){
-            for (Vendedor vendedor : ListaFuncionario.vendedoresVector) {
-                if (vendedor != null) {
+            for (Funcionario funcionario : ListaFuncionario.funcionariosVector) {
+                if (funcionario instanceof  Vendedor) {
                     if (tipoVenda == "Débito"){
                         for (int i = 0; i < carrinho.size(); i++) {
                             Produto produto = carrinho.get(i);
                             try {
-                                vendedor.venderDebito(produto.getId(), produto.getQuantidadeVendida());
+                                ((Vendedor) funcionario).venderDebito(produto.getId(), produto.getQuantidadeVendida());
                                 Alerts.showAlert("Venda", null, "Venda realizada com sucesso.", Alert.AlertType.INFORMATION);
                                 onBtLimpar(event);
                                 btAdicionar.setDisable(false);
@@ -163,7 +164,7 @@ public class VendedorMainController {
                             try {
                                 Produto produto = carrinho.get(i);
                                 valorFinalC += (produto.getPrecoVenda() * produto.getQuantidadeVendida());
-                                vendedor.venderCredito(produto.getId(), produto.getQuantidadeVendida(), parcelas);
+                                ((Vendedor) funcionario).venderCredito(produto.getId(), produto.getQuantidadeVendida(), parcelas);
                                 Alerts.showAlert("Venda", null, "Venda realizada com sucesso.", Alert.AlertType.INFORMATION);
                                 onBtLimpar(event);
                             }catch(QINException e){
@@ -198,7 +199,7 @@ public class VendedorMainController {
                             for (int i = 0; i < carrinho.size(); i++) {
                                 try {
                                     Produto produto = carrinho.get(i);
-                                    vendedor.venderDinheiro(produto.getId(), produto.getQuantidadeVendida());
+                                    ((Vendedor) funcionario).venderDinheiro(produto.getId(), produto.getQuantidadeVendida());
                                     Alerts.showAlert("Venda", null, "Venda realizada com sucesso.", Alert.AlertType.INFORMATION);
                                     onBtLimpar(event);
                                 } catch ( QINException |
@@ -211,7 +212,7 @@ public class VendedorMainController {
                             for (int i = 0; i < carrinho.size(); i++) {
                                 try {
                                     Produto produto = carrinho.get(i);
-                                    vendedor.venderDinheiro(produto.getId(), produto.getQuantidadeVendida());
+                                    ((Vendedor) funcionario).venderDinheiro(produto.getId(), produto.getQuantidadeVendida());
                                 } catch (  QINException |
                                          QIException | PIException | DVIException e) {
                                     e.printStackTrace();

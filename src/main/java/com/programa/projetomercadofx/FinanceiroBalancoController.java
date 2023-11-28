@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import produtos.Produto;
 import produtos.ProdutoHistorico;
+import usuarios.Funcionario;
 import usuarios.Gerente;
 
 import java.util.Vector;
@@ -59,9 +60,9 @@ public class FinanceiroBalancoController {
     public void onBtInserirData(ActionEvent e){
         tfData.setDisable(false);
         String data = tfData.getText();
-        for(Gerente gerente : ListaFuncionario.gerentesVector){
-            if(gerente != null){
-                gerente.verBalancoData(data);
+        for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
+            if(funcionario instanceof Gerente){
+                ((Gerente) funcionario).verBalancoData(data);
             }
         }
 

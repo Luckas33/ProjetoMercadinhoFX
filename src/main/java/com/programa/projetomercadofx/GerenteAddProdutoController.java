@@ -17,7 +17,9 @@ import javafx.stage.Stage;
 import produtos.Produto;
 import produtos.ProdutoComestivel;
 import produtos.ProdutoNaoComestivel;
+import usuarios.Funcionario;
 import usuarios.Gerente;
+import usuarios.Vendedor;
 
 public class GerenteAddProdutoController {
     @FXML
@@ -101,10 +103,10 @@ public class GerenteAddProdutoController {
                 if (categoria.equals("Comestível") && !nome.isEmpty() && !id.isEmpty() && !marca.isEmpty() && precoCompra > 0.0 && !tipo.isEmpty() && !dataValidade.isEmpty()) {
 
                     produtoComestivel = new ProdutoComestivel(nome, id, marca, precoCompra, tipo, dataValidade);
-                    for(Gerente gerente : ListaFuncionario.gerentesVector){
-                        if(gerente != null){
+                    for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
+                        if(funcionario instanceof Gerente){
                             try {
-                                gerente.cadastrar(produtoComestivel, quantidade, taxaLucro);
+                                ((Gerente) funcionario).cadastrar(produtoComestivel, quantidade, taxaLucro);
                                 Alerts.showAlert("Adicionar produto", null, "Produto Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
                             }
                             catch (QINException exception){
@@ -130,10 +132,10 @@ public class GerenteAddProdutoController {
 
                 } else if (categoria.equals("Não Comestível") && !nome.isEmpty() && !id.isEmpty() && !marca.isEmpty() && precoCompra > 0.0 && !tipo.isEmpty()) {
                     produtoNaoComestivel = new ProdutoNaoComestivel(nome, id, marca, precoCompra, tipo);
-                    for(Gerente gerente : ListaFuncionario.gerentesVector){
-                        if(gerente != null){
+                    for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
+                        if(funcionario instanceof Gerente){
                             try {
-                                gerente.cadastrar(produtoNaoComestivel, quantidade, taxaLucro);
+                                ((Gerente) funcionario).cadastrar(produtoNaoComestivel, quantidade, taxaLucro);
                                 Alerts.showAlert("Adicionar produto", null, "Produto Não Comestível adicionado com sucesso.", Alert.AlertType.INFORMATION);
                             }catch (QINException exception){
                                 exception.printStackTrace();

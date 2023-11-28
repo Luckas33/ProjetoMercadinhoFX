@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import usuarios.Funcionario;
 import usuarios.Gerente;
 
 public class FinanceiroMainController {
@@ -150,11 +151,11 @@ public class FinanceiroMainController {
         try{
             double valor = Double.parseDouble(tfValorDeposito.getText());
 
-            for(Gerente gerente : ListaFuncionario.gerentesVector){
-                if(gerente != null){
-                    gerente.inserirSaldo(valor);
+            for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
+                if(funcionario instanceof Gerente){
+                    ((Gerente) funcionario).inserirSaldo(valor);
                     Alerts.showAlert("Depósito",null,"Depósito concluído",Alert.AlertType.INFORMATION);
-                    gerente.conferirSaldo();
+                    ((Gerente) funcionario).conferirSaldo();
                     atualizarSaldoTotal();
                 }
             }
@@ -169,10 +170,10 @@ public class FinanceiroMainController {
         try{
             double valor = Double.parseDouble(tfValorSaque.getText());
 
-            for(Gerente gerente : ListaFuncionario.gerentesVector){
-                if(gerente != null){
-                    gerente.removerSaldo(valor);
-                    gerente.conferirSaldo();
+            for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
+                if(funcionario instanceof Gerente){
+                    ((Gerente) funcionario).removerSaldo(valor);
+                    ((Gerente) funcionario).conferirSaldo();
                     Alerts.showAlert("Saque",null,"Saque concluído",Alert.AlertType.INFORMATION);
                     atualizarSaldoTotal();
                 }
@@ -188,9 +189,9 @@ public class FinanceiroMainController {
         String id = tfIDTaxa.getText();
 
         if(taxa > 0){
-            for(Gerente gerente : ListaFuncionario.gerentesVector){
-                if(gerente != null){
-                    gerente.atualizarTaxa(id, taxa);
+            for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
+                if(funcionario instanceof Gerente){
+                    ((Gerente) funcionario).atualizarTaxa(id, taxa);
                 }
             }
             Alerts.showAlert("Taxa",null,"Taxa Atualizada",Alert.AlertType.INFORMATION);
@@ -204,10 +205,10 @@ public class FinanceiroMainController {
         int quantidade = Integer.parseInt(tfQuantidadeComprarProduto.getText());
 
 
-        for (Gerente gerente : ListaFuncionario.gerentesVector) {
-            if (gerente != null) {
+        for (Funcionario funcionario : ListaFuncionario.funcionariosVector) {
+            if (funcionario instanceof Gerente) {
                 try {
-                    gerente.adicionar(id, quantidade);
+                    ((Gerente) funcionario).adicionar(id, quantidade);
                     onBtLimpar(event);
                 } catch (SIException | PIException | QINException | DVIException e) {
                     e.printStackTrace();
@@ -231,9 +232,9 @@ public class FinanceiroMainController {
         try{
             String saldoTotal = "0.0";
 
-            for(Gerente gerente : ListaFuncionario.gerentesVector){
-                if(gerente != null){
-                    saldoTotal = String.valueOf(gerente.retornaSaldo());
+            for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
+                if(funcionario instanceof Gerente){
+                    saldoTotal = String.valueOf(((Gerente) funcionario).retornaSaldo());
                 }
             }
             lbSaldoAtual.setText(saldoTotal);
