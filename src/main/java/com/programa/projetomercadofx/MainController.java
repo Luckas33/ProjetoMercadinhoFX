@@ -70,7 +70,7 @@ public class MainController {
         Image UFC = new Image(getClass().getResource(imagem).toExternalForm());
         imageViewUFC.setImage(UFC);
 
-        Alerts.showAlert("Aviso",null,"Equipe: \nLucas Sobral : Programador Front-end\nJoão Rodrigo : Programador Back-end\nOsvaldo Medeiros : Programador Back-end\nIarley Alves : Programador e Design\nAnderson : Programador Back-end\n\nCódigo Fonte: github.com/Luckas33/ProjetoMercadinhoFX", Alert.AlertType.INFORMATION);
+        Alerts.showAlert("Aviso",null,"Equipe: \nLucas Sobral : Programador Front-end\nJoão Rodrigo : Programador Back-end\nOsvaldo Medeiros : Programador Back-end\nIarley Alves : Programador e Design\nAnderson Moura: Programador Back-end\n\nCódigo Fonte: github.com/Luckas33/ProjetoMercadinhoFX", Alert.AlertType.INFORMATION);
 
     }
 
