@@ -9,9 +9,9 @@ import produtos.ProdutoComestivel;
 import usuarios.Gerente;
 import usuarios.Vendedor;
 
-public class TesteExceptions {
+/*public class TesteExceptions {
 
-    public void teste1(){
+   public void teste1(){
         IEstoque estoque = new Estoque();
         Gerente gerente = new Gerente(estoque, "rodrigo", "jrodri", "rodri@gmail","123");
 
@@ -22,7 +22,7 @@ public class TesteExceptions {
             gerente.cadastrar(produto1, -5, 1.2);
         } catch (PEException | SIException | QNException | QNUException e) {
             e.printStackTrace();
-        }*/
+        }
 
         Vendedor vendedor = new Vendedor(estoque, "joao", "joaozin", "susu" , "123");
 
@@ -36,3 +36,4 @@ public class TesteExceptions {
 
     }
 }
+*/

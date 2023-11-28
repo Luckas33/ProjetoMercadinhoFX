@@ -1,6 +1,7 @@
 package com.programa.projetomercadofx;
 
 import com.programa.projetomercadofx.controllerUtil.Alerts;
+import estoques.Estoque;
 import estoques.IEstoque;
 import globalService.ListaEstoque;
 import globalService.ListaFuncionario;
@@ -14,6 +15,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import registros.IRegistro;
+import registros.Registro;
 import usuarios.Gerente;
 import usuarios.Vendedor;
 
@@ -38,6 +41,7 @@ public class CadastrarController {
     private Parent root;
     @FXML
     private ChoiceBox<String> choiceBoxFuncionarios;
+
 
     public void switchToMainScreen(ActionEvent event) throws Exception {
         // Carregar FXML da Main
@@ -85,23 +89,34 @@ public class CadastrarController {
 
         if (tipoFuncionario != null) {
             if (tipoFuncionario.equals("Gerente") && !nome.isEmpty() && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
-                for(IEstoque estoque : ListaEstoque.estoqueVector) {
-                    if(estoque != null) {
-                        gerenteObj = new Gerente(estoque, nome, login, email, senha);
-                        ListaFuncionario.gerentesVector.add(gerenteObj);
-                        onBtLimpar(event);
-                        Alerts.showAlert("Cadastro", null, "Conta Gerente cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
-                    }
-                }
+                        for(IEstoque estoque : ListaEstoque.estoqueVector) {
+                            if(estoque != null) {
+                                for(IRegistro registro : ListaEstoque.registroVector) {
+                                    if(registro != null) {
+                                        gerenteObj = new Gerente(registro, estoque, nome, login, email, senha);
+                                        ListaFuncionario.gerentesVector.add(gerenteObj);
+                                        onBtLimpar(event);
+                                        Alerts.showAlert("Cadastro", null, "Conta Gerente cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
+                                    }
+                                }
+                            }
+                        }
+
             } else if (tipoFuncionario.equals("Vendedor") && !nome.isEmpty() && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
                 for(IEstoque estoque : ListaEstoque.estoqueVector) {
-                    if(estoque != null) {
-                        vendedorObj = new Vendedor(estoque, nome, login, email, senha);
-                        ListaFuncionario.vendedoresVector.add(vendedorObj);
-                        onBtLimpar(event);
-                        Alerts.showAlert("Cadastro", null, "Conta Vendedor cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
+                    if (estoque != null) {
+                        for (IRegistro registro : ListaEstoque.registroVector) {
+                            if (registro != null) {
+                                vendedorObj = new Vendedor(registro, estoque, nome, login, email, senha);
+                                ListaFuncionario.vendedoresVector.add(vendedorObj);
+                                onBtLimpar(event);
+                                Alerts.showAlert("Cadastro", null, "Conta Vendedor cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
+                            }
+                        }
                     }
                 }
+
+
             } else {
                 Alerts.showAlert("Cadastro error", null, "Preencha as informações corretamente", Alert.AlertType.ERROR);
             }

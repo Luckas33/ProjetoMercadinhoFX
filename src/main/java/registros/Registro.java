@@ -9,6 +9,10 @@ public class Registro implements IRegistro{
     private Vector<ProdutoHistorico> registro;
     
     // registra um produto adquirido para o estoque
+
+    public Registro(){
+        Vector<ProdutoHistorico> registro = new Vector<>();
+    }
     @Override
     public void registrarAquisicao(Produto produto, int quantidade){
         ProdutoHistorico registroProduto = new ProdutoHistorico(produto.getId(),  (quantidade * produto.getPreco_compra()), quantidade);
