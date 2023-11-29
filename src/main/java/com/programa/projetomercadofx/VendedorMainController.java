@@ -102,7 +102,7 @@ public class VendedorMainController {
         lbTipoPagamento.setDisable(false);
         choiceBoxTipoVenda.setDisable(false);
         btAdicionar.setDisable(true);
-
+        btConfirmarVenda.setDisable(false);
     }
 
     public void onCbTipoVenda(Event e){   //Método que pega a escolha do choiceBox e ativa e desativa outras opções de escolha
@@ -273,17 +273,20 @@ public class VendedorMainController {
 
     @FXML
     public void initialize() {
+        /////// Configurando choiceBox ////////////
         choiceBoxTipoVenda.getItems().addAll("Débito", "Crédito", "Dinheiro");
         comboboxParcelas.getItems().addAll("1", "2", "3", "4", "5");
         choiceBoxTipoVenda.setOnAction(this::onCbTipoVenda);
         choiceBoxTipoVenda.setOnMouseClicked(this::onCbTipoVenda);
-
+        /////////Configurando o estado dos componentes //////////
         btFinalizar.setDisable(true);
         comboboxParcelas.setDisable(true);
         lbParcelas.setDisable(true);
         lbValorPago.setDisable(true);
         tfValorPago.setDisable(true);
+        btConfirmarVenda.setDisable(false);
 
+        /////////////Configurando vetores e a listView////////////
         vendas = new Vector<>();
         carrinho = new Vector<>();
 

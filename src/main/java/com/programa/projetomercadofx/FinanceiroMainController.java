@@ -73,14 +73,15 @@ public class FinanceiroMainController {
         Stage palco = (Stage) cenaAtual.getWindow();
         palco.setScene(cenaTela1);
     }
-
     public void switchToFinanceiroBalancoScreen(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("FinanceiroBalancoScreen.fxml"));
         Scene cenaAtual = root.getScene();
         Scene cenaTela1 = new Scene(tela1, cenaAtual.getWidth(), cenaAtual.getHeight());
         Stage palco = (Stage) cenaAtual.getWindow();
         palco.setScene(cenaTela1);
+        choiceBoxEscolhaCaixa.setVisible(false);
     }
+
     ///////////// Botões de escolha de operação /////////////
     public void onBtMudarTaxa(ActionEvent event){
         pnTaxa.setDisable(false);
@@ -92,6 +93,7 @@ public class FinanceiroMainController {
         pnCaixaSaque.setDisable(true);
         pnComprarProduto.setDisable(true);
         pnComprarProduto.setVisible(false);
+        choiceBoxEscolhaCaixa.setVisible(false);
     }
 
     public void onBtComprarProduto(ActionEvent event){
@@ -104,7 +106,7 @@ public class FinanceiroMainController {
         pnCaixaSaque.setDisable(true);
         pnTaxa.setDisable(true);
         pnTaxa.setVisible(false);
-
+        choiceBoxEscolhaCaixa.setVisible(false);
     }
 
     public void onBtCaixa(ActionEvent event){
@@ -226,6 +228,7 @@ public class FinanceiroMainController {
         tfValorSaque.setText(null);
         tfIDCompraProduto.setText(null);
         tfQuantidadeComprarProduto.setText(null);
+        choiceBoxEscolhaCaixa.setDisable(true);
     }
 
     public void atualizarSaldoTotal(){

@@ -21,6 +21,7 @@ import usuarios.Gerente;
 import usuarios.Vendedor;
 
 public class CadastrarController {
+//////// ID dos componentes ///////
     @FXML
     private Button btVoltar;
     @FXML
@@ -42,7 +43,7 @@ public class CadastrarController {
     @FXML
     private ChoiceBox<String> choiceBoxFuncionarios;
 
-
+///////////Métodos para trocar de tela /////////////////
     public void switchToMainScreen(ActionEvent event) throws Exception {
         // Carregar FXML da Main
         Parent tela2 = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
@@ -75,6 +76,8 @@ public class CadastrarController {
         // Definir a nova cena no palco
         palco.setScene(cenaTela2);
     }
+
+////////// Métodos Principais //////////////////
     public void onBtConfirmar(ActionEvent event){
 
             String nome = tfNome.getText();
@@ -88,7 +91,7 @@ public class CadastrarController {
 
 
         if (tipoFuncionario != null) {
-            if (tipoFuncionario.equals("Gerente") && !nome.isEmpty() && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
+            if (tipoFuncionario.equals("Gerente") && isChar(nome) && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
                         for(IEstoque estoque : ListaEstoque.estoqueVector) {
                             if(estoque != null) {
                                 for(IRegistro registro : ListaEstoque.registroVector) {
@@ -102,7 +105,7 @@ public class CadastrarController {
                             }
                         }
 
-            } else if (tipoFuncionario.equals("Vendedor") && !nome.isEmpty() && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
+            } else if (tipoFuncionario.equals("Vendedor") && isChar(nome) && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
                 for(IEstoque estoque : ListaEstoque.estoqueVector) {
                     if (estoque != null) {
                         for (IRegistro registro : ListaEstoque.registroVector) {
@@ -117,7 +120,9 @@ public class CadastrarController {
                 }
 
 
-            } else {
+            }else if(!isChar(nome)){
+                Alerts.showAlert("Cadastro error", null, "Preencha o nome somente com caracteres", Alert.AlertType.ERROR);
+            }else {
                 Alerts.showAlert("Cadastro error", null, "Preencha as informações corretamente", Alert.AlertType.ERROR);
             }
         } else {
@@ -132,6 +137,21 @@ public class CadastrarController {
         tfSenha.setText(null);
         choiceBoxFuncionarios.setValue(null);
     }
+    private boolean isChar(String str) {//Método para certificar que na String só existem caracteres
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
+
+        // Verifica se todos os caracteres não são dígitos
+        for (char c : str.toCharArray()) {
+            if (!Character.isAlphabetic(c)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     @FXML
     public void initialize() {
         choiceBoxFuncionarios.getItems().addAll("Gerente", "Vendedor"); //Adicionando opções ao choicebox
