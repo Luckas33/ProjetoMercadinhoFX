@@ -17,9 +17,6 @@ import bancoDados.FileSave;
 
 public class Gerente extends Funcionario {
     
-    LocalDate date = LocalDate.now();
-    DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    
     //construtor
     public Gerente(IRegistro registro,IEstoque estoque, String nome, String login, String email, String senha) {
         super(registro, estoque, nome, login, email, senha);
@@ -30,6 +27,9 @@ public class Gerente extends Funcionario {
     //metodo para cadastrar um produto no estoque, checa se o produto ja existe no estoque, se não existir
     //ele cadastra
     public void cadastrar(Produto produto, int quantidade, double taxaLucro) throws PEException, SIException, QINException, DVIException {
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    
         if(quantidade>0){
             if(produto != null){ 
                 if(!this.estoque.existe(produto.getId())){//calcula o valor total da compra
@@ -76,6 +76,8 @@ public class Gerente extends Funcionario {
             e.printStackTrace();
         }
         this.registro.registrarAquisicao(produto.getId(), valorTotal, quantidade);
+        // estoque.attachProduto(produto);   // Somente quando um produto é cadastrado, ele se torna observado
+        produto.attach(this.estoque);
     }
 
 
@@ -83,6 +85,9 @@ public class Gerente extends Funcionario {
     //se nao tiver cadastrado, nao vai adicionar
     //esqueci de salvar esse método sem o método adquirirEstoque em vez de definirSaldo
       public void adicionar(String id, int quantidade) throws SIException, PIException, QINException, DVIException {
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    
         Produto produto = this.estoque.procurar(id);
         if (quantidade>0){
         if(produto != null){
@@ -153,7 +158,7 @@ public class Gerente extends Funcionario {
 
     public void limparTudo(){
         FileSave.apagarObjetos("src/main/java/arquivos/registro.txt");
-        FileSave.apagarObjetos("src/main/java/arquivos/estoque.txt");
+        FileSave.apagarObjetos("src/main/java/arquivos/estoque.txt");       
     }
 
     //mostra todos os produtos vendidos e comprados, mesmo funcionamento do anterior

@@ -1,6 +1,8 @@
 package testes;
 
+import bancoDados.FileSave;
 import estoques.*;
+import globalService.ListaFuncionario;
 import produtos.*;
 import registros.IRegistro;
 import registros.Registro;
@@ -10,9 +12,49 @@ import usuarios.Vendedor;
 public class testaAnderson {
     public static void main(String[] args) {
         //testeEstoque();        
-        testeRegistro();
+        // testeRegistro2();
+        testeFuncionario2();
     }
 
+    public static void testeFuncionario2(){
+        ListaFuncionario listaFuncionario = new ListaFuncionario();
+        
+        System.out.println(listaFuncionario.verificarCredenciaisGerente("Bartolomeu", "batman"));
+        
+    }
+
+    public static void testeFuncionario(){
+        IEstoque estoque = new Estoque();
+        IRegistro registro = new Registro();
+        ListaFuncionario listaFuncionario = new ListaFuncionario();
+        
+        Gerente gerente1 = new Gerente(registro, estoque, "rodrigo", "jrodri", "rodri@gmail","123");
+        Gerente gerente2 = new Gerente(registro, estoque, "Bartolomeu", "Bart", "Batoré@gmail","batman");
+        
+        try {
+            FileSave.apagarObjetos("src/main/java/arquivos/Funcionarios.txt"); 
+            listaFuncionario.cadastraFuncionario(gerente1);
+            listaFuncionario.cadastraFuncionario(gerente2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println(listaFuncionario.verificarCredenciaisGerente("jrodri", "123"));
+        }
+        
+    }
+
+    public static void testeRegistro2(){
+        IEstoque estoque = new Estoque();
+        IRegistro registro = new Registro();
+        Gerente gerente = new Gerente(registro, estoque, "rodrigo", "jrodri", "rodri@gmail","123");
+        
+        System.out.println(estoque.procurar("123").getTaxaLucro());
+        //System.out.println(gerente.retornaSaldo());
+
+        gerente.atualizarTaxa("123", 5.0);
+
+        System.out.println(estoque.procurar("123").getTaxaLucro());
+    }
     public static void testeRegistro(){
         IEstoque estoque = new Estoque();
         IRegistro registro = new Registro();

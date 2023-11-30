@@ -3,15 +3,17 @@ package usuarios;
 
 import estoques.IEstoque;
 import registros.IRegistro;
+import java.io.Serializable;
 
-public class Funcionario {
+public class Funcionario implements Serializable {
   //atributos  
     protected String login;
     protected String senha;
     protected String nome;
     protected String email;
-    protected IEstoque estoque;
-    protected IRegistro registro;
+    protected transient IEstoque estoque;
+    protected transient IRegistro registro;
+    private static final long serialVersionUID = 1L;
    
     //construtor
     public Funcionario(IRegistro registro, IEstoque estoque, String nome, String login, String email, String senha){

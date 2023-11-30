@@ -2,7 +2,6 @@ package registros;
 
 import java.util.Vector;
 
-import produtos.Produto;
 import produtos.ProdutoHistorico;
 
 public interface IRegistro {
