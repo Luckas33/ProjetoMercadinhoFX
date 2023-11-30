@@ -30,8 +30,6 @@ public class FinanceiroMainController {
     @FXML
     private Button btVoltar;
     @FXML
-    private Button btSeguir;
-    @FXML
     private Button btCaixaSaque;
     @FXML
     private Button btCaixaDeposito;
@@ -50,9 +48,13 @@ public class FinanceiroMainController {
     @FXML
     private Pane pnComprarProduto;
     @FXML
+    private Pane pnRemoverProduto;
+    @FXML
     private ChoiceBox<String> choiceBoxEscolhaCaixa;
     @FXML
     private Button btConfirmarCompraProduto;
+    @FXML
+    private Button btConfirmarRemoverProduto;
     @FXML
     private Button btConfirmarTaxa;
     @FXML
@@ -65,6 +67,10 @@ public class FinanceiroMainController {
     private TextField tfValorDeposito;
     @FXML
     private TextField tfValorSaque;
+    @FXML
+    private TextField tfRemoverProduto;
+    @FXML
+    private Button btRemoverProduto;
     /////////////////Método para trocar de tela///////////////////
     public void switchToGerenteMainScreen(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("GerenteMainScreen.fxml"));
@@ -94,6 +100,8 @@ public class FinanceiroMainController {
         pnComprarProduto.setDisable(true);
         pnComprarProduto.setVisible(false);
         choiceBoxEscolhaCaixa.setVisible(false);
+        pnRemoverProduto.setDisable(true);
+        pnRemoverProduto.setVisible(false);
     }
 
     public void onBtComprarProduto(ActionEvent event){
@@ -107,6 +115,8 @@ public class FinanceiroMainController {
         pnTaxa.setDisable(true);
         pnTaxa.setVisible(false);
         choiceBoxEscolhaCaixa.setVisible(false);
+        pnRemoverProduto.setDisable(true);
+        pnRemoverProduto.setVisible(false);
     }
 
     public void onBtCaixa(ActionEvent event){
@@ -122,6 +132,9 @@ public class FinanceiroMainController {
         pnTaxa.setVisible(false);
         pnComprarProduto.setDisable(true);
         pnComprarProduto.setVisible(false);
+        pnRemoverProduto.setDisable(true);
+        pnRemoverProduto.setVisible(false);
+
     }
 
     public void onCbEscolhaCaixa(Event event){
@@ -148,6 +161,21 @@ public class FinanceiroMainController {
         }
     }
 
+    public void onBtRemoverProduto(){
+        pnRemoverProduto.setDisable(false);
+        pnRemoverProduto.setVisible(true);
+        /////////////////apagar os outros
+        choiceBoxEscolhaCaixa.setVisible(false);
+        choiceBoxEscolhaCaixa.setDisable(true);
+        pnCaixaDeposito.setDisable(true);
+        pnCaixaDeposito.setVisible(false);
+        pnCaixaSaque.setVisible(false);
+        pnCaixaSaque.setDisable(true);
+        pnTaxa.setDisable(true);
+        pnTaxa.setVisible(false);
+        pnComprarProduto.setDisable(true);
+        pnComprarProduto.setVisible(false);
+    }
     ///////////// Botões de confirmação e preenchimento da escolha feita ///////////////////
     public void onBtConfirmarCaixaDeposito(ActionEvent e){
         try{
@@ -220,6 +248,17 @@ public class FinanceiroMainController {
 
     }
 
+    public void onBtConfirmarRemoverProduto(ActionEvent event){
+        /*String id = tfRemoverProduto.getText();
+        for (Funcionario funcionario : ListaFuncionario.funcionariosVector){
+            if(funcionario instanceof Gerente){
+                try{
+                    ((Gerente) funcionario).
+                }
+            }
+        }*/
+    }
+
     /////////// Métodos Complementares /////////////////////////////
     public void onBtLimpar(ActionEvent e){
         tfValorDeposito.setText(null);
@@ -229,6 +268,7 @@ public class FinanceiroMainController {
         tfIDCompraProduto.setText(null);
         tfQuantidadeComprarProduto.setText(null);
         choiceBoxEscolhaCaixa.setDisable(true);
+        tfRemoverProduto.setText(null);
     }
 
     public void atualizarSaldoTotal(){
@@ -268,6 +308,9 @@ public class FinanceiroMainController {
 
         pnComprarProduto.setDisable(true);
         pnComprarProduto.setVisible(false);
+
+        pnRemoverProduto.setDisable(true);
+        pnRemoverProduto.setVisible(false);
     }
 
 

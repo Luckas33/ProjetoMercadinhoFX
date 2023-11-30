@@ -8,6 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class EntrarController {
@@ -25,7 +28,9 @@ public class EntrarController {
     private ChoiceBox<String> choiceBoxTipoFuncionario;
     @FXML
     private Parent root;
-
+    @FXML
+    private ImageView ajudaImage;
+//////////Mudança de Janela ///////////////////
     public void switchToMainScrenn(ActionEvent event) throws Exception {
         // Carregar FXML da Main
         Parent tela1 = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
@@ -73,6 +78,7 @@ public class EntrarController {
         palco.setScene(cenaTela1);
     }
 
+////////////// Métodos importantes ////////////////////
     public void onBtConfirmar(ActionEvent event){
         String login = tfLogin.getText();
         String senha = tfSenha.getText();
@@ -105,8 +111,17 @@ public class EntrarController {
         }
 
     }
+
+    public void onClickAjuda(MouseEvent event){
+        Alerts.showAlert("Ajuda",null,"Bem-vindo a tela de Entrar, aqui você pode inserir seus dados de login e senha para poder ter acesso a todos as funções do programa", Alert.AlertType.INFORMATION);
+    }
     @FXML
     public void initialize(){
-            choiceBoxTipoFuncionario.getItems().addAll("Gerente", "Vendedor");
+        choiceBoxTipoFuncionario.getItems().addAll("Gerente", "Vendedor");
+
+        String imagem = "interrogação.png";
+        Image ajuda = new Image(getClass().getResource(imagem).toExternalForm());
+        ajudaImage.setImage(ajuda);
+        ajudaImage.setOnMouseClicked(this::onClickAjuda);
     }
 }

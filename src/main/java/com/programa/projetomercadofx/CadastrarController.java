@@ -1,6 +1,9 @@
 package com.programa.projetomercadofx;
 
 import com.programa.projetomercadofx.controllerUtil.Alerts;
+import static com.programa.projetomercadofx.controllerUtil.IsCharacter.isChar;
+import static globalService.ListaFuncionario.verificarGerenteExistente;
+import static globalService.ListaFuncionario.verificarVendedorExistente;
 import estoques.Estoque;
 import estoques.IEstoque;
 import globalService.ListaEstoque;
@@ -24,9 +27,6 @@ import registros.IRegistro;
 import registros.Registro;
 import usuarios.Gerente;
 import usuarios.Vendedor;
-
-import static globalService.ListaFuncionario.verificarGerenteExistente;
-import static globalService.ListaFuncionario.verificarVendedorExistente;
 
 public class CadastrarController {
 //////// ID dos componentes ///////
@@ -149,24 +149,10 @@ public class CadastrarController {
         tfSenha.setText(null);
         choiceBoxFuncionarios.setValue(null);
     }
-    private boolean isChar(String str) {//Método para certificar que na String só existem caracteres
-        if (str == null || str.isEmpty()) {
-            return false;
-        }
-
-        // Verifica se todos os caracteres não são dígitos
-        for (char c : str.toCharArray()) {
-            if (!Character.isAlphabetic(c)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
 
 //////////Métodos complementares //////////
     public void onClickAjuda(MouseEvent event){
-        Alerts.showAlert("Ajuda",null,"Bem-vindo a tela de cadastro, aqui você pode inserir seus dados para poder ter acesso a todos as funções do programa", Alert.AlertType.INFORMATION);
+        Alerts.showAlert("Ajuda",null,"Bem-vindo a tela de cadastro, aqui você Criar sua conta de tipo Gerente ou de tipo Vendedor, preencha todas as informações e aperte em confirmar", Alert.AlertType.INFORMATION);
     }
     @FXML
     public void initialize() {

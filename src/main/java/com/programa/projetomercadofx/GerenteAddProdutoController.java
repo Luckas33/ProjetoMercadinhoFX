@@ -21,6 +21,8 @@ import usuarios.Funcionario;
 import usuarios.Gerente;
 import usuarios.Vendedor;
 
+import static com.programa.projetomercadofx.controllerUtil.IsNumeric.isNumeric;
+
 public class GerenteAddProdutoController {
     @FXML
     private Button btVoltar;
@@ -179,26 +181,6 @@ public class GerenteAddProdutoController {
         choiceBoxCategoriaProd.setValue(null);
         tfTaxaVenda.setText(null);
         tfQuantidade.setText(null);
-    }
-
-    private boolean isNumeric(String str) {
-        if (str == null || str.isEmpty()) {
-            return false;
-        }
-
-        // Verifica se todos os caracteres são dígitos
-        for (char c : str.toCharArray()) {
-            if (!Character.isDigit(c)) {
-                return false;
-            }
-        }
-
-        // Verifica se o ID não começa com zero, a menos que seja apenas o zero
-        if (str.length() > 1 && str.startsWith("0")) {
-            return false;
-        }
-
-        return true;
     }
 
     @FXML

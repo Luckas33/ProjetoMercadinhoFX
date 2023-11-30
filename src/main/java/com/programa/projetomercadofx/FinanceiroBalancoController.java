@@ -71,7 +71,7 @@ public class FinanceiroBalancoController {
 ///////////////// Métodos Complementares ///////////////
     public void initialize (){
 
-        balancoGeral = new Vector<>();
+       /* balancoGeral = new Vector<>();
         listViewBalanco.setCellFactory(param -> new ListCell<Produto>() {
             @Override
             protected void updateItem(Produto item, boolean empty) {
@@ -84,6 +84,6 @@ public class FinanceiroBalancoController {
                     setText("ID: " + item.getId() + " | Preço: " + item.getPrecoVenda() + " | Outros atributos...");
                 }
             }
-        });
+        });*/
     }
 }
