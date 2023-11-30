@@ -6,6 +6,8 @@ import estoques.IEstoque;
 import globalService.ListaEstoque;
 import globalService.ListaFuncionario;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,11 +16,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import registros.IRegistro;
 import registros.Registro;
 import usuarios.Gerente;
 import usuarios.Vendedor;
+
+import static globalService.ListaFuncionario.verificarGerenteExistente;
+import static globalService.ListaFuncionario.verificarVendedorExistente;
 
 public class CadastrarController {
 //////// ID dos componentes ///////
@@ -42,6 +50,8 @@ public class CadastrarController {
     private Parent root;
     @FXML
     private ChoiceBox<String> choiceBoxFuncionarios;
+    @FXML
+    private ImageView ajudaImage;
 
 ///////////Métodos para trocar de tela /////////////////
     public void switchToMainScreen(ActionEvent event) throws Exception {
@@ -91,7 +101,7 @@ public class CadastrarController {
 
 
         if (tipoFuncionario != null) {
-            if (tipoFuncionario.equals("Gerente") && isChar(nome) && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
+            if (tipoFuncionario.equals("Gerente") && isChar(nome) && !verificarGerenteExistente(login) && !email.isEmpty() && !senha.isEmpty()) {
                         for(IEstoque estoque : ListaEstoque.estoqueVector) {
                             if(estoque != null) {
                                 for(IRegistro registro : ListaEstoque.registroVector) {
@@ -105,7 +115,7 @@ public class CadastrarController {
                             }
                         }
 
-            } else if (tipoFuncionario.equals("Vendedor") && isChar(nome) && !login.isEmpty() && !email.isEmpty() && !senha.isEmpty()) {
+            } else if (tipoFuncionario.equals("Vendedor") && isChar(nome) && !verificarVendedorExistente(login) && !email.isEmpty() && !senha.isEmpty()) {
                 for(IEstoque estoque : ListaEstoque.estoqueVector) {
                     if (estoque != null) {
                         for (IRegistro registro : ListaEstoque.registroVector) {
@@ -122,6 +132,8 @@ public class CadastrarController {
 
             }else if(!isChar(nome)){
                 Alerts.showAlert("Cadastro error", null, "Preencha o nome somente com caracteres", Alert.AlertType.ERROR);
+            }else if(!verificarGerenteExistente(login) || !verificarVendedorExistente(login)) {
+                Alerts.showAlert("Cadastro error", null, "Conta ja existente", Alert.AlertType.ERROR);
             }else {
                 Alerts.showAlert("Cadastro error", null, "Preencha as informações corretamente", Alert.AlertType.ERROR);
             }
@@ -152,9 +164,17 @@ public class CadastrarController {
         return true;
     }
 
+//////////Métodos complementares //////////
+    public void onClickAjuda(MouseEvent event){
+        Alerts.showAlert("Ajuda",null,"Bem-vindo a tela de cadastro, aqui você pode inserir seus dados para poder ter acesso a todos as funções do programa", Alert.AlertType.INFORMATION);
+    }
     @FXML
     public void initialize() {
         choiceBoxFuncionarios.getItems().addAll("Gerente", "Vendedor"); //Adicionando opções ao choicebox
+        String imagem = "interrogação.png";
+        Image ajuda = new Image(getClass().getResource(imagem).toExternalForm());
+        ajudaImage.setImage(ajuda);
+        ajudaImage.setOnMouseClicked(this::onClickAjuda);
     }
 
 }

@@ -14,13 +14,15 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.MainController">
+<BorderPane fx:id="root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.MainController">
    <top>
       <ImageView fx:id="imageViewUFC" fitHeight="111.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@UFC.png" />
          </image>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
       </ImageView>
    </top>
    <center>
@@ -93,7 +95,7 @@
                         <DropShadow />
                      </effect>
                   </Button>
-                        <Button fx:id="btCodigoFonte" mnemonicParsing="false" onAction="#onbtCodigoFonte" prefHeight="35.0" prefWidth="166.0" text="Créditos">
+                        <Button fx:id="btCodigoFonte" cache="true" mnemonicParsing="false" onAction="#onbtCodigoFonte" prefHeight="35.0" prefWidth="166.0" text="Créditos">
                             <font>
                                 <Font name="Century" size="13.0" />
                             </font>

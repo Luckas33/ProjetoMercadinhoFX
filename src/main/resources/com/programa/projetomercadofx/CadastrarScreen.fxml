@@ -8,35 +8,47 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="root" dividerPositions="0.3712374581939799" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.CadastrarController">
+<SplitPane fx:id="root" dividerPositions="0.4554317548746518" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.CadastrarController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="259.0">
          <children>
-            <Label layoutX="1.0" layoutY="53.0" prefHeight="137.0" prefWidth="219.0" text="Mercadinho Inteligente" textAlignment="CENTER">
-               <font>
-                  <Font name="Century" size="18.0" />
-               </font>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </Label>
-            <Button fx:id="btVoltar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="15.0" prefWidth="50.0" text="Voltar">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font size="10.0" />
-               </font></Button>
-            <Label layoutX="63.0" layoutY="139.0" text="Cadastrar Conta">
-               <font>
-                  <Font name="Century" size="12.0" />
-               </font>
-            </Label>
+            <BorderPane layoutX="3.0" layoutY="-3.0" prefHeight="398.0" prefWidth="300.0">
+               <center>
+                  <Pane prefHeight="398.0" prefWidth="307.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="btVoltar" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="15.0" prefWidth="50.0" text="Voltar">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="103.0" layoutY="155.0" text="Cadastrar Conta">
+                           <font>
+                              <Font name="Century" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="38.0" layoutY="110.0" prefHeight="45.0" prefWidth="225.0" text="Mercadinho Inteligente" textAlignment="CENTER">
+                           <font>
+                              <Font name="Century" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </Pane>
+               </center>
+            </BorderPane>
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="600.0">
          <children>
@@ -120,6 +132,11 @@
                   </Button>
                </children>
             </Pane>
+            <ImageView fx:id="ajudaImage" fitHeight="25.0" fitWidth="23.0" layoutX="348.0" layoutY="14.0" onMouseClicked="#onClickAjuda" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Interrogação.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
   </items>
 </SplitPane>
