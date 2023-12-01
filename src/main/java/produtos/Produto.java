@@ -36,7 +36,6 @@ public abstract class Produto implements Serializable {
   
     
     //to string para mostrar todos os produtos no estoque, onde só esses atributos vão importar
-    @Override
     public abstract String toString();
 
    /////getters e setters

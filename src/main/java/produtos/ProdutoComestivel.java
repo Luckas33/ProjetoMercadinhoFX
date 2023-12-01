@@ -16,6 +16,7 @@ public class ProdutoComestivel extends Produto {
     }
 
     //to string mas dessa vez mostrando a data de validade
+    @Override
     public String toString() {
         return "Produto:" +  "\n" + "Nome: " + nome + "\n" + "ID: " + id + "\n" + "Marca: " + marca + "\n" +
         "Preço: " + preco_compra + "\n" + "Tipo: " + tipo + "\n" +

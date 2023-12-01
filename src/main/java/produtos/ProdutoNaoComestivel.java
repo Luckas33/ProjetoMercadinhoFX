@@ -11,6 +11,7 @@ public class ProdutoNaoComestivel extends Produto {
         this.quantidadeVendida = 0;
     }
 
+    @Override
     public String toString() {
         return "Produto:" +  "\n" + "Nome: " + nome + "\n" + "ID: " + id + "\n" + "Marca: " + marca + "\n" +
                 "Preço: " + preco_compra + "\n" + "Tipo: " + tipo + "\n" +
