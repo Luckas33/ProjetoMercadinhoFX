@@ -17,7 +17,7 @@ public class ListaFuncionario {
         ListaFuncionario.funcionariosVector = new Vector<>();
     }
 
-    public void cadastraFuncionario(Funcionario funcionario) throws FEException{
+    public static void cadastraFuncionario(Funcionario funcionario) throws FEException{
         if(!existeFuncionario(funcionario)){
             desserializar();
             funcionariosVector.add(funcionario);
@@ -37,7 +37,7 @@ public class ListaFuncionario {
         }
     }
 
-    private boolean existeFuncionario(Funcionario funcionario){
+    private static boolean existeFuncionario(Funcionario funcionario){
         desserializar();
         for(Funcionario funcionarioTemp: funcionariosVector){
             if(funcionarioTemp.getLogin().equals(funcionario.getLogin())){
