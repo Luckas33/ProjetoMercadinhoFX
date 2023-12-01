@@ -10,5 +10,13 @@ public class ProdutoNaoComestivel extends Produto {
         this.preco_venda = 0.0;
         this.quantidadeVendida = 0;
     }
+
+    public String toString() {
+        return "Produto:" +  "\n" + "Nome: " + nome + "\n" + "ID: " + id + "\n" + "Marca: " + marca + "\n" +
+                "Preço: " + preco_compra + "\n" + "Tipo: " + tipo + "\n" +
+                "Quantidade: " + quantidade + "\n";
+    }
+    
+    
     
 }

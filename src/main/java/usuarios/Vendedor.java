@@ -7,7 +7,6 @@ import registros.IRegistro;
 import excecao.*;
 import produtos.Produto;
 import produtos.ProdutoComestivel;
-import produtos.ProdutoHistorico;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -16,9 +15,6 @@ import java.time.format.DateTimeFormatter;
 public class Vendedor extends Funcionario {
     //atributos
     private double taxaCredito;
-    LocalDate date = LocalDate.now();
-    DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
 
     //construtor
     public Vendedor(IRegistro registro, IEstoque estoque, String nome, String login, String email, String senha) {
@@ -30,6 +26,8 @@ public class Vendedor extends Funcionario {
     // **minha gambiarra abaixo** //
 
     public void venderDinheiro(String id, int quantidade) throws DVIException, QIException, PIException, QINException{
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         if(quantidade > 0){
         
@@ -84,7 +82,8 @@ public class Vendedor extends Funcionario {
 
     //metodo para vender por cartão de crédito(**teste**)
      public void venderCredito(String id, int quantidade, int parcelas) throws  DVIException, PIException, QIException, QINException{
-
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
             if (quantidade > 0) {
 
@@ -139,6 +138,9 @@ public class Vendedor extends Funcionario {
 
     //metodo para vender no debito(**teste**)
       public void venderDebito(String id, int quantidade) throws DVIException, QINException, QIException, PIException{
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
         if(quantidade>0) {
             Produto produto = this.estoque.procurar(id); //procura no vetor estoque
             if (produto != null) {

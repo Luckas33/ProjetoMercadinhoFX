@@ -7,10 +7,11 @@ import excecao.QINException;
 import excecao.SIException;
 import excecao.SNException;
 import produtos.Produto;
+import observador.Observer;
 
 import java.util.Vector;
 
-public interface IEstoque {
+public interface IEstoque extends Observer{
     
     
     public void inserir(Produto produto, int quantidade);

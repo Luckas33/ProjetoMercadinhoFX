@@ -3,7 +3,6 @@ package estoques;
 
 import excecao.*;
 import produtos.Produto;
-import produtos.ProdutoComestivel;
 
 import java.util.Vector;
 
@@ -14,15 +13,33 @@ public class Estoque implements IEstoque {
     //atributos
     private Vector<Produto> estoque;
     private double saldo;
-    //**teste**
+    private Vector<Produto> produtosObservados;
     
 
     //construtor
     public Estoque(){
         this.estoque = new Vector<Produto>();
         this.saldo = 0.0;
+        this.produtosObservados = new Vector<Produto>();
     }
    
+
+    private void attachProduto(Produto produto) {
+        produtosObservados.add(produto);
+        produto.attach(this);
+    }
+
+    private void detachProduto(Produto produto) {
+        produtosObservados.remove(produto);
+        produto.detach(this);
+    }
+
+    public void reattachObservers() {
+        for (Produto produto : estoque) {
+            produto.attach(this);
+        }
+    }
+
     //metodo para inserir produtos no estoque  
     @Override
     public void inserir(Produto produto, int quantidade){
@@ -31,6 +48,7 @@ public class Estoque implements IEstoque {
             if (!this.existe(produto.getId())){ //checa se o produto não existe no estoque
                 produto.setQuantidade(quantidade);  //se não existir, seta a quantidade
                 this.estoque.add(produto);           //e coloca no vetor de estoque
+                attachProduto(produto);
             } else if (this.existe(produto.getId())) {
                 Produto produtoAtualiza = procurar(produto.getId());                    // pega esse produto com a ultima quantidade registrada
                 int quantidadeFinal = produtoAtualiza.getQuantidade() + quantidade;     // Estabelece nova quantidade
@@ -77,6 +95,7 @@ public class Estoque implements IEstoque {
 
     public void remove(Produto produto){
         this.estoque.remove(produto);
+        detachProduto(produto);
     }
 
 
@@ -118,10 +137,16 @@ public class Estoque implements IEstoque {
                 for(Produto produto : produtosTemp) {
                     this.estoque.add(produto);          // Adicionando os produtos recuperados do arquivo
                 }
+                reattachObservers();
             }    
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void update() {
+        serializar();
     }
 
 
