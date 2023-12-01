@@ -12,9 +12,18 @@ import usuarios.Vendedor;
 
 public class testaAnderson {
     public static void main(String[] args) {
-        //testeEstoque();        
-        testeFuncionario2();
-        //testeRegistro2();
+        teste();
+    }
+
+    public static void teste(){
+        IEstoque estoque = new Estoque();
+        IRegistro registro = new Registro();
+        Funcionario gerente = new Gerente(registro, estoque, "rodrigo", "jrodri", "rodri@gmail","123");
+        System.out.println(estoque.verSaldo());
+
+        ((Gerente) gerente).inserirSaldo(200.0);
+        
+        System.out.println(estoque.verSaldo());
     }
 
     public static void testeFuncionario2(){

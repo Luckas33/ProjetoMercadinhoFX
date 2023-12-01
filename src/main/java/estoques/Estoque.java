@@ -21,6 +21,7 @@ public class Estoque implements IEstoque {
         this.estoque = new Vector<Produto>();
         this.saldo = 0.0;
         this.produtosObservados = new Vector<Produto>();
+        desserializarSaldo();
     }
    
 
@@ -110,7 +111,7 @@ public class Estoque implements IEstoque {
     //metodo para checar o saldo
     @Override
     public double verSaldo() {
-       return saldo;
+        return saldo;
     }
 
     // <Anderson>: Falta salvar saldo... Não é difícil, mas acho feio, então estou pensando;
@@ -118,10 +119,32 @@ public class Estoque implements IEstoque {
     @Override
     public void definirSaldo(double valor) throws SNException{
         if(valor>=0){
-           this.saldo = valor;
+            this.saldo = valor;
+            serializarSaldo();
         }else
             throw new SNException(valor);
     }
+
+    private void serializarSaldo() {
+        String caminho = "src/main/java/arquivos/saldo.txt";
+        FileSave.gravarObjetos(saldo, caminho);
+    }
+
+    private void desserializarSaldo() {
+        String caminho = "src/main/java/arquivos/saldo.txt";
+        try {
+            Double saldoTemp = (Double) FileSave.recuperarObjetos(caminho);
+            if (saldoTemp == null){
+                this.saldo = 0;
+            } else {
+                this.saldo = saldoTemp;
+            }
+        } catch (ClassCastException e) {
+            System.out.println("Erro: O objeto recuperado não é um Double: " + e.getMessage());
+            this.saldo = 0;
+        }
+    }
+    
 
     private void serializar() {
         String caminho = "src/main/java/arquivos/estoque.txt";
