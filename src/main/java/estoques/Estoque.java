@@ -75,7 +75,9 @@ public class Estoque implements IEstoque {
             throw new QINException(quantidade);
     }
 
-    //metodo para mostrar os produtos do estoque pelo tipo dele
+    public void remove(Produto produto){
+        this.estoque.remove(produto);
+    }
 
 
 

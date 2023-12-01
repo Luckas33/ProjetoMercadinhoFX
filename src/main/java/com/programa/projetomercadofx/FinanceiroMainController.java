@@ -249,14 +249,13 @@ public class FinanceiroMainController {
     }
 
     public void onBtConfirmarRemoverProduto(ActionEvent event){
-        /*String id = tfRemoverProduto.getText();
+        String id = tfRemoverProduto.getText();
         for (Funcionario funcionario : ListaFuncionario.funcionariosVector){
             if(funcionario instanceof Gerente){
-                try{
-                    ((Gerente) funcionario).
-                }
+                    ((Gerente) funcionario).removerProduto(id);
+
             }
-        }*/
+        }
     }
 
     /////////// Métodos Complementares /////////////////////////////
