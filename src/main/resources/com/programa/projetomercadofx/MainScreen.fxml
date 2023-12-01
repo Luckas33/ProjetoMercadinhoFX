@@ -1,123 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.MainController">
-   <top>
-      <ImageView fx:id="imageViewUFC" fitHeight="111.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+
+<AnchorPane fx:id="root" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.MainController">
+   <children>
+      <ImageView fx:id="backgroundMain" fitHeight="400.0" fitWidth="722.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@UFC.png" />
+            <Image url="@Main.png" />
          </image>
-         <BorderPane.margin>
-            <Insets top="20.0" />
-         </BorderPane.margin>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
       </ImageView>
-   </top>
-   <center>
-      <BorderPane>
-         <top>
-              <AnchorPane prefHeight="239.0" prefWidth="387.0" BorderPane.alignment="CENTER">
-                  <children>
-                      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="63.0" layoutY="14.0" prefHeight="34.0" prefWidth="291.0" text="Mercadinho Inteligente" AnchorPane.bottomAnchor="191.0" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="14.0">
-                          <font>
-                              <Font name="Century" size="26.0" />
-                          </font>
-                     <effect>
-                        <DropShadow>
-                           <color>
-                              <Color red="0.3038499057292938" green="0.33753249049186707" blue="0.3815789520740509" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                      </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="121.0" layoutY="48.0" prefHeight="34.0" prefWidth="175.0" text="Feito por Alunos da UFC" textAlignment="CENTER" AnchorPane.bottomAnchor="157.0" AnchorPane.leftAnchor="121.0" AnchorPane.rightAnchor="91.0" AnchorPane.topAnchor="48.0">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                     <effect>
-                        <DropShadow>
-                           <color>
-                              <Color red="0.3038499057292938" green="0.33753249049186707" blue="0.3815789520740509" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </Label>
-                  </children>
-              </AnchorPane>
-         </top>
-      </BorderPane>
-   </center>
-   <left>
-      <AnchorPane prefHeight="239.0" prefWidth="160.0" BorderPane.alignment="CENTER" />
-   </left>
-   <right>
-      <BorderPane prefHeight="239.0" prefWidth="94.0" BorderPane.alignment="CENTER">
-         <right>
-            <VBox alignment="CENTER" prefHeight="239.0" prefWidth="174.0" BorderPane.alignment="CENTER">
-               <children>
-                        <Button fx:id="btEntrar" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="35.0" prefWidth="166.0" text="Entrar em Contas">
-                            <font>
-                                <Font name="Century" size="13.0" />
-                            </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </Button>
-                        <Button fx:id="btCadastrar" mnemonicParsing="false" onAction="#switchToCadastrarScreen" prefHeight="35.0" prefWidth="166.0" text="Cadastrar conta">
-                            <font>
-                                <Font name="Century" size="13.0" />
-                            </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </Button>
-                        <Button fx:id="btCodigoFonte" cache="true" mnemonicParsing="false" onAction="#onbtCodigoFonte" prefHeight="35.0" prefWidth="166.0" text="Créditos">
-                            <font>
-                                <Font name="Century" size="13.0" />
-                            </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets right="20.0" />
-               </padding>
-            </VBox>
-         </right>
-      </BorderPane>
-   </right>
-   <effect>
-      <ColorAdjust />
-   </effect>
-</BorderPane>
+      <VBox alignment="CENTER" blendMode="DARKEN" fillWidth="false" layoutX="534.0" layoutY="200.0" prefHeight="171.0" prefWidth="163.0">
+         <children>
+                  <Button fx:id="btEntrar" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="40.0" prefWidth="122.0">
+                      <font>
+                          <Font name="Century" size="13.0" />
+                      </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+                  <Button fx:id="btCadastrar" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#switchToCadastrarScreen" prefHeight="37.0" prefWidth="122.0">
+                      <font>
+                          <Font name="Century" size="13.0" />
+                      </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+                  <Button fx:id="btCodigoFonte" blendMode="SRC_ATOP" cache="true" mnemonicParsing="false" onAction="#onbtCodigoFonte" prefHeight="29.0" prefWidth="130.0">
+                      <font>
+                          <Font name="Century" size="13.0" />
+                      </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

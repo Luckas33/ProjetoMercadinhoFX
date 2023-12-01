@@ -11,9 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
-
 import java.io.IOException;
 
 public class MainController {
@@ -24,55 +24,37 @@ public class MainController {
     @FXML
     private Button btCodigoFonte;
     @FXML
-    private ImageView imageViewUFC;
+    private ImageView backgroundMain;
     @FXML
     private Parent root;
+    private Scene scene;
+    private Stage primaryStage;
 
-    // Método chamado quando o botão de transição é clicado
-    public void switchToEntrarScreen(ActionEvent event) throws Exception {
-        // Carregar FXML da Tela2
-        Parent EntrarScreen = FXMLLoader.load(getClass().getResource("EntrarScreen.fxml"));
-
-        // Obter a cena atual
+    public void switchToEntrarScreen(ActionEvent event) throws IOException {
+        Parent tela1 = FXMLLoader.load(getClass().getResource("EntrarScreen.fxml"));
         Scene cenaAtual = root.getScene();
-
-        // Criar uma nova cena com a Tela2
-        Scene cenaTela2 = new Scene(EntrarScreen, cenaAtual.getWidth(), cenaAtual.getHeight());
-
-        // Obter o palco (Stage) atual
+        Scene cenaTela1 = new Scene(tela1, cenaAtual.getWidth(), cenaAtual.getHeight());
         Stage palco = (Stage) cenaAtual.getWindow();
-
-        // Definir a nova cena no palco
-        palco.setScene(cenaTela2);
-    }
-    public void switchToCadastrarScreen(ActionEvent event) throws Exception {
-        // Carregar FXML da Tela2
-        Parent CadastrarScreen = FXMLLoader.load(getClass().getResource("CadastrarScreen.fxml"));
-
-        // Obter a cena atual
-        Scene cenaAtual = root.getScene();
-
-        // Criar uma nova cena com a Tela2
-        Scene cenaTela2 = new Scene(CadastrarScreen, cenaAtual.getWidth(), cenaAtual.getHeight());
-
-        // Obter o palco (Stage) atual
-        Stage palco = (Stage) cenaAtual.getWindow();
-
-        // Definir a nova cena no palco
-        palco.setScene(cenaTela2);
+        palco.setScene(cenaTela1);
     }
 
+    public void switchToCadastrarScreen(ActionEvent event) throws IOException {
+        Parent tela1 = FXMLLoader.load(getClass().getResource("CadastrarScreen.fxml"));
+        Scene cenaAtual = root.getScene();
+        Scene cenaTela1 = new Scene(tela1, cenaAtual.getWidth(), cenaAtual.getHeight());
+        Stage palco = (Stage) cenaAtual.getWindow();
+        palco.setScene(cenaTela1);
+    }
+
+    public void onbtCodigoFonte(ActionEvent e) {
+        Alerts.showAlert("Aviso", null, "Equipe: \n\nLucas Sobral : Desenvolvedor e Programador Front-end \n\nJoão Rodrigo : Programador Full-stack\n\nOsvaldo Medeiros : Programador Back-end\n\nIarley Alves : Programador e Design\n\nAnderson Moura: Programador Back-end\n\n\n\n\nCódigo Fonte: github.com/Luckas33/ProjetoMercadinhoFX", Alert.AlertType.INFORMATION);
+    }
     @FXML
-    public void onbtCodigoFonte(ActionEvent e){
-        String imagem = "UFC.png";
-
-        // Carrega a imagem usando getResource diretamente
-        Image UFC = new Image(getClass().getResource(imagem).toExternalForm());
-        imageViewUFC.setImage(UFC);
-
-        Alerts.showAlert("Aviso",null,"Equipe: \nLucas Sobral : Desenvolvedor e Programador Front-end\nJoão Rodrigo : Programador Full-stack\nOsvaldo Medeiros : Programador Back-end\nIarley Alves : Programador e Design\nAnderson Moura: Programador Back-end\n\nCódigo Fonte: github.com/Luckas33/ProjetoMercadinhoFX", Alert.AlertType.INFORMATION);
+    public void initialize() {
+        String imagem = "Main.png";
+        Image banner = new Image(getClass().getResource(imagem).toExternalForm());
+        backgroundMain.setImage(banner);
 
     }
-
 
 }
