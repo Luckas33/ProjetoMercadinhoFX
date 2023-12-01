@@ -16,6 +16,8 @@ public interface IEstoque {
     public void inserir(Produto produto, int quantidade);
     
     public Produto procurar(String id);
+
+    public void remove(Produto produto);
     
     public boolean existe(String id);
     

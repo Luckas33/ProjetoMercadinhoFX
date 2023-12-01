@@ -237,6 +237,11 @@ public class Gerente extends Funcionario {
         String saldoAtual = String.valueOf(this.estoque.verSaldo());
         return saldoAtual;
     }
+
+    public void removerProduto(String id){
+        Produto produto = this.estoque.procurar(id);
+        this.estoque.remove(produto);
+    }
     @Override
     public String toString() {
         return "Gerente: " + "\n" + "Nome: " + nome + "\n" + "Login: " + login + "\n" + "Email: " + email + "\n" +"Senha: " + senha + "\n";
