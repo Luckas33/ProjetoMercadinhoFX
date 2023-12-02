@@ -128,7 +128,7 @@ public class GerenteAddProdutoController {
                                 onBtLimpar(e);
                                 Alerts.showAlert("Erro cadastrar", null,"Data de validade já ultrapassada",Alert.AlertType.ERROR);
                             }
-                            break;
+                            break; //pega o primeiro que achar
                         }
                     }
 
