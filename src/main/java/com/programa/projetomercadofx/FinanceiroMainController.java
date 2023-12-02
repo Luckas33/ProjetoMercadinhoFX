@@ -243,6 +243,7 @@ public class FinanceiroMainController {
                 try {
                     ((Gerente) funcionario).adicionar(id, quantidade);
                     onBtLimpar(event);
+                    atualizarSaldoTotal();
                 } catch (SIException | PIException | QINException | DVIException e) {
                     e.printStackTrace();
                 }
