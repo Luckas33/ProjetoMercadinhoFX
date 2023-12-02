@@ -21,9 +21,9 @@ public class testaAnderson {
         Funcionario gerente = new Gerente(registro, estoque, "rodrigo", "jrodri", "rodri@gmail","123");
         System.out.println(estoque.verSaldo());
 
-        ((Gerente) gerente).inserirSaldo(200.0);
+        //((Gerente) gerente).inserirSaldo(200.0);
         
-        System.out.println(estoque.verSaldo());
+        // System.out.println(estoque.verSaldo());
     }
 
     public static void testeFuncionario2(){
@@ -84,14 +84,6 @@ public class testaAnderson {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        // for(Produto produto: estoque.retornaEstoque()){
-        //         System.out.println(produto);
-        // }
-
-        // for(ProdutoHistorico produto: registro.retornaRegistro()){
-        //         System.out.println(produto);
-        // }
 
         System.out.println("Após cadastro");
 
