@@ -61,9 +61,14 @@ public class FinanceiroBalancoController {
     public void onBtInserirData(ActionEvent e){
         tfData.setDisable(false);
         String data = tfData.getText();
-        for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
-            if(funcionario instanceof Gerente){
-                ((Gerente) funcionario).verBalancoData(data);
+        for(IRegistro registro : ListaEstoque.registroVector){
+            if(registro != null){
+                registroMostrar = registro.retornaRegistro();
+                for(ProdutoHistorico produto : registroMostrar){
+                    if(produto.getData().equals(data)){
+                        listViewBalanco.getItems().add(produto);
+                    }
+                }
             }
         }
 
