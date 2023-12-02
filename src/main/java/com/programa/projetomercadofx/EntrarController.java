@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import usuarios.Funcionario;
 
 public class EntrarController {
     @FXML
@@ -83,6 +84,8 @@ public class EntrarController {
         String login = tfLogin.getText();
         String senha = tfSenha.getText();
         String funcionario = choiceBoxTipoFuncionario.getValue();
+
+
 
         if(funcionario != null){
             if(!login.isEmpty() && !senha.isEmpty() ) {

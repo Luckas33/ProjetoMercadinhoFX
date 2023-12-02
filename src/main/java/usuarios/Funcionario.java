@@ -1,8 +1,13 @@
 
 package usuarios;
 
+import estoques.Estoque;
 import estoques.IEstoque;
 import registros.IRegistro;
+import registros.Registro;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 
 public class Funcionario implements Serializable {
@@ -26,8 +31,16 @@ public class Funcionario implements Serializable {
        
     }
 
-   
-//getters e setters
+    private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
+        ois.defaultReadObject();
+        // Inicialize o campo transient após a desserialização
+        this.registro = new Registro();  // Substitua com a inicialização apropriada
+        this.estoque = new Estoque();
+    }
+
+
+
+    //getters e setters
     public String getLogin() {
         return login;
     }

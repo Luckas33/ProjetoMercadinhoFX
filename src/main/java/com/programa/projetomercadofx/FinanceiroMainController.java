@@ -187,6 +187,7 @@ public class FinanceiroMainController {
                     Alerts.showAlert("Depósito",null,"Depósito concluído",Alert.AlertType.INFORMATION);
                     ((Gerente) funcionario).conferirSaldo();
                     atualizarSaldoTotal();
+                    break;
                 }
             }
         }catch (Exception exception){
@@ -206,6 +207,7 @@ public class FinanceiroMainController {
                     ((Gerente) funcionario).conferirSaldo();
                     Alerts.showAlert("Saque",null,"Saque concluído",Alert.AlertType.INFORMATION);
                     atualizarSaldoTotal();
+                    break;
                 }
             }
         }catch (Exception exception){
@@ -222,6 +224,7 @@ public class FinanceiroMainController {
             for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
                 if(funcionario instanceof Gerente){
                     ((Gerente) funcionario).atualizarTaxa(id, taxa);
+                    break;
                 }
             }
             Alerts.showAlert("Taxa",null,"Taxa Atualizada",Alert.AlertType.INFORMATION);
@@ -243,6 +246,7 @@ public class FinanceiroMainController {
                 } catch (SIException | PIException | QINException | DVIException e) {
                     e.printStackTrace();
                 }
+                break;
             }
         }
 
@@ -253,7 +257,7 @@ public class FinanceiroMainController {
         for (Funcionario funcionario : ListaFuncionario.funcionariosVector){
             if(funcionario instanceof Gerente){
                     ((Gerente) funcionario).removerProduto(id);
-
+                break;
             }
         }
     }
@@ -277,6 +281,7 @@ public class FinanceiroMainController {
             for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
                 if(funcionario instanceof Gerente){
                     saldoTotal = String.valueOf(((Gerente) funcionario).retornaSaldo());
+                    break;
                 }
             }
             lbSaldoAtual.setText(saldoTotal);

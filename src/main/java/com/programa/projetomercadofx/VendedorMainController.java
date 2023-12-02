@@ -89,6 +89,7 @@ public class VendedorMainController {
                 else{
                     Alerts.showAlert("Erro Venda", null,"Produto inexistente",Alert.AlertType.ERROR);
                 }
+                break;
             }
         }
         for(Produto produto : carrinho){
@@ -217,6 +218,7 @@ public class VendedorMainController {
                             Alerts.showAlert("Erro Venda", null,"Valor insuficiente",Alert.AlertType.ERROR);
                         }
                     }
+                    break;
                 }
             }
         }
