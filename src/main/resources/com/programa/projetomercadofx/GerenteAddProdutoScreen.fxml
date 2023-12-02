@@ -18,24 +18,24 @@
     <AnchorPane layoutX="333.0" layoutY="14.0" minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="448.0">
          <children>
             <TextField fx:id="tfNome" layoutX="175.0" layoutY="14.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.Refrigerante" />
-            <TextField fx:id="tfID" layoutX="175.0" layoutY="58.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.1234" />
-            <TextField fx:id="tfMarca" layoutX="173.0" layoutY="102.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.CocaCola" />
-            <TextField fx:id="tfTipo" layoutX="175.0" layoutY="141.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.Bebida" />
-            <TextField fx:id="tfPrecoCompra" layoutX="175.0" layoutY="180.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.20.0" />
-            <TextField fx:id="tfTaxaVenda" layoutX="173.0" layoutY="219.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.50 (%)" />
+            <TextField fx:id="tfID" layoutX="173.0" layoutY="53.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.1234" />
+            <TextField fx:id="tfMarca" layoutX="173.0" layoutY="98.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.CocaCola" />
+            <TextField fx:id="tfTipo" layoutX="173.0" layoutY="136.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.Bebida" />
+            <TextField fx:id="tfPrecoCompra" layoutX="173.0" layoutY="180.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.20.0" />
+            <TextField fx:id="tfTaxaVenda" layoutX="173.0" layoutY="221.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.50 (%)" />
             <TextField fx:id="tfQuantidade" layoutX="173.0" layoutY="264.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.3" />
             <TextField fx:id="tfDataValidade" layoutX="175.0" layoutY="304.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.20/07/2023" />
-            <Button fx:id="btAddProduto" blendMode="DARKEN" layoutX="176.0" layoutY="364.0" mnemonicParsing="false" onAction="#onBtAddProduto" prefHeight="25.0" prefWidth="96.0">
+            <Button fx:id="btAddProduto" blendMode="DARKEN" layoutX="176.0" layoutY="361.0" mnemonicParsing="false" onAction="#onBtAddProduto" prefHeight="33.0" prefWidth="96.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btLimpar" blendMode="DARKEN" layoutX="306.0" layoutY="364.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="25.0" prefWidth="82.0">
+            <Button fx:id="btLimpar" blendMode="DARKEN" layoutX="303.0" layoutY="361.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="33.0" prefWidth="89.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btInfo" blendMode="DARKEN" layoutX="368.0" layoutY="21.0" mnemonicParsing="false" onAction="#onBtInfo" prefHeight="39.0" prefWidth="37.0">
+            <Button fx:id="btInfo" blendMode="DARKEN" layoutX="363.0" layoutY="21.0" mnemonicParsing="false" onAction="#onBtInfo" prefHeight="44.0" prefWidth="45.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -44,7 +44,7 @@
       </AnchorPane>
     <AnchorPane layoutY="7.0" minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="293.0">
          <children>
-            <Button fx:id="btVoltar" blendMode="DARKEN" layoutX="17.0" layoutY="6.0" mnemonicParsing="false" onAction="#switchToGerenteMainScrenn" prefHeight="33.0" prefWidth="52.0">
+            <Button fx:id="btVoltar" blendMode="DARKEN" layoutX="9.0" layoutY="6.0" mnemonicParsing="false" onAction="#switchToGerenteMainScrenn" prefHeight="33.0" prefWidth="67.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

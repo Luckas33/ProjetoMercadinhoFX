@@ -1,3 +1,4 @@
+/*
 package testes;
 
 import bancoDados.FileSave;
@@ -127,3 +128,4 @@ public class testaAnderson {
     }
 }
 
+*/
