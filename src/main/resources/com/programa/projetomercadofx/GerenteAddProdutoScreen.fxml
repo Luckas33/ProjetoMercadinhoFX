@@ -1,167 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="root" dividerPositions="0.40807799442896936" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.GerenteAddProdutoController">
-  <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="326.0">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.GerenteAddProdutoController">
+   <children>
+      <ImageView fx:id="backgroundAddProd" fitHeight="435.0" fitWidth="798.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@AdicionarProdutos.png" />
+         </image>
+      </ImageView>
+    <AnchorPane layoutX="333.0" layoutY="14.0" minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="448.0">
          <children>
-            <Label layoutX="1.0" layoutY="81.0" prefHeight="25.0" prefWidth="290.0" text="Mercadinho Inteligente" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0">
-               <font>
-                  <Font name="Century" size="20.0" />
-               </font>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-            </Label>
-            <Label layoutX="92.0" layoutY="118.0" text="Adicionar Produtos">
-               <font>
-                  <Font name="Century" size="12.0" />
-               </font>
-            </Label>
-            <Button fx:id="btVoltar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToGerenteMainScrenn" text="Voltar">
+            <TextField fx:id="tfNome" layoutX="175.0" layoutY="14.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.Refrigerante" />
+            <TextField fx:id="tfID" layoutX="175.0" layoutY="58.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.1234" />
+            <TextField fx:id="tfMarca" layoutX="173.0" layoutY="102.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.CocaCola" />
+            <TextField fx:id="tfTipo" layoutX="175.0" layoutY="141.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.Bebida" />
+            <TextField fx:id="tfPrecoCompra" layoutX="175.0" layoutY="180.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.20.0" />
+            <TextField fx:id="tfTaxaVenda" layoutX="173.0" layoutY="219.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.50 (%)" />
+            <TextField fx:id="tfQuantidade" layoutX="173.0" layoutY="264.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.3" />
+            <TextField fx:id="tfDataValidade" layoutX="175.0" layoutY="304.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.20/07/2023" />
+            <Button fx:id="btAddProduto" blendMode="DARKEN" layoutX="176.0" layoutY="364.0" mnemonicParsing="false" onAction="#onBtAddProduto" prefHeight="25.0" prefWidth="96.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="48.0" layoutY="191.0" text="Categoria:">
-               <font>
-                  <Font name="Arial Bold Italic" size="12.0" />
-               </font>
-            </Label>
-            <ChoiceBox fx:id="choiceBoxCategoriaProd" layoutX="125.0" layoutY="187.0" prefHeight="25.0" prefWidth="107.0" />
-         </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <Button fx:id="btLimpar" blendMode="DARKEN" layoutX="306.0" layoutY="364.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="25.0" prefWidth="82.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btInfo" blendMode="DARKEN" layoutX="368.0" layoutY="21.0" mnemonicParsing="false" onAction="#onBtInfo" prefHeight="39.0" prefWidth="37.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+    <AnchorPane layoutY="7.0" minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="293.0">
          <children>
-            <Label layoutX="78.0" layoutY="27.0" text="Preencha as informações corretamente">
-               <font>
-                  <Font name="Century" size="15.0" />
-               </font>
-            </Label>
-            <Pane layoutX="33.0" layoutY="80.0" prefHeight="301.0" prefWidth="358.0" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="80.0">
-               <children>
-                  <VBox layoutY="-27.0" prefHeight="302.0" prefWidth="125.0">
-                     <children>
-                        <Label text="Nome: ">
-                           <font>
-                              <Font name="Century" size="12.0" />
-                           </font>
-                           <padding>
-                              <Insets top="9.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label text="ID:">
-                           <font>
-                              <Font name="Century" size="12.0" />
-                           </font>
-                           <padding>
-                              <Insets top="9.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label text="Marca:">
-                           <font>
-                              <Font name="Century" size="12.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets top="9.0" />
-                           </padding>
-                        </Label>
-                        <Label text="Tipo:">
-                           <font>
-                              <Font name="Century" size="12.0" />
-                           </font>
-                           <padding>
-                              <Insets top="9.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label text="Preço Unitário:">
-                           <font>
-                              <Font name="Century" size="12.0" />
-                           </font>
-                           <padding>
-                              <Insets top="9.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label layoutX="20.0" layoutY="166.0" prefHeight="14.0" prefWidth="88.0" text="Taxa de Lucro:">
-                           <font>
-                              <Font name="Century" size="12.0" />
-                           </font>
-                           <padding>
-                              <Insets top="9.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="10.0" layoutY="224.0" text="Quantidade:">
-                           <font>
-                              <Font name="Century" size="12.0" />
-                           </font>
-                           <padding>
-                              <Insets top="9.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label fx:id="lbDataValidade" text="Data de validade:">
-                           <font>
-                              <Font name="Century" size="12.0" />
-                           </font>
-                           <padding>
-                              <Insets top="9.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <TextField fx:id="tfID" layoutX="179.0" layoutY="8.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.1234" />
-                  <TextField fx:id="tfMarca" layoutX="179.0" layoutY="45.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.CocaCola" />
-                  <TextField fx:id="tfTipo" layoutX="179.0" layoutY="80.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.Bebida" />
-                  <TextField fx:id="tfPrecoCompra" layoutX="179.0" layoutY="112.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.20.0" />
-                  <TextField fx:id="tfDataValidade" layoutX="179.0" layoutY="213.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.20/07/2023" />
-                  <Button fx:id="btAddProduto" layoutX="179.0" layoutY="259.0" mnemonicParsing="false" onAction="#onBtAddProduto" text="Adicionar Produto">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="btLimpar" layoutX="303.0" layoutY="259.0" mnemonicParsing="false" onAction="#onBtLimpar" text="limpar">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <TextField fx:id="tfTaxaVenda" layoutX="179.0" layoutY="145.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.50 (%)" />
-                  <TextField fx:id="tfQuantidade" layoutX="179.0" layoutY="178.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.3" />
-               </children>
-            </Pane>
-            <TextField fx:id="tfNome" layoutX="211.0" layoutY="54.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.Refrigerante" />
-         </children></AnchorPane>
-  </items>
-</SplitPane>
+            <Button fx:id="btVoltar" blendMode="DARKEN" layoutX="17.0" layoutY="6.0" mnemonicParsing="false" onAction="#switchToGerenteMainScrenn" prefHeight="33.0" prefWidth="52.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ChoiceBox fx:id="choiceBoxCategoriaProd" layoutX="124.0" layoutY="245.0" prefHeight="25.0" prefWidth="107.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

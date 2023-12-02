@@ -13,6 +13,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import produtos.Produto;
 import produtos.ProdutoComestivel;
@@ -30,8 +32,6 @@ public class GerenteAddProdutoController {
     private Button btLimpar;
     @FXML
     private Button btAddProduto;
-    @FXML
-    private Label lbDataValidade;
     @FXML
     private TextField tfNome;
     @FXML
@@ -52,8 +52,10 @@ public class GerenteAddProdutoController {
     private TextField tfQuantidade;
     @FXML
     private TextField tfTaxaVenda;
-
-
+    @FXML
+    private ImageView backgroundAddProd;
+    @FXML
+    private Button btInfo;
 
     public void switchToGerenteMainScrenn(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("GerenteMainScreen.fxml"));
@@ -68,10 +70,8 @@ public class GerenteAddProdutoController {
 
         if ("Comestível".equals(escolhaSelecionada)){
             tfDataValidade.setDisable(false);
-            lbDataValidade.setDisable(false);
         }else {
             tfDataValidade.setDisable(true);
-            lbDataValidade.setDisable(true);
         }
     }
 
@@ -171,6 +171,9 @@ public class GerenteAddProdutoController {
         }
     }
 
+    public void onBtInfo(){
+        Alerts.showAlert("Informação",null,"Aqui você pode adicionar produtos novos em seu estoque", Alert.AlertType.INFORMATION);
+    }
     public void onBtLimpar(ActionEvent e){
         tfNome.setText(null);
         tfID.setText(null);
@@ -185,11 +188,13 @@ public class GerenteAddProdutoController {
 
     @FXML
     public void initialize(){
+        String imagem = "AdicionarProdutos.png";
+        Image banner = new Image(getClass().getResource(imagem).toExternalForm());
+        backgroundAddProd.setImage(banner);
 
         choiceBoxCategoriaProd.getItems().addAll("Comestível","Não Comestível");
         choiceBoxCategoriaProd.setOnAction(this::onCBCategoriaProd);
         choiceBoxCategoriaProd.setOnMouseClicked(this::onCBCategoriaProd);
         tfDataValidade.setDisable(true);
-        lbDataValidade.setDisable(true);
     }
 }

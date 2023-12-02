@@ -185,13 +185,11 @@ public class Gerente extends Funcionario {
       }
 
     //metodo para setar o saldo inicial do mercado
-    public void inserirSaldo(double valor){
-        try{
+    public void inserirSaldo(double valor) throws SNException{
+        if(valor > 0){
             this.estoque.definirSaldo(valor + this.estoque.verSaldo());
-        }catch(SNException e){
-            System.out.print(e.getMessage());
-            System.out.print(" Saldo: ");
-            System.out.print(valor);
+        }else{
+            throw new SNException(valor);
         }
     }
 

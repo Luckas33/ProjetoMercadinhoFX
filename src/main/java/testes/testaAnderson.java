@@ -61,7 +61,7 @@ public class testaAnderson {
         Gerente gerente = new Gerente(registro, estoque, "rodrigo", "jrodri", "rodri@gmail","123");
         gerente.limparTudo();
         System.out.println("Após limpeza");
-        gerente.inserirSaldo(400.0);
+        //gerente.inserirSaldo(400.0);
         Produto produto1 = new Produto("refrigerante", "9", "coca cola", 20.0, "bebida");
         Produto produto2 = new ProdutoComestivel("Feijão", "123", "Kokoko", 15.66, "Comestivel","12/05/2028");
         

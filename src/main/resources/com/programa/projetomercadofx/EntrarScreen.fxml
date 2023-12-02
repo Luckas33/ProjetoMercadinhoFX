@@ -3,9 +3,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,69 +11,46 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="root" dividerPositions="0.4498327759197324" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.EntrarController">
-  <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="241.0">
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.EntrarController">
+   <children>
+      <ImageView fx:id="ajudaImage" fitHeight="33.0" fitWidth="33.0" layoutX="641.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Interrogação.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Button fx:id="btVoltar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToMainScrenn" text="Voltar" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="400.0" fitWidth="731.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@EntrarBanner.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="463.0" layoutY="62.0" prefHeight="236.0" prefWidth="223.0">
          <children>
-            <Label layoutX="35.0" layoutY="107.0" text="Mercadinho Inteligente">
-               <font>
-                  <Font name="Constantia" size="20.0" />
-               </font>
-            </Label>
-            <Button fx:id="btVoltar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToMainScrenn" text="Voltar" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
-            <Label layoutX="90.0" layoutY="131.0" text="Entrar em Conta">
-               <font>
-                  <Font name="Century" size="12.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="336.0" prefWidth="278.0">
-         <children>
-            <Label layoutX="57.0" layoutY="351.0" prefHeight="17.0" prefWidth="112.0" text="Não tem cadastro? " AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="157.0" />
-            <Button fx:id="btcadastrar" layoutX="181.0" layoutY="349.0" mnemonicParsing="false" onAction="#switchToCadastrarScreen" text="Cadastrar" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="181.0">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
-            <Button fx:id="btConfirmar" layoutX="219.0" layoutY="230.0" mnemonicParsing="false" onAction="#onBtConfirmar" text="Confirmar">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Button>
-            <Pane layoutX="32.0" layoutY="30.0" prefHeight="200.0" prefWidth="263.0">
-               <children>
-                  <Label alignment="CENTER" layoutX="16.0" layoutY="88.0" prefHeight="17.0" prefWidth="54.0" text="Senha:">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <PasswordField fx:id="tfSenha" layoutX="113.0" layoutY="88.0" prefHeight="10.0" promptText="Senha" />
-                  <TextField fx:id="tfLogin" layoutX="113.0" layoutY="38.0" prefHeight="10.0" promptText="Login" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="38.0" prefHeight="17.0" prefWidth="71.0" text="Login:" textAlignment="CENTER">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="16.0" layoutY="140.0" text="Tipo Conta:">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <ChoiceBox fx:id="choiceBoxTipoFuncionario" layoutX="112.0" layoutY="140.0" prefWidth="150.0" />
-               </children>
-            </Pane>
-            <ImageView fx:id="ajudaImage" fitHeight="27.0" fitWidth="34.0" layoutX="282.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Interrogação.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-         </children></AnchorPane>
-  </items>
-</SplitPane>
+            <PasswordField fx:id="tfSenha" layoutX="30.0" layoutY="112.0" prefHeight="10.0" promptText="Senha" />
+            <TextField fx:id="tfLogin" layoutX="30.0" layoutY="24.0" prefHeight="10.0" promptText="Login" />
+            <ChoiceBox fx:id="choiceBoxTipoFuncionario" layoutX="29.0" layoutY="203.0" prefWidth="150.0" />
+         </children>
+      </Pane>
+      <Button fx:id="btcadastrar" blendMode="DARKEN" layoutX="470.0" layoutY="353.0" mnemonicParsing="false" onAction="#switchToCadastrarScreen" prefHeight="25.0" prefWidth="68.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="470.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button fx:id="btConfirmar" blendMode="DARKEN" layoutX="623.0" layoutY="309.0" mnemonicParsing="false" onAction="#onBtConfirmar" prefHeight="27.0" prefWidth="74.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
