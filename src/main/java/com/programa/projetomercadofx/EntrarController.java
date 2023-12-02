@@ -29,7 +29,7 @@ public class EntrarController {
     @FXML
     private Parent root;
     @FXML
-    private ImageView ajudaImage;
+    private ImageView backgroundEntrar;
 //////////Mudança de Janela ///////////////////
     public void switchToMainScrenn(ActionEvent event) throws Exception {
         // Carregar FXML da Main
@@ -119,9 +119,8 @@ public class EntrarController {
     public void initialize(){
         choiceBoxTipoFuncionario.getItems().addAll("Gerente", "Vendedor");
 
-        String imagem = "interrogação.png";
-        Image ajuda = new Image(getClass().getResource(imagem).toExternalForm());
-        ajudaImage.setImage(ajuda);
-        ajudaImage.setOnMouseClicked(this::onClickAjuda);
+        String imagem = "EntrarBanner.png";
+        Image banner = new Image(getClass().getResource(imagem).toExternalForm());
+        backgroundEntrar.setImage(banner);
     }
 }
