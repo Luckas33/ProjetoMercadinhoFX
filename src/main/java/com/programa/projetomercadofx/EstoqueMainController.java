@@ -50,7 +50,6 @@ public void onMenuItemTodos(ActionEvent e) {
     for (IEstoque estoque : ListaEstoque.estoqueVector) {
         if (estoque != null) {
             estoqueMostrar = estoque.retornaEstoque();
-            System.out.println(estoqueMostrar);
 
             listViewEstoque.getItems().setAll(estoqueMostrar);
 
