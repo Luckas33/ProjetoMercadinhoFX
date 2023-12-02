@@ -1,6 +1,7 @@
 package com.programa.projetomercadofx;
 
 
+import com.programa.projetomercadofx.controllerUtil.Alerts;
 import globalService.ListaEstoque;
 import globalService.ListaFuncionario;
 import javafx.event.ActionEvent;
@@ -9,10 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import produtos.Produto;
 import produtos.ProdutoHistorico;
@@ -36,6 +34,8 @@ public class FinanceiroBalancoController {
     private Button btInserirData;
     @FXML
     private TextField tfData;
+    @FXML
+    private Button btOKData;
     private Vector<ProdutoHistorico> registroMostrar;
 
 /////////////// Mudança de Tela ///////////////////////////
@@ -50,6 +50,8 @@ public class FinanceiroBalancoController {
 ////////////////////Métodos lógicos //////////////////
     public void onBtVerTudo(ActionEvent e){
         tfData.setDisable(true);
+        btOKData.setDisable(true);
+        tfData.setText(null);
         for(IRegistro registro : ListaEstoque.registroVector){
             if(registro != null){
                 registroMostrar = registro.retornaRegistro();
@@ -60,6 +62,10 @@ public class FinanceiroBalancoController {
 
     public void onBtInserirData(ActionEvent e){
         tfData.setDisable(false);
+        btOKData.setDisable(false);
+    }
+
+    public void onBtOKData(ActionEvent e){
         String data = tfData.getText();
         for(IRegistro registro : ListaEstoque.registroVector){
             if(registro != null){
@@ -68,14 +74,16 @@ public class FinanceiroBalancoController {
                     if(produto.getData().equals(data)){
                         listViewBalanco.getItems().add(produto);
                     }
+
                 }
             }
         }
-
     }
 
 ///////////////// Métodos Complementares ///////////////
     public void initialize (){
+
+        btOKData.setDisable(true);
 
         registroMostrar = new Vector<>();
         listViewBalanco.setCellFactory(param -> new ListCell<ProdutoHistorico>() {

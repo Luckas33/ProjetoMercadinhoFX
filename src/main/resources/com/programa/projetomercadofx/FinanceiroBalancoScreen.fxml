@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane fx:id="root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.FinanceiroBalancoController">
    <top>
       <AnchorPane prefHeight="123.0" prefWidth="509.0" BorderPane.alignment="CENTER">
@@ -26,6 +25,7 @@
                   <Font size="9.0" />
                </font>
             </Button>
+            <Button fx:id="btOKData" layoutX="277.0" layoutY="77.0" mnemonicParsing="false" onAction="#onBtOKData" text="OK" />
          </children>
       </AnchorPane>
    </top>
