@@ -34,7 +34,7 @@ public class Main extends Application {
         ListaEstoque.registroVector.add(registro);
 
         launch();
-
+        //
 
     }
 }
