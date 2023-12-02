@@ -1,6 +1,7 @@
 package com.programa.projetomercadofx;
 
 
+import globalService.ListaEstoque;
 import globalService.ListaFuncionario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import produtos.Produto;
 import produtos.ProdutoHistorico;
+import registros.IRegistro;
 import usuarios.Funcionario;
 import usuarios.Gerente;
 
@@ -23,7 +25,7 @@ import java.util.Vector;
 public class FinanceiroBalancoController {
 ////////////Id dos componenetes  ///////////////
     @FXML
-    private ListView<Produto> listViewBalanco;
+    private ListView<ProdutoHistorico> listViewBalanco;
     @FXML
     private Button btVoltar;
     @FXML
@@ -34,7 +36,7 @@ public class FinanceiroBalancoController {
     private Button btInserirData;
     @FXML
     private TextField tfData;
-    private Vector<Produto> balancoGeral;
+    private Vector<ProdutoHistorico> registroMostrar;
 
 /////////////// Mudança de Tela ///////////////////////////
     public void switchToFinanceiroMainScreen(ActionEvent event) throws Exception {
@@ -46,23 +48,27 @@ public class FinanceiroBalancoController {
     }
 
 ////////////////////Métodos lógicos //////////////////
-    /*public void onBtVerTudo(ActionEvent e){
+    public void onBtVerTudo(ActionEvent e){
         tfData.setDisable(true);
-        for (Gerente gerente: ListaFuncionario.gerentesVector) {
-            if(gerente != null){
-                Gerente balanco =  gerente.verBalancoTotal();
-                this.balancoGeral.add(gerente);
-                listViewBalanco.getItems().setAll(balancoGeral);
+        for(IRegistro registro : ListaEstoque.registroVector){
+            if(registro != null){
+                registroMostrar = registro.retornaRegistro();
+                listViewBalanco.getItems().setAll(registroMostrar);
             }
         }
-    }*/
+    }
 
     public void onBtInserirData(ActionEvent e){
         tfData.setDisable(false);
         String data = tfData.getText();
-        for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
-            if(funcionario instanceof Gerente){
-                ((Gerente) funcionario).verBalancoData(data);
+        for(IRegistro registro : ListaEstoque.registroVector){
+            if(registro != null){
+                registroMostrar = registro.retornaRegistro();
+                for(ProdutoHistorico produto : registroMostrar){
+                    if(produto.getData().equals(data)){
+                        listViewBalanco.getItems().add(produto);
+                    }
+                }
             }
         }
 
@@ -71,19 +77,20 @@ public class FinanceiroBalancoController {
 ///////////////// Métodos Complementares ///////////////
     public void initialize (){
 
-       /* balancoGeral = new Vector<>();
-        listViewBalanco.setCellFactory(param -> new ListCell<Produto>() {
+        registroMostrar = new Vector<>();
+        listViewBalanco.setCellFactory(param -> new ListCell<ProdutoHistorico>() {
             @Override
-            protected void updateItem(Produto item, boolean empty) {
+            protected void updateItem(ProdutoHistorico item, boolean empty) {
                 super.updateItem(item, empty);
 
                 if (empty || item == null) {
                     setText(null);
                 } else {
                     // Personalize aqui como deseja exibir cada item na lista
-                    setText("ID: " + item.getId() + " | Preço: " + item.getPrecoVenda() + " | Outros atributos...");
+                    setText("ID: " + item.getIdVenda() + " | Preço: " + item.getPreco() + " | Tipo de transação: " + item.getForma() + " | Quantidade: " + item.getQuantidadeVendida() + " | Data:" + item.getData());
                 }
             }
-        });*/
+        });
+        listViewBalanco.getItems().setAll(registroMostrar);
     }
 }
