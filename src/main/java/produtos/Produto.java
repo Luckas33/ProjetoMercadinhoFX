@@ -2,9 +2,12 @@
 package produtos;
 
 import java.io.Serializable;
+import java.util.Vector;
+import observador.Observer;
+
 import excecao.*;
 
-public class Produto implements Serializable {
+public abstract class Produto implements Serializable {
     //atributos
     protected String nome;
     protected String id;
@@ -16,6 +19,7 @@ public class Produto implements Serializable {
     protected double taxaLucro;
     protected int quantidadeVendida;
     private static final long serialVersionUID = 1L;
+    private transient Vector<Observer> observers = new Vector<>();
    
     //construtor
     public Produto(String nome, String id, String marca, double preco_compra, String tipo) {
@@ -32,13 +36,7 @@ public class Produto implements Serializable {
   
     
     //to string para mostrar todos os produtos no estoque, onde só esses atributos vão importar
-    @Override
-    public String toString() {
-        return "Produto:" +  "\n" + "Nome: " + nome + "\n" + "ID: " + id + "\n" + "Marca: " + marca + "\n" +
-                "Preço: " + preco_compra + "\n" + "Tipo: " + tipo + "\n" +
-                "Quantidade: " + quantidade + "\n";
-    
-    }
+    public abstract String toString();
 
    /////getters e setters
     
@@ -72,8 +70,10 @@ public class Produto implements Serializable {
     }
 
     public void setPrecoCompra(double preco_compra) throws PCIException {
-        if(preco_compra>0)
+        if(preco_compra>0){
             this.preco_compra = preco_compra;
+            notifyAllObservers();
+        }
         else
             throw new PCIException(preco_compra);
     }
@@ -100,8 +100,10 @@ public class Produto implements Serializable {
     }
     // **coloquei as excecoes**
     public void setTaxaLucro(double taxaLucro) throws TLIException {
-        if(taxaLucro>0.0)
+        if(taxaLucro>0.0){
             this.taxaLucro = taxaLucro;
+            notifyAllObservers();
+        }
         else
             throw new TLIException(this.taxaLucro);
     }
@@ -125,4 +127,25 @@ public class Produto implements Serializable {
         else
             throw new QINException(quantidadeVendida);
     }
+    
+    public void attach(Observer observer){
+        if (observers == null) {
+            observers = new Vector<>();
+        }
+        if (!observers.contains(observer)){
+            observers.add(observer);
+        }       
+    }
+
+    public void detach(Observer observer){
+        if (observers != null && !observers.contains(observer)){
+            observers.remove(observer); 
+        }      
+    }
+
+    public void notifyAllObservers(){
+        for (Observer observer : observers) {
+            observer.update();
+        }
+    } 
 }

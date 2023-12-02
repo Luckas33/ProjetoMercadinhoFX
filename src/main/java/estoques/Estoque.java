@@ -3,7 +3,6 @@ package estoques;
 
 import excecao.*;
 import produtos.Produto;
-import produtos.ProdutoComestivel;
 
 import java.util.Vector;
 
@@ -14,15 +13,34 @@ public class Estoque implements IEstoque {
     //atributos
     private Vector<Produto> estoque;
     private double saldo;
-    //**teste**
+    private Vector<Produto> produtosObservados;
     
 
     //construtor
     public Estoque(){
         this.estoque = new Vector<Produto>();
         this.saldo = 0.0;
+        this.produtosObservados = new Vector<Produto>();
+        desserializarSaldo();
     }
    
+
+    private void attachProduto(Produto produto) {
+        produtosObservados.add(produto);
+        produto.attach(this);
+    }
+
+    private void detachProduto(Produto produto) {
+        produtosObservados.remove(produto);
+        produto.detach(this);
+    }
+
+    public void reattachObservers() {
+        for (Produto produto : estoque) {
+            produto.attach(this);
+        }
+    }
+
     //metodo para inserir produtos no estoque  
     @Override
     public void inserir(Produto produto, int quantidade){
@@ -31,6 +49,7 @@ public class Estoque implements IEstoque {
             if (!this.existe(produto.getId())){ //checa se o produto não existe no estoque
                 produto.setQuantidade(quantidade);  //se não existir, seta a quantidade
                 this.estoque.add(produto);           //e coloca no vetor de estoque
+                attachProduto(produto);
             } else if (this.existe(produto.getId())) {
                 Produto produtoAtualiza = procurar(produto.getId());                    // pega esse produto com a ultima quantidade registrada
                 int quantidadeFinal = produtoAtualiza.getQuantidade() + quantidade;     // Estabelece nova quantidade
@@ -77,6 +96,7 @@ public class Estoque implements IEstoque {
 
     public void remove(Produto produto){
         this.estoque.remove(produto);
+        detachProduto(produto);
     }
 
 
@@ -91,7 +111,7 @@ public class Estoque implements IEstoque {
     //metodo para checar o saldo
     @Override
     public double verSaldo() {
-       return saldo;
+        return saldo;
     }
 
     // <Anderson>: Falta salvar saldo... Não é difícil, mas acho feio, então estou pensando;
@@ -99,10 +119,32 @@ public class Estoque implements IEstoque {
     @Override
     public void definirSaldo(double valor) throws SNException{
         if(valor>=0){
-           this.saldo = valor;
+            this.saldo = valor;
+            serializarSaldo();
         }else
             throw new SNException(valor);
     }
+
+    private void serializarSaldo() {
+        String caminho = "src/main/java/arquivos/saldo.txt";
+        FileSave.gravarObjetos(saldo, caminho);
+    }
+
+    private void desserializarSaldo() {
+        String caminho = "src/main/java/arquivos/saldo.txt";
+        try {
+            Double saldoTemp = (Double) FileSave.recuperarObjetos(caminho);
+            if (saldoTemp == null){
+                this.saldo = 0;
+            } else {
+                this.saldo = saldoTemp;
+            }
+        } catch (ClassCastException e) {
+            System.out.println("Erro: O objeto recuperado não é um Double: " + e.getMessage());
+            this.saldo = 0;
+        }
+    }
+    
 
     private void serializar() {
         String caminho = "src/main/java/arquivos/estoque.txt";
@@ -118,10 +160,16 @@ public class Estoque implements IEstoque {
                 for(Produto produto : produtosTemp) {
                     this.estoque.add(produto);          // Adicionando os produtos recuperados do arquivo
                 }
+                reattachObservers();
             }    
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void update() {
+        serializar();
     }
 
 

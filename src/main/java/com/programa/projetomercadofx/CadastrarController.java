@@ -107,7 +107,11 @@ public class CadastrarController {
                                 for(IRegistro registro : ListaEstoque.registroVector) {
                                     if(registro != null) {
                                         gerenteObj = new Gerente(registro, estoque, nome, login, email, senha);
-                                        ListaFuncionario.funcionariosVector.add(gerenteObj);
+                                        try {
+                                           ListaFuncionario.cadastraFuncionario(gerenteObj); 
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
                                         onBtLimpar(event);
                                         Alerts.showAlert("Cadastro", null, "Conta Gerente cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
                                     }
@@ -121,7 +125,11 @@ public class CadastrarController {
                         for (IRegistro registro : ListaEstoque.registroVector) {
                             if (registro != null) {
                                 vendedorObj = new Vendedor(registro, estoque, nome, login, email, senha);
-                                ListaFuncionario.funcionariosVector.add(vendedorObj);
+                                try {
+                                    ListaFuncionario.cadastraFuncionario(vendedorObj); 
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
                                 onBtLimpar(event);
                                 Alerts.showAlert("Cadastro", null, "Conta Vendedor cadastrada com sucesso", Alert.AlertType.CONFIRMATION);
                             }

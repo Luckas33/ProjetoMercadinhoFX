@@ -51,8 +51,8 @@ public class FileSave {
     public static Object recuperarObjetos(String caminho){
         File arquivo = new File(caminho);
 
-        if(arquivo.length() == 0) {
-            System.out.println("O arquivo está vazio para recuperação. Caminho: "+caminho);
+        if(arquivo.length() == 0 | !arquivo.exists()) {
+            System.out.println("O arquivo está vazio ou não existe para recuperação. Caminho: "+caminho);
             return null;
         }
 

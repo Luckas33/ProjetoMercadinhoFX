@@ -76,8 +76,6 @@ public class Gerente extends Funcionario {
             e.printStackTrace();
         }
         this.registro.registrarAquisicao(produto.getId(), valorTotal, quantidade);
-        // estoque.attachProduto(produto);   // Somente quando um produto é cadastrado, ele se torna observado
-        //produto.attach(this.estoque);
     }
 
 
