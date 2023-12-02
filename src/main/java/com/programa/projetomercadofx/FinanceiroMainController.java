@@ -257,6 +257,8 @@ public class FinanceiroMainController {
         for (Funcionario funcionario : ListaFuncionario.funcionariosVector){
             if(funcionario instanceof Gerente){
                     ((Gerente) funcionario).removerProduto(id);
+                onBtLimpar(event);
+
                 break;
             }
         }

@@ -4,6 +4,8 @@ package com.programa.projetomercadofx;
 import com.programa.projetomercadofx.controllerUtil.Alerts;
 import globalService.ListaEstoque;
 import globalService.ListaFuncionario;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,6 +39,7 @@ public class FinanceiroBalancoController {
     @FXML
     private Button btOKData;
     private Vector<ProdutoHistorico> registroMostrar;
+    private ObservableList<ProdutoHistorico> produtosObservableList = FXCollections.observableArrayList();
 
 /////////////// Mudança de Tela ///////////////////////////
     public void switchToFinanceiroMainScreen(ActionEvent event) throws Exception {
@@ -52,12 +55,15 @@ public class FinanceiroBalancoController {
         tfData.setDisable(true);
         btOKData.setDisable(true);
         tfData.setText(null);
+        produtosObservableList.clear();
+
         for(IRegistro registro : ListaEstoque.registroVector){
             if(registro != null){
                 registroMostrar = registro.retornaRegistro();
-                listViewBalanco.getItems().setAll(registroMostrar);
+                produtosObservableList.addAll(registroMostrar);
             }
         }
+        listViewBalanco.getItems().setAll(produtosObservableList);
     }
 
     public void onBtInserirData(ActionEvent e){
@@ -67,17 +73,19 @@ public class FinanceiroBalancoController {
 
     public void onBtOKData(ActionEvent e){
         String data = tfData.getText();
+        produtosObservableList.clear();
         for(IRegistro registro : ListaEstoque.registroVector){
             if(registro != null){
                 registroMostrar = registro.retornaRegistro();
                 for(ProdutoHistorico produto : registroMostrar){
                     if(produto.getData().equals(data)){
-                        listViewBalanco.getItems().add(produto);
+                        produtosObservableList.add(produto);
                     }
 
                 }
             }
         }
+        listViewBalanco.getItems().setAll(produtosObservableList);
     }
 
 ///////////////// Métodos Complementares ///////////////
@@ -95,7 +103,7 @@ public class FinanceiroBalancoController {
                     setText(null);
                 } else {
                     // Personalize aqui como deseja exibir cada item na lista
-                    setText("ID: " + item.getIdVenda() + " | Preço: " + item.getPreco() + " | Tipo de transação: " + item.getForma() + " | Quantidade: " + item.getQuantidadeVendida() + " | Data:" + item.getData());
+                    setText("ID: " + item.getIdVenda() + " | Preço: " + item.getPreco() + " | Tipo de transação: " + item.getForma() + " | Quantidade: " + item.getQuantidadeVendida() + " | Data: " + item.getData());
                 }
             }
         });
