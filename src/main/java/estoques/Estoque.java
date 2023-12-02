@@ -18,9 +18,9 @@ public class Estoque implements IEstoque {
 
     //construtor
     public Estoque(){
-        this.estoque = new Vector<Produto>();
+        this.estoque = new Vector<>();
         this.saldo = 0.0;
-        this.produtosObservados = new Vector<Produto>();
+        this.produtosObservados = new Vector<>();
         desserializarSaldo();
     }
    

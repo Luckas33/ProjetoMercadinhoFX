@@ -28,6 +28,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         IEstoque estoque = new Estoque();
         IRegistro registro = new Registro();
+
         ListaFuncionario listaFuncionario = new ListaFuncionario();
         ListaEstoque listaEstoque = new ListaEstoque();
         ListaEstoque.estoqueVector.add(estoque);
@@ -35,6 +36,5 @@ public class Main extends Application {
 
         launch();
 
-    //
     }
 }

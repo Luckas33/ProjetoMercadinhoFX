@@ -6,135 +6,76 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="root" dividerPositions="0.4919093851132686" minHeight="500.0" minWidth="800.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.VendedorMainController">
-  <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+
+<AnchorPane fx:id="root" minHeight="0.0" minWidth="0.0" prefHeight="375.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.VendedorMainController">
+   <children>
+      <ImageView fx:id="backgroundVendedor" fitHeight="386.0" fitWidth="700.0" layoutY="-7.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@VenderProdutos.png" />
+         </image>
+      </ImageView>
+    <AnchorPane layoutX="276.0" layoutY="25.0" minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="410.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="25.0">
          <children>
-            <AnchorPane layoutY="-4.0" prefHeight="489.0" prefWidth="362.0" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-12.0" AnchorPane.topAnchor="-4.0">
-               <children>
-                <AnchorPane layoutX="7.0" layoutY="14.0" minHeight="0.0" minWidth="0.0" prefHeight="128.0" prefWidth="350.0">
-                     <children>
-                        <Button fx:id="btVoltar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToEntrarScreen" text="Voltar">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Pane layoutX="62.0" layoutY="50.0" prefHeight="71.0" prefWidth="244.0">
-                           <children>
-                              <Label layoutX="91.0" layoutY="51.0" text="Vendedor">
-                                 <font>
-                                    <Font name="Century" size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" layoutX="6.0" layoutY="-14.0" prefHeight="74.0" prefWidth="232.0" text="Mercadinho Inteligente">
-                                 <font>
-                                    <Font name="Century" size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                     </children>
-                  </AnchorPane>
-                  <BorderPane layoutX="23.0" layoutY="150.0" prefHeight="248.0" prefWidth="357.0">
-                     <center>
-                        <ListView fx:id="lvProdutosAdicionados" prefHeight="231.0" prefWidth="350.0" BorderPane.alignment="CENTER" />
-                     </center>
-                     <top>
-                        <Label text="Produtos adicionados" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                     </top>
-                  </BorderPane>
-                  <Label layoutX="24.0" layoutY="420.0" text="Sub total:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbSubtotal" layoutX="93.0" layoutY="420.0" prefHeight="17.0" prefWidth="70.0" />
-               </children>
-            </AnchorPane>
+            <ChoiceBox fx:id="choiceBoxTipoVenda" disable="true" layoutX="240.0" layoutY="119.0" prefWidth="150.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ChoiceBox>
+            <Button fx:id="btAdicionar" blendMode="DARKEN" layoutX="89.0" layoutY="246.0" mnemonicParsing="false" onAction="#onBtAdicionar" prefHeight="32.0" prefWidth="70.0">
+               <font>
+                  <Font name="Century" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <TextField fx:id="tfidProduto" layoutX="240.0" layoutY="51.0" prefHeight="25.0" prefWidth="150.0" promptText="Ex.1234">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="tfquantidade" layoutX="240.0" layoutY="84.0" prefHeight="25.0" prefWidth="150.0" promptText="Ex.3">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TextField>
+            <ComboBox fx:id="comboboxParcelas" disable="true" layoutX="240.0" layoutY="156.0" prefWidth="150.0" promptText="Parcelas">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ComboBox>
+            <Button fx:id="btFinalizar" blendMode="DARKEN" layoutX="181.0" layoutY="246.0" mnemonicParsing="false" onAction="#onBtFinalizar" prefHeight="32.0" prefWidth="70.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <TextField fx:id="tfValorPago" disable="true" layoutX="241.0" layoutY="193.0" promptText="Insira o valor recebido">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TextField>
+            <Button fx:id="btConfirmarVenda" blendMode="DARKEN" layoutX="267.0" layoutY="246.0" mnemonicParsing="false" onAction="#onBtConfirmarVenda" prefHeight="32.0" prefWidth="115.0">
+               <font>
+                  <Font name="Century" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-         <children>
-          <AnchorPane layoutX="6.0" layoutY="14.0" minHeight="0.0" minWidth="0.0" prefHeight="448.0" prefWidth="390.0" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="14.0">
-               <children>
-                  <Label layoutX="133.0" layoutY="20.0" text="Vender Produtos">
-                     <font>
-                        <Font name="Century" size="16.0" />
-                     </font>
-                  </Label>
-                  <ChoiceBox fx:id="choiceBoxTipoVenda" disable="true" layoutX="231.0" layoutY="147.0" prefWidth="150.0">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ChoiceBox>
-                  <Label fx:id="lbTipoPagamento" disable="true" layoutX="20.0" layoutY="148.0" text="Tipo de Pagamento:">
-                     <font>
-                        <Font name="Century" size="18.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="btAdicionar" layoutX="22.0" layoutY="276.0" mnemonicParsing="false" onAction="#onBtAdicionar" text="Adicionar">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Label layoutX="22.0" layoutY="78.0" prefHeight="18.0" prefWidth="125.0" text="ID do Produto:">
-                     <font>
-                        <Font name="Century" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="tfidProduto" layoutX="231.0" layoutY="77.0" prefHeight="25.0" prefWidth="150.0" promptText="Ex.1234">
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
-                  </TextField>
-                  <Label layoutX="22.0" layoutY="114.0" prefHeight="18.0" prefWidth="125.0" text="Quantidade:">
-                     <font>
-                        <Font name="Century" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="tfquantidade" layoutX="231.0" layoutY="113.0" prefHeight="25.0" prefWidth="150.0" promptText="Ex.3">
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
-                  </TextField>
-                  <Label fx:id="lbParcelas" disable="true" layoutX="20.0" layoutY="180.0" prefHeight="18.0" prefWidth="129.0" text="Parcelas">
-                     <font>
-                        <Font name="Century" size="18.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="comboboxParcelas" disable="true" layoutX="231.0" layoutY="179.0" prefWidth="150.0" promptText="Parcelas" />
-                  <Button fx:id="btFinalizar" layoutX="103.0" layoutY="275.0" mnemonicParsing="false" onAction="#onBtFinalizar" text="Finalizar" />
-                  <Label fx:id="lbValorPago" disable="true" layoutX="22.0" layoutY="214.0" text="Valor Pago:">
-                     <font>
-                        <Font name="Century" size="17.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="tfValorPago" disable="true" layoutX="232.0" layoutY="212.0" promptText="Insira o valor recebido" />
-                  <Button fx:id="btConfirmarVenda" layoutX="258.0" layoutY="276.0" mnemonicParsing="false" onAction="#onBtConfirmarVenda" text="Confirmar Venda">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-  </items>
-</SplitPane>
+      <ListView fx:id="lvProdutosAdicionados" layoutX="14.0" layoutY="163.0" prefHeight="137.0" prefWidth="244.0" />
+      <Button fx:id="btVoltar" blendMode="DARKEN" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="32.0" prefWidth="59.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="lbSubtotal" layoutX="125.0" layoutY="323.0" prefHeight="17.0" prefWidth="70.0" />
+   </children>
+</AnchorPane>

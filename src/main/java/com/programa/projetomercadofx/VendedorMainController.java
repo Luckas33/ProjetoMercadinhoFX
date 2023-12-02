@@ -11,6 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import produtos.Produto;
 import produtos.ProdutoHistorico;
@@ -18,8 +20,6 @@ import usuarios.Funcionario;
 import usuarios.Vendedor;
 
 import java.util.Vector;
-
-
 
 public class VendedorMainController {
 ///////// ID dos componentes da tela //////////////
@@ -42,19 +42,16 @@ public class VendedorMainController {
     @FXML
     private ComboBox<String> comboboxParcelas;
     @FXML
-    private Label lbParcelas;
-    @FXML
-    private Label lbSubtotal;
-    @FXML
-    private Label lbValorPago;
-    @FXML
     private TextField tfValorPago;
     @FXML
     private Button btConfirmarVenda;
     @FXML
-    private Label lbTipoPagamento;
+    private Label lbSubtotal;
+    @FXML
+    private ImageView backgroundVendedor;
     public Vector<ProdutoHistorico> vendas;
     public Vector<Produto> carrinho;
+
 
 /////////////////Método para trocar de tela///////////////////
     public void switchToEntrarScreen(ActionEvent event) throws Exception {
@@ -72,7 +69,7 @@ public class VendedorMainController {
             quantidade = Integer.parseInt(tfquantidade.getText());
         }
 
-        String id = tfidProduto.getText();
+        String id = tfidProduto.getText(); //ID produto
         for (Funcionario funcionario : ListaFuncionario.funcionariosVector) {
             if (funcionario instanceof Vendedor) {
                 Produto produto = ((Vendedor) funcionario).retornaProduto(id);
@@ -102,7 +99,6 @@ public class VendedorMainController {
     }
 
     public void onBtFinalizar(ActionEvent event) { //Método para fechar o carrinho e habilitar a escolha de pagamento
-        lbTipoPagamento.setDisable(false);
         choiceBoxTipoVenda.setDisable(false);
         btAdicionar.setDisable(true);
         btConfirmarVenda.setDisable(false);
@@ -112,23 +108,16 @@ public class VendedorMainController {
         String escolha = choiceBoxTipoVenda.getValue();
         if("Crédito".equals(escolha)){
             comboboxParcelas.setDisable(false);
-            lbParcelas.setDisable(false);
 
         }else if("Dinheiro".equals(escolha)){
             tfValorPago.setDisable(false);
-            lbValorPago.setDisable(false);
             comboboxParcelas.setDisable(true);
-            lbParcelas.setDisable(true);
         }else if ("Débito".equals(escolha)){
             tfValorPago.setDisable(true);
-            lbValorPago.setDisable(true);
             comboboxParcelas.setDisable(true);
-            lbParcelas.setDisable(true);
         }else{
             tfValorPago.setDisable(true);
-            lbValorPago.setDisable(true);
             comboboxParcelas.setDisable(true);
-            lbParcelas.setDisable(true);
         }
     }
 
@@ -211,7 +200,7 @@ public class VendedorMainController {
                                 }
                             }
                         }
-                        else if(valorPago == valorFinalD){
+                        else if(valorPago == valorFinalD){ //ninguem usa
                             for (int i = 0; i < carrinho.size(); i++) {
                                 try {
                                     Produto produto = carrinho.get(i);
@@ -251,7 +240,6 @@ public class VendedorMainController {
         lvProdutosAdicionados.getItems().clear();
         lbSubtotal.setText("0.0");
         choiceBoxTipoVenda.setValue(null);
-        lbTipoPagamento.setDisable(true);
     }
 
     @FXML
@@ -264,11 +252,12 @@ public class VendedorMainController {
         /////////Configurando o estado dos componentes //////////
         btFinalizar.setDisable(true);
         comboboxParcelas.setDisable(true);
-        lbParcelas.setDisable(true);
-        lbValorPago.setDisable(true);
         tfValorPago.setDisable(true);
         btConfirmarVenda.setDisable(false);
-
+/////////////////////////////////////////////////////////
+        String imagem = "VenderProdutos.png";
+        Image banner = new Image(getClass().getResource(imagem).toExternalForm());
+        backgroundVendedor.setImage(banner);
         /////////////Configurando vetores e a listView////////////
         vendas = new Vector<>();
         carrinho = new Vector<>();

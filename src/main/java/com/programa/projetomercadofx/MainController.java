@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainController {
-
     @FXML
     private Button btEntrar;
 
@@ -32,9 +31,6 @@ public class MainController {
     @FXML
     private Parent root;
 
-    private Scene scene;
-
-    private Stage primaryStage;
 
     public void switchToEntrarScreen(ActionEvent event) throws IOException {
         Parent tela1 = FXMLLoader.load(getClass().getResource("EntrarScreen.fxml"));
