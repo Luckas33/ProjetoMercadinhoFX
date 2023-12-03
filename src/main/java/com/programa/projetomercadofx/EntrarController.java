@@ -26,11 +26,12 @@ public class EntrarController {
     @FXML
     private Button btVoltar;
     @FXML
+    private Button btInfo;
+    @FXML
     private ChoiceBox<String> choiceBoxTipoFuncionario;
     @FXML
     private Parent root;
-    @FXML
-    private ImageView backgroundEntrar;
+
 //////////Mudança de Janela ///////////////////
     public void switchToMainScrenn(ActionEvent event) throws Exception {
         // Carregar FXML da Main
@@ -115,15 +116,12 @@ public class EntrarController {
 
     }
 
-    public void onClickAjuda(MouseEvent event){
+    public void onClickAjuda(ActionEvent event){
         Alerts.showAlert("Ajuda",null,"Bem-vindo a tela de Entrar, aqui você pode inserir seus dados de login e senha para poder ter acesso a todos as funções do programa", Alert.AlertType.INFORMATION);
     }
     @FXML
     public void initialize(){
         choiceBoxTipoFuncionario.getItems().addAll("Gerente", "Vendedor");
 
-        String imagem = "EntrarBanner.png";
-        Image banner = new Image(getClass().getResource(imagem).toExternalForm());
-        backgroundEntrar.setImage(banner);
     }
 }

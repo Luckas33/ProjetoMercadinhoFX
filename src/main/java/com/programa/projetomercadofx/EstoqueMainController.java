@@ -1,5 +1,6 @@
 package com.programa.projetomercadofx;
 
+import com.programa.projetomercadofx.controllerUtil.Alerts;
 import estoques.IEstoque;
 import globalService.ListaEstoque;
 import globalService.ListaFuncionario;
@@ -11,10 +12,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import produtos.Produto;
 import produtos.ProdutoHistorico;
@@ -26,6 +26,10 @@ public class EstoqueMainController {
 //////////// ID dos Componentes ////////////////
     @FXML
     private Button btVoltar;
+    @FXML
+    private Button btConfirmar;
+    @FXML
+    private Button btInserirTipo;
     @FXML
     private Parent root;
     @FXML
@@ -44,7 +48,6 @@ public class EstoqueMainController {
     }
 
 //////////// Métodos para a lógica da tela ////////////////////////
-
 public void onMenuItemTodos(ActionEvent e) {
 
     for (IEstoque estoque : ListaEstoque.estoqueVector) {
@@ -57,11 +60,13 @@ public void onMenuItemTodos(ActionEvent e) {
     }
 
 }
-
+public void onBtInfo(){
+    Alerts.showAlert("Ajuda",null,"Aqui você pode ver todos os seus produtos", Alert.AlertType.INFORMATION);
+}
 ////////////// Métodos Complementares ///////////////////////////
 public void initialize() {
 
-        estoqueMostrar = new Vector<>();
+    estoqueMostrar = new Vector<>();
 
     // Configurar a fábrica de células para personalizar a exibição na ListView
     listViewEstoque.setCellFactory(param -> new ListCell<Produto>() {

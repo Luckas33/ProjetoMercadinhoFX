@@ -1,35 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.FinanceiroBalancoController">
-   <top>
-      <AnchorPane prefHeight="123.0" prefWidth="509.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" layoutY="33.0" prefHeight="20.0" prefWidth="501.0" text="Balanço Fiscal do Mercadinho" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="8.0">
-               <font>
-                  <Font name="Century" size="16.0" />
-               </font>
-            </Label>
-            <Button fx:id="btVerTudo" layoutX="21.0" layoutY="77.0" mnemonicParsing="false" onAction="#onBtVerTudo" text="Ver Tudo" />
-            <Button fx:id="btInserirData" layoutX="95.0" layoutY="77.0" mnemonicParsing="false" onAction="#onBtInserirData" text="Inserir data" />
-            <TextField fx:id="tfData" disable="true" layoutX="183.0" layoutY="77.0" prefHeight="25.0" prefWidth="86.0" promptText="dd/MM/yyyy" />
-            <Button fx:id="btVoltar" layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToFinanceiroMainScreen" prefHeight="16.0" prefWidth="48.0" text="Voltar">
-               <font>
-                  <Font size="9.0" />
-               </font>
-            </Button>
-            <Button fx:id="btOKData" layoutX="277.0" layoutY="77.0" mnemonicParsing="false" onAction="#onBtOKData" text="OK" />
-         </children>
-      </AnchorPane>
-   </top>
-   <center>
-      <ListView fx:id="listViewBalanco" prefHeight="374.0" prefWidth="509.0" BorderPane.alignment="CENTER" />
-   </center>
-</BorderPane>
+<AnchorPane fx:id="root" prefHeight="3.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.FinanceiroBalancoController">
+   <children>
+      <BorderPane prefHeight="496.0" prefWidth="720.0">
+         <top>
+            <AnchorPane prefHeight="123.0" prefWidth="509.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btVerTudo" blendMode="DARKEN" layoutX="9.0" layoutY="64.0" mnemonicParsing="false" onAction="#onBtVerTudo" prefHeight="34.0" prefWidth="95.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btInserirData" blendMode="DARKEN" layoutX="123.0" layoutY="65.0" mnemonicParsing="false" onAction="#onBtInserirData" prefHeight="31.0" prefWidth="104.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <TextField fx:id="tfData" disable="true" layoutX="232.0" layoutY="68.0" prefHeight="25.0" prefWidth="86.0" promptText="dd/MM/yyyy" />
+                  <Button fx:id="btVoltar" blendMode="DARKEN" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToFinanceiroMainScreen" prefHeight="30.0" prefWidth="71.0">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btOKData" layoutX="335.0" layoutY="68.0" mnemonicParsing="false" onAction="#onBtOKData" text="OK">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btInfo" blendMode="DARKEN" layoutX="463.0" layoutY="8.0" mnemonicParsing="false" onAction="#onClickAjuda" prefHeight="28.0" prefWidth="32.0" />
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <ListView fx:id="listViewBalanco" prefHeight="373.0" prefWidth="697.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

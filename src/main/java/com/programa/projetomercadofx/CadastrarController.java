@@ -50,9 +50,6 @@ public class CadastrarController {
     private Parent root;
     @FXML
     private ChoiceBox<String> choiceBoxFuncionarios;
-    @FXML
-    private ImageView ajudaImage;
-
 ///////////Métodos para trocar de tela /////////////////
     public void switchToMainScreen(ActionEvent event) throws Exception {
         // Carregar FXML da Main
@@ -165,10 +162,6 @@ public class CadastrarController {
     @FXML
     public void initialize() {
         choiceBoxFuncionarios.getItems().addAll("Gerente", "Vendedor"); //Adicionando opções ao choicebox
-        String imagem = "interrogação.png";
-        Image ajuda = new Image(getClass().getResource(imagem).toExternalForm());
-        ajudaImage.setImage(ajuda);
-        ajudaImage.setOnMouseClicked(this::onClickAjuda);
     }
 
 }

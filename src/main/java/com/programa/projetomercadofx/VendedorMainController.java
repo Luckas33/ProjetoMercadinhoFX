@@ -47,8 +47,6 @@ public class VendedorMainController {
     private Button btConfirmarVenda;
     @FXML
     private Label lbSubtotal;
-    @FXML
-    private ImageView backgroundVendedor;
     public Vector<ProdutoHistorico> vendas;
     public Vector<Produto> carrinho;
 
@@ -256,10 +254,7 @@ public class VendedorMainController {
         comboboxParcelas.setDisable(true);
         tfValorPago.setDisable(true);
         btConfirmarVenda.setDisable(false);
-/////////////////////////////////////////////////////////
-        String imagem = "VenderProdutos.png";
-        Image banner = new Image(getClass().getResource(imagem).toExternalForm());
-        backgroundVendedor.setImage(banner);
+
         /////////////Configurando vetores e a listView////////////
         vendas = new Vector<>();
         carrinho = new Vector<>();

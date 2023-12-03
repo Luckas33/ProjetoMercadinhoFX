@@ -53,8 +53,6 @@ public class GerenteAddProdutoController {
     @FXML
     private TextField tfTaxaVenda;
     @FXML
-    private ImageView backgroundAddProd;
-    @FXML
     private Button btInfo;
 
     public void switchToGerenteMainScrenn(ActionEvent event) throws Exception {
@@ -190,9 +188,6 @@ public class GerenteAddProdutoController {
 
     @FXML
     public void initialize(){
-        String imagem = "AdicionarProdutos.png";
-        Image banner = new Image(getClass().getResource(imagem).toExternalForm());
-        backgroundAddProd.setImage(banner);
 
         choiceBoxCategoriaProd.getItems().addAll("Comestível","Não Comestível");
         choiceBoxCategoriaProd.setOnAction(this::onCBCategoriaProd);

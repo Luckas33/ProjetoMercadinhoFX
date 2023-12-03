@@ -2,48 +2,28 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.EstoqueMainController">
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-            <Menu mnemonicParsing="false">
-               <graphic>
-                  <Button fx:id="btVoltar" mnemonicParsing="false" onAction="#switchToGerenteMainScren" text="Voltar">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </graphic>
-            </Menu>
-          <Menu mnemonicParsing="false">
-               <graphic>
-                  <Button fx:id="btTipoProdutos" mnemonicParsing="false" onAction="#onMenuItemTodos" text="Tipo de Produto">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </graphic>
-          </Menu>
-          <Menu mnemonicParsing="false">
-               <graphic>
-                  <Label alignment="CENTER" prefHeight="23.0" prefWidth="314.0" text="Estoque de Produtos">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                  </Label>
-               </graphic>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </top>
-   <center>
-      <ListView fx:id="listViewEstoque" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </center>
-</BorderPane>
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.EstoqueMainController">
+   <children>
+      <ListView fx:id="listViewEstoque" layoutX="2.0" layoutY="100.0" prefHeight="299.0" prefWidth="720.0" />
+      <Button fx:id="btVoltar" blendMode="DARKEN" layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#switchToGerenteMainScren" prefHeight="33.0" prefWidth="71.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btTipoProdutos" blendMode="DARKEN" layoutX="14.0" layoutY="54.0" mnemonicParsing="false" onAction="#onMenuItemTodos" prefHeight="33.0" prefWidth="92.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btConfirmar" blendMode="DARKEN" layoutX="449.0" layoutY="54.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="65.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btInserirTipo" blendMode="DARKEN" layoutX="126.0" layoutY="58.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="104.0" />
+      <Button blendMode="DARKEN" layoutX="664.0" layoutY="6.0" mnemonicParsing="false" onAction="#onBtInfo" prefHeight="39.0" prefWidth="34.0" />
+   </children>
+</AnchorPane>

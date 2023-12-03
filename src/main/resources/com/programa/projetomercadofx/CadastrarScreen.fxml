@@ -7,20 +7,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="root" prefHeight="400.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.CadastrarController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="720.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@CadastrarBanner.png" />
-         </image>
-      </ImageView>
     <AnchorPane layoutX="286.0" layoutY="1.0" minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="434.0">
          <children>
             <ChoiceBox fx:id="choiceBoxFuncionarios" layoutX="188.0" layoutY="26.0" prefWidth="150.0">
@@ -95,14 +87,6 @@
                   </Label>
                </children>
             </VBox>
-            <ImageView fx:id="ajudaImage" blendMode="DARKEN" fitHeight="25.0" fitWidth="23.0" layoutX="364.0" layoutY="38.0" onMouseClicked="#onClickAjuda" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Interrogação.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
             <Button fx:id="btEntrar" blendMode="DARKEN" layoutX="189.0" layoutY="363.0" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="21.0" prefWidth="50.0">
                <font>
                   <Font size="10.0" />

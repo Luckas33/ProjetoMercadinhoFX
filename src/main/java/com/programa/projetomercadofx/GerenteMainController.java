@@ -24,8 +24,6 @@ public class GerenteMainController {
     @FXML
     private Parent root;
     @FXML
-    private ImageView backgroundGerenteMain;
-    @FXML
     private Button btInfo;
 
     public void switchToEntrarScrenn(ActionEvent event) throws Exception {
@@ -63,9 +61,5 @@ public class GerenteMainController {
     public void onBtInfo(){
         Alerts.showAlert("Informação",null, "Bem-vindo(a) ao menu principal de Gerente, aqui você pode criar,comprar e ver seus produtos.", Alert.AlertType.INFORMATION);
     }
-    public void initialize(){
-        String imagem = "MenuGerente.png";
-        Image banner = new Image(getClass().getResource(imagem).toExternalForm());
-        backgroundGerenteMain.setImage(banner);
-    }
+
 }

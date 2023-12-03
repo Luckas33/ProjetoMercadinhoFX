@@ -26,9 +26,6 @@ public class MainController {
     private Button btCodigoFonte;
 
     @FXML
-    private ImageView backgroundMain;
-
-    @FXML
     private Parent root;
 
 
@@ -48,15 +45,8 @@ public class MainController {
         palco.setScene(cenaTela1);
     }
 
-    public void onbtCodigoFonte(ActionEvent e) {
-        Alerts.showAlert("Aviso", null, "Equipe: \n\nLucas Sobral : Desenvolvedor e Programador Front-end \n\nJoão Rodrigo : Programador Full-stack\n\nOsvaldo Medeiros : Programador Back-end\n\nIarley Alves : Programador e Design\n\nAnderson Moura: Programador Back-end\n\n\n\n\nCódigo Fonte: github.com/Luckas33/ProjetoMercadinhoFX", Alert.AlertType.INFORMATION);
+    public void onbtCreditos(ActionEvent e) {
+        Alerts.showAlert("Aviso", null, "Equipe: \n\nLucas Sobral : Desenvolvedor e Programador Front-end \n\nJoão Rodrigo : Programador Full-stack\n\nOsvaldo Medeiros : Programador Back-end\n\nIarley Alves : Programador e Design\n\nAnderson Moura: Programador Back-endn\n\nCódigo Fonte: github.com/Luckas33/ProjetoMercadinhoFX", Alert.AlertType.INFORMATION);
     }
 
-    @FXML
-    public void initialize() {
-
-        String imagem = "Main.png";
-        Image banner = new Image(getClass().getResource(imagem).toExternalForm());
-        backgroundMain.setImage(banner);
-    }
 }

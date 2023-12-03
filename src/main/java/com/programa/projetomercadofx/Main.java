@@ -19,7 +19,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MainScreen.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 720, 400);
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
         stage.setTitle("Mercado app");
         stage.setScene(scene);
         stage.show();
@@ -32,7 +32,7 @@ public class Main extends Application {
         ListaEstoque listaEstoque = new ListaEstoque();
         ListaEstoque.estoqueVector.add(estoque);
         ListaEstoque.registroVector.add(registro);
-        //
+
         launch();
 
 

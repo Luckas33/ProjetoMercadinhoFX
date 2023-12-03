@@ -1,6 +1,5 @@
 package com.programa.projetomercadofx;
 
-
 import com.programa.projetomercadofx.controllerUtil.Alerts;
 import globalService.ListaEstoque;
 import globalService.ListaFuncionario;
@@ -13,6 +12,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import produtos.Produto;
 import produtos.ProdutoHistorico;
@@ -38,6 +40,8 @@ public class FinanceiroBalancoController {
     private TextField tfData;
     @FXML
     private Button btOKData;
+    @FXML
+    private Button btInfo;
     private Vector<ProdutoHistorico> registroMostrar;
     private ObservableList<ProdutoHistorico> produtosObservableList = FXCollections.observableArrayList();
 
@@ -87,10 +91,13 @@ public class FinanceiroBalancoController {
         }
         listViewBalanco.getItems().setAll(produtosObservableList);
     }
+    public void onClickAjuda(ActionEvent event){
+        Alerts.showAlert("Ajuda",null,"Aqui você pode ver todas as suas entradas e sáidas de produtos", Alert.AlertType.INFORMATION);
+    }
 
 ///////////////// Métodos Complementares ///////////////
-    public void initialize (){
 
+    public void initialize (){
         btOKData.setDisable(true);
 
         registroMostrar = new Vector<>();

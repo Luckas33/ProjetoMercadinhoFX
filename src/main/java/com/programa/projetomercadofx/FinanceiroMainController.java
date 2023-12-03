@@ -242,10 +242,12 @@ public class FinanceiroMainController {
             if (funcionario instanceof Gerente) {
                 try {
                     ((Gerente) funcionario).adicionar(id, quantidade);
+                    Alerts.showAlert("Compra",null,"Produto comprado com sucesso",Alert.AlertType.INFORMATION);
                     onBtLimpar(event);
                     atualizarSaldoTotal();
                 } catch (SIException | PIException | QINException | DVIException e) {
                     e.printStackTrace();
+                    Alerts.showAlert("Depósito Erro",null,"Compra de produto falhou",Alert.AlertType.INFORMATION);
                 }
                 break;
             }
@@ -257,10 +259,13 @@ public class FinanceiroMainController {
         String id = tfRemoverProduto.getText();
         for (Funcionario funcionario : ListaFuncionario.funcionariosVector){
             if(funcionario instanceof Gerente){
-                    ((Gerente) funcionario).removerProduto(id);
+                ((Gerente) funcionario).removerProduto(id);
                 onBtLimpar(event);
+                Alerts.showAlert("Remover Produto",null,"Produto removido com sucesso",Alert.AlertType.INFORMATION);
 
                 break;
+            }else{
+                Alerts.showAlert("Depósito ERRO",null,"Produto inexistente",Alert.AlertType.ERROR);
             }
         }
     }

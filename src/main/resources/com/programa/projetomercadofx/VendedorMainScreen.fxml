@@ -7,27 +7,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="root" minHeight="0.0" minWidth="0.0" prefHeight="375.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.VendedorMainController">
+<AnchorPane fx:id="root" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.VendedorMainController">
    <children>
-      <ImageView fx:id="backgroundVendedor" fitHeight="386.0" fitWidth="700.0" layoutY="-7.0" pickOnBounds="true" smooth="false">
-         <image>
-            <Image url="@VenderProdutos.png" />
-         </image>
-      </ImageView>
     <AnchorPane layoutX="276.0" layoutY="25.0" minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="410.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="25.0">
          <children>
-            <ChoiceBox fx:id="choiceBoxTipoVenda" disable="true" layoutX="240.0" layoutY="119.0" prefWidth="150.0">
+            <ChoiceBox fx:id="choiceBoxTipoVenda" disable="true" layoutX="241.0" layoutY="130.0" prefWidth="150.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ChoiceBox>
-            <Button fx:id="btAdicionar" blendMode="DARKEN" layoutX="89.0" layoutY="246.0" mnemonicParsing="false" onAction="#onBtAdicionar" prefHeight="32.0" prefWidth="70.0">
+            <Button fx:id="btAdicionar" blendMode="DARKEN" layoutX="88.0" layoutY="262.0" mnemonicParsing="false" onAction="#onBtAdicionar" prefHeight="32.0" prefWidth="70.0">
                <font>
                   <Font name="Century" size="12.0" />
                </font>
@@ -35,32 +27,32 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <TextField fx:id="tfidProduto" layoutX="240.0" layoutY="51.0" prefHeight="25.0" prefWidth="150.0" promptText="Ex.1234">
+            <TextField fx:id="tfidProduto" layoutX="240.0" layoutY="55.0" prefHeight="25.0" prefWidth="150.0" promptText="Ex.1234">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </TextField>
-            <TextField fx:id="tfquantidade" layoutX="240.0" layoutY="84.0" prefHeight="25.0" prefWidth="150.0" promptText="Ex.3">
+            <TextField fx:id="tfquantidade" layoutX="240.0" layoutY="93.0" prefHeight="25.0" prefWidth="150.0" promptText="Ex.3">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </TextField>
-            <ComboBox fx:id="comboboxParcelas" disable="true" layoutX="240.0" layoutY="156.0" prefWidth="150.0" promptText="Parcelas">
+            <ComboBox fx:id="comboboxParcelas" disable="true" layoutX="241.0" layoutY="169.0" prefWidth="150.0" promptText="Parcelas">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ComboBox>
-            <Button fx:id="btFinalizar" blendMode="DARKEN" layoutX="181.0" layoutY="246.0" mnemonicParsing="false" onAction="#onBtFinalizar" prefHeight="32.0" prefWidth="70.0">
+            <Button fx:id="btFinalizar" blendMode="DARKEN" layoutX="180.0" layoutY="262.0" mnemonicParsing="false" onAction="#onBtFinalizar" prefHeight="32.0" prefWidth="70.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <TextField fx:id="tfValorPago" disable="true" layoutX="241.0" layoutY="193.0" promptText="Insira o valor recebido">
+            <TextField fx:id="tfValorPago" disable="true" layoutX="241.0" layoutY="206.0" promptText="Insira o valor recebido">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </TextField>
-            <Button fx:id="btConfirmarVenda" blendMode="DARKEN" layoutX="267.0" layoutY="246.0" mnemonicParsing="false" onAction="#onBtConfirmarVenda" prefHeight="32.0" prefWidth="115.0">
+            <Button fx:id="btConfirmarVenda" blendMode="DARKEN" layoutX="268.0" layoutY="262.0" mnemonicParsing="false" onAction="#onBtConfirmarVenda" prefHeight="32.0" prefWidth="115.0">
                <font>
                   <Font name="Century" size="12.0" />
                </font>
