@@ -257,8 +257,12 @@ public class FinanceiroMainController {
         String id = tfRemoverProduto.getText();
         for (Funcionario funcionario : ListaFuncionario.funcionariosVector){
             if(funcionario instanceof Gerente){
+                try {
                     ((Gerente) funcionario).removerProduto(id);
-                onBtLimpar(event);
+                    onBtLimpar(event);
+                }catch(PIException e){
+                    Alerts.showAlert("Erro Remover",null,"Produto não se encontra no estoque.",Alert.AlertType.ERROR);
+                }
 
                 break;
             }

@@ -48,7 +48,7 @@ public class Gerente extends Funcionario {
                             cadastroIntermediario(produto, taxaLucro, valorTotal, quantidade);
                         }
                     }else{
-                        throw new SIException(produto.getId(),this.estoque.verSaldo(), valorTotal); //restrição de saldo insuficiente para adquirir novos produtos
+                        throw new SIException(this.estoque.verSaldo()); //restrição de saldo insuficiente para adquirir novos produtos
                     }
                 }else{
                     throw new PEException(produto.getId()); //restricao se o produto ja existe
@@ -72,7 +72,7 @@ public class Gerente extends Funcionario {
         this.estoque.inserir(produto, quantidade); //ele chama o metodo inserir da interface de estoque, onde ele insere o produto e a quantidade no estoque
         try {
             this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
-        } catch (SNException e) {
+        } catch (SIException e) {
             e.printStackTrace();
         }
         this.registro.registrarAquisicao(produto.getId(), valorTotal, quantidade);
@@ -101,7 +101,7 @@ public class Gerente extends Funcionario {
                         this.estoque.inserir(produto, quantidade);  //insere no estoque
                     try {
                         this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
-                    } catch (SNException e) {
+                    } catch (SIException e) {
                         e.printStackTrace();
                     }
                     this.registro.registrarAquisicao(produto.getId(), valorTotal, quantidade);
@@ -113,14 +113,14 @@ public class Gerente extends Funcionario {
                         this.estoque.inserir(produto, quantidade);  //insere no estoque
                         try {
                             this.estoque.definirSaldo(this.estoque.verSaldo() - valorTotal); //atualiza o saldo
-                        } catch (SNException e) {
+                        } catch (SIException e) {
                             e.printStackTrace();
                         }
                         this.registro.registrarAquisicao(produto.getId(), valorTotal, quantidade);
                     }
             }
                else{
-                   throw new SIException(produto.getId(),this.estoque.verSaldo(), valorTotal); // restrição se o cara nao tem saldo o suficiente para bancar o a compra de novos produtos
+                   throw new SIException(this.estoque.verSaldo()); // restrição se o cara nao tem saldo o suficiente para bancar o a compra de novos produtos
                }
             }
             else{
@@ -183,18 +183,18 @@ public class Gerente extends Funcionario {
       }
 
     //metodo para setar o saldo inicial do mercado
-    public void inserirSaldo(double valor) throws SNException{
+    public void inserirSaldo(double valor) throws SIException{
         if(valor > 0){
             this.estoque.definirSaldo(valor + this.estoque.verSaldo());
         }else{
-            throw new SNException(valor);
+            throw new SIException(this.estoque.verSaldo());
         }
     }
 
     public void removerSaldo(double valor){
         try {
             this.estoque.definirSaldo(this.estoque.verSaldo() - valor);
-        }catch (SNException e){
+        }catch (SIException e){
             System.out.print(e.getMessage());
             System.out.print(" Saldo: ");
             System.out.print(valor);
@@ -234,9 +234,13 @@ public class Gerente extends Funcionario {
         return saldoAtual;
     }
 
-    public void removerProduto(String id){
+    public void removerProduto(String id) throws PIException {
         Produto produto = this.estoque.procurar(id);
-        this.estoque.remove(produto);
+        if(produto != null) {
+            this.estoque.remove(produto);
+        }else{
+            throw new PIException(id);
+        }
     }
     @Override
     public String toString() {
