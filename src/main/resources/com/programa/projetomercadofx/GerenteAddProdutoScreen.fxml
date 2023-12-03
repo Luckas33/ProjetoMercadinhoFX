@@ -17,15 +17,21 @@
          <right>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="665.0" prefWidth="576.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btAddProduto" layoutX="298.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBtAddProduto" prefHeight="41.0" prefWidth="133.0" style="-fx-background-color: transparen;" styleClass="adicionarProduto">
+                  <Button fx:id="btAddProduto" layoutX="412.0" layoutY="527.0" mnemonicParsing="false" onAction="#onBtAddProduto" prefHeight="41.0" prefWidth="133.0" style="-fx-background-color: transparen;" styleClass="botaoClaroFundoMenosEscuro" text="Confirmar">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <font>
+                        <Font name="Berlin Sans FB" size="18.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="btLimpar" layoutX="445.0" layoutY="523.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: transparent;" styleClass="limpar" stylesheets="@MaioriaStyle.css">
+                  <Button fx:id="btLimpar" layoutX="99.0" layoutY="527.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="41.0" prefWidth="133.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Limpar">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <font>
+                        <Font name="Berlin Sans FB" size="18.0" />
+                     </font>
                   </Button>
                   <Button fx:id="btInfo" layoutX="478.0" layoutY="10.0" mnemonicParsing="false" onAction="#onBtInfo" prefHeight="33.0" prefWidth="84.0" style="-fx-background-color: transparent;" styleClass="InterrogacaoClara" stylesheets="@MaioriaStyle.css">
                      <cursor>
@@ -104,7 +110,7 @@
                      <children>
                         <Label prefHeight="47.0" prefWidth="158.0" text="Nome Produto:">
                            <font>
-                              <Font name="Futura Md BT Bold" size="17.0" />
+                              <Font name="Berlin Sans FB" size="17.0" />
                            </font>
                            <VBox.margin>
                               <Insets bottom="5.0" top="10.0" />
@@ -112,7 +118,7 @@
                         </Label>
                         <Label prefHeight="47.0" prefWidth="158.0" text="ID Produto:">
                            <font>
-                              <Font name="Futura Md BT Bold" size="17.0" />
+                              <Font name="Berlin Sans FB" size="17.0" />
                            </font>
                            <VBox.margin>
                               <Insets bottom="5.0" top="10.0" />
@@ -120,7 +126,7 @@
                         </Label>
                         <Label prefHeight="47.0" prefWidth="158.0" text="Marca Produto:">
                            <font>
-                              <Font name="Futura Md BT Bold" size="17.0" />
+                              <Font name="Berlin Sans FB" size="17.0" />
                            </font>
                            <VBox.margin>
                               <Insets bottom="5.0" top="10.0" />
@@ -128,7 +134,7 @@
                         </Label>
                         <Label prefHeight="47.0" prefWidth="158.0" text="Tipo Produto:">
                            <font>
-                              <Font name="Futura Md BT Bold" size="17.0" />
+                              <Font name="Berlin Sans FB" size="17.0" />
                            </font>
                            <VBox.margin>
                               <Insets bottom="5.0" top="10.0" />
@@ -136,7 +142,7 @@
                         </Label>
                         <Label prefHeight="46.0" prefWidth="198.0" text="Valor Compra:">
                            <font>
-                              <Font name="Futura Md BT Bold" size="17.0" />
+                              <Font name="Berlin Sans FB" size="17.0" />
                            </font>
                            <VBox.margin>
                               <Insets top="10.0" />
@@ -144,7 +150,7 @@
                         </Label>
                         <Label prefHeight="47.0" prefWidth="158.0" text="Taxa Produto:">
                            <font>
-                              <Font name="Futura Md BT Bold" size="17.0" />
+                              <Font name="Berlin Sans FB" size="17.0" />
                            </font>
                            <VBox.margin>
                               <Insets bottom="5.0" top="15.0" />
@@ -152,7 +158,7 @@
                         </Label>
                         <Label prefHeight="46.0" prefWidth="198.0" text="Quantidade Produto:">
                            <font>
-                              <Font name="Futura Md BT Bold" size="17.0" />
+                              <Font name="Berlin Sans FB" size="17.0" />
                            </font>
                            <VBox.margin>
                               <Insets bottom="5.0" top="10.0" />
@@ -160,7 +166,7 @@
                         </Label>
                         <Label prefHeight="47.0" prefWidth="158.0" text="Data de Validade:">
                            <font>
-                              <Font name="Futura Md BT Bold" size="17.0" />
+                              <Font name="Berlin Sans FB" size="17.0" />
                            </font>
                            <VBox.margin>
                               <Insets bottom="5.0" top="10.0" />
@@ -175,19 +181,19 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="665.0" prefWidth="456.0" BorderPane.alignment="CENTER">
                <children>
                   <ChoiceBox fx:id="choiceBoxCategoriaProd" layoutX="249.0" layoutY="312.0" prefHeight="25.0" prefWidth="107.0" />
-                  <Label layoutX="52.0" layoutY="91.0" text="Mercadinho Inteligente">
+                  <Label layoutX="69.0" layoutY="91.0" text="Mercadinho Inteligente">
                      <font>
-                        <Font name="Futura Md BT Bold" size="26.0" />
+                        <Font name="Berlin Sans FB" size="27.0" />
                      </font>
                   </Label>
                   <Label layoutX="132.0" layoutY="122.0" text="Adicionar Produto">
                      <font>
-                        <Font name="Futura Md BT Bold" size="16.0" />
+                        <Font name="Berlin Sans FB" size="18.0" />
                      </font>
                   </Label>
                   <Label layoutX="42.0" layoutY="313.0" text="Categoria Produto:">
                      <font>
-                        <Font name="Futura Md BT Bold" size="17.0" />
+                        <Font name="Berlin Sans FB" size="17.0" />
                      </font>
                   </Label>
                </children>

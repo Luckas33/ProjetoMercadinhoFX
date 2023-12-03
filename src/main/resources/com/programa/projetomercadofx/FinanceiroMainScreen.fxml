@@ -18,58 +18,67 @@
          <right>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="664.0" prefWidth="571.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="230.0" layoutY="45.0" text="Financeiro" underline="true">
+                  <Label layoutX="230.0" layoutY="45.0" text="Financeiro" textFill="#fff200" underline="true">
                      <font>
-                        <Font name="Futura Md BT Bold" size="21.0" />
+                        <Font name="Berlin Sans FB" size="25.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="choiceBoxEscolhaCaixa" disable="true" layoutX="421.0" layoutY="400.0" prefHeight="33.0" prefWidth="115.0" />
+                  <ChoiceBox fx:id="choiceBoxEscolhaCaixa" disable="true" layoutX="414.0" layoutY="433.0" prefHeight="33.0" prefWidth="115.0" />
                   <Pane layoutX="202.0" layoutY="515.0" prefHeight="42.0" prefWidth="196.0">
                      <children>
-                        <Label layoutX="12.0" layoutY="15.0" text="Saldo atual:">
+                        <Label layoutX="12.0" layoutY="15.0" text="Saldo atual:" textFill="#fff200">
                            <font>
-                              <Font name="Futura Md BT Bold" size="16.0" />
+                              <Font name="Berlin Sans FB" size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbSaldoAtual" layoutX="116.0" layoutY="10.0" prefHeight="17.0" prefWidth="80.0">
+                        <Label fx:id="lbSaldoAtual" layoutX="116.0" layoutY="15.0" prefHeight="17.0" prefWidth="80.0" textFill="#fff200">
                            <font>
-                              <Font size="20.0" />
+                              <Font name="Berlin Sans FB" size="20.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <VBox layoutX="202.0" layoutY="132.0" prefHeight="309.0" prefWidth="219.0">
+                  <VBox layoutX="202.0" layoutY="132.0" prefHeight="343.0" prefWidth="219.0">
                      <children>
-                        <Button fx:id="btVerBalanço" mnemonicParsing="false" onAction="#switchToFinanceiroBalancoScreen" prefHeight="38.0" prefWidth="123.0" style="-fx-background-color: transparent;" styleClass="verBalanco" stylesheets="@MaioriaStyle.css">
+                        <Button fx:id="btVerBalanço" mnemonicParsing="false" onAction="#switchToFinanceiroBalancoScreen" prefHeight="47.0" prefWidth="160.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Ver Balanço">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
-                        </Button>
-                        <Button fx:id="btMudarTaxa" mnemonicParsing="false" onAction="#onBtMudarTaxa" prefHeight="39.0" prefWidth="132.0" style="-fx-background-color: transparent;" styleClass="mudarTaxa" stylesheets="@MaioriaStyle.css">
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </Button>
-                        <Button fx:id="btComprarProduto" mnemonicParsing="false" onAction="#onBtComprarProduto" prefHeight="43.0" prefWidth="140.0" style="-fx-background-color: transparent;" styleClass="comprarProduto" stylesheets="@MaioriaStyle.css">
                            <font>
-                              <Font name="Century" size="12.0" />
+                              <Font name="Berlin Sans FB" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btMudarTaxa" mnemonicParsing="false" onAction="#onBtMudarTaxa" prefHeight="47.0" prefWidth="160.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Mudar Taxa">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Berlin Sans FB" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btComprarProduto" mnemonicParsing="false" onAction="#onBtComprarProduto" prefHeight="47.0" prefWidth="160.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Comprar Produto">
+                           <font>
+                              <Font name="Berlin Sans FB" size="18.0" />
                            </font>
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="btRemoverProduto" mnemonicParsing="false" onAction="#onBtRemoverProduto" prefHeight="45.0" prefWidth="147.0" style="-fx-background-color: transparent;" styleClass="removerProduto" stylesheets="@MaioriaStyle.css">
+                        <Button fx:id="btRemoverProduto" mnemonicParsing="false" onAction="#onBtRemoverProduto" prefHeight="47.0" prefWidth="160.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Remover Produto">
                            <font>
-                              <Font name="Century" size="12.0" />
+                              <Font name="Berlin Sans FB" size="18.0" />
                            </font>
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="btCaixa" mnemonicParsing="false" onAction="#onBtCaixa" prefHeight="43.0" prefWidth="146.0" style="-fx-background-color: transparent;" styleClass="caixa" stylesheets="@MaioriaStyle.css">
+                        <Button fx:id="btCaixa" mnemonicParsing="false" onAction="#onBtCaixa" prefHeight="47.0" prefWidth="160.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Caixa">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="Berlin Sans FB" size="18.0" />
+                           </font>
                         </Button>
                      </children>
                   </VBox>
@@ -81,16 +90,16 @@
                <children>
                   <Pane layoutX="94.0" layoutY="225.0" prefHeight="208.0" prefWidth="277.0">
                      <children>
-                        <Pane fx:id="pnRemoverProduto" disable="true" prefHeight="207.0" prefWidth="277.0" styleClass="telaPane" stylesheets="@MaioriaStyle.css" visible="false">
+                        <Pane fx:id="pnRemoverProduto" prefHeight="207.0" prefWidth="277.0" styleClass="telaPane" stylesheets="@MaioriaStyle.css" visible="false">
                            <children>
-                              <Label layoutX="46.0" layoutY="22.0" text="Remover produto">
+                              <Label layoutX="91.0" layoutY="22.0" text="Remover produto">
                                  <font>
-                                    <Font name="Century" size="12.0" />
+                                    <Font name="Berlin Sans FB" size="15.0" />
                                  </font>
                               </Label>
                               <Label layoutX="14.0" layoutY="54.0" text="ID produto:">
                                  <font>
-                                    <Font name="Century" size="11.0" />
+                                    <Font name="Berlin Sans FB" size="15.0" />
                                  </font>
                               </Label>
                               <TextField fx:id="tfRemoverProduto" layoutX="112.0" layoutY="50.0" prefHeight="25.0" prefWidth="101.0" promptText="Ex.123" />
@@ -101,12 +110,12 @@
                            <children>
                               <Label layoutX="107.0" layoutY="21.0" text="Sacar Saldo">
                                  <font>
-                                    <Font name="Century" size="12.0" />
+                                    <Font name="Berlin Sans FB" size="15.0" />
                                  </font>
                               </Label>
                               <Label layoutX="29.0" layoutY="78.0" text="Valor:">
                                  <font>
-                                    <Font name="Futura Md BT Bold" size="15.0" />
+                                    <Font name="Berlin Sans FB" size="15.0" />
                                  </font>
                               </Label>
                               <TextField fx:id="tfValorSaque" layoutX="124.0" layoutY="75.0" prefHeight="25.0" prefWidth="97.0" />
@@ -121,12 +130,12 @@
                            <children>
                               <Label layoutX="80.0" layoutY="20.0" text="Depositar Saldo">
                                  <font>
-                                    <Font name="Century" size="17.0" />
+                                    <Font name="Berlin Sans FB" size="20.0" />
                                  </font>
                               </Label>
                               <Label layoutX="23.0" layoutY="64.0" text="Valor:">
                                  <font>
-                                    <Font name="Century" size="20.0" />
+                                    <Font name="Berlin Sans FB" size="20.0" />
                                  </font>
                               </Label>
                               <TextField fx:id="tfValorDeposito" layoutX="115.0" layoutY="61.0" prefHeight="31.0" prefWidth="122.0" />
@@ -137,50 +146,50 @@
                               </Button>
                            </children>
                         </Pane>
-                        <Pane fx:id="pnComprarProduto" disable="true" prefHeight="208.0" prefWidth="279.0" styleClass="telaPane" stylesheets="@MaioriaStyle.css" visible="false">
+                        <Pane fx:id="pnComprarProduto" disable="true" prefHeight="208.0" prefWidth="279.0" styleClass="telaPane" stylesheets="@MaioriaStyle.css">
                            <children>
                               <Label layoutX="83.0" layoutY="14.0" text="Comprar Produto">
                                  <font>
-                                    <Font name="Futura Md BT Bold" size="14.0" />
+                                    <Font name="Berlin Sans FB" size="14.0" />
                                  </font>
                               </Label>
                               <Label layoutX="24.0" layoutY="49.0" text="ID produto:">
                                  <font>
-                                    <Font name="Futura Md BT Bold" size="16.0" />
+                                    <Font name="Berlin Sans FB" size="14.0" />
                                  </font>
                               </Label>
                               <TextField fx:id="tfIDCompraProduto" layoutX="172.0" layoutY="45.0" prefHeight="25.0" prefWidth="87.0" promptText="Ex.122" />
                               <Label layoutX="24.0" layoutY="78.0" text="Quantidade:">
                                  <font>
-                                    <Font name="Futura Md BT Bold" size="16.0" />
+                                    <Font name="Berlin Sans FB" size="14.0" />
                                  </font>
                               </Label>
                               <TextField fx:id="tfQuantidadeComprarProduto" layoutX="172.0" layoutY="76.0" prefHeight="25.0" prefWidth="87.0" promptText="Ex.4" />
                               <Label layoutX="24.0" layoutY="106.0" text="Total:">
                                  <font>
-                                    <Font name="Futura Md BT Bold" size="16.0" />
+                                    <Font name="Berlin Sans FB" size="14.0" />
                                  </font>
                               </Label>
                               <Label layoutX="171.0" layoutY="108.0" prefHeight="24.0" prefWidth="88.0" />
                               <Button fx:id="btConfirmarCompraProduto" layoutX="171.0" layoutY="149.0" mnemonicParsing="false" onAction="#onBtConfirmarCompraProd" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: trasnsparent;" styleClass="confirmarGenerico" stylesheets="@MaioriaStyle.css" />
                            </children>
                         </Pane>
-                        <Pane fx:id="pnTaxa" disable="true" prefHeight="205.0" prefWidth="274.0" styleClass="telaPane" stylesheets="@MaioriaStyle.css">
+                        <Pane fx:id="pnTaxa" disable="true" prefHeight="205.0" prefWidth="274.0" styleClass="telaPane" stylesheets="@MaioriaStyle.css" visible="false">
                            <children>
                               <Label layoutX="49.0" layoutY="14.0" text="Mudar Taxa Produto">
                                  <font>
-                                    <Font name="Futura Md BT Bold" size="17.0" />
+                                    <Font name="Berlin Sans FB" size="17.0" />
                                  </font>
                               </Label>
                               <Label layoutX="14.0" layoutY="55.0" text="ID produto:">
                                  <font>
-                                    <Font name="Futura Md BT Bold" size="14.0" />
+                                    <Font name="Berlin Sans FB" size="17.0" />
                                  </font>
                               </Label>
                               <TextField fx:id="tfIDTaxa" layoutX="163.0" layoutY="52.0" prefHeight="25.0" prefWidth="101.0" promptText="Ex.123" />
                               <Label layoutX="14.0" layoutY="93.0" text="Taxa Atualizada:">
                                  <font>
-                                    <Font name="Futura Md BT Bold" size="14.0" />
+                                    <Font name="Berlin Sans FB" size="17.0" />
                                  </font>
                               </Label>
                               <TextField fx:id="tfMudarTaxa" layoutX="163.0" layoutY="90.0" prefHeight="25.0" prefWidth="101.0" promptText="Ex.1.3" />
@@ -193,17 +202,20 @@
                      <children>
                         <Label layoutX="1.0" layoutY="14.0" text="Mercadinho Inteligente">
                            <font>
-                              <Font name="Futura Md BT Bold" size="20.0" />
+                              <Font name="Berlin Sans FB" size="25.0" />
                            </font>
                         </Label>
                         <Label layoutX="69.0" layoutY="43.0" text="Menu Financeiro">
                            <font>
-                              <Font name="Futura Md BT Bold" size="12.0" />
+                              <Font name="Berlin Sans FB" size="15.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Button layoutX="286.0" layoutY="471.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: transparent;" styleClass="limpar" stylesheets="@MaioriaStyle.css" />
+                  <Button layoutX="286.0" layoutY="471.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: transparent;" styleClass="botaoInicio" stylesheets="@MaioriaStyle.css" text="Limpar" textFill="#fff200">
+                     <font>
+                        <Font name="Berlin Sans FB" size="16.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
          </left>

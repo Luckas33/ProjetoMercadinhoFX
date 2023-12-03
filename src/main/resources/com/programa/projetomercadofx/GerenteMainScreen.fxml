@@ -17,31 +17,40 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="659.0" prefWidth="592.0" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="btInfo" blendMode="DARKEN" layoutX="534.0" layoutY="20.0" mnemonicParsing="false" onAction="#onBtInfo" prefHeight="31.0" prefWidth="32.0" />
-                  <VBox layoutX="166.0" layoutY="160.0" prefHeight="278.0" prefWidth="278.0">
+                  <VBox layoutX="166.0" layoutY="165.0" prefHeight="295.0" prefWidth="278.0">
                      <children>
-                        <Button fx:id="btVerFinanceiro" alignment="CENTER" blendMode="DARKEN" mnemonicParsing="false" onAction="#switchToFinanceiroMainScreen" prefHeight="86.0" prefWidth="258.0" styleClass="financeiro" stylesheets="@MaioriaStyle.css" textAlignment="CENTER">
+                        <Button fx:id="btVerFinanceiro" alignment="CENTER" mnemonicParsing="false" onAction="#switchToFinanceiroMainScreen" prefHeight="86.0" prefWidth="273.0" style="-fx-background-color: transparente;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Financeiro" textAlignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <font>
-                              <Font size="14.0" />
+                              <Font name="Berlin Sans FB" size="25.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
                         </Button>
-                        <Button fx:id="btCriarProduto" alignment="CENTER" blendMode="DARKEN" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToGerenteAddProdutoScrenn" prefHeight="86.0" prefWidth="280.0" styleClass="adicionar" stylesheets="@MaioriaStyle.css" textAlignment="CENTER">
+                        <Button fx:id="btCriarProduto" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToGerenteAddProdutoScrenn" prefHeight="86.0" prefWidth="280.0" style="-fx-background-color: transparente;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Adicionar Produto" textAlignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <font>
-                              <Font size="14.0" />
+                              <Font name="Berlin Sans FB" size="25.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
                         </Button>
-                        <Button fx:id="btVerEstoque" alignment="CENTER" blendMode="DARKEN" mnemonicParsing="false" onAction="#switchToEstoqueMainScreen" prefHeight="86.0" prefWidth="280.0" styleClass="estoque" stylesheets="@MaioriaStyle.css" textAlignment="CENTER">
+                        <Button fx:id="btVerEstoque" alignment="CENTER" mnemonicParsing="false" onAction="#switchToEstoqueMainScreen" prefHeight="86.0" prefWidth="280.0" style="-fx-background-color: transparenet;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Estoque" textAlignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <font>
-                              <Font size="14.0" />
+                              <Font name="Berlin Sans FB" size="25.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
                         </Button>
                      </children>
                   </VBox>
@@ -49,13 +58,16 @@
             </AnchorPane>
          </right>
          <top>
-            <Button fx:id="btVoltar" blendMode="DARKEN" mnemonicParsing="false" onAction="#switchToEntrarScrenn" prefHeight="41.0" prefWidth="158.0" styleClass="voltar" stylesheets="@MaioriaStyle.css" BorderPane.alignment="CENTER_LEFT">
+            <Button fx:id="btVoltar" mnemonicParsing="false" onAction="#switchToEntrarScrenn" prefHeight="36.0" prefWidth="113.0" style="-fx-background-color: transparente;" styleClass="voltar" stylesheets="@MaioriaStyle.css" BorderPane.alignment="CENTER_LEFT">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <BorderPane.margin>
-                  <Insets top="10.0" />
+                  <Insets left="10.0" top="10.0" />
                </BorderPane.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
             </Button>
          </top>
          <left>

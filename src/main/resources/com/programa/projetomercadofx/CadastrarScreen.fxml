@@ -28,15 +28,21 @@
                   <TextField fx:id="tfLogin" layoutX="189.0" layoutY="146.0" promptText="Ex.Lucas33" />
                   <TextField fx:id="tfEmail" layoutX="189.0" layoutY="199.0" promptText="Ex.seuemail@email.com" />
                   <PasswordField fx:id="tfSenha" layoutX="189.0" layoutY="264.0" promptText="Ex.12345" />
-                  <Button fx:id="btConfirmar" layoutX="174.0" layoutY="310.0" mnemonicParsing="false" onAction="#onBtConfirmar" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: transparent;" styleClass="confirmarGenerico" stylesheets="@MaioriaStyle.css" textAlignment="CENTER">
+                  <Button fx:id="btConfirmar" layoutX="64.0" layoutY="320.0" mnemonicParsing="false" onAction="#onBtConfirmar" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Limpar" textAlignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <font>
+                        <Font name="Berlin Sans FB" size="16.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="btLimpar" layoutX="285.0" layoutY="314.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: transparent;" styleClass="limpar" stylesheets="@MaioriaStyle.css">
+                  <Button fx:id="btLimpar" layoutX="279.0" layoutY="320.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Confirmar">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <font>
+                        <Font name="Berlin Sans FB" size="16.0" />
+                     </font>
                   </Button>
                   <VBox disable="true" layoutX="32.0" layoutY="74.0" prefHeight="200.0" prefWidth="100.0" visible="false">
                      <children>
@@ -101,32 +107,32 @@
                   </Button>
                   <Label layoutX="84.0" layoutY="31.0" text="Tipo conta:">
                      <font>
-                        <Font name="Futura Md BT Bold" size="15.0" />
+                        <Font name="Berlin Sans FB" size="19.0" />
                      </font>
                   </Label>
                   <Label layoutX="87.0" layoutY="626.0" text="Ja tem conta?">
                      <font>
-                        <Font name="Futura Md BT Bold" size="12.0" />
+                        <Font name="Berlin Sans FB" size="12.0" />
                      </font>
                   </Label>
                   <Label layoutX="84.0" layoutY="88.0" prefHeight="19.0" prefWidth="79.0" text="Nome:">
                      <font>
-                        <Font name="Futura Md BT Bold" size="15.0" />
+                        <Font name="Berlin Sans FB" size="19.0" />
                      </font>
                   </Label>
                   <Label layoutX="84.0" layoutY="149.0" prefHeight="19.0" prefWidth="79.0" text="Login:">
                      <font>
-                        <Font name="Futura Md BT Bold" size="15.0" />
+                        <Font name="Berlin Sans FB" size="19.0" />
                      </font>
                   </Label>
                   <Label layoutX="84.0" layoutY="202.0" prefHeight="19.0" prefWidth="79.0" text="Email:">
                      <font>
-                        <Font name="Futura Md BT Bold" size="15.0" />
+                        <Font name="Berlin Sans FB" size="19.0" />
                      </font>
                   </Label>
                   <Label layoutX="84.0" layoutY="267.0" prefHeight="19.0" prefWidth="79.0" text="Senha:">
                      <font>
-                        <Font name="Futura Md BT Bold" size="15.0" />
+                        <Font name="Berlin Sans FB" size="19.0" />
                      </font>
                   </Label>
                </children>
@@ -137,25 +143,28 @@
                <children>
                   <Label layoutX="69.0" layoutY="95.0" prefHeight="29.0" prefWidth="285.0" text="Mercadinho Inteligente">
                      <font>
-                        <Font name="Futura Md BT Bold" size="24.0" />
+                        <Font name="Berlin Sans FB" size="26.0" />
                      </font>
                   </Label>
-                  <Label layoutX="157.0" layoutY="128.0" text="Tela de cadastro">
+                  <Label layoutX="151.0" layoutY="125.0" text="Tela de cadastro">
                      <font>
-                        <Font name="Futura Md BT Bold" size="13.0" />
+                        <Font name="Berlin Sans FB" size="16.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
          </left>
          <top>
-            <Button fx:id="btVoltar" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="32.0" prefWidth="116.0" style="-fx-background-color: transparent;" styleClass="voltar" stylesheets="@MaioriaStyle.css" BorderPane.alignment="TOP_LEFT">
+            <Button fx:id="btVoltar" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="36.0" prefWidth="116.0" style="-fx-background-color: transparent;" styleClass="voltar" stylesheets="@MaioriaStyle.css" BorderPane.alignment="TOP_LEFT">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <font>
                   <Font size="10.0" />
                </font>
+               <BorderPane.margin>
+                  <Insets left="10.0" top="10.0" />
+               </BorderPane.margin>
             </Button>
          </top>
       </BorderPane>

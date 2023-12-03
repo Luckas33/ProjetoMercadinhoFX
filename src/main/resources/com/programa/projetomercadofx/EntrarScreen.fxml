@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -22,40 +23,40 @@
                         <PasswordField fx:id="tfSenha" layoutX="201.0" layoutY="100.0" prefHeight="10.0" promptText="Senha" />
                         <TextField fx:id="tfLogin" layoutX="205.0" layoutY="17.0" prefHeight="10.0" promptText="Login" />
                         <ChoiceBox fx:id="choiceBoxTipoFuncionario" layoutX="204.0" layoutY="197.0" prefWidth="150.0" />
-                        <Button fx:id="btConfirmar" layoutX="189.0" layoutY="261.0" mnemonicParsing="false" onAction="#onBtConfirmar" prefHeight="51.0" prefWidth="173.0" style="-fx-background-color: transparent;" styleClass="confirmarGenerico" stylesheets="@MaioriaStyle.css">
+                        <Button fx:id="btConfirmar" layoutX="189.0" layoutY="261.0" mnemonicParsing="false" onAction="#onBtConfirmar" prefHeight="51.0" prefWidth="173.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Confirmar">
                            <font>
-                              <Font size="13.0" />
+                              <Font name="Berlin Sans FB" size="19.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btcadastrar" layoutX="212.0" layoutY="432.0" mnemonicParsing="false" onAction="#switchToCadastrarScreen" prefHeight="27.0" prefWidth="89.0" style="-fx-background-color: transparent;" styleClass="cadastrarGenerico" stylesheets="@MaioriaStyle.css">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
+                        <Button fx:id="btcadastrar" layoutX="212.0" layoutY="432.0" mnemonicParsing="false" onAction="#switchToCadastrarScreen" prefHeight="27.0" prefWidth="89.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Cadastrar">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <font>
+                              <Font name="Berlin Sans FB" size="12.0" />
+                           </font>
                         </Button>
                         <Label layoutX="44.0" layoutY="14.0" prefHeight="31.0" prefWidth="103.0" text="Login:">
                            <font>
-                              <Font name="Futura Md BT Bold" size="30.0" />
+                              <Font name="Berlin Sans FB" size="22.0" />
                            </font>
                         </Label>
                         <Label layoutX="45.0" layoutY="100.0" prefHeight="31.0" prefWidth="103.0" text="Senha">
                            <font>
-                              <Font name="Futura Md BT Bold" size="24.0" />
+                              <Font name="Berlin Sans FB" size="22.0" />
                            </font>
                         </Label>
                         <Label layoutX="38.0" layoutY="194.0" prefHeight="31.0" prefWidth="153.0" text="Tipo Conta:">
                            <font>
-                              <Font name="Futura Md BT Bold" size="24.0" />
+                              <Font name="Berlin Sans FB" size="22.0" />
                            </font>
                         </Label>
                         <Label layoutX="27.0" layoutY="433.0" text="Não tem conta?">
                            <font>
-                              <Font name="Futura Md BT Bold" size="20.0" />
+                              <Font name="Berlin Sans FB" size="22.0" />
                            </font>
                         </Label>
                      </children>
@@ -71,12 +72,12 @@
                <children>
                   <Label layoutX="69.0" layoutY="156.0" text="Mercadinho Inteligente">
                      <font>
-                        <Font name="Futura Md BT Bold" size="26.0" />
+                        <Font name="Berlin Sans FB" size="30.0" />
                      </font>
                   </Label>
-                  <Label layoutX="169.0" layoutY="191.0" prefHeight="23.0" prefWidth="116.0" text="Tela de Login">
+                  <Label layoutX="154.0" layoutY="189.0" prefHeight="23.0" prefWidth="116.0" text="Tela de Login">
                      <font>
-                        <Font name="Futura Md BT Bold" size="15.0" />
+                        <Font name="Berlin Sans FB" size="20.0" />
                      </font>
                   </Label>
                </children>
@@ -88,13 +89,16 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btVoltar" layoutX="-1.0" layoutY="16.0" mnemonicParsing="false" onAction="#switchToMainScrenn" prefHeight="42.0" prefWidth="144.0" style="-fx-background-color: transparent;" styleClass="voltar" stylesheets="@MaioriaStyle.css" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="16.0">
+      <Button fx:id="btVoltar" layoutX="-1.0" layoutY="16.0" mnemonicParsing="false" onAction="#switchToMainScrenn" prefHeight="42.0" prefWidth="144.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Voltar" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="16.0">
          <font>
-            <Font size="10.0" />
+            <Font name="Berlin Sans FB" size="18.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
       </Button>
    </children>
 </AnchorPane>

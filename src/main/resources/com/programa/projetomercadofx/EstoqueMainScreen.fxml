@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1080.0" styleClass="backgroundEstoqueBalanco" stylesheets="@MaioriaStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.EstoqueMainController">
    <children>
@@ -17,16 +18,25 @@
             <AnchorPane prefHeight="118.0" prefWidth="722.0" BorderPane.alignment="CENTER">
                <children>
                   <Button layoutX="950.0" layoutY="14.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="108.0" style="-fx-background-color: transparent;" styleClass="InterrogacaoEscura" stylesheets="@MaioriaStyle.css" />
-                  <Button fx:id="btInserirTipo" layoutX="176.0" layoutY="56.0" mnemonicParsing="false" onAction="#onBtInserirTipo" prefHeight="42.0" prefWidth="141.0" style="-fx-background-color: transparent;" styleClass="inserirTipo" stylesheets="@MaioriaStyle.css" />
-                  <Button fx:id="btOKTipo" layoutX="514.0" layoutY="61.0" mnemonicParsing="false" onAction="#onBtOKTipo" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: transparent;" styleClass="ok" stylesheets="@MaioriaStyle.css">
+                  <Button fx:id="btInserirTipo" layoutX="174.0" layoutY="61.0" mnemonicParsing="false" onAction="#onBtInserirTipo" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMaisEscuro" stylesheets="@MaioriaStyle.css" text="Inserir Tipo">
+                     <font>
+                        <Font name="Berlin Sans FB" size="16.0" />
+                     </font></Button>
+                  <Button fx:id="btOKTipo" layoutX="514.0" layoutY="61.0" mnemonicParsing="false" onAction="#onBtOKTipo" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMaisEscuro" stylesheets="@MaioriaStyle.css" text="OK">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <font>
+                        <Font name="Berlin Sans FB" size="16.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="btVerTudo" layoutX="42.0" layoutY="61.0" mnemonicParsing="false" onAction="#onBtVerTudo" prefHeight="33.0" prefWidth="110.0" style="-fx-background-color: transparent;" styleClass="verTudo" stylesheets="@MaioriaStyle.css">
+                  <Button fx:id="btVerTudo" layoutX="42.0" layoutY="62.0" mnemonicParsing="false" onAction="#onBtVerTudo" prefHeight="33.0" prefWidth="110.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMaisEscuro" stylesheets="@MaioriaStyle.css" text="Ver tudo">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <font>
+                        <Font name="Berlin Sans FB" size="16.0" />
+                     </font>
                   </Button>
                   <Button fx:id="btVoltar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToGerenteMainScren" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: transparent;" styleClass="voltar">
                      <cursor>
