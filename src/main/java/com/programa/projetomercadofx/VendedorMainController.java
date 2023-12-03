@@ -72,17 +72,22 @@ public class VendedorMainController {
             if (funcionario instanceof Vendedor) {
                 Produto produto = ((Vendedor) funcionario).retornaProduto(id);
                 if (produto != null) {
-                    ProdutoHistorico produtoHist = new ProdutoHistorico(produto.getId(), produto.getPrecoVenda(), quantidade);
-                    try{
+                    if (produto.getQuantidade() >= quantidade){
+                        ProdutoHistorico produtoHist = new ProdutoHistorico(produto.getId(), produto.getPrecoVenda(), quantidade);
+                    try {
                         produto.setQuantidadeVendida(quantidade);
-                    }catch(QINException e){
+                    } catch (QINException e) {
                         e.printStackTrace();
-                        Alerts.showAlert("Erro Venda", null,"Quantidade Inválida",Alert.AlertType.ERROR);
+                        Alerts.showAlert("Erro Venda", null, "Quantidade Inválida", Alert.AlertType.ERROR);
                     }
                     this.carrinho.add(produto);
                     this.vendas.add(produtoHist);
                     atualizarSubtotal();
                     lvProdutosAdicionados.getItems().setAll(vendas);
+                      }
+                    else{
+                        Alerts.showAlert("Erro Venda", null, "Quantidade insuficiente no estoque.", Alert.AlertType.ERROR);
+                    }
                 }
                 else{
                     Alerts.showAlert("Erro Venda", null,"Produto inexistente",Alert.AlertType.ERROR);
@@ -138,12 +143,13 @@ public class VendedorMainController {
                                 Alerts.showAlert("Erro Venda", null, "Produto inexistente", Alert.AlertType.ERROR);
                             } catch (QINException e) {
                                 e.printStackTrace();
-                                Alerts.showAlert("Erro Venda", null, "quantidade insuficiente", Alert.AlertType.ERROR);
+                                Alerts.showAlert("Erro Venda", null, "Quantidade inválida", Alert.AlertType.ERROR);
                             } catch (QIException e) {
                                 e.printStackTrace();
-                                Alerts.showAlert("Erro Venda", null, "Saldo insuficiente", Alert.AlertType.ERROR);
+                                Alerts.showAlert("Erro Venda", null, "Quantidade insuficiente", Alert.AlertType.ERROR);
                             } catch (DVIException e) {
                                 e.printStackTrace();
+                                Alerts.showAlert("Erro Venda", null, "Data de validade ultrapassada", Alert.AlertType.ERROR);
                             }
                         }
 
@@ -168,10 +174,11 @@ public class VendedorMainController {
                                 e.printStackTrace();
                                 Alerts.showAlert("Erro Venda", null,"Produto não existente",Alert.AlertType.ERROR);
                             }catch (DVIException e){
+                                Alerts.showAlert("Erro Venda", null, "Data de validade ultrapassada", Alert.AlertType.ERROR);
                                 e.printStackTrace();
                             }
                         }
-                        Alerts.showAlert("Valor Parcelas",null,String.valueOf(valorFinalC/ parcelas),Alert.AlertType.INFORMATION);
+                        Alerts.showAlert("Valor Parcelas",null,"Valor das parcelas: " + String.valueOf(valorFinalC/ parcelas),Alert.AlertType.INFORMATION);
                     }
                     else if(tipoVenda == "Dinheiro") {
                         Double valorFinalD = 0.0;
@@ -194,19 +201,28 @@ public class VendedorMainController {
                                     Alerts.showAlert("Venda", null, "Venda realizada com sucesso.", Alert.AlertType.INFORMATION);
                                     onBtLimpar(event);
                                 } catch ( QINException |
-                                         QIException | PIException | DVIException e) {
+                                         QIException | PIException e) {
                                     e.printStackTrace();
+                                } catch (DVIException e){
+                                    e.printStackTrace();
+                                    Alerts.showAlert("Erro Venda", null, "Data de validade ultrapassada", Alert.AlertType.ERROR);
                                 }
                             }
+                            Alerts.showAlert("Troco",null,"Seu troco: " + String.valueOf(troco),Alert.AlertType.INFORMATION);
                         }
-                        else if(valorPago == valorFinalD){ //ninguem usa
+                        else if(valorPago == valorFinalD){
                             for (int i = 0; i < carrinho.size(); i++) {
                                 try {
                                     Produto produto = carrinho.get(i);
                                     ((Vendedor) funcionario).venderDinheiro(produto.getId(), produto.getQuantidadeVendida());
+                                    Alerts.showAlert("Venda", null, "Venda realizada com sucesso.", Alert.AlertType.INFORMATION);
+                                    onBtLimpar(event);
                                 } catch (  QINException |
-                                         QIException | PIException | DVIException e) {
+                                         QIException | PIException e) {
                                     e.printStackTrace();
+                                }catch (DVIException e){
+                                    e.printStackTrace();
+                                    Alerts.showAlert("Erro Venda", null, "Data de validade ultrapassada", Alert.AlertType.ERROR);
                                 }
 
                             }

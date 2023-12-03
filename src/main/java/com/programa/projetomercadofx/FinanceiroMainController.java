@@ -190,7 +190,7 @@ public class FinanceiroMainController {
                     break;
                 }
             }
-        }catch (Exception exception){
+        }catch (SIException exception){
             exception.printStackTrace();
             Alerts.showAlert("Erro", null, "Insira valor válido", Alert.AlertType.ERROR);
         }
@@ -245,9 +245,19 @@ public class FinanceiroMainController {
                     Alerts.showAlert("Compra",null,"Produto comprado com sucesso",Alert.AlertType.INFORMATION);
                     onBtLimpar(event);
                     atualizarSaldoTotal();
-                } catch (SIException | PIException | QINException | DVIException e) {
+
+                }catch(SIException e){
                     e.printStackTrace();
-                    Alerts.showAlert("Depósito Erro",null,"Compra de produto falhou",Alert.AlertType.INFORMATION);
+                    Alerts.showAlert("Erro Compra",null,"Saldo insuficiente",Alert.AlertType.INFORMATION);
+                }catch(PIException e){
+                    e.printStackTrace();
+                    Alerts.showAlert("Erro Compra",null,"Produto inexistente",Alert.AlertType.INFORMATION);
+                }catch(QINException e){
+                    e.printStackTrace();
+                    Alerts.showAlert("Erro Compra",null,"Quantidade inválida",Alert.AlertType.INFORMATION);
+                }catch(DVIException e){
+                    e.printStackTrace();
+                    Alerts.showAlert("Erro Compra",null,"Data de validade ultrapassada",Alert.AlertType.INFORMATION);
                 }
                 break;
             }
@@ -261,6 +271,7 @@ public class FinanceiroMainController {
             if(funcionario instanceof Gerente){
                 try {
                     ((Gerente) funcionario).removerProduto(id);
+                    Alerts.showAlert("Remoção do Estoque",null,"Produto removido com sucesso",Alert.AlertType.INFORMATION);
                     onBtLimpar(event);
                 }catch(PIException e){
                     Alerts.showAlert("Erro Remover",null,"Produto não se encontra no estoque.",Alert.AlertType.ERROR);
