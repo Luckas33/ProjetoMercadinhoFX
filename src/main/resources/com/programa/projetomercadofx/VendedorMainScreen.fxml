@@ -61,7 +61,7 @@
                               <Insets bottom="10.0" top="10.0" />
                            </VBox.margin>
                         </ComboBox>
-                        <TextField fx:id="tfValorPago" disable="true" prefHeight="20.0" prefWidth="200.0" promptText="Insira o valor recebido">
+                        <TextField fx:id="tfValorPago" disable="true" prefHeight="17.0" prefWidth="200.0" promptText="Insira o valor recebido">
                            <cursor>
                               <Cursor fx:constant="DEFAULT" />
                            </cursor>
@@ -74,11 +74,11 @@
                         </TextField>
                      </children>
                   </VBox>
-                  <VBox layoutX="98.0" layoutY="126.0" prefHeight="249.0" prefWidth="188.0">
+                  <VBox layoutX="98.0" layoutY="134.0" prefHeight="249.0" prefWidth="188.0">
                      <children>
                         <Label prefHeight="25.0" prefWidth="206.0" text="ID:">
                            <font>
-                              <Font name="Futura Md BT Bold" size="20.0" />
+                              <Font name="Berlin Sans FB" size="20.0" />
                            </font>
                            <padding>
                               <Insets bottom="10.0" top="15.0" />
@@ -86,7 +86,7 @@
                         </Label>
                         <Label prefHeight="25.0" prefWidth="171.0" text="Quantidade:">
                            <font>
-                              <Font name="Futura Md BT Bold" size="20.0" />
+                              <Font name="Berlin Sans FB" size="20.0" />
                            </font>
                            <padding>
                               <Insets bottom="10.0" top="15.0" />
@@ -94,7 +94,7 @@
                         </Label>
                         <Label prefHeight="25.0" prefWidth="190.0" text="Tipo pagamento:">
                            <font>
-                              <Font name="Futura Md BT Bold" size="20.0" />
+                              <Font name="Berlin Sans FB" size="20.0" />
                            </font>
                            <padding>
                               <Insets bottom="10.0" top="15.0" />
@@ -102,7 +102,7 @@
                         </Label>
                         <Label prefHeight="25.0" prefWidth="264.0" text="Parcelas:">
                            <font>
-                              <Font name="Futura Md BT Bold" size="20.0" />
+                              <Font name="Berlin Sans FB" size="20.0" />
                            </font>
                            <padding>
                               <Insets bottom="10.0" top="15.0" />
@@ -110,7 +110,7 @@
                         </Label>
                         <Label prefHeight="25.0" prefWidth="268.0" text="Valor Pago:">
                            <font>
-                              <Font name="Futura Md BT Bold" size="20.0" />
+                              <Font name="Berlin Sans FB" size="20.0" />
                            </font>
                            <padding>
                               <Insets bottom="10.0" top="15.0" />
@@ -144,7 +144,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <Button fx:id="btConfirmarVenda" layoutX="382.0" layoutY="415.0" mnemonicParsing="false" onAction="#onBtConfirmarVenda" prefHeight="52.0" prefWidth="185.0" style="-fx-background-color: transparent;" styleClass="confirmarVenda" stylesheets="@MaioriaStyle.css">
+                  <Button fx:id="btConfirmarVenda" layoutX="382.0" layoutY="415.0" mnemonicParsing="false" onAction="#onBtConfirmarVenda" prefHeight="58.0" prefWidth="185.0" style="-fx-background-color: transparent;" stylesheets="@MaioriaStyle.css" text="Confirmara venda">
                      <font>
                         <Font name="Century" size="12.0" />
                      </font>
@@ -165,12 +165,12 @@
                   <Label fx:id="lbSubtotal" layoutX="144.0" layoutY="517.0" prefHeight="17.0" prefWidth="70.0" />
                   <Label layoutX="30.0" layoutY="517.0" text="Subtotal:">
                      <font>
-                        <Font name="Futura Md BT Bold" size="16.0" />
+                        <Font name="Berlin Sans FB" size="17.0" />
                      </font>
                   </Label>
                   <Label layoutX="135.0" layoutY="135.0" text="Produtos adicionados">
                      <font>
-                        <Font name="Futura Md BT Bold" size="16.0" />
+                        <Font name="Berlin Sans FB" size="21.0" />
                      </font>
                   </Label>
                </children>

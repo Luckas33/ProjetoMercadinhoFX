@@ -127,10 +127,10 @@
 -fx-background-size:cover;
 }
 .botaoClaroFundoMenosEscuro{
--fx-background-image:url('botao_escuro_fundoclaro.png');
+-fx-background-image:url('botao_claro_fundomenosescuro.png');
 -fx-background-size:cover;
 }
 .botaoClaroFundoMaisEscuro{
--fx-background-image:url('botao_escuro_fundoclaro.png');
+-fx-background-image:url('botao_claro_fundomaisescuro.png');
 -fx-background-size:cover;
 }
