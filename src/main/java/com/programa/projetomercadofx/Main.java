@@ -32,7 +32,7 @@ public class Main extends Application {
         ListaEstoque listaEstoque = new ListaEstoque();
         ListaEstoque.estoqueVector.add(estoque);
         ListaEstoque.registroVector.add(registro);
-
+//
         launch();
 
 
