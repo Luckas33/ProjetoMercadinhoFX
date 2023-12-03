@@ -118,12 +118,12 @@ public class Estoque implements IEstoque {
     // <Anderson>: Falta salvar saldo... Não é difícil, mas acho feio, então estou pensando;
     //metodo para mudar o saldo
     @Override
-    public void definirSaldo(double valor) throws SNException{
+    public void definirSaldo(double valor) throws SIException{
         if(valor>=0){
             this.saldo = valor;
             serializarSaldo();
         }else
-            throw new SNException(valor);
+            throw new SIException(saldo);
     }
 
     private void serializarSaldo() {

@@ -42,7 +42,7 @@ public class Vendedor extends Funcionario {
                 if (quantidade <= produto.getQuantidade()) { //checa se a quantidade desejada pelo cliente tem o suficiente no estoque
                     try {
                         this.estoque.definirSaldo(this.estoque.verSaldo() + valorTotal); //atualiza o saldo
-                    } catch (SNException e) {
+                    } catch (SIException e) {
                         e.printStackTrace();
                     }
                     this.estoque.reduzir(produto.getId(), quantidade); //chama o metodo reduzir da interface estoque, onde tira a quantidade vendida do estoque
@@ -59,7 +59,7 @@ public class Vendedor extends Funcionario {
                 if (quantidade <= produto.getQuantidade()) { //checa se a quantidade desejada pelo cliente tem o suficiente no estoque
                     try {
                         this.estoque.definirSaldo(this.estoque.verSaldo() + valorTotal); //atualiza o saldo
-                    } catch (SNException e) {
+                    } catch (SIException e) {
                         e.printStackTrace();
                     }
                     this.estoque.reduzir(produto.getId(), quantidade); //chama o metodo reduzir da interface estoque, onde tira a quantidade vendida do estoque
@@ -98,7 +98,7 @@ public class Vendedor extends Funcionario {
                                 double valorTotal = quantidade * produto.getPrecoVenda() * taxaCredito; //calcula o valor da venda, dessa vez adicionando a taxa de crédito
                                 try {
                                     this.estoque.definirSaldo(this.estoque.verSaldo() + valorTotal); //atualiza o saldo
-                                } catch (SNException e) {
+                                } catch (SIException e) {
                                     e.printStackTrace();
                                 }
                                 this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade do estoque
@@ -115,7 +115,7 @@ public class Vendedor extends Funcionario {
                             double valorTotal = quantidade * produto.getPrecoVenda() * taxaCredito; //calcula o valor da venda, dessa vez adicionando a taxa de crédito
                             try {
                                 this.estoque.definirSaldo(this.estoque.verSaldo() + valorTotal); //atualiza o saldo
-                            } catch (SNException e) {
+                            } catch (SIException e) {
                                 e.printStackTrace();
                             }
                             this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade do estoque
@@ -153,7 +153,7 @@ public class Vendedor extends Funcionario {
                     double valorTotal = quantidade * produto.getPrecoVenda(); //calcula o valor da venda
                     try {
                         this.estoque.definirSaldo(this.estoque.verSaldo() + valorTotal); //atualiza o saldo
-                    } catch (SNException e) {
+                    } catch (SIException e) {
                         e.printStackTrace();
                     }
                     this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade
@@ -171,7 +171,7 @@ public class Vendedor extends Funcionario {
                         double valorTotal = quantidade * produto.getPrecoVenda(); //calcula o valor da venda
                         try {
                             this.estoque.definirSaldo(this.estoque.verSaldo() + valorTotal); //atualiza o saldo
-                        } catch (SNException e) {
+                        } catch (SIException e) {
                             e.printStackTrace();
                         }
                         this.estoque.reduzir(produto.getId(), quantidade); //reduz a quantidade

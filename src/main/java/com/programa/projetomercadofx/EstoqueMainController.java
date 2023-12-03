@@ -1,6 +1,5 @@
 package com.programa.projetomercadofx;
 
-import com.programa.projetomercadofx.controllerUtil.Alerts;
 import estoques.IEstoque;
 import globalService.ListaEstoque;
 import globalService.ListaFuncionario;
@@ -13,8 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import produtos.Produto;
 import produtos.ProdutoHistorico;
@@ -27,16 +24,20 @@ public class EstoqueMainController {
     @FXML
     private Button btVoltar;
     @FXML
-    private Button btConfirmar;
+    private Parent root;
+    @FXML
+    private Button btVerTudo;
     @FXML
     private Button btInserirTipo;
     @FXML
-    private Parent root;
+    private TextField tfInserirTipo;
     @FXML
-    private Button btTipoProdutos;
+    private Button btOKTipo;
     @FXML
     private ListView<Produto> listViewEstoque;
     private Vector<Produto> estoqueMostrar;
+
+    private ObservableList<Produto> produtosObservableList = FXCollections.observableArrayList();
 
 ///////////////// Mudar de Tela ///////////////////////
     public void switchToGerenteMainScren(ActionEvent event) throws Exception {
@@ -48,25 +49,52 @@ public class EstoqueMainController {
     }
 
 //////////// Métodos para a lógica da tela ////////////////////////
-public void onMenuItemTodos(ActionEvent e) {
+
+public void onBtVerTudo(ActionEvent e) {
+    tfInserirTipo.setDisable(true);
+    btOKTipo.setDisable(true);
+    tfInserirTipo.setText(null);
+    produtosObservableList.clear();
 
     for (IEstoque estoque : ListaEstoque.estoqueVector) {
         if (estoque != null) {
             estoqueMostrar = estoque.retornaEstoque();
-
-            listViewEstoque.getItems().setAll(estoqueMostrar);
-
+            produtosObservableList.addAll(estoqueMostrar);
         }
     }
+    listViewEstoque.getItems().setAll(produtosObservableList);
 
 }
-public void onBtInfo(){
-    Alerts.showAlert("Ajuda",null,"Aqui você pode ver todos os seus produtos", Alert.AlertType.INFORMATION);
+
+public void onBtInserirTipo(ActionEvent e){
+    tfInserirTipo.setDisable(false);
+    btOKTipo.setDisable(false);
 }
+
+public void onBtOKTipo(ActionEvent e){
+        String tipo = tfInserirTipo.getText();
+       produtosObservableList.clear();
+    for (IEstoque estoque : ListaEstoque.estoqueVector) {
+        if (estoque != null) {
+            estoqueMostrar = estoque.retornaEstoque();
+            for(Produto produto : estoqueMostrar) {
+                if(produto.getTipo().equals(tipo)) {
+                    produtosObservableList.add(produto);
+                }
+            }
+        }
+    }
+    listViewEstoque.getItems().setAll(produtosObservableList);
+
+}
+
 ////////////// Métodos Complementares ///////////////////////////
 public void initialize() {
+    tfInserirTipo.setDisable(true);
+    btOKTipo.setDisable(true);
+    tfInserirTipo.setText(null);
 
-    estoqueMostrar = new Vector<>();
+        estoqueMostrar = new Vector<>();
 
     // Configurar a fábrica de células para personalizar a exibição na ListView
     listViewEstoque.setCellFactory(param -> new ListCell<Produto>() {

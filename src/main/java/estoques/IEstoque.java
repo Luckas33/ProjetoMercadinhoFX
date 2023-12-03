@@ -5,7 +5,6 @@ package estoques;
 import excecao.PIException;
 import excecao.QINException;
 import excecao.SIException;
-import excecao.SNException;
 import produtos.Produto;
 import observador.Observer;
 
@@ -29,7 +28,7 @@ public interface IEstoque extends Observer{
     
     public double verSaldo();
     
-    public void definirSaldo(double valor) throws SNException;
+    public void definirSaldo(double valor) throws SIException;
     
 
 }

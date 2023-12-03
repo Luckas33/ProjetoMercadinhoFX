@@ -15,7 +15,6 @@ O projeto visa aplicar os princípios da Programação Orientada a Objetos para 
 - Lucas de Oliveira Sobral
 - João Rodrigo Ferreira do Nascimento
 - Osvaldo Medeiros Cavalcante Neto
-- Iarley Alves de Sousa
 - Anderson Moura Costa do Nascimento
 
 ## Tecnologias Utilizadas
