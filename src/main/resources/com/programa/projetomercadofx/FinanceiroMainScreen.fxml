@@ -1,170 +1,222 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="700.0" styleClass="raiz" stylesheets="@MaioriaStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.FinanceiroMainController">
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1080.0" styleClass="backgroundGeneric" stylesheets="@MaioriaStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.FinanceiroMainController">
    <children>
-    <AnchorPane layoutX="352.0" minHeight="0.0" minWidth="0.0" prefHeight="392.0" prefWidth="342.0">
-         <children>
-            <Label layoutX="116.0" layoutY="45.0" text="Financeiro" underline="true">
-               <font>
-                  <Font name="Century" size="15.0" />
-               </font>
-            </Label>
-            <Button fx:id="btVerBalanço" layoutX="14.0" layoutY="92.0" mnemonicParsing="false" onAction="#switchToFinanceiroBalancoScreen" prefHeight="36.0" prefWidth="114.0" styleClass="verBalanco" stylesheets="@MaioriaStyle.css" />
-            <Button fx:id="btMudarTaxa" layoutX="14.0" layoutY="135.0" mnemonicParsing="false" onAction="#onBtMudarTaxa" prefHeight="36.0" prefWidth="114.0" styleClass="mudarTaxa" stylesheets="@MaioriaStyle.css" />
-            <Button fx:id="btComprarProduto" layoutX="14.0" layoutY="178.0" mnemonicParsing="false" onAction="#onBtComprarProduto" prefHeight="36.0" prefWidth="114.0" styleClass="comprarProduto" stylesheets="@MaioriaStyle.css">
-               <font>
-                  <Font name="Century" size="12.0" />
-               </font>
+      <BorderPane prefHeight="700.0" prefWidth="1080.0">
+         <right>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="664.0" prefWidth="571.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="230.0" layoutY="45.0" text="Financeiro" underline="true">
+                     <font>
+                        <Font name="Futura Md BT Bold" size="21.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="choiceBoxEscolhaCaixa" disable="true" layoutX="421.0" layoutY="400.0" prefHeight="33.0" prefWidth="115.0" />
+                  <Pane layoutX="202.0" layoutY="515.0" prefHeight="42.0" prefWidth="196.0">
+                     <children>
+                        <Label layoutX="12.0" layoutY="15.0" text="Saldo atual:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbSaldoAtual" layoutX="116.0" layoutY="10.0" prefHeight="17.0" prefWidth="80.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <VBox layoutX="202.0" layoutY="132.0" prefHeight="309.0" prefWidth="219.0">
+                     <children>
+                        <Button fx:id="btVerBalanço" mnemonicParsing="false" onAction="#switchToFinanceiroBalancoScreen" prefHeight="38.0" prefWidth="123.0" style="-fx-background-color: transparent;" styleClass="verBalanco" stylesheets="@MaioriaStyle.css">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btMudarTaxa" mnemonicParsing="false" onAction="#onBtMudarTaxa" prefHeight="39.0" prefWidth="132.0" style="-fx-background-color: transparent;" styleClass="mudarTaxa" stylesheets="@MaioriaStyle.css">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btComprarProduto" mnemonicParsing="false" onAction="#onBtComprarProduto" prefHeight="43.0" prefWidth="140.0" style="-fx-background-color: transparent;" styleClass="comprarProduto" stylesheets="@MaioriaStyle.css">
+                           <font>
+                              <Font name="Century" size="12.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btRemoverProduto" mnemonicParsing="false" onAction="#onBtRemoverProduto" prefHeight="45.0" prefWidth="147.0" style="-fx-background-color: transparent;" styleClass="removerProduto" stylesheets="@MaioriaStyle.css">
+                           <font>
+                              <Font name="Century" size="12.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btCaixa" mnemonicParsing="false" onAction="#onBtCaixa" prefHeight="43.0" prefWidth="146.0" style="-fx-background-color: transparent;" styleClass="caixa" stylesheets="@MaioriaStyle.css">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </right>
+         <left>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="664.0" prefWidth="516.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane layoutX="94.0" layoutY="225.0" prefHeight="208.0" prefWidth="277.0">
+                     <children>
+                        <Pane fx:id="pnRemoverProduto" disable="true" prefHeight="207.0" prefWidth="277.0" styleClass="telaPane" stylesheets="@MaioriaStyle.css" visible="false">
+                           <children>
+                              <Label layoutX="46.0" layoutY="22.0" text="Remover produto">
+                                 <font>
+                                    <Font name="Century" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="54.0" text="ID produto:">
+                                 <font>
+                                    <Font name="Century" size="11.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="tfRemoverProduto" layoutX="112.0" layoutY="50.0" prefHeight="25.0" prefWidth="101.0" promptText="Ex.123" />
+                              <Button fx:id="btConfirmarRemoverProduto" layoutX="144.0" layoutY="112.0" mnemonicParsing="false" onAction="#onBtConfirmarRemoverProduto" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: transparent;" styleClass="confirmarGenerico" stylesheets="@MaioriaStyle.css" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="pnCaixaSaque" prefHeight="209.0" prefWidth="279.0" styleClass="telaPane" stylesheets="@MaioriaStyle.css" visible="false">
+                           <children>
+                              <Label layoutX="107.0" layoutY="21.0" text="Sacar Saldo">
+                                 <font>
+                                    <Font name="Century" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="29.0" layoutY="78.0" text="Valor:">
+                                 <font>
+                                    <Font name="Futura Md BT Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="tfValorSaque" layoutX="124.0" layoutY="75.0" prefHeight="25.0" prefWidth="97.0" />
+                              <Button fx:id="btCaixaSaque" layoutX="151.0" layoutY="144.0" mnemonicParsing="false" onAction="#onBtConfirmarCaixaSaque" prefHeight="23.0" prefWidth="70.0" style="-fx-background-color: transparent;" styleClass="confirmarGenerico" stylesheets="@MaioriaStyle.css">
+                                 <font>
+                                    <Font name="Century" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="pnCaixaDeposito" disable="true" prefHeight="211.0" prefWidth="280.0" styleClass="telaPane" stylesheets="@MaioriaStyle.css" visible="false">
+                           <children>
+                              <Label layoutX="80.0" layoutY="20.0" text="Depositar Saldo">
+                                 <font>
+                                    <Font name="Century" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="23.0" layoutY="64.0" text="Valor:">
+                                 <font>
+                                    <Font name="Century" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="tfValorDeposito" layoutX="115.0" layoutY="61.0" prefHeight="31.0" prefWidth="122.0" />
+                              <Button fx:id="btCaixaDeposito" layoutX="168.0" layoutY="130.0" mnemonicParsing="false" onAction="#onBtConfirmarCaixaDeposito" prefHeight="23.0" prefWidth="70.0" style="-fx-background-color: trasnsparent;" styleClass="confirmarGenerico" stylesheets="@MaioriaStyle.css">
+                                 <font>
+                                    <Font name="Century" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="pnComprarProduto" disable="true" prefHeight="208.0" prefWidth="279.0" styleClass="telaPane" stylesheets="@MaioriaStyle.css" visible="false">
+                           <children>
+                              <Label layoutX="83.0" layoutY="14.0" text="Comprar Produto">
+                                 <font>
+                                    <Font name="Futura Md BT Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="24.0" layoutY="49.0" text="ID produto:">
+                                 <font>
+                                    <Font name="Futura Md BT Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="tfIDCompraProduto" layoutX="172.0" layoutY="45.0" prefHeight="25.0" prefWidth="87.0" promptText="Ex.122" />
+                              <Label layoutX="24.0" layoutY="78.0" text="Quantidade:">
+                                 <font>
+                                    <Font name="Futura Md BT Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="tfQuantidadeComprarProduto" layoutX="172.0" layoutY="76.0" prefHeight="25.0" prefWidth="87.0" promptText="Ex.4" />
+                              <Label layoutX="24.0" layoutY="106.0" text="Total:">
+                                 <font>
+                                    <Font name="Futura Md BT Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="171.0" layoutY="108.0" prefHeight="24.0" prefWidth="88.0" />
+                              <Button fx:id="btConfirmarCompraProduto" layoutX="171.0" layoutY="149.0" mnemonicParsing="false" onAction="#onBtConfirmarCompraProd" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: trasnsparent;" styleClass="confirmarGenerico" stylesheets="@MaioriaStyle.css" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="pnTaxa" disable="true" prefHeight="205.0" prefWidth="274.0" styleClass="telaPane" stylesheets="@MaioriaStyle.css">
+                           <children>
+                              <Label layoutX="49.0" layoutY="14.0" text="Mudar Taxa Produto">
+                                 <font>
+                                    <Font name="Futura Md BT Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="55.0" text="ID produto:">
+                                 <font>
+                                    <Font name="Futura Md BT Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="tfIDTaxa" layoutX="163.0" layoutY="52.0" prefHeight="25.0" prefWidth="101.0" promptText="Ex.123" />
+                              <Label layoutX="14.0" layoutY="93.0" text="Taxa Atualizada:">
+                                 <font>
+                                    <Font name="Futura Md BT Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="tfMudarTaxa" layoutX="163.0" layoutY="90.0" prefHeight="25.0" prefWidth="101.0" promptText="Ex.1.3" />
+                              <Button fx:id="btConfirmarTaxa" layoutX="176.0" layoutY="145.0" mnemonicParsing="false" onAction="#onBtConfirmarTaxa" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: trasnparent;" styleClass="confirmarGenerico" stylesheets="@MaioriaStyle.css" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="94.0" layoutY="70.0" prefHeight="100.0" prefWidth="238.0">
+                     <children>
+                        <Label layoutX="1.0" layoutY="14.0" text="Mercadinho Inteligente">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="69.0" layoutY="43.0" text="Menu Financeiro">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Button layoutX="286.0" layoutY="471.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: transparent;" styleClass="limpar" stylesheets="@MaioriaStyle.css" />
+               </children>
+            </AnchorPane>
+         </left>
+         <top>
+            <Button fx:id="btVoltar" mnemonicParsing="false" onAction="#switchToGerenteMainScreen" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: transparent;" styleClass="voltar" stylesheets="@MaioriaStyle.css" BorderPane.alignment="TOP_LEFT">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <BorderPane.margin>
+                  <Insets left="10.0" top="10.0" />
+               </BorderPane.margin>
             </Button>
-            <Button fx:id="btCaixa" layoutX="14.0" layoutY="265.0" mnemonicParsing="false" onAction="#onBtCaixa" prefHeight="25.0" prefWidth="97.0" styleClass="caixa" stylesheets="@MaioriaStyle.css" />
-            <ChoiceBox fx:id="choiceBoxEscolhaCaixa" disable="true" layoutX="149.0" layoutY="231.0" prefHeight="25.0" prefWidth="101.0" />
-            <Pane layoutX="14.0" layoutY="332.0" prefHeight="42.0" prefWidth="128.0">
-               <children>
-                  <Label layoutX="12.0" layoutY="15.0" text="Saldo atual:">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbSaldoAtual" layoutX="104.0" layoutY="14.0" />
-               </children>
-            </Pane>
-            <Button fx:id="btRemoverProduto" layoutX="14.0" layoutY="220.0" mnemonicParsing="false" onAction="#onBtRemoverProduto" prefHeight="36.0" prefWidth="114.0" styleClass="removerProduto" stylesheets="@MaioriaStyle.css">
-               <font>
-                  <Font name="Century" size="12.0" />
-               </font>
-            </Button>
-            <Button layoutX="14.0" layoutY="307.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="23.0" prefWidth="75.0" styleClass="limpar" stylesheets="@MaioriaStyle.css" />
-         </children>
-      </AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="296.0">
-         <children>
-            <Button fx:id="btVoltar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToGerenteMainScreen" prefHeight="25.0" prefWidth="81.0" styleClass="voltar" stylesheets="@MaioriaStyle.css" />
-            <Pane layoutX="48.0" layoutY="39.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label layoutX="13.0" layoutY="36.0" text="Mercadinho Inteligente">
-                     <font>
-                        <Font name="Century" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="56.0" layoutY="56.0" text="Menu Financeiro" />
-               </children>
-            </Pane>
-            <Pane fx:id="pnTaxa" disable="true" layoutX="38.0" layoutY="179.0" prefHeight="166.0" prefWidth="220.0" styleClass="telaPane" stylesheets="@MaioriaStyle.css">
-               <children>
-                  <Label layoutX="46.0" layoutY="22.0" text="Mudar Taxa Produto">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="14.0" layoutY="54.0" text="ID produto:">
-                     <font>
-                        <Font name="Century" size="11.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="tfIDTaxa" layoutX="112.0" layoutY="50.0" prefHeight="25.0" prefWidth="101.0" promptText="Ex.123" />
-                  <Label layoutX="14.0" layoutY="83.0" text="Taxa Atualizada:">
-                     <font>
-                        <Font name="Century" size="11.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="tfMudarTaxa" layoutX="112.0" layoutY="78.0" prefHeight="25.0" prefWidth="101.0" promptText="Ex.1.3" />
-                  <Button fx:id="btConfirmarTaxa" layoutX="138.0" layoutY="111.0" mnemonicParsing="false" onAction="#onBtConfirmarTaxa" prefHeight="25.0" prefWidth="75.0" styleClass="confirmarGenerico" stylesheets="@MaioriaStyle.css" />
-               </children>
-            </Pane>
-            <Pane fx:id="pnComprarProduto" disable="true" layoutX="38.0" layoutY="188.0" prefHeight="166.0" prefWidth="220.0" styleClass="telaPane" stylesheets="@MaioriaStyle.css" visible="false">
-               <children>
-                  <Label layoutX="51.0" layoutY="14.0" text="Comprar Produto">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="14.0" layoutY="42.0" text="ID produto:">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="tfIDCompraProduto" layoutX="92.0" layoutY="38.0" prefHeight="25.0" prefWidth="87.0" promptText="Ex.122" />
-                  <Label layoutX="14.0" layoutY="71.0" text="Quantidade:">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="tfQuantidadeComprarProduto" layoutX="92.0" layoutY="67.0" prefHeight="25.0" prefWidth="87.0" promptText="Ex.4" />
-                  <Label layoutX="14.0" layoutY="99.0" text="Total:">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="92.0" layoutY="98.0" />
-                  <Button fx:id="btConfirmarCompraProduto" layoutX="118.0" layoutY="127.0" mnemonicParsing="false" onAction="#onBtConfirmarCompraProd" prefHeight="25.0" prefWidth="88.0" styleClass="confirmarGenerico" stylesheets="@MaioriaStyle.css" />
-               </children>
-            </Pane>
-            <Pane fx:id="pnCaixaDeposito" disable="true" layoutX="38.0" layoutY="179.0" prefHeight="200.0" prefWidth="220.0" styleClass="telaPane" stylesheets="@MaioriaStyle.css" visible="false">
-               <children>
-                  <Label layoutX="66.0" layoutY="20.0" text="Depositar Saldo">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="24.0" layoutY="58.0" text="Valor:">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="tfValorDeposito" layoutX="71.0" layoutY="53.0" prefHeight="25.0" prefWidth="97.0" />
-                  <Button fx:id="btCaixaDeposito" layoutX="97.0" layoutY="89.0" mnemonicParsing="false" onAction="#onBtConfirmarCaixaDeposito" prefHeight="23.0" prefWidth="70.0" styleClass="confirmarGenerico" stylesheets="@MaioriaStyle.css">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                  </Button>
-               </children>
-            </Pane>
-            <Pane fx:id="pnCaixaSaque" layoutX="38.0" layoutY="179.0" prefHeight="182.0" prefWidth="220.0" styleClass="telaPane" stylesheets="@MaioriaStyle.css" visible="false">
-               <children>
-                  <Label layoutX="80.0" layoutY="20.0" text="Sacar Saldo">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="24.0" layoutY="58.0" text="Valor:">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="tfValorSaque" layoutX="71.0" layoutY="53.0" prefHeight="25.0" prefWidth="97.0" />
-                  <Button fx:id="btCaixaSaque" layoutX="97.0" layoutY="89.0" mnemonicParsing="false" onAction="#onBtConfirmarCaixaSaque" prefHeight="23.0" prefWidth="70.0" styleClass="confirmarGenerico" stylesheets="@MaioriaStyle.css">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                  </Button>
-               </children>
-            </Pane>
-            <Pane fx:id="pnRemoverProduto" disable="true" layoutX="38.0" layoutY="163.0" prefHeight="166.0" prefWidth="220.0" visible="false">
-               <children>
-                  <Label layoutX="46.0" layoutY="22.0" text="Remover produto">
-                     <font>
-                        <Font name="Century" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="14.0" layoutY="54.0" text="ID produto:">
-                     <font>
-                        <Font name="Century" size="11.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="tfRemoverProduto" layoutX="112.0" layoutY="50.0" prefHeight="25.0" prefWidth="101.0" promptText="Ex.123" />
-                  <Button fx:id="btConfirmarRemoverProduto" layoutX="144.0" layoutY="112.0" mnemonicParsing="false" onAction="#onBtConfirmarRemoverProduto" prefHeight="25.0" prefWidth="70.0" styleClass="confirmarGenerico" stylesheets="@MaioriaStyle.css" />
-               </children>
-            </Pane>
-         </children>
-      </AnchorPane>
+         </top>
+      </BorderPane>
    </children>
 </AnchorPane>

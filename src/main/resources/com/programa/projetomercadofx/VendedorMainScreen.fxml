@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -8,66 +9,180 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="700.0" styleClass="raiz" stylesheets="@MaioriaStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.VendedorMainController">
+<AnchorPane fx:id="root" minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="1080.0" styleClass="backgroundGeneric" stylesheets="@MaioriaStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.VendedorMainController">
    <children>
-    <AnchorPane layoutX="276.0" layoutY="25.0" minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="410.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="25.0">
-         <children>
-            <ChoiceBox fx:id="choiceBoxTipoVenda" disable="true" layoutX="241.0" layoutY="130.0" prefWidth="150.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ChoiceBox>
-            <Button fx:id="btAdicionar" blendMode="DARKEN" layoutX="47.0" layoutY="262.0" mnemonicParsing="false" onAction="#onBtAdicionar" prefHeight="32.0" prefWidth="91.0" styleClass="adicionar" stylesheets="@MaioriaStyle.css">
-               <font>
-                  <Font name="Century" size="12.0" />
-               </font>
+      <BorderPane prefHeight="700.0" prefWidth="1080.0">
+         <right>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="660.0" prefWidth="581.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutX="304.0" layoutY="116.0" prefHeight="273.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="tfidProduto" prefHeight="20.0" prefWidth="200.0" promptText="Ex.1234">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="tfquantidade" prefHeight="21.0" prefWidth="200.0" promptText="Ex.3">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <ChoiceBox fx:id="choiceBoxTipoVenda" disable="true" prefHeight="36.0" prefWidth="200.0">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </ChoiceBox>
+                        <ComboBox fx:id="comboboxParcelas" disable="true" prefHeight="37.0" prefWidth="200.0" promptText="Parcelas">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <TextField fx:id="tfValorPago" disable="true" prefHeight="20.0" prefWidth="200.0" promptText="Insira o valor recebido">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="98.0" layoutY="126.0" prefHeight="249.0" prefWidth="188.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="206.0" text="ID:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="20.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" top="15.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="25.0" prefWidth="171.0" text="Quantidade:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="20.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" top="15.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="25.0" prefWidth="190.0" text="Tipo pagamento:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="20.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" top="15.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="25.0" prefWidth="264.0" text="Parcelas:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="20.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" top="15.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="25.0" prefWidth="268.0" text="Valor Pago:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="20.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" top="15.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <HBox layoutX="98.0" layoutY="422.0" prefHeight="55.0" prefWidth="324.0">
+                     <children>
+                        <Button fx:id="btAdicionar" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#onBtAdicionar" prefHeight="43.0" prefWidth="132.0" style="-fx-background-color: transparent;" styleClass="adicionar" stylesheets="@MaioriaStyle.css">
+                           <font>
+                              <Font name="Century" size="12.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btFinalizar" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#onBtFinalizar" prefHeight="40.0" prefWidth="123.0" style="-fx-background-color: transparent;" styleClass="finalizar" stylesheets="@MaioriaStyle.css">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Button fx:id="btConfirmarVenda" layoutX="382.0" layoutY="415.0" mnemonicParsing="false" onAction="#onBtConfirmarVenda" prefHeight="52.0" prefWidth="185.0" style="-fx-background-color: transparent;" styleClass="confirmarVenda" stylesheets="@MaioriaStyle.css">
+                     <font>
+                        <Font name="Century" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </right>
+         <left>
+            <Pane prefHeight="657.0" prefWidth="440.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ListView fx:id="lvProdutosAdicionados" layoutX="22.0" layoutY="161.0" prefHeight="333.0" prefWidth="389.0" />
+                  <Label fx:id="lbSubtotal" layoutX="144.0" layoutY="517.0" prefHeight="17.0" prefWidth="70.0" />
+                  <Label layoutX="30.0" layoutY="517.0" text="Subtotal:">
+                     <font>
+                        <Font name="Futura Md BT Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="135.0" layoutY="135.0" text="Produtos adicionados">
+                     <font>
+                        <Font name="Futura Md BT Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </left>
+         <top>
+            <Button fx:id="btVoltar" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: trasnparent;" styleClass="voltar" stylesheets="@MaioriaStyle.css" BorderPane.alignment="CENTER_LEFT">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <TextField fx:id="tfidProduto" layoutX="240.0" layoutY="55.0" prefHeight="25.0" prefWidth="150.0" promptText="Ex.1234">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </TextField>
-            <TextField fx:id="tfquantidade" layoutX="240.0" layoutY="93.0" prefHeight="25.0" prefWidth="150.0" promptText="Ex.3">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </TextField>
-            <ComboBox fx:id="comboboxParcelas" disable="true" layoutX="241.0" layoutY="169.0" prefWidth="150.0" promptText="Parcelas">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ComboBox>
-            <Button fx:id="btFinalizar" blendMode="DARKEN" layoutX="156.0" layoutY="262.0" mnemonicParsing="false" onAction="#onBtFinalizar" prefHeight="32.0" prefWidth="99.0" styleClass="finalizar" stylesheets="@MaioriaStyle.css">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <TextField fx:id="tfValorPago" disable="true" layoutX="241.0" layoutY="206.0" promptText="Insira o valor recebido">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </TextField>
-            <Button fx:id="btConfirmarVenda" blendMode="DARKEN" layoutX="269.0" layoutY="262.0" mnemonicParsing="false" onAction="#onBtConfirmarVenda" prefHeight="32.0" prefWidth="115.0" styleClass="confirmarVenda" stylesheets="@MaioriaStyle.css">
-               <font>
-                  <Font name="Century" size="12.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-         </children>
-      </AnchorPane>
-      <ListView fx:id="lvProdutosAdicionados" layoutX="14.0" layoutY="143.0" prefHeight="137.0" prefWidth="244.0" />
-      <Button fx:id="btVoltar" blendMode="DARKEN" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="32.0" prefWidth="82.0" styleClass="voltar" stylesheets="@MaioriaStyle.css">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Label fx:id="lbSubtotal" layoutX="125.0" layoutY="323.0" prefHeight="17.0" prefWidth="70.0" />
+         </top>
+      </BorderPane>
    </children>
 </AnchorPane>

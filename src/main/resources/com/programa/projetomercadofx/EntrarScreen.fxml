@@ -3,43 +3,92 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="700.0" styleClass="raiz" stylesheets="@MaioriaStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.EntrarController">
+<AnchorPane fx:id="root" prefHeight="720.0" prefWidth="1080.0" styleClass="backgroundGeneric" stylesheets="@MaioriaStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.EntrarController">
    <children>
-      <Pane layoutX="463.0" layoutY="62.0" prefHeight="236.0" prefWidth="223.0">
-         <children>
-            <PasswordField fx:id="tfSenha" layoutX="30.0" layoutY="112.0" prefHeight="10.0" promptText="Senha" />
-            <TextField fx:id="tfLogin" layoutX="30.0" layoutY="24.0" prefHeight="10.0" promptText="Login" />
-            <ChoiceBox fx:id="choiceBoxTipoFuncionario" layoutX="29.0" layoutY="203.0" prefWidth="150.0" />
-         </children>
-      </Pane>
-      <Button fx:id="btConfirmar" blendMode="DARKEN" layoutX="626.0" layoutY="311.0" mnemonicParsing="false" onAction="#onBtConfirmar" prefHeight="31.0" prefWidth="83.0">
-         <font>
-            <Font size="13.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
+      <BorderPane prefHeight="723.0" prefWidth="1082.0">
+         <right>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <right>
+                  <Pane prefHeight="561.0" prefWidth="391.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <PasswordField fx:id="tfSenha" layoutX="201.0" layoutY="100.0" prefHeight="10.0" promptText="Senha" />
+                        <TextField fx:id="tfLogin" layoutX="205.0" layoutY="17.0" prefHeight="10.0" promptText="Login" />
+                        <ChoiceBox fx:id="choiceBoxTipoFuncionario" layoutX="204.0" layoutY="197.0" prefWidth="150.0" />
+                        <Button fx:id="btConfirmar" layoutX="189.0" layoutY="261.0" mnemonicParsing="false" onAction="#onBtConfirmar" prefHeight="51.0" prefWidth="173.0" style="-fx-background-color: transparent;" styleClass="confirmarGenerico" stylesheets="@MaioriaStyle.css">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="btcadastrar" layoutX="212.0" layoutY="432.0" mnemonicParsing="false" onAction="#switchToCadastrarScreen" prefHeight="27.0" prefWidth="89.0" style="-fx-background-color: transparent;" styleClass="cadastrarGenerico" stylesheets="@MaioriaStyle.css">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Label layoutX="44.0" layoutY="14.0" prefHeight="31.0" prefWidth="103.0" text="Login:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="45.0" layoutY="100.0" prefHeight="31.0" prefWidth="103.0" text="Senha">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="38.0" layoutY="194.0" prefHeight="31.0" prefWidth="153.0" text="Tipo Conta:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="27.0" layoutY="433.0" text="Não tem conta?">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </right>
+               <top>
+                  <Pane prefHeight="202.0" prefWidth="238.0" BorderPane.alignment="CENTER" />
+               </top>
+            </BorderPane>
+         </right>
+         <left>
+            <Pane prefHeight="723.0" prefWidth="422.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="69.0" layoutY="156.0" text="Mercadinho Inteligente">
+                     <font>
+                        <Font name="Futura Md BT Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="169.0" layoutY="191.0" prefHeight="23.0" prefWidth="116.0" text="Tela de Login">
+                     <font>
+                        <Font name="Futura Md BT Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </left>
+      </BorderPane>
       <Button fx:id="btInfo" blendMode="DARKEN" layoutX="652.0" layoutY="29.0" mnemonicParsing="false" onAction="#onClickAjuda" prefHeight="41.0" prefWidth="35.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btVoltar" blendMode="DARKEN" layoutX="-1.0" layoutY="16.0" mnemonicParsing="false" onAction="#switchToMainScrenn" prefHeight="26.0" prefWidth="68.0" styleClass="voltar" stylesheets="@MaioriaStyle.css" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="16.0">
-         <font>
-            <Font size="10.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button fx:id="btcadastrar" blendMode="DARKEN" layoutX="469.0" layoutY="357.0" mnemonicParsing="false" onAction="#switchToCadastrarScreen" prefHeight="27.0" prefWidth="89.0" styleClass="cadastrarGenerico" stylesheets="@MaioriaStyle.css" AnchorPane.leftAnchor="469.0">
+      <Button fx:id="btVoltar" layoutX="-1.0" layoutY="16.0" mnemonicParsing="false" onAction="#switchToMainScrenn" prefHeight="42.0" prefWidth="144.0" style="-fx-background-color: transparent;" styleClass="voltar" stylesheets="@MaioriaStyle.css" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="16.0">
          <font>
             <Font size="10.0" />
          </font>

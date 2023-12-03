@@ -1,49 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.GerenteAddProdutoController">
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1080.0" styleClass="backgroundGeneric" stylesheets="@MaioriaStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.GerenteAddProdutoController">
    <children>
-    <AnchorPane layoutX="333.0" layoutY="14.0" minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="448.0">
-         <children>
-            <TextField fx:id="tfNome" layoutX="175.0" layoutY="14.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.Refrigerante" />
-            <TextField fx:id="tfID" layoutX="173.0" layoutY="53.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.1234" />
-            <TextField fx:id="tfMarca" layoutX="173.0" layoutY="98.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.CocaCola" />
-            <TextField fx:id="tfTipo" layoutX="173.0" layoutY="136.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.Bebida" />
-            <TextField fx:id="tfPrecoCompra" layoutX="173.0" layoutY="180.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.20.0" />
-            <TextField fx:id="tfTaxaVenda" layoutX="173.0" layoutY="221.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.50 (%)" />
-            <TextField fx:id="tfQuantidade" layoutX="173.0" layoutY="264.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.3" />
-            <TextField fx:id="tfDataValidade" layoutX="175.0" layoutY="304.0" prefHeight="25.0" prefWidth="173.0" promptText="Ex.20/07/2023" />
-            <Button fx:id="btAddProduto" blendMode="DARKEN" layoutX="176.0" layoutY="361.0" mnemonicParsing="false" onAction="#onBtAddProduto" prefHeight="33.0" prefWidth="96.0">
+      <BorderPane prefHeight="700.0" prefWidth="1080.0">
+         <right>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="665.0" prefWidth="576.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btAddProduto" layoutX="298.0" layoutY="519.0" mnemonicParsing="false" onAction="#onBtAddProduto" prefHeight="41.0" prefWidth="133.0" style="-fx-background-color: transparen;" styleClass="adicionarProduto">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btLimpar" layoutX="445.0" layoutY="523.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: transparent;" styleClass="limpar" stylesheets="@MaioriaStyle.css">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btInfo" layoutX="478.0" layoutY="10.0" mnemonicParsing="false" onAction="#onBtInfo" prefHeight="33.0" prefWidth="84.0" style="-fx-background-color: transparent;" styleClass="InterrogacaoClara" stylesheets="@MaioriaStyle.css">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <VBox layoutX="298.0" layoutY="112.0" prefHeight="222.0" prefWidth="254.0">
+                     <children>
+                        <TextField fx:id="tfNome" prefHeight="25.0" prefWidth="173.0" promptText="Ex.Refrigerante">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="15.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="tfID" prefHeight="25.0" prefWidth="173.0" promptText="Ex.1234">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="15.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="tfMarca" prefHeight="25.0" prefWidth="173.0" promptText="Ex.CocaCola">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="11.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="tfTipo" prefHeight="25.0" prefWidth="173.0" promptText="Ex.Bebida">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="15.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="tfPrecoCompra" prefHeight="25.0" prefWidth="173.0" promptText="Ex.20.0">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="11.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="tfTaxaVenda" prefHeight="25.0" prefWidth="173.0" promptText="Ex.50 (%)">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="tfQuantidade" prefHeight="25.0" prefWidth="173.0" promptText="Ex.3">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="15.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="tfDataValidade" prefHeight="25.0" prefWidth="173.0" promptText="Ex.20/07/2023">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="14.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="99.0" layoutY="113.0" prefHeight="396.0" prefWidth="199.0">
+                     <children>
+                        <Label prefHeight="47.0" prefWidth="158.0" text="Nome Produto:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="17.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="47.0" prefWidth="158.0" text="ID Produto:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="17.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="47.0" prefWidth="158.0" text="Marca Produto:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="17.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="47.0" prefWidth="158.0" text="Tipo Produto:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="17.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="46.0" prefWidth="198.0" text="Valor Compra:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="17.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="47.0" prefWidth="158.0" text="Taxa Produto:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="17.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="46.0" prefWidth="198.0" text="Quantidade Produto:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="17.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="47.0" prefWidth="158.0" text="Data de Validade:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="17.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </right>
+         <left>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="665.0" prefWidth="456.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ChoiceBox fx:id="choiceBoxCategoriaProd" layoutX="249.0" layoutY="312.0" prefHeight="25.0" prefWidth="107.0" />
+                  <Label layoutX="52.0" layoutY="91.0" text="Mercadinho Inteligente">
+                     <font>
+                        <Font name="Futura Md BT Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="132.0" layoutY="122.0" text="Adicionar Produto">
+                     <font>
+                        <Font name="Futura Md BT Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="42.0" layoutY="313.0" text="Categoria Produto:">
+                     <font>
+                        <Font name="Futura Md BT Bold" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </left>
+         <top>
+            <Button fx:id="btVoltar" mnemonicParsing="false" onAction="#switchToGerenteMainScrenn" prefHeight="19.0" prefWidth="84.0" style="-fx-background-color: transparent;" styleClass="limpar" stylesheets="@MaioriaStyle.css" BorderPane.alignment="TOP_LEFT">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <BorderPane.margin>
+                  <Insets left="10.0" top="10.0" />
+               </BorderPane.margin>
             </Button>
-            <Button fx:id="btLimpar" blendMode="DARKEN" layoutX="303.0" layoutY="361.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="33.0" prefWidth="89.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="btInfo" blendMode="DARKEN" layoutX="363.0" layoutY="21.0" mnemonicParsing="false" onAction="#onBtInfo" prefHeight="44.0" prefWidth="45.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-         </children>
-      </AnchorPane>
-    <AnchorPane layoutY="7.0" minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="293.0">
-         <children>
-            <Button fx:id="btVoltar" blendMode="DARKEN" layoutX="9.0" layoutY="6.0" mnemonicParsing="false" onAction="#switchToGerenteMainScrenn" prefHeight="33.0" prefWidth="67.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <ChoiceBox fx:id="choiceBoxCategoriaProd" layoutX="124.0" layoutY="245.0" prefHeight="25.0" prefWidth="107.0" />
-         </children>
-      </AnchorPane>
+         </top>
+      </BorderPane>
    </children>
 </AnchorPane>
