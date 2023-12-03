@@ -15,9 +15,9 @@
          <left>
             <VBox prefHeight="234.0" prefWidth="197.0" BorderPane.alignment="CENTER">
                <children>
-                        <Button fx:id="btEntrar" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: transparent;" styleClass="entrar_conta" stylesheets="@MaioriaStyle.css">
+                        <Button fx:id="btEntrar" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: transparent;" styleClass="botaoInicio" stylesheets="@MaioriaStyle.css" text="Entrar Conta" textFill="#fff200">
                             <font>
-                                <Font name="Century" size="13.0" />
+                                <Font name="Berlin Sans FB" size="22.0" />
                             </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -26,9 +26,9 @@
                         <Insets bottom="10.0" left="20.0" />
                      </VBox.margin>
                   </Button>
-                        <Button fx:id="btCadastrar" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#switchToCadastrarScreen" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: transparent;" styleClass="cadastrarInicial" stylesheets="@MaioriaStyle.css">
+                        <Button fx:id="btCadastrar" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#switchToCadastrarScreen" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: transparent;" styleClass="botaoInicio" stylesheets="@MaioriaStyle.css" text="Cadastrar Conta" textFill="#fff200">
                             <font>
-                                <Font name="Century" size="13.0" />
+                                <Font name="Berlin Sans FB" size="18.0" />
                             </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -37,9 +37,9 @@
                         <Insets bottom="10.0" left="20.0" />
                      </VBox.margin>
                   </Button>
-                        <Button fx:id="btCodigoFonte" cache="true" mnemonicParsing="false" onAction="#onbtCreditos" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: transparent;" styleClass="creditos" stylesheets="@MaioriaStyle.css">
+                        <Button fx:id="btCodigoFonte" cache="true" mnemonicParsing="false" onAction="#onbtCreditos" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: transparent;" styleClass="botaoInicio" stylesheets="@MaioriaStyle.css" text="Créditos" textFill="#fff200">
                             <font>
-                                <Font name="Century" size="13.0" />
+                                <Font name="Berlin Sans FB" size="22.0" />
                             </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />

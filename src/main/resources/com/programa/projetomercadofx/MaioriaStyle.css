@@ -122,3 +122,7 @@
 -fx-background-image:url('vertudo.png');
 -fx-background-size:cover;
 }
+.botaoInicio{
+-fx-background-image:url('botao_escuro_fundoclaro.png');
+-fx-background-size:cover;
+}
