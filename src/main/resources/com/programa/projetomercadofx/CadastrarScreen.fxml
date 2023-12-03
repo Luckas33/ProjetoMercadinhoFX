@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.CadastrarController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="720.0" styleClass="raiz" stylesheets="@MaioriaStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.CadastrarController">
    <children>
     <AnchorPane layoutX="286.0" layoutY="1.0" minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="434.0">
          <children>
@@ -87,7 +87,7 @@
                   </Label>
                </children>
             </VBox>
-            <Button fx:id="btEntrar" blendMode="DARKEN" layoutX="189.0" layoutY="363.0" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="21.0" prefWidth="50.0">
+            <Button fx:id="btEntrar" blendMode="DARKEN" layoutX="189.0" layoutY="363.0" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="21.0" prefWidth="69.0" styleClass="entrar" stylesheets="@MaioriaStyle.css">
                <font>
                   <Font size="10.0" />
                </font>
@@ -97,7 +97,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="btVoltar" blendMode="DARKEN" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="15.0" prefWidth="50.0">
+      <Button fx:id="btVoltar" blendMode="DARKEN" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="32.0" prefWidth="82.0" styleClass="voltar" stylesheets="@MaioriaStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

@@ -25,7 +25,7 @@
                         <Insets bottom="10.0" left="20.0" />
                      </VBox.margin>
                   </Button>
-                        <Button fx:id="btCadastrar" blendMode="DARKEN" mnemonicParsing="false" onAction="#switchToCadastrarScreen" prefHeight="37.0" prefWidth="136.0">
+                        <Button fx:id="btCadastrar" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#switchToCadastrarScreen" prefHeight="56.0" prefWidth="156.0" styleClass="cadastrarInicial" stylesheets="@MaioriaStyle.css">
                             <font>
                                 <Font name="Century" size="13.0" />
                             </font>
@@ -36,7 +36,7 @@
                         <Insets bottom="10.0" left="20.0" />
                      </VBox.margin>
                   </Button>
-                        <Button fx:id="btCodigoFonte" blendMode="DARKEN" cache="true" mnemonicParsing="false" onAction="#onbtCreditos" prefHeight="35.0" prefWidth="130.0">
+                        <Button fx:id="btCodigoFonte" cache="true" mnemonicParsing="false" onAction="#onbtCreditos" prefHeight="58.0" prefWidth="157.0" styleClass="creditos" stylesheets="@MaioriaStyle.css">
                             <font>
                                 <Font name="Century" size="13.0" />
                             </font>

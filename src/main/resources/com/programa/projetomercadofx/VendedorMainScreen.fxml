@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.VendedorMainController">
+<AnchorPane fx:id="root" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="700.0" styleClass="raiz" stylesheets="@MaioriaStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.VendedorMainController">
    <children>
     <AnchorPane layoutX="276.0" layoutY="25.0" minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="410.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="25.0">
          <children>
@@ -19,7 +19,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ChoiceBox>
-            <Button fx:id="btAdicionar" blendMode="DARKEN" layoutX="88.0" layoutY="262.0" mnemonicParsing="false" onAction="#onBtAdicionar" prefHeight="32.0" prefWidth="70.0">
+            <Button fx:id="btAdicionar" blendMode="DARKEN" layoutX="47.0" layoutY="262.0" mnemonicParsing="false" onAction="#onBtAdicionar" prefHeight="32.0" prefWidth="91.0" styleClass="adicionar" stylesheets="@MaioriaStyle.css">
                <font>
                   <Font name="Century" size="12.0" />
                </font>
@@ -42,7 +42,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ComboBox>
-            <Button fx:id="btFinalizar" blendMode="DARKEN" layoutX="180.0" layoutY="262.0" mnemonicParsing="false" onAction="#onBtFinalizar" prefHeight="32.0" prefWidth="70.0">
+            <Button fx:id="btFinalizar" blendMode="DARKEN" layoutX="156.0" layoutY="262.0" mnemonicParsing="false" onAction="#onBtFinalizar" prefHeight="32.0" prefWidth="99.0" styleClass="finalizar" stylesheets="@MaioriaStyle.css">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -52,7 +52,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </TextField>
-            <Button fx:id="btConfirmarVenda" blendMode="DARKEN" layoutX="268.0" layoutY="262.0" mnemonicParsing="false" onAction="#onBtConfirmarVenda" prefHeight="32.0" prefWidth="115.0">
+            <Button fx:id="btConfirmarVenda" blendMode="DARKEN" layoutX="269.0" layoutY="262.0" mnemonicParsing="false" onAction="#onBtConfirmarVenda" prefHeight="32.0" prefWidth="115.0" styleClass="confirmarVenda" stylesheets="@MaioriaStyle.css">
                <font>
                   <Font name="Century" size="12.0" />
                </font>
@@ -62,8 +62,8 @@
             </Button>
          </children>
       </AnchorPane>
-      <ListView fx:id="lvProdutosAdicionados" layoutX="14.0" layoutY="163.0" prefHeight="137.0" prefWidth="244.0" />
-      <Button fx:id="btVoltar" blendMode="DARKEN" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="32.0" prefWidth="59.0">
+      <ListView fx:id="lvProdutosAdicionados" layoutX="14.0" layoutY="143.0" prefHeight="137.0" prefWidth="244.0" />
+      <Button fx:id="btVoltar" blendMode="DARKEN" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="32.0" prefWidth="82.0" styleClass="voltar" stylesheets="@MaioriaStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

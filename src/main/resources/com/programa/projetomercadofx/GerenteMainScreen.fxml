@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.GerenteMainController">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="720.0" styleClass="raiz" stylesheets="@MaioriaStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.GerenteMainController">
    <children>
     <AnchorPane layoutX="344.0" layoutY="1.0" minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="376.0">
          <children>
-            <Button fx:id="btVerFinanceiro" alignment="CENTER" blendMode="DARKEN" layoutX="82.0" layoutY="89.0" mnemonicParsing="false" onAction="#switchToFinanceiroMainScreen" prefHeight="50.0" prefWidth="180.0" textAlignment="CENTER">
+            <Button fx:id="btVerFinanceiro" alignment="CENTER" blendMode="DARKEN" layoutX="130.0" layoutY="91.0" mnemonicParsing="false" onAction="#switchToFinanceiroMainScreen" prefHeight="50.0" prefWidth="158.0" styleClass="financeiro" stylesheets="@MaioriaStyle.css" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -17,7 +17,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btCriarProduto" alignment="CENTER" blendMode="DARKEN" contentDisplay="CENTER" layoutX="82.0" layoutY="171.0" mnemonicParsing="false" onAction="#switchToGerenteAddProdutoScrenn" prefHeight="50.0" prefWidth="180.0" textAlignment="CENTER">
+            <Button fx:id="btCriarProduto" alignment="CENTER" blendMode="DARKEN" contentDisplay="CENTER" layoutX="126.0" layoutY="155.0" mnemonicParsing="false" onAction="#switchToGerenteAddProdutoScrenn" prefHeight="50.0" prefWidth="167.0" styleClass="adicionar" stylesheets="@MaioriaStyle.css" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -25,7 +25,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btVerEstoque" alignment="CENTER" blendMode="DARKEN" layoutX="82.0" layoutY="257.0" mnemonicParsing="false" onAction="#switchToEstoqueMainScreen" prefHeight="43.0" prefWidth="180.0" textAlignment="CENTER">
+            <Button fx:id="btVerEstoque" alignment="CENTER" blendMode="DARKEN" layoutX="131.0" layoutY="214.0" mnemonicParsing="false" onAction="#switchToEstoqueMainScreen" prefHeight="41.0" prefWidth="158.0" styleClass="estoque" stylesheets="@MaioriaStyle.css" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -36,7 +36,7 @@
             <Button fx:id="btInfo" blendMode="DARKEN" layoutX="300.0" layoutY="33.0" mnemonicParsing="false" onAction="#onBtInfo" prefHeight="31.0" prefWidth="32.0" />
          </children>
       </AnchorPane>
-      <Button fx:id="btVoltar" blendMode="DARKEN" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToEntrarScrenn" prefHeight="25.0" prefWidth="50.0">
+      <Button fx:id="btVoltar" blendMode="DARKEN" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToEntrarScrenn" prefHeight="41.0" prefWidth="158.0" styleClass="voltar" stylesheets="@MaioriaStyle.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
