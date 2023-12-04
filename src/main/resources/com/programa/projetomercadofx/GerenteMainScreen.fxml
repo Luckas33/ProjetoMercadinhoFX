@@ -24,7 +24,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <font>
-                              <Font name="Berlin Sans FB" size="25.0" />
+                              <Font name="Futura Md BT Bold" size="25.0" />
                            </font>
                            <VBox.margin>
                               <Insets top="10.0" />
@@ -35,7 +35,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <font>
-                              <Font name="Berlin Sans FB" size="25.0" />
+                              <Font name="Futura Md BT Bold" size="25.0" />
                            </font>
                            <VBox.margin>
                               <Insets top="10.0" />
@@ -46,7 +46,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <font>
-                              <Font name="Berlin Sans FB" size="25.0" />
+                              <Font name="Futura Md BT Bold" size="25.0" />
                            </font>
                            <VBox.margin>
                               <Insets top="10.0" />

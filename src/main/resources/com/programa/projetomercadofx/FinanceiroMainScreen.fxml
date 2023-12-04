@@ -18,9 +18,9 @@
          <right>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="664.0" prefWidth="571.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="230.0" layoutY="45.0" text="Financeiro" textFill="#fff200" underline="true">
+                  <Label layoutX="220.0" layoutY="58.0" text="Financeiro" textFill="#fff200" underline="true">
                      <font>
-                        <Font name="Berlin Sans FB" size="25.0" />
+                        <Font name="Futura Md BT Bold" size="25.0" />
                      </font>
                   </Label>
                   <ChoiceBox fx:id="choiceBoxEscolhaCaixa" disable="true" layoutX="414.0" layoutY="433.0" prefHeight="33.0" prefWidth="115.0" />
@@ -45,7 +45,7 @@
                               <Insets top="20.0" />
                            </VBox.margin>
                            <font>
-                              <Font name="Berlin Sans FB" size="18.0" />
+                              <Font name="Futura Md BT Bold" size="18.0" />
                            </font>
                         </Button>
                         <Button fx:id="btMudarTaxa" mnemonicParsing="false" onAction="#onBtMudarTaxa" prefHeight="47.0" prefWidth="160.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Mudar Taxa">
@@ -53,20 +53,20 @@
                               <Insets top="20.0" />
                            </VBox.margin>
                            <font>
-                              <Font name="Berlin Sans FB" size="18.0" />
+                              <Font name="Futura Md BT Bold" size="18.0" />
                            </font>
                         </Button>
                         <Button fx:id="btComprarProduto" mnemonicParsing="false" onAction="#onBtComprarProduto" prefHeight="47.0" prefWidth="160.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Comprar Produto">
                            <font>
-                              <Font name="Berlin Sans FB" size="18.0" />
+                              <Font name="Futura Md BT Bold" size="15.0" />
                            </font>
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="btRemoverProduto" mnemonicParsing="false" onAction="#onBtRemoverProduto" prefHeight="47.0" prefWidth="160.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Remover Produto">
+                        <Button fx:id="btRemoverProduto" mnemonicParsing="false" onAction="#onBtRemoverProduto" prefHeight="47.0" prefWidth="161.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Remover Produto">
                            <font>
-                              <Font name="Berlin Sans FB" size="18.0" />
+                              <Font name="Futura Md BT Bold" size="15.0" />
                            </font>
                            <VBox.margin>
                               <Insets top="20.0" />
@@ -77,7 +77,7 @@
                               <Insets top="20.0" />
                            </VBox.margin>
                            <font>
-                              <Font name="Berlin Sans FB" size="18.0" />
+                              <Font name="Futura Md BT Bold" size="18.0" />
                            </font>
                         </Button>
                      </children>
@@ -200,21 +200,21 @@
                   </Pane>
                   <Pane layoutX="94.0" layoutY="70.0" prefHeight="100.0" prefWidth="238.0">
                      <children>
-                        <Label layoutX="1.0" layoutY="14.0" text="Mercadinho Inteligente">
+                        <Label layoutX="-29.0" layoutY="14.0" text="Mercadinho Inteligente">
                            <font>
-                              <Font name="Berlin Sans FB" size="25.0" />
+                              <Font name="Futura Md BT Bold" size="25.0" />
                            </font>
                         </Label>
-                        <Label layoutX="69.0" layoutY="43.0" text="Menu Financeiro">
+                        <Label layoutX="39.0" layoutY="44.0" text="Menu Financeiro">
                            <font>
-                              <Font name="Berlin Sans FB" size="15.0" />
+                              <Font name="Futura Md BT Bold" size="19.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
                   <Button layoutX="286.0" layoutY="471.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: transparent;" styleClass="botaoInicio" stylesheets="@MaioriaStyle.css" text="Limpar" textFill="#fff200">
                      <font>
-                        <Font name="Berlin Sans FB" size="16.0" />
+                        <Font name="Futura Md BT Bold" size="16.0" />
                      </font></Button>
                </children>
             </AnchorPane>

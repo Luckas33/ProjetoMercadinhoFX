@@ -33,7 +33,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <font>
-                        <Font name="Berlin Sans FB" size="16.0" />
+                        <Font name="Futura Md BT Bold" size="16.0" />
                      </font>
                   </Button>
                   <Button fx:id="btLimpar" layoutX="279.0" layoutY="320.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="35.0" prefWidth="116.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Confirmar">
@@ -41,7 +41,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <font>
-                        <Font name="Berlin Sans FB" size="16.0" />
+                        <Font name="Futura Md BT Bold" size="16.0" />
                      </font>
                   </Button>
                   <VBox disable="true" layoutX="32.0" layoutY="74.0" prefHeight="200.0" prefWidth="100.0" visible="false">
@@ -105,9 +105,9 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label layoutX="84.0" layoutY="31.0" text="Tipo conta:">
+                  <Label layoutX="79.0" layoutY="34.0" text="Tipo conta:">
                      <font>
-                        <Font name="Berlin Sans FB" size="19.0" />
+                        <Font name="Futura Md BT Bold" size="19.0" />
                      </font>
                   </Label>
                   <Label layoutX="87.0" layoutY="626.0" text="Ja tem conta?">
@@ -117,22 +117,22 @@
                   </Label>
                   <Label layoutX="84.0" layoutY="88.0" prefHeight="19.0" prefWidth="79.0" text="Nome:">
                      <font>
-                        <Font name="Berlin Sans FB" size="19.0" />
+                        <Font name="Futura Md BT Bold" size="19.0" />
                      </font>
                   </Label>
                   <Label layoutX="84.0" layoutY="149.0" prefHeight="19.0" prefWidth="79.0" text="Login:">
                      <font>
-                        <Font name="Berlin Sans FB" size="19.0" />
+                        <Font name="Futura Md BT Bold" size="19.0" />
                      </font>
                   </Label>
                   <Label layoutX="84.0" layoutY="202.0" prefHeight="19.0" prefWidth="79.0" text="Email:">
                      <font>
-                        <Font name="Berlin Sans FB" size="19.0" />
+                        <Font name="Futura Md BT Bold" size="19.0" />
                      </font>
                   </Label>
                   <Label layoutX="84.0" layoutY="267.0" prefHeight="19.0" prefWidth="79.0" text="Senha:">
                      <font>
-                        <Font name="Berlin Sans FB" size="19.0" />
+                        <Font name="Futura Md BT Bold" size="19.0" />
                      </font>
                   </Label>
                </children>
@@ -141,14 +141,14 @@
          <left>
             <Pane prefHeight="685.0" prefWidth="521.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="69.0" layoutY="95.0" prefHeight="29.0" prefWidth="285.0" text="Mercadinho Inteligente">
+                  <Label layoutX="69.0" layoutY="95.0" prefHeight="31.0" prefWidth="327.0" text="Mercadinho Inteligente">
                      <font>
-                        <Font name="Berlin Sans FB" size="26.0" />
+                        <Font name="Futura Md BT Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label layoutX="151.0" layoutY="125.0" text="Tela de cadastro">
+                  <Label layoutX="124.0" layoutY="126.0" text="Tela de cadastro">
                      <font>
-                        <Font name="Berlin Sans FB" size="16.0" />
+                        <Font name="Futura Md BT Bold" size="26.0" />
                      </font>
                   </Label>
                </children>
