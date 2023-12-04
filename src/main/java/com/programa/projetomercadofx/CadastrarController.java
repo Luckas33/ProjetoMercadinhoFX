@@ -156,9 +156,6 @@ public class CadastrarController {
     }
 
 //////////Métodos complementares //////////
-    public void onClickAjuda(MouseEvent event){
-        Alerts.showAlert("Ajuda",null,"Bem-vindo a tela de cadastro, aqui você Criar sua conta de tipo Gerente ou de tipo Vendedor, preencha todas as informações e aperte em confirmar", Alert.AlertType.INFORMATION);
-    }
     @FXML
     public void initialize() {
         choiceBoxFuncionarios.getItems().addAll("Gerente", "Vendedor"); //Adicionando opções ao choicebox

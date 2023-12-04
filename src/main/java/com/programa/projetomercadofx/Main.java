@@ -24,7 +24,6 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
     public static void main(String[] args) {
         IEstoque estoque = new Estoque();
         IRegistro registro = new Registro();

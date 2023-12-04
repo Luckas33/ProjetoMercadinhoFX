@@ -30,10 +30,15 @@ public class MainController {
 
 
     public void switchToEntrarScreen(ActionEvent event) throws IOException {
+        // Carregar FXML da Entrar
         Parent tela1 = FXMLLoader.load(getClass().getResource("EntrarScreen.fxml"));
+        // Obter a cena atual
         Scene cenaAtual = root.getScene();
+        // Criar uma nova cena
         Scene cenaTela1 = new Scene(tela1, cenaAtual.getWidth(), cenaAtual.getHeight());
+        // Obter o palco (Stage) atual
         Stage palco = (Stage) cenaAtual.getWindow();
+        // Definir a nova cena no palco
         palco.setScene(cenaTela1);
     }
 

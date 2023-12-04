@@ -52,8 +52,6 @@ public class GerenteAddProdutoController {
     private TextField tfQuantidade;
     @FXML
     private TextField tfTaxaVenda;
-    @FXML
-    private Button btInfo;
 
     public void switchToGerenteMainScrenn(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("GerenteMainScreen.fxml"));
@@ -171,9 +169,7 @@ public class GerenteAddProdutoController {
         }
     }
 
-    public void onBtInfo(){
-        Alerts.showAlert("Informação",null,"Aqui você pode adicionar produtos novos em seu estoque", Alert.AlertType.INFORMATION);
-    }
+
     public void onBtLimpar(ActionEvent e){
         tfNome.setText(null);
         tfID.setText(null);

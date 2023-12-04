@@ -17,7 +17,7 @@
                <children>
                         <Button fx:id="btEntrar" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: transparent;" styleClass="botaoInicio" stylesheets="@MaioriaStyle.css" text="Entrar Conta" textFill="#fff200">
                             <font>
-                                <Font name="Berlin Sans FB" size="22.0" />
+                                <Font name="Futura Md BT Bold" size="22.0" />
                             </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -28,7 +28,7 @@
                   </Button>
                         <Button fx:id="btCadastrar" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#switchToCadastrarScreen" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: transparent;" styleClass="botaoInicio" stylesheets="@MaioriaStyle.css" text="Cadastrar Conta" textFill="#fff200">
                             <font>
-                                <Font name="Berlin Sans FB" size="18.0" />
+                                <Font name="Futura Md BT Bold" size="18.0" />
                             </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -39,7 +39,7 @@
                   </Button>
                         <Button fx:id="btCodigoFonte" cache="true" mnemonicParsing="false" onAction="#onbtCreditos" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: transparent;" styleClass="botaoInicio" stylesheets="@MaioriaStyle.css" text="Créditos" textFill="#fff200">
                             <font>
-                                <Font name="Berlin Sans FB" size="22.0" />
+                                <Font name="Futura Md BT Bold" size="22.0" />
                             </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />

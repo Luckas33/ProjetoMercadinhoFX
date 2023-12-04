@@ -26,8 +26,6 @@ public class EntrarController {
     @FXML
     private Button btVoltar;
     @FXML
-    private Button btInfo;
-    @FXML
     private ChoiceBox<String> choiceBoxTipoFuncionario;
     @FXML
     private Parent root;
@@ -116,9 +114,6 @@ public class EntrarController {
 
     }
 
-    public void onClickAjuda(ActionEvent event){
-        Alerts.showAlert("Ajuda",null,"Bem-vindo a tela de Entrar, aqui você pode inserir seus dados de login e senha para poder ter acesso a todos as funções do programa", Alert.AlertType.INFORMATION);
-    }
     @FXML
     public void initialize(){
         choiceBoxTipoFuncionario.getItems().addAll("Gerente", "Vendedor");

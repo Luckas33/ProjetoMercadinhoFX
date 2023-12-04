@@ -28,7 +28,7 @@
                   <TextField fx:id="tfLogin" layoutX="189.0" layoutY="146.0" promptText="Ex.Lucas33" />
                   <TextField fx:id="tfEmail" layoutX="189.0" layoutY="199.0" promptText="Ex.seuemail@email.com" />
                   <PasswordField fx:id="tfSenha" layoutX="189.0" layoutY="264.0" promptText="Ex.12345" />
-                  <Button fx:id="btConfirmar" layoutX="64.0" layoutY="320.0" mnemonicParsing="false" onAction="#onBtConfirmar" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Limpar" textAlignment="CENTER">
+                  <Button fx:id="btConfirmar" layoutX="234.0" layoutY="325.0" mnemonicParsing="false" onAction="#onBtConfirmar" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Confirmar" textAlignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -36,7 +36,7 @@
                         <Font name="Futura Md BT Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btLimpar" layoutX="279.0" layoutY="320.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="35.0" prefWidth="116.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Confirmar">
+                  <Button fx:id="btLimpar" layoutX="87.0" layoutY="325.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Limpar">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -97,9 +97,9 @@
                         </Label>
                      </children>
                   </VBox>
-                  <Button fx:id="btEntrar" layoutX="192.0" layoutY="623.0" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="21.0" prefWidth="69.0" style="-fx-background-color: transparent;" styleClass="entrar" stylesheets="@MaioriaStyle.css">
+                  <Button fx:id="btEntrar" layoutX="192.0" layoutY="623.0" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="21.0" prefWidth="69.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Cadastrar">
                      <font>
-                        <Font size="10.0" />
+                        <Font name="Futura Md BT Bold" size="10.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -112,7 +112,7 @@
                   </Label>
                   <Label layoutX="87.0" layoutY="626.0" text="Ja tem conta?">
                      <font>
-                        <Font name="Berlin Sans FB" size="12.0" />
+                        <Font name="Futura Md BT Bold" size="12.0" />
                      </font>
                   </Label>
                   <Label layoutX="84.0" layoutY="88.0" prefHeight="19.0" prefWidth="79.0" text="Nome:">

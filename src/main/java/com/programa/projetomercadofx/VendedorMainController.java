@@ -80,10 +80,10 @@ public class VendedorMainController {
                         e.printStackTrace();
                         Alerts.showAlert("Erro Venda", null, "Quantidade Inválida", Alert.AlertType.ERROR);
                     }
-                    this.carrinho.add(produto);
-                    this.vendas.add(produtoHist);
+                    this.carrinho.add(produto); //Para a vender
+                    this.vendas.add(produtoHist); //Para a listView
                     atualizarSubtotal();
-                    lvProdutosAdicionados.getItems().setAll(vendas);
+                    lvProdutosAdicionados.getItems().setAll(vendas); // adiciona ao listview
                       }
                     else{
                         Alerts.showAlert("Erro Venda", null, "Quantidade insuficiente no estoque.", Alert.AlertType.ERROR);
