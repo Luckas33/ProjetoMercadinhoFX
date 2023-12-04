@@ -19,7 +19,7 @@
          <right>
           <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="685.0" prefWidth="541.0" BorderPane.alignment="BOTTOM_RIGHT">
                <children>
-                  <ChoiceBox fx:id="choiceBoxFuncionarios" layoutX="188.0" layoutY="26.0" prefWidth="150.0">
+                  <ChoiceBox fx:id="choiceBoxFuncionarios" layoutX="189.0" layoutY="33.0" prefWidth="150.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -28,7 +28,7 @@
                   <TextField fx:id="tfLogin" layoutX="189.0" layoutY="146.0" promptText="Ex.Lucas33" />
                   <TextField fx:id="tfEmail" layoutX="189.0" layoutY="199.0" promptText="Ex.seuemail@email.com" />
                   <PasswordField fx:id="tfSenha" layoutX="189.0" layoutY="264.0" promptText="Ex.12345" />
-                  <Button fx:id="btConfirmar" layoutX="64.0" layoutY="320.0" mnemonicParsing="false" onAction="#onBtConfirmar" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Limpar" textAlignment="CENTER">
+                  <Button fx:id="btConfirmar" layoutX="64.0" layoutY="320.0" mnemonicParsing="false" onAction="#onBtConfirmar" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Limpar" textAlignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -36,7 +36,7 @@
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btLimpar" layoutX="279.0" layoutY="320.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Confirmar">
+                  <Button fx:id="btLimpar" layoutX="279.0" layoutY="320.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="35.0" prefWidth="116.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Confirmar">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

@@ -17,7 +17,6 @@
          <top>
             <AnchorPane prefHeight="118.0" prefWidth="722.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="950.0" layoutY="14.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="108.0" style="-fx-background-color: transparent;" styleClass="InterrogacaoEscura" stylesheets="@MaioriaStyle.css" />
                   <Button fx:id="btInserirTipo" layoutX="174.0" layoutY="61.0" mnemonicParsing="false" onAction="#onBtInserirTipo" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMaisEscuro" stylesheets="@MaioriaStyle.css" text="Inserir Tipo">
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
@@ -43,7 +42,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <TextField fx:id="tfInserirTipo" layoutX="335.0" layoutY="65.0" />
+                  <TextField fx:id="tfInserirTipo" layoutX="335.0" layoutY="65.0" promptText="Ex.Bebida" />
                </children>
             </AnchorPane>
          </top>
