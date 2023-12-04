@@ -42,6 +42,12 @@ public class FinanceiroBalancoController {
     private Button btOKData;
     @FXML
     private Button btInfo;
+    @FXML
+    private Label lbBalanco;
+    @FXML
+    private Label lbEntrada;
+    @FXML
+    private Label lbSaida;
     private Vector<ProdutoHistorico> registroMostrar;
     private ObservableList<ProdutoHistorico> produtosObservableList = FXCollections.observableArrayList();
 
@@ -84,20 +90,39 @@ public class FinanceiroBalancoController {
                 for(ProdutoHistorico produto : registroMostrar){
                     if(produto.getData().equals(data)){
                         produtosObservableList.add(produto);
+                        atualizaBalanco();
                     }
 
                 }
+
             }
         }
         listViewBalanco.getItems().setAll(produtosObservableList);
     }
-    public void onClickAjuda(ActionEvent event){
-        Alerts.showAlert("Ajuda",null,"Aqui você pode ver todas as suas entradas e sáidas de produtos", Alert.AlertType.INFORMATION);
-    }
 
+    public void atualizaBalanco(){
+        double balancoFinal = 0.0;
+        double entrada = 0.0;
+        double saida = 0.0;
+
+        for(ProdutoHistorico produto : produtosObservableList){
+            if(produto.getForma().equals("Venda")){
+                entrada += produto.getPreco();
+            }
+            else if(produto.getForma().equals("Compra")){
+                saida += produto.getPreco();
+            }
+            balancoFinal = entrada - saida;
+
+            lbBalanco.setText("$" + String.valueOf(balancoFinal));
+            lbEntrada.setText("$" + String.valueOf(entrada));
+            lbSaida.setText("$" + String.valueOf(saida));
+        }
+    }
 ///////////////// Métodos Complementares ///////////////
 
     public void initialize (){
+
         btOKData.setDisable(true);
 
         registroMostrar = new Vector<>();

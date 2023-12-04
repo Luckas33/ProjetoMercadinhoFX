@@ -2,10 +2,14 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1080.0" styleClass="backgroundEstoqueBalanco" stylesheets="@MaioriaStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.FinanceiroBalancoController">
@@ -47,7 +51,49 @@
                         <Font name="Berlin Sans FB" size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btInfo" blendMode="DARKEN" layoutX="463.0" layoutY="8.0" mnemonicParsing="false" onAction="#onClickAjuda" prefHeight="28.0" prefWidth="32.0" />
+                  <GridPane layoutX="886.0" layoutY="7.0" prefHeight="90.0" prefWidth="137.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="63.0" minWidth="10.0" prefWidth="57.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="80.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Entrou:" textFill="#00ff16">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbEntrada" prefHeight="17.0" prefWidth="65.0" textFill="#00ff16" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="17.0" prefWidth="45.0" text="Saiu:" textFill="RED" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbSaida" prefHeight="17.0" prefWidth="70.0" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="15.0" prefWidth="44.0" text="Total:" textFill="WHITE" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbBalanco" prefHeight="17.0" prefWidth="61.0" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
                </children>
             </AnchorPane>
          </top>

@@ -198,22 +198,21 @@ public class FinanceiroMainController {
     }
 
     public void onBtConfirmarCaixaSaque(ActionEvent e){
-        try{
             double valor = Double.parseDouble(tfValorSaque.getText());
 
             for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
                 if(funcionario instanceof Gerente){
-                    ((Gerente) funcionario).removerSaldo(valor);
-                    ((Gerente) funcionario).conferirSaldo();
-                    Alerts.showAlert("Saque",null,"Saque concluído",Alert.AlertType.INFORMATION);
-                    atualizarSaldoTotal();
+                    if(valor > 0) {
+                        ((Gerente) funcionario).removerSaldo(valor);
+                        ((Gerente) funcionario).conferirSaldo();
+                        Alerts.showAlert("Saque", null, "Saque concluído", Alert.AlertType.INFORMATION);
+                        atualizarSaldoTotal();
+                    }else{
+                        Alerts.showAlert("Erro", null, "Insira valor válido", Alert.AlertType.ERROR);
+                    }
                     break;
                 }
             }
-        }catch (Exception exception){
-            exception.printStackTrace();
-            Alerts.showAlert("Erro", null, "Insira valor válido", Alert.AlertType.ERROR);
-        }
     }
 
     public void onBtConfirmarTaxa(ActionEvent e){
@@ -245,7 +244,6 @@ public class FinanceiroMainController {
                     Alerts.showAlert("Compra",null,"Produto comprado com sucesso",Alert.AlertType.INFORMATION);
                     onBtLimpar(event);
                     atualizarSaldoTotal();
-
                 }catch(SIException e){
                     e.printStackTrace();
                     Alerts.showAlert("Erro Compra",null,"Saldo insuficiente",Alert.AlertType.INFORMATION);
@@ -262,7 +260,6 @@ public class FinanceiroMainController {
                 break;
             }
         }
-
     }
 
     public void onBtConfirmarRemoverProduto(ActionEvent event){

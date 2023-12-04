@@ -133,11 +133,11 @@
                         </Label>
                      </children>
                   </VBox>
-                  <HBox layoutX="21.0" layoutY="418.0" prefHeight="76.0" prefWidth="526.0">
+                  <HBox layoutX="81.0" layoutY="399.0" prefHeight="76.0" prefWidth="486.0">
                      <children>
-                        <Button fx:id="btAdicionar" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#onBtAdicionar" prefHeight="50.0" prefWidth="227.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Adicionar">
+                        <Button fx:id="btAdicionar" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#onBtAdicionar" prefHeight="42.0" prefWidth="144.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Adicionar">
                            <font>
-                              <Font name="Futura Md BT Bold" size="14.0" />
+                              <Font name="Futura Md BT Bold" size="12.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -146,7 +146,7 @@
                               <Insets left="10.0" right="10.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="btFinalizar" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#onBtFinalizar" prefHeight="50.0" prefWidth="213.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Finalizar">
+                        <Button fx:id="btFinalizar" blendMode="SRC_ATOP" mnemonicParsing="false" onAction="#onBtFinalizar" prefHeight="41.0" prefWidth="143.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Finalizar">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -157,12 +157,12 @@
                               <Insets left="20.0" right="20.0" />
                            </HBox.margin>
                            <font>
-                              <Font name="Futura Md BT Bold" size="14.0" />
+                              <Font name="Futura Md BT Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btConfirmarVenda" mnemonicParsing="false" onAction="#onBtConfirmarVenda" prefHeight="50.0" prefWidth="216.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Confirmar venda">
+                        <Button fx:id="btConfirmarVenda" mnemonicParsing="false" onAction="#onBtConfirmarVenda" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Confirmar venda">
                            <font>
-                              <Font name="Futura Md BT Bold" size="14.0" />
+                              <Font name="Futura Md BT Bold" size="12.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -173,6 +173,11 @@
                         </Button>
                      </children>
                   </HBox>
+                  <Label layoutX="136.0" layoutY="41.0" text="Preencha as informações corretamente">
+                     <font>
+                        <Font name="Futura Md BT Bold" size="19.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </right>
@@ -180,7 +185,7 @@
             <Pane prefHeight="657.0" prefWidth="440.0" BorderPane.alignment="CENTER">
                <children>
                   <ListView fx:id="lvProdutosAdicionados" layoutX="22.0" layoutY="161.0" prefHeight="333.0" prefWidth="389.0" />
-                  <Label fx:id="lbSubtotal" layoutX="107.0" layoutY="519.0" prefHeight="17.0" prefWidth="70.0">
+                  <Label fx:id="lbSubtotal" layoutX="116.0" layoutY="516.0" prefHeight="17.0" prefWidth="70.0" textFill="WHITE">
                      <font>
                         <Font name="Berlin Sans FB" size="16.0" />
                      </font></Label>
@@ -189,16 +194,26 @@
                         <Font name="Futura Md BT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <Label layoutX="106.0" layoutY="136.0" text="Produtos adicionados">
+                  <Label layoutX="133.0" layoutY="141.0" text="Produtos adicionados">
                      <font>
-                        <Font name="Futura Md BT Bold" size="21.0" />
+                        <Font name="Futura Md BT Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="90.0" layoutY="55.0" text="Mercadinho Inteligente">
+                     <font>
+                        <Font name="Futura Md BT Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="143.0" layoutY="81.0" text="Venda de produtos">
+                     <font>
+                        <Font name="Futura Md BT Bold" size="16.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
          </left>
          <top>
-            <Button fx:id="btVoltar" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: trasnparent;" styleClass="voltar" stylesheets="@MaioriaStyle.css" BorderPane.alignment="CENTER_LEFT">
+            <Button fx:id="btVoltar" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: trasnparent;" styleClass="voltar" stylesheets="@MaioriaStyle.css" BorderPane.alignment="CENTER_LEFT">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

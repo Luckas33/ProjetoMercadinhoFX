@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import registros.IRegistro;
 import registros.Registro;
+import usuarios.Gerente;
 
 
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class Main extends Application {
         ListaEstoque listaEstoque = new ListaEstoque();
         ListaEstoque.estoqueVector.add(estoque);
         ListaEstoque.registroVector.add(registro);
-
+        ListaEstoque.estoqueVector.removeAllElements();
         launch();
 
 

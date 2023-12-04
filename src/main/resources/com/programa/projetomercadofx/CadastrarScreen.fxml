@@ -9,135 +9,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="720.0" prefWidth="1080.0" styleClass="backgroundGeneric" stylesheets="@MaioriaStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.programa.projetomercadofx.CadastrarController">
    <children>
       <BorderPane prefHeight="717.0" prefWidth="1083.0">
-         <right>
-          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="685.0" prefWidth="541.0" BorderPane.alignment="BOTTOM_RIGHT">
-               <children>
-                  <ChoiceBox fx:id="choiceBoxFuncionarios" layoutX="189.0" layoutY="33.0" prefWidth="150.0">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ChoiceBox>
-                  <TextField fx:id="tfNome" layoutX="189.0" layoutY="85.0" promptText="Ex.Lucas" />
-                  <TextField fx:id="tfLogin" layoutX="189.0" layoutY="146.0" promptText="Ex.Lucas33" />
-                  <TextField fx:id="tfEmail" layoutX="189.0" layoutY="199.0" promptText="Ex.seuemail@email.com" />
-                  <PasswordField fx:id="tfSenha" layoutX="189.0" layoutY="264.0" promptText="Ex.12345" />
-                  <Button fx:id="btConfirmar" layoutX="234.0" layoutY="325.0" mnemonicParsing="false" onAction="#onBtConfirmar" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Confirmar" textAlignment="CENTER">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="Futura Md BT Bold" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btLimpar" layoutX="87.0" layoutY="325.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Limpar">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="Futura Md BT Bold" size="16.0" />
-                     </font>
-                  </Button>
-                  <VBox disable="true" layoutX="32.0" layoutY="74.0" prefHeight="200.0" prefWidth="100.0" visible="false">
-                     <children>
-                        <Label prefHeight="25.0" prefWidth="99.0" text="Tipo Conta:" textAlignment="CENTER">
-                           <font>
-                              <Font name="Century" size="16.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="20.0" top="5.0" />
-                           </padding>
-                        </Label>
-                        <Label prefHeight="25.0" prefWidth="87.0" text="Nome:">
-                           <font>
-                              <Font name="Century" size="16.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="20.0" top="5.0" />
-                           </padding>
-                        </Label>
-                        <Label prefHeight="25.0" prefWidth="93.0" text="Login:">
-                           <font>
-                              <Font name="Century" size="16.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="20.0" top="5.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Label>
-                        <Label prefHeight="25.0" prefWidth="82.0" text="Email:">
-                           <font>
-                              <Font name="Century" size="16.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="20.0" top="5.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Label>
-                        <Label prefHeight="25.0" prefWidth="82.0" text="Senha:">
-                           <font>
-                              <Font name="Century" size="16.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="20.0" top="5.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <Button fx:id="btEntrar" layoutX="192.0" layoutY="623.0" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="21.0" prefWidth="69.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Cadastrar">
-                     <font>
-                        <Font name="Futura Md BT Bold" size="10.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Label layoutX="79.0" layoutY="34.0" text="Tipo conta:">
-                     <font>
-                        <Font name="Futura Md BT Bold" size="19.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="87.0" layoutY="626.0" text="Ja tem conta?">
-                     <font>
-                        <Font name="Futura Md BT Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="84.0" layoutY="88.0" prefHeight="19.0" prefWidth="79.0" text="Nome:">
-                     <font>
-                        <Font name="Futura Md BT Bold" size="19.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="84.0" layoutY="149.0" prefHeight="19.0" prefWidth="79.0" text="Login:">
-                     <font>
-                        <Font name="Futura Md BT Bold" size="19.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="84.0" layoutY="202.0" prefHeight="19.0" prefWidth="79.0" text="Email:">
-                     <font>
-                        <Font name="Futura Md BT Bold" size="19.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="84.0" layoutY="267.0" prefHeight="19.0" prefWidth="79.0" text="Senha:">
-                     <font>
-                        <Font name="Futura Md BT Bold" size="19.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-         </right>
          <left>
             <Pane prefHeight="685.0" prefWidth="521.0" BorderPane.alignment="CENTER">
                <children>
@@ -146,9 +26,9 @@
                         <Font name="Futura Md BT Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label layoutX="124.0" layoutY="126.0" text="Tela de cadastro">
+                  <Label layoutX="144.0" layoutY="126.0" text="Tela de cadastro">
                      <font>
-                        <Font name="Futura Md BT Bold" size="26.0" />
+                        <Font name="Futura Md BT Bold" size="21.0" />
                      </font>
                   </Label>
                </children>
@@ -167,6 +47,90 @@
                </BorderPane.margin>
             </Button>
          </top>
+         <center>
+          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="685.0" prefWidth="541.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btConfirmar" layoutX="249.0" layoutY="325.0" mnemonicParsing="false" onAction="#onBtConfirmar" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Confirmar" textAlignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Futura Md BT Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btLimpar" layoutX="104.0" layoutY="325.0" mnemonicParsing="false" onAction="#onBtLimpar" prefHeight="35.0" prefWidth="113.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Limpar">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Futura Md BT Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btEntrar" layoutX="215.0" layoutY="625.0" mnemonicParsing="false" onAction="#switchToEntrarScreen" prefHeight="23.0" prefWidth="83.0" style="-fx-background-color: transparent;" styleClass="botaoClaroFundoMenosEscuro" stylesheets="@MaioriaStyle.css" text="Cadastrar">
+                     <font>
+                        <Font name="Futura Md BT Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="87.0" layoutY="626.0" text="Ja tem conta?">
+                     <font>
+                        <Font name="Futura Md BT Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <GridPane layoutX="104.0" layoutY="87.0" prefHeight="223.0" prefWidth="260.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ChoiceBox fx:id="choiceBoxFuncionarios" prefHeight="25.0" prefWidth="251.0" GridPane.columnIndex="1">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ChoiceBox>
+                        <Label text="Tipo conta:">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfNome" prefHeight="25.0" prefWidth="183.0" promptText="Ex.Lucas" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label prefHeight="19.0" prefWidth="79.0" text="Nome:" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfLogin" prefHeight="25.0" prefWidth="159.0" promptText="Ex.Lucas33" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label prefHeight="19.0" prefWidth="79.0" text="Login:" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfEmail" promptText="Ex.seuemail@email.com" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label prefHeight="19.0" prefWidth="79.0" text="Email:" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="19.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="tfSenha" promptText="Ex.12345" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label prefHeight="19.0" prefWidth="79.0" text="Senha:" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Futura Md BT Bold" size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>
