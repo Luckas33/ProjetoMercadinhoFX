@@ -205,7 +205,7 @@ public class FinanceiroMainController {
                     if(valor > 0) {
                         ((Gerente) funcionario).removerSaldo(valor);
                         ((Gerente) funcionario).conferirSaldo();
-                        Alerts.showAlert("Saque", null, "Saque concluído", Alert.AlertType.INFORMATION);
+                        //Alerts.showAlert("Saque", null, "Saque concluído", Alert.AlertType.INFORMATION);
                         atualizarSaldoTotal();
                     }else{
                         Alerts.showAlert("Erro", null, "Insira valor válido", Alert.AlertType.ERROR);

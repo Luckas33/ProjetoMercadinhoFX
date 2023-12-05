@@ -1,7 +1,9 @@
 
 package usuarios;
 
+import com.programa.projetomercadofx.controllerUtil.Alerts;
 import estoques.IEstoque;
+import javafx.scene.control.Alert;
 import registros.IRegistro;
 import excecao.*;
 import produtos.Produto;
@@ -194,10 +196,12 @@ public class Gerente extends Funcionario {
     public void removerSaldo(double valor){
         try {
             this.estoque.definirSaldo(this.estoque.verSaldo() - valor);
+            Alerts.showAlert("Saque", null, "Saque concluído", Alert.AlertType.INFORMATION);
         }catch (SIException e){
             System.out.print(e.getMessage());
             System.out.print(" Saldo: ");
             System.out.print(valor);
+            Alerts.showAlert("Saque Erro", null, "Saque inválido", Alert.AlertType.INFORMATION);
         }
 
     }
