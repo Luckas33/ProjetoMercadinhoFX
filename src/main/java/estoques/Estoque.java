@@ -35,7 +35,7 @@ public class Estoque implements IEstoque {
         produto.detach(this);
     }
 
-    public void reattachObservers() {
+    private void reattachObservers() {
         for (Produto produto : estoque) {
             produto.attach(this);
         }
