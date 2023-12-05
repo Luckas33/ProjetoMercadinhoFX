@@ -74,6 +74,7 @@ public class ListaFuncionario {
     }
 
     public static boolean verificarGerenteExistente(String login){
+        desserializar();
         if(login == null || login.isEmpty()){
             return false;
         }
@@ -88,6 +89,7 @@ public class ListaFuncionario {
     }
 
     public static boolean verificarVendedorExistente(String login){
+        desserializar();
         if(login == null || login.isEmpty()){
             return false;
         }

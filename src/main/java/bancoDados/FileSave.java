@@ -39,7 +39,7 @@ public class FileSave {
 
             // Fechando canais de comunicação
             conversor.close();
-            conversor.close();
+            gravador.close();
 
             return true;
         } catch (Exception e) {
@@ -60,7 +60,7 @@ public class FileSave {
             // Criando um fluxo de saída, para definir o canal de comunicação com arquivo
             FileInputStream leitor = new FileInputStream(arquivo);
 
-            //Criando um fluxo para lançar um obj na memória para depois ir para o arquivo
+            //Criando um fluxo para lançar um obj do arquivo para a memória
             ObjectInputStream conversor = new ObjectInputStream(leitor);
 
             Object retorno = conversor.readObject();

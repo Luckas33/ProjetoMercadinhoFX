@@ -94,7 +94,12 @@ public class Estoque implements IEstoque {
             throw new QINException(quantidade);
     }
 
-    public void remove(Produto produto){
+    public void remove(Produto produto) throws PIException{
+        desserializar();
+        if(!this.existe(produto.getId())){ 
+            throw new PIException(produto.getId());
+        }
+
         this.estoque.remove(produto);
         detachProduto(produto);
         serializar();
