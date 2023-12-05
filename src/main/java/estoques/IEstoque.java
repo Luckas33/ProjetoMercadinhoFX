@@ -17,7 +17,7 @@ public interface IEstoque extends Observer{
     
     public Produto procurar(String id);
 
-    public void remove(Produto produto) throws PIException;
+    public void remove(Produto produto);
     
     public boolean existe(String id);
     
