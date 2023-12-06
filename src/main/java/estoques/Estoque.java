@@ -95,7 +95,6 @@ public class Estoque implements IEstoque {
     }
 
     public void remove(Produto produto){
-        desserializar();
         this.estoque.remove(produto);
         detachProduto(produto);
         serializar();

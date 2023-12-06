@@ -114,6 +114,7 @@ public abstract class Produto implements Serializable {
 
     public void setPrecoVenda(double preco_venda) {
         this.preco_venda = preco_venda;
+        notifyAllObservers();
     }
 
     public int getQuantidadeVendida() {
