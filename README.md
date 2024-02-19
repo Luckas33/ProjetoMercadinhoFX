@@ -25,3 +25,5 @@ O projeto visa aplicar os princípios da Programação Orientada a Objetos para 
 - Ferramenta de Controle de Versão: Git
 - Repositório: GitHub
 
+## Vídeo de Apresentação:
+https://www.youtube.com/watch?v=9S3yUE8W8G0&t=3121s
