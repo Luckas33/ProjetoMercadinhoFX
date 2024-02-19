@@ -1,4 +1,4 @@
-/*
+
 package testes;
 
 import bancoDados.FileSave;
@@ -22,7 +22,7 @@ public class testaAnderson {
         Funcionario gerente = new Gerente(registro, estoque, "rodrigo", "jrodri", "rodri@gmail","123");
         System.out.println(estoque.verSaldo());
 
-        //((Gerente) gerente).inserirSaldo(200.0);
+        ((Gerente) gerente).limparTudo();
 
         // System.out.println(estoque.verSaldo());
     }
@@ -69,6 +69,7 @@ public class testaAnderson {
 
         System.out.println(estoque.procurar("123").getTaxaLucro());
     }
+    /*
     public static void testeRegistro(){
         IEstoque estoque = new Estoque();
         IRegistro registro = new Registro();
@@ -102,7 +103,7 @@ public class testaAnderson {
 
         gerente.verBalancoTotal();
     }
-
+*/
     public static void testeEstoque(){
         IEstoque estoque = new Estoque();
         System.out.println("ESTOQUE INICIAL");
@@ -128,4 +129,4 @@ public class testaAnderson {
     }
 }
 
-*/
+

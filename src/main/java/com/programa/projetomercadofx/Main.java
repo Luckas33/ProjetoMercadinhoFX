@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import registros.IRegistro;
 import registros.Registro;
+import usuarios.Funcionario;
 import usuarios.Gerente;
 
 
@@ -33,6 +34,8 @@ public class Main extends Application {
         ListaEstoque.estoqueVector.add(estoque);
         ListaEstoque.registroVector.add(registro);
 
+        Funcionario gerentee = new Gerente(registro, estoque, "rodrigo", "jrodri", "rodri@gmail","123");
+        ((Gerente) gerentee).limparTudo();
         launch();
 
 
