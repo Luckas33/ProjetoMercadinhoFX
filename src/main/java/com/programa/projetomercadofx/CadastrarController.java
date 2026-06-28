@@ -18,8 +18,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import registros.IRegistro;
-import usuarios.Gerente;
-import usuarios.Vendedor;
+import usuarios.Funcionario;
+import usuarios.FuncionarioFactory;
 
 public class CadastrarController {
 //////// ID dos componentes ///////
@@ -86,8 +86,7 @@ public class CadastrarController {
             String senha = tfSenha.getText();
             String tipoFuncionario = choiceBoxFuncionarios.getValue();
 
-            Gerente gerenteObj;
-            Vendedor vendedorObj;
+            Funcionario funcionarioObj;
 
 
         if (tipoFuncionario != null) {
@@ -96,9 +95,9 @@ public class CadastrarController {
                             if(estoque != null) {
                                 for(IRegistro registro : ListaEstoque.registroVector) {
                                     if(registro != null) {
-                                        gerenteObj = new Gerente(registro, estoque, nome, login, email, senha);
+                                        funcionarioObj = FuncionarioFactory.criarFuncionario(tipoFuncionario, registro, estoque, nome, login, email, senha);
                                         try {
-                                           ListaFuncionario.cadastraFuncionario(gerenteObj); 
+                                           ListaFuncionario.cadastraFuncionario(funcionarioObj); 
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
@@ -114,9 +113,9 @@ public class CadastrarController {
                     if (estoque != null) {
                         for (IRegistro registro : ListaEstoque.registroVector) {
                             if (registro != null) {
-                                vendedorObj = new Vendedor(registro, estoque, nome, login, email, senha);
+                                funcionarioObj = FuncionarioFactory.criarFuncionario(tipoFuncionario, registro, estoque, nome, login, email, senha);
                                 try {
-                                    ListaFuncionario.cadastraFuncionario(vendedorObj); 
+                                    ListaFuncionario.cadastraFuncionario(funcionarioObj); 
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }

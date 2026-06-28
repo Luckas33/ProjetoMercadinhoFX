@@ -13,6 +13,7 @@ import registros.IRegistro;
 import registros.Registro;
 import usuarios.Funcionario;
 import usuarios.Gerente;
+import usuarios.FuncionarioFactory;
 
 
 import java.io.IOException;
@@ -34,8 +35,6 @@ public class Main extends Application {
         ListaEstoque.estoqueVector.add(estoque);
         ListaEstoque.registroVector.add(registro);
 
-        Funcionario gerentee = new Gerente(registro, estoque, "rodrigo", "jrodri", "rodri@gmail","123");
-        ((Gerente) gerentee).limparTudo();
         launch();
 
 
