@@ -68,7 +68,7 @@ public class VendedorMainController {
         }
 
         String id = tfidProduto.getText(); //ID produto
-        for (Funcionario funcionario : ListaFuncionario.funcionariosVector) {
+        for (Funcionario funcionario : ListaFuncionario.getInstance().getFuncionariosVector()) {
             if (funcionario instanceof Vendedor) {
                 Produto produto = ((Vendedor) funcionario).retornaProduto(id);
                 if (produto != null) {
@@ -128,7 +128,7 @@ public class VendedorMainController {
     public void onBtConfirmarVenda(ActionEvent event){  //Pega todos os produtos do carrinho e vende um por um com base no tipo de pagamento
         String tipoVenda = choiceBoxTipoVenda.getValue();
         if (!tipoVenda.isEmpty()){
-            for (Funcionario funcionario : ListaFuncionario.funcionariosVector) {
+            for (Funcionario funcionario : ListaFuncionario.getInstance().getFuncionariosVector()) {
                 if (funcionario instanceof  Vendedor) {
                     if (tipoVenda == "Débito"){
                         for (int i = 0; i < carrinho.size(); i++) {
@@ -265,13 +265,13 @@ public class VendedorMainController {
         comboboxParcelas.getItems().addAll("1", "2", "3", "4", "5");
         choiceBoxTipoVenda.setOnAction(this::onCbTipoVenda);
         choiceBoxTipoVenda.setOnMouseClicked(this::onCbTipoVenda);
-        /////////Configurando o estado dos componentes //////////
+        ///////// Configurando o estado dos componentes //////////
         btFinalizar.setDisable(true);
         comboboxParcelas.setDisable(true);
         tfValorPago.setDisable(true);
         btConfirmarVenda.setDisable(false);
 
-        /////////////Configurando vetores e a listView////////////
+        ///////////// Configurando vetores e a listView////////////
         vendas = new Vector<>();
         carrinho = new Vector<>();
 

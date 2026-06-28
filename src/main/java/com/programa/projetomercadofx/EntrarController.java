@@ -1,122 +1,71 @@
 package com.programa.projetomercadofx;
 
 import com.programa.projetomercadofx.controllerUtil.Alerts;
-import globalService.ListaFuncionario;
+import globalService.ListaFuncionario; 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import usuarios.Funcionario;
 
 public class EntrarController {
+    @FXML
+    private Button btVoltar;
+    @FXML
+    private Button btEntrar;
     @FXML
     private TextField tfLogin;
     @FXML
     private TextField tfSenha;
     @FXML
-    private Button btConfirmar;
-    @FXML
-    private Button btcadastrar;
-    @FXML
-    private Button btVoltar;
-    @FXML
-    private ChoiceBox<String> choiceBoxTipoFuncionario;
+    private ChoiceBox<String> choiceBoxFuncionarios;
     @FXML
     private Parent root;
 
-//////////Mudança de Janela ///////////////////
-    public void switchToMainScrenn(ActionEvent event) throws Exception {
-        // Carregar FXML da Main
-        Parent tela1 = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
-
-        // Obter a cena atual
+    ////////// Mudança de Janela ///////////////////
+    public void switchToMainScreen(ActionEvent event) throws Exception {
+        Parent tela2 = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
         Scene cenaAtual = root.getScene();
-
-        // Criar uma nova cena com a tela da Main
-        Scene cenaTela1 = new Scene(tela1, cenaAtual.getWidth(), cenaAtual.getHeight());
-
-        // Obter o palco (Stage) atual
+        Scene cenaTela2 = new Scene(tela2, cenaAtual.getWidth(), cenaAtual.getHeight());
         Stage palco = (Stage) cenaAtual.getWindow();
-
-        // Definir a nova cena no palco
-        palco.setScene(cenaTela1);
-    }
-    public void switchToCadastrarScreen(ActionEvent event) throws Exception {
-        // Carregar FXML da Tela Cadastrar
-        Parent CadastrarScreen = FXMLLoader.load(getClass().getResource("CadastrarScreen.fxml"));
-
-        // Obter a cena atual
-        Scene cenaAtual = root.getScene();
-
-        // Criar uma nova cena com a Tela cadastrar
-        Scene cenaTela2 = new Scene(CadastrarScreen, cenaAtual.getWidth(), cenaAtual.getHeight());
-
-        // Obter o palco (Stage) atual
-        Stage palco = (Stage) cenaAtual.getWindow();
-
-        // Definir a nova cena no palco
         palco.setScene(cenaTela2);
-    }
-    public void switchToGerenteMainScrenn(ActionEvent event) throws Exception {
-        Parent tela1 = FXMLLoader.load(getClass().getResource("GerenteMainScreen.fxml"));
-        Scene cenaAtual = root.getScene();
-        Scene cenaTela1 = new Scene(tela1, cenaAtual.getWidth(), cenaAtual.getHeight());
-        Stage palco = (Stage) cenaAtual.getWindow();
-        palco.setScene(cenaTela1);
-    }
-    public void switchToVendedorMainScrenn(ActionEvent event) throws Exception {
-        Parent tela1 = FXMLLoader.load(getClass().getResource("VendedorMainScreen.fxml"));
-        Scene cenaAtual = root.getScene();
-        Scene cenaTela1 = new Scene(tela1, cenaAtual.getWidth(), cenaAtual.getHeight());
-        Stage palco = (Stage) cenaAtual.getWindow();
-        palco.setScene(cenaTela1);
-    }
-
-////////////// Métodos importantes ////////////////////
-    public void onBtConfirmar(ActionEvent event){
-        String login = tfLogin.getText();
-        String senha = tfSenha.getText();
-        String funcionario = choiceBoxTipoFuncionario.getValue();
-
-
-
-        if(funcionario != null){
-            if(!login.isEmpty() && !senha.isEmpty() ) {
-                if(funcionario == "Gerente" && ListaFuncionario.verificarCredenciaisGerente(login, senha) == true){
-                    try{
-                        switchToGerenteMainScrenn(event);
-                        System.out.println("ação Login gerente ocorreu com sucesso");
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }else if(funcionario == "Vendedor" && ListaFuncionario.verificarCredenciaisVendedor(login, senha) == true){
-                    try{
-                        switchToVendedorMainScrenn(event);
-                        System.out.println("ação Login vendedor ocorreu com sucesso");
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }else {
-                    Alerts.showAlert("Entrar error", "Conta inexistente", "Preencha as informações corretamente", Alert.AlertType.ERROR);
-                }
-            }else {
-                Alerts.showAlert("Entrar error", null, "Preencha as informações corretamente", Alert.AlertType.ERROR);
-            }
-        }else{
-            Alerts.showAlert("Entrar Conta ERROR", null, "Tipo de usuário vazio", Alert.AlertType.ERROR);
-        }
-
     }
 
     @FXML
-    public void initialize(){
-        choiceBoxTipoFuncionario.getItems().addAll("Gerente", "Vendedor");
+    public void initialize() {
+        choiceBoxFuncionarios.getItems().addAll("Gerente", "Vendedor");
+    }
+
+    ////////////// Métodos importantes ////////////////////
+    public void onBtEntrar(ActionEvent event) {
+        String login = tfLogin.getText();
+        String senha = tfSenha.getText();
+        String tipo = choiceBoxFuncionarios.getValue();
+
+        if (tipo == null) {
+            Alerts.showAlert("Login", null, "Selecione o tipo de usuário", Alert.AlertType.WARNING);
+            return;
+        }
+
+
+        boolean autenticado = false;
+        
+        if (tipo.equals("Gerente")) {
+            autenticado = ListaFuncionario.getInstance().verificarCredenciaisGerente(login, senha);
+        } else if (tipo.equals("Vendedor")) {
+            autenticado = ListaFuncionario.getInstance().verificarCredenciaisVendedor(login, senha);
+        }
+
+        if (autenticado) {
+            Alerts.showAlert("Login", null, "Login realizado com sucesso!", Alert.AlertType.INFORMATION);
+        } else {
+            Alerts.showAlert("Login Error", null, "Credenciais inválidas ou usuário não encontrado.", Alert.AlertType.ERROR);
+        }
 
     }
 }

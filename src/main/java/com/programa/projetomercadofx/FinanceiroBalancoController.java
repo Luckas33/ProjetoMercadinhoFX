@@ -1,8 +1,6 @@
 package com.programa.projetomercadofx;
 
-import com.programa.projetomercadofx.controllerUtil.Alerts;
-import globalService.ListaEstoque;
-import globalService.ListaFuncionario;
+import globalService.ListaEstoque; 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,22 +8,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import produtos.Produto;
 import produtos.ProdutoHistorico;
 import registros.IRegistro;
-import usuarios.Funcionario;
-import usuarios.Gerente;
-
 import java.util.Vector;
 
 public class FinanceiroBalancoController {
-////////////Id dos componenetes  ///////////////
     @FXML
     private ListView<ProdutoHistorico> listViewBalanco;
     @FXML
@@ -48,10 +37,11 @@ public class FinanceiroBalancoController {
     private Label lbEntrada;
     @FXML
     private Label lbSaida;
+    
     private Vector<ProdutoHistorico> registroMostrar;
     private ObservableList<ProdutoHistorico> produtosObservableList = FXCollections.observableArrayList();
 
-/////////////// Mudança de Tela ///////////////////////////
+    /////////////// Mudança de Tela ///////////////////////////
     public void switchToFinanceiroMainScreen(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("FinanceiroMainScreen.fxml"));
         Scene cenaAtual = root.getScene();
@@ -60,14 +50,14 @@ public class FinanceiroBalancoController {
         palco.setScene(cenaTela1);
     }
 
-////////////////////Métodos lógicos //////////////////
+    //////////////////// Métodos lógicos //////////////////
     public void onBtVerTudo(ActionEvent e){
         tfData.setDisable(true);
         btOKData.setDisable(true);
         tfData.setText(null);
         produtosObservableList.clear();
 
-        for(IRegistro registro : ListaEstoque.registroVector){
+        for(IRegistro registro : ListaEstoque.getInstance().getRegistroVector()){
             if(registro != null){
                 registroMostrar = registro.retornaRegistro();
                 produtosObservableList.addAll(registroMostrar);
@@ -84,7 +74,8 @@ public class FinanceiroBalancoController {
     public void onBtOKData(ActionEvent e){
         String data = tfData.getText();
         produtosObservableList.clear();
-        for(IRegistro registro : ListaEstoque.registroVector){
+        
+        for(IRegistro registro : ListaEstoque.getInstance().getRegistroVector()){
             if(registro != null){
                 registroMostrar = registro.retornaRegistro();
                 for(ProdutoHistorico produto : registroMostrar){
@@ -92,9 +83,7 @@ public class FinanceiroBalancoController {
                         produtosObservableList.add(produto);
                         atualizaBalanco();
                     }
-
                 }
-
             }
         }
         listViewBalanco.getItems().setAll(produtosObservableList);
@@ -112,17 +101,15 @@ public class FinanceiroBalancoController {
             else if(produto.getForma().equals("Compra")){
                 saida += produto.getPreco();
             }
-            balancoFinal = entrada - saida;
-
-            lbBalanco.setText("$" + String.valueOf(balancoFinal));
-            lbEntrada.setText("$" + String.valueOf(entrada));
-            lbSaida.setText("$" + String.valueOf(saida));
-        }
+        } 
+        
+        balancoFinal = entrada - saida;
+        lbBalanco.setText("$" + String.valueOf(balancoFinal));
+        lbEntrada.setText("$" + String.valueOf(entrada));
+        lbSaida.setText("$" + String.valueOf(saida));
     }
-///////////////// Métodos Complementares ///////////////
 
     public void initialize (){
-
         btOKData.setDisable(true);
 
         registroMostrar = new Vector<>();
@@ -130,12 +117,10 @@ public class FinanceiroBalancoController {
             @Override
             protected void updateItem(ProdutoHistorico item, boolean empty) {
                 super.updateItem(item, empty);
-
                 if (empty || item == null) {
                     setText(null);
                 } else {
-                    // Personalize aqui como deseja exibir cada item na lista
-                    setText("ID: " + item.getIdVenda() + " | Preço: " + item.getPreco() + " | Tipo de transação: " + item.getForma() + " | Quantidade: " + item.getQuantidadeVendida() + " | Data: " + item.getData());
+                    setText("ID: " + item.getIdVenda() + " | Preço: " + item.getPreco() + " | Tipo: " + item.getForma() + " | Qtd: " + item.getQuantidadeVendida() + " | Data: " + item.getData());
                 }
             }
         });

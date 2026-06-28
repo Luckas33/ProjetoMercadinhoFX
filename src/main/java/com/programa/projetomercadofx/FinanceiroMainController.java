@@ -5,7 +5,6 @@ import excecao.DVIException;
 import excecao.PIException;
 import excecao.QINException;
 import excecao.SIException;
-import excecao.DVIException;
 import globalService.ListaFuncionario;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -71,6 +70,7 @@ public class FinanceiroMainController {
     private TextField tfRemoverProduto;
     @FXML
     private Button btRemoverProduto;
+    
     /////////////////Método para trocar de tela///////////////////
     public void switchToGerenteMainScreen(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("GerenteMainScreen.fxml"));
@@ -79,6 +79,7 @@ public class FinanceiroMainController {
         Stage palco = (Stage) cenaAtual.getWindow();
         palco.setScene(cenaTela1);
     }
+    
     public void switchToFinanceiroBalancoScreen(ActionEvent event) throws Exception {
         Parent tela1 = FXMLLoader.load(getClass().getResource("FinanceiroBalancoScreen.fxml"));
         Scene cenaAtual = root.getScene();
@@ -120,7 +121,6 @@ public class FinanceiroMainController {
     }
 
     public void onBtCaixa(ActionEvent event){
-
         choiceBoxEscolhaCaixa.setVisible(true);
         choiceBoxEscolhaCaixa.setDisable(false);
         //impedindo dos outros aparecer
@@ -134,7 +134,6 @@ public class FinanceiroMainController {
         pnComprarProduto.setVisible(false);
         pnRemoverProduto.setDisable(true);
         pnRemoverProduto.setVisible(false);
-
     }
 
     public void onCbEscolhaCaixa(Event event){
@@ -176,12 +175,13 @@ public class FinanceiroMainController {
         pnComprarProduto.setDisable(true);
         pnComprarProduto.setVisible(false);
     }
+    
     ///////////// Botões de confirmação e preenchimento da escolha feita ///////////////////
     public void onBtConfirmarCaixaDeposito(ActionEvent e){
         try{
             double valor = Double.parseDouble(tfValorDeposito.getText());
 
-            for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
+            for(Funcionario funcionario : ListaFuncionario.getInstance().getFuncionariosVector()){
                 if(funcionario instanceof Gerente){
                     ((Gerente) funcionario).inserirSaldo(valor);
                     Alerts.showAlert("Depósito",null,"Depósito concluído",Alert.AlertType.INFORMATION);
@@ -194,13 +194,12 @@ public class FinanceiroMainController {
             exception.printStackTrace();
             Alerts.showAlert("Erro", null, "Insira valor válido", Alert.AlertType.ERROR);
         }
-
     }
 
     public void onBtConfirmarCaixaSaque(ActionEvent e){
             double valor = Double.parseDouble(tfValorSaque.getText());
 
-            for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
+            for(Funcionario funcionario : ListaFuncionario.getInstance().getFuncionariosVector()){
                 if(funcionario instanceof Gerente){
                     if(valor > 0) {
                         ((Gerente) funcionario).removerSaldo(valor);
@@ -220,7 +219,7 @@ public class FinanceiroMainController {
         String id = tfIDTaxa.getText();
 
         if(taxa > 0){
-            for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
+            for(Funcionario funcionario : ListaFuncionario.getInstance().getFuncionariosVector()){
                 if(funcionario instanceof Gerente){
                     ((Gerente) funcionario).atualizarTaxa(id, taxa);
                     break;
@@ -237,7 +236,7 @@ public class FinanceiroMainController {
         int quantidade = Integer.parseInt(tfQuantidadeComprarProduto.getText());
 
 
-        for (Funcionario funcionario : ListaFuncionario.funcionariosVector) {
+        for (Funcionario funcionario : ListaFuncionario.getInstance().getFuncionariosVector()) {
             if (funcionario instanceof Gerente) {
                 try {
                     ((Gerente) funcionario).adicionar(id, quantidade);
@@ -264,7 +263,7 @@ public class FinanceiroMainController {
 
     public void onBtConfirmarRemoverProduto(ActionEvent event){
         String id = tfRemoverProduto.getText();
-        for (Funcionario funcionario : ListaFuncionario.funcionariosVector){
+        for (Funcionario funcionario : ListaFuncionario.getInstance().getFuncionariosVector()){
             if(funcionario instanceof Gerente){
                 try {
                     ((Gerente) funcionario).removerProduto(id);
@@ -273,7 +272,6 @@ public class FinanceiroMainController {
                 }catch(PIException e){
                     Alerts.showAlert("Erro Remover",null,"Produto não se encontra no estoque.",Alert.AlertType.ERROR);
                 }
-
                 break;
             }
         }
@@ -295,7 +293,7 @@ public class FinanceiroMainController {
         try{
             String saldoTotal = "0.0";
 
-            for(Funcionario funcionario : ListaFuncionario.funcionariosVector){
+            for(Funcionario funcionario : ListaFuncionario.getInstance().getFuncionariosVector()){
                 if(funcionario instanceof Gerente){
                     saldoTotal = String.valueOf(((Gerente) funcionario).retornaSaldo());
                     break;
@@ -306,6 +304,7 @@ public class FinanceiroMainController {
             e.printStackTrace();
         }
     }
+    
     @FXML
     public void initialize(){
         atualizarSaldoTotal();
@@ -313,7 +312,6 @@ public class FinanceiroMainController {
 
         choiceBoxEscolhaCaixa.setOnAction(this::onCbEscolhaCaixa);
         choiceBoxEscolhaCaixa.setOnMouseClicked(this::onCbEscolhaCaixa);
-
 
         choiceBoxEscolhaCaixa.setDisable(true);
         choiceBoxEscolhaCaixa.setVisible(false);
@@ -333,6 +331,4 @@ public class FinanceiroMainController {
         pnRemoverProduto.setDisable(true);
         pnRemoverProduto.setVisible(false);
     }
-
-
 }
