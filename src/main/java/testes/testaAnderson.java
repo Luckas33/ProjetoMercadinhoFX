@@ -1,4 +1,3 @@
-
 package testes;
 
 import bancoDados.FileSave;
@@ -28,7 +27,8 @@ public class testaAnderson {
     }
 
     public static void testeFuncionario2(){
-        ListaFuncionario listaFuncionario = new ListaFuncionario();
+        // Adaptação para o Singleton aplicada aqui:
+        ListaFuncionario listaFuncionario = ListaFuncionario.getInstance();
 
         System.out.println(listaFuncionario.verificarCredenciaisVendedor("AI", "UI"));
         
@@ -38,7 +38,9 @@ public class testaAnderson {
         FileSave.apagarObjetos("src/main/java/arquivos/funcionarios.txt");
         IEstoque estoque = new Estoque();
         IRegistro registro = new Registro();
-        ListaFuncionario listaFuncionario = new ListaFuncionario();
+        
+        // Adaptação para o Singleton aplicada aqui:
+        ListaFuncionario listaFuncionario = ListaFuncionario.getInstance();
         
         Gerente gerente1 = new Gerente(registro, estoque, "rodrigo", "jrodri", "rodri@gmail","123");
         Gerente gerente2 = new Gerente(registro, estoque, "Bartolomeu", "Bart", "Batoré@gmail","batman");
@@ -128,5 +130,3 @@ public class testaAnderson {
 
     }
 }
-
-
