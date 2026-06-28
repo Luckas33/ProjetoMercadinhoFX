@@ -3,43 +3,51 @@ package globalService;
 import usuarios.Funcionario;
 import usuarios.Gerente;
 import usuarios.Vendedor;
-
 import java.util.Vector;
-
 import bancoDados.FileSave;
 import excecao.FEException;
 import excecao.FIException;
 
 public class ListaFuncionario {
-    public static Vector<Funcionario> funcionariosVector;
+    
+    private static ListaFuncionario instance;
 
-    public ListaFuncionario(){
-        ListaFuncionario.funcionariosVector = new Vector<>();
+    private Vector<Funcionario> funcionariosVector;
+
+    private ListaFuncionario() {
+        this.funcionariosVector = new Vector<>();
     }
 
-    public static void cadastraFuncionario(Funcionario funcionario) throws FEException{
+    public static ListaFuncionario getInstance() {
+        if (instance == null) {
+            instance = new ListaFuncionario();
+        }
+        return instance;
+    }
+
+    public void cadastraFuncionario(Funcionario funcionario) throws FEException {
         if(!existeFuncionario(funcionario)){
             desserializar();
-            funcionariosVector.add(funcionario);
+            this.funcionariosVector.add(funcionario);
             serializar();
         } else {
             throw new FEException(funcionario.getNome());
         }
     }
 
-    public void removeFuncionario(Funcionario funcionario) throws FIException{
+    public void removeFuncionario(Funcionario funcionario) throws FIException {
         if(!existeFuncionario(funcionario)){
             throw new FIException(funcionario.getNome());
         } else {
             desserializar();
-            funcionariosVector.remove(funcionario);
+            this.funcionariosVector.remove(funcionario);
             serializar();
         }
     }
 
-    private static boolean existeFuncionario(Funcionario funcionario){
+    private boolean existeFuncionario(Funcionario funcionario) {
         desserializar();
-        for(Funcionario funcionarioTemp: funcionariosVector){
+        for(Funcionario funcionarioTemp: this.funcionariosVector){
             if(funcionarioTemp.getLogin().equals(funcionario.getLogin())){
                 return true;
             }
@@ -47,38 +55,36 @@ public class ListaFuncionario {
         return false;
     }
 
-    // removi private static, por enquanto
-    public static boolean verificarCredenciaisGerente(String login, String senha) {
+    public boolean verificarCredenciaisGerente(String login, String senha) {
         desserializar();
-        for (Funcionario funcionario : funcionariosVector) {
+        for (Funcionario funcionario : this.funcionariosVector) {
             if(funcionario instanceof Gerente) {
                 if (funcionario.getLogin().equals(login) && funcionario.getSenha().equals(senha)) {
-                    return true; // Encontrou uma correspondência
-                }
-            }
-        }
-        return false; // Nenhuma correspondência encontrada
-    }
-
-    // removi private static, por enquanto
-    public static boolean verificarCredenciaisVendedor(String login, String senha) {
-        desserializar();
-        for (Funcionario funcionario : funcionariosVector) {
-            if(funcionario instanceof Vendedor) {
-                if (funcionario.getLogin().equals(login) && funcionario.getSenha().equals(senha)) {
-                    return true; // Encontrou uma correspondência
+                    return true;
                 }
             }
         }
         return false;
     }
 
-    public static boolean verificarGerenteExistente(String login){
+    public boolean verificarCredenciaisVendedor(String login, String senha) {
+        desserializar();
+        for (Funcionario funcionario : this.funcionariosVector) {
+            if(funcionario instanceof Vendedor) {
+                if (funcionario.getLogin().equals(login) && funcionario.getSenha().equals(senha)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean verificarGerenteExistente(String login) {
         desserializar();
         if(login == null || login.isEmpty()){
             return false;
         }
-        for (Funcionario funcionario : funcionariosVector) {
+        for (Funcionario funcionario : this.funcionariosVector) {
             if(funcionario instanceof Gerente) {
                 if (funcionario.getLogin().equals(login)) {
                     return true;
@@ -88,33 +94,39 @@ public class ListaFuncionario {
         return false;
     }
 
-    public static boolean verificarVendedorExistente(String login){
+    public boolean verificarVendedorExistente(String login) {
         desserializar();
         if(login == null || login.isEmpty()){
             return false;
         }
-        for (Funcionario funcionario : funcionariosVector) {
+        for (Funcionario funcionario : this.funcionariosVector) {
             if(funcionario instanceof Vendedor) {
                 if (funcionario.getLogin().equals(login)) {
-                    return true; // Encontrou uma correspondência
+                    return true;
                 }
             }
         }
         return false;
     }
-    private static void serializar() {
-        String caminho = "src/main/java/arquivos/funcionarios.txt";
-        FileSave.gravarObjetos(funcionariosVector, caminho);
+
+    public Vector<Funcionario> getFuncionariosVector() {
+        return this.funcionariosVector;
     }
 
-    private static void desserializar(){
+    private void serializar() {
+        String caminho = "src/main/java/arquivos/funcionarios.txt";
+        FileSave.gravarObjetos(this.funcionariosVector, caminho);
+    }
+
+    @SuppressWarnings("unchecked")
+    private void desserializar() {
         String caminho = "src/main/java/arquivos/funcionarios.txt";
         try {
-            Vector<Funcionario> funcionariosTemp = (Vector<Funcionario>) FileSave.recuperarObjetos(caminho);        // Tem a possibilidade do arquivo não existir
-            if (funcionariosTemp != null) {                 // Tem a possibilidade de ser null
-                funcionariosVector.clear();                   // Limpa o que já existe, supondo que há a mesma coisa no arquivo
+            Vector<Funcionario> funcionariosTemp = (Vector<Funcionario>) FileSave.recuperarObjetos(caminho);
+            if (funcionariosTemp != null) {
+                this.funcionariosVector.clear();
                 for(Funcionario funcionario : funcionariosTemp) {
-                    funcionariosVector.add(funcionario);          // Adicionando os produtos recuperados do arquivo
+                    this.funcionariosVector.add(funcionario);
                 }
             }
         } catch (Exception e) {
