@@ -32,7 +32,7 @@ public class Main extends Application {
         
         // 2. Acessa as instâncias únicas através do Singleton
         ListaEstoque listaEstoque = ListaEstoque.getInstance();
-        ListaFuncionario listaFuncionario = ListaFuncionario.getInstance();
+        ListaFuncionario.getInstance();
 
         // 3. Adiciona os objetos às listas via instâncias
         listaEstoque.getEstoqueVector().add(estoque);
@@ -40,10 +40,10 @@ public class Main extends Application {
 
         // 4. Cria o gerente inicial
         Funcionario gerentee = new Gerente(registro, estoque, "rodrigo", "jrodri", "rodri@gmail","123");
-        
+
         // Limpa dados antigos, se necessário
         ((Gerente) gerentee).limparTudo();
-        
+
         // Inicia a aplicação JavaFX
         launch(args);
     }
