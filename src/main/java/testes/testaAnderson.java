@@ -7,12 +7,13 @@ import produtos.*;
 import registros.IRegistro;
 import registros.Registro;
 import usuarios.Funcionario;
+import usuarios.FuncionarioFactory;
 import usuarios.Gerente;
 import usuarios.Vendedor;
 
 public class testaAnderson {
     public static void main(String[] args) {
-        teste();
+        testeFactory();
     }
 
     public static void teste(){
@@ -106,6 +107,44 @@ public class testaAnderson {
         gerente.verBalancoTotal();
     }
 */
+    public static void testeFactory() {
+        IEstoque estoque = new Estoque();
+        IRegistro registro = new Registro();
+
+        System.out.println("=== Teste FuncionarioFactory ===");
+
+        // [1] Factory cria Gerente com tipo correto
+        Funcionario gerente = FuncionarioFactory.criarFuncionario(
+            "Gerente", registro, estoque, "Maria", "mariaLogin", "maria@gmail.com", "senha123"
+        );
+        System.out.println("[1] Cria Gerente (instanceof Gerente): " + (gerente instanceof Gerente));
+        System.out.println("[1] Login correto: " + gerente.getLogin().equals("mariaLogin"));
+        System.out.println("[1] Nome correto:  " + gerente.getNome().equals("Maria"));
+
+        // [2] Factory cria Vendedor com tipo correto
+        Funcionario vendedor = FuncionarioFactory.criarFuncionario(
+            "Vendedor", registro, estoque, "Carlos", "carlosLogin", "carlos@gmail.com", "abc"
+        );
+        System.out.println("[2] Cria Vendedor (instanceof Vendedor): " + (vendedor instanceof Vendedor));
+        System.out.println("[2] Login correto: " + vendedor.getLogin().equals("carlosLogin"));
+
+        // [3] Retorno e polimorfismo — ambos sao Funcionario
+        System.out.println("[3] Gerente e Funcionario:  " + (gerente instanceof Funcionario));
+        System.out.println("[3] Vendedor e Funcionario: " + (vendedor instanceof Funcionario));
+
+        // [4] Tipo invalido deve lancar IllegalArgumentException
+        try {
+            FuncionarioFactory.criarFuncionario(
+                "Supervisor", registro, estoque, "X", "x", "x@x.com", "x"
+            );
+            System.out.println("[4] FALHOU: deveria ter lancado excecao");
+        } catch (IllegalArgumentException e) {
+            System.out.println("[4] Tipo invalido lanca excecao corretamente: " + e.getMessage());
+        }
+
+        System.out.println("=== Fim Teste FuncionarioFactory ===");
+    }
+
     public static void testeEstoque(){
         IEstoque estoque = new Estoque();
         System.out.println("ESTOQUE INICIAL");
